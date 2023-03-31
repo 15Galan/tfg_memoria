@@ -1,0 +1,862 @@
+\chapter{Introducción}
+
+    \section{Motivación}
+    
+        % 20 Feb. -> 15 May            : plazo en el que planeo realizar el proyecto.
+        %            15 May. -> 26 May : plazo de solicitud de defensa -y entrega de la memoria-.
+        % ----------------------------------------------------------------------------------------
+        % Quiero terminarlo todo antes del 15 y dejar el plazo de solicitud para "por si acasos".
+        
+        La Agencia Digital de Andalucía (ADA) presentó en 2021 un plan de inversión para los años 2022-2025 que se centra en varias áreas estratégicas de desarrollo tecnológico, incluyendo la ciberseguridad; esta inversión del Gobierno andaluz no solo impulsará la creación de un Centro de Ciberseguridad que coordinará la Estrategia Andaluza de Ciberseguridad 2022-2025, sino que además, pretende conseguir que revierta en el desarrollo económico de la región, que ya ha empezado a aceptar empresas como Google, que ha instalado su Centro de Excelencia de Ciberseguridad en Málaga.
+        
+        Bajo el paraguas de este desarrollo tecnológico, el aumento de la demanda de profesionales en este campo ha despertado un gran interés en los estudiantes por aprender sobre la ciberseguridad.
+        
+        Sin embargo, muchos de ellos se enfrentan a la dificultad de encontrar recursos educativos completos y accesibles debido a las restricciones que imponen algunas plataformas de entrenamiento, donde los recursos que ofrecen tienen barreras que dificultan el acceso a la formación, incluyendo la necesidad de suscripciones para acceder al contenido completo.
+        
+        Esto puede desmotivar a los estudiantes y reducir su capacidad para aprender y desarrollar habilidades en el campo de la ciberseguridad.
+    
+    
+    \section{Objetivos}
+    
+        Se busca desarrollar de una plataforma web que sea ligera, gratuita, \textit{open-source} y fácilmente extensible, con el objetivo principal de simplificar la introducción de futuros estudiantes en el sector de la ciberseguridad, con un enfoque específico en el pentesting.
+        
+        La plataforma proporcionará información documentada y sintetizada junto con entornos de prueba virtualizados para facilitar el aprendizaje mediante la experimentación.
+        
+        A diferencia de otras plataformas como Hack The Box y similares, el enfoque de esta plataforma no estará en la resolución de retos, como serían las pruebas de tipo CTF más habituales en el sector, sino en la construcción de entornos virtuales diseñados específicamente para experimentar y poner en práctica conceptos concretos.
+        
+        Esta herramienta brindará a los estudiantes una experiencia educativa gratuita y accesible en ciberseguridad, permitiéndoles aprender y desarrollar habilidades prácticas de manera efectiva y en línea con las necesidades del mercado.
+    
+    
+    \section{Metodología}
+    
+        Se ha empleado un \textbf{desarrollo incremental} para la elaboración del proyecto: se partió de una base a la que se añadieron sucesivas mejoras sin que estas perjudicaran al resto del proyecto desarrollado hasta ese momento.
+        
+        El desarrollo de dichas mejoras se ha llevado a cabo utilizando el \textbf{sistema Kanban} de gestión de tareas, descomponiendo el proyecto en tareas lo más simples y atómicas posibles, distribuyendo los \textit{issues} por una serie de etapas conforme se iban realizando (\textit{Pendiente}, \textit{En progreso} y \textit{Terminado}), llevando a cabo un seguimiento de la evolución y el estado del proyecto.
+        
+        
+        
+        \newpage
+    
+    \section{Estructura global del proyecto}
+        
+        El proyecto se divide en tres pilares principales: la creación de una plataforma web, la investigación y selección de conceptos de pentesting y la virtualización de los entornos de prueba, resultando en el objetivo de este proyecto de trabajo de fin de grado, una plataforma web que proporcionará información sobre técnicas de pentesting y ofrecerá acceso a pruebas virtualizadas en forma de laboratorios. 
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.30]{images/Diagramas/Estructura global.png}
+            \caption{Pilares fundamentales del proyecto}
+            \label{fig:estructura-global}
+        \end{figure}
+            
+        \subsection{Página web}
+        
+            La primera toma de contacto del usuario con la plataforma, la página web será la interfaz de usuario para acceder a los laboratorios y contenidos relacionados con la ciberseguridad.
+            
+            Respecto a su construcción, se han considerado dos opciones: programarla desde cero o utilizar un CMS (Sistema de Gestión de Contenidos); para la primera opción, se optaría por el uso del framework Astro, que permite crear sitios web rápidamente, además de proporcionar un amplio conjunto de herramientas para su personalización; por otro lado, se ha considerado el uso de WordPress, uno de los CMS más utilizados en el mundo y que cuenta con una amplia variedad de plantillas disponibles, lo que facilitaría el diseño de la interfaz.
+
+            También se tuvieron en cuenta distintos constructores de páginas webs como Cargo Collective o Square Space.
+
+            Finalmente, se decidió usar Wordpress por su sencillez y su biblioteca de plugins, que permitiría integrar diferentes funcionalidades extra en lugar de programarlas manualmente como podría haber ocurrido con el uso de un framework.
+                
+            \subsubsection{Alojamiento}
+            
+                Respecto al alojamiento, se han considerado varias opciones, tales como GitHub Pages, Vercel, OVHcloud o Heroku.
+                
+                Sin embargo, al tratarse de una prueba de concepto, se ha decidido elaborar la infraestructura de forma local, lo que permitirá un mayor control y flexibilidad en el desarrollo, dando lugar a mejoras en futuras líneas de trabajo \ref{sec:futuras-lineas-trabajo}.
+
+                En cuanto a la base de datos, se ha decidido utilizar MySQL por ser una opción muy utilizada, fácil de configurar y por ser nativamente compatible con WordPress. La base de datos tendrá la menor cantidad de tablas posibles, almacenando únicamente la información necesaria sobre los usuarios registrados y sobre los laboratorios.
+            
+        \subsection{Investigación}
+        
+            Se centrará en recopilar y seleccionar diferentes conceptos y técnicas relacionados con el pentesting.
+        
+        \subsection{Virtualización}
+
+            La virtualización es una parte integral del proyecto, ya que permite la creación de varios laboratorios de prueba donde los usuarios aplicarán los conocimientos adquiridos en la plataforma; concretamente, se consideraron contenedores de Docker y máquinas virtuales para crear estos laboratorios.
+            
+            Elegir Docker como plataforma de contenedores es una buena opción porque ofrece una gestión de recursos eficiente y una generación de imágenes sencilla; por otro lado, Vagrant Cloud es una buena opción para crear máquinas virtuales, ya que ofrece una amplia gama de imágenes preconfiguradas y un entorno de desarrollo fácil de usar.
+            
+            Se pueden utilizar diversas herramientas para gestionar los contenedores, en función de las necesidades específicas de cada laboratorio; por ejemplo, Kubernetes es una buena herramienta para la gestión de contenedores a gran escala (clústers de contenedores). Además, Docker Compose es una opción conveniente para configurar y ejecutar aplicaciones de contenedores múltiples.
+            
+            Por otro lado, también se consideraron plataformas que brindan servicios de almacenamiento y distribución de imágenes, como DockerHub para imágenes de contenedores de Docker y Vagrant Cloud para máquinas virtuales preconfiguradas. Estas dos plataformas brindan enlaces de descargas con las que un usuario puede acceder a recursos previamente montados por su autor.
+        
+    \section{Tecnologías}
+    
+        Las siguientes tecnologías y herramientas se emplearon en el desarrollo del proyecto:
+        
+        \subsection{GitHub}
+        
+            GitHub es una plataforma de desarrollo colaborativo de software que ofrece alojamiento de código fuente, seguimiento de problemas y herramientas de colaboración para proyectos de programación.
+            
+            Esta plataforma es muy popular en la comunidad de desarrolladores, ya que les permite compartir su trabajo con otros usuarios, pudiendo ser clonado, modificado y actualizado por otros desarrolladores, permitiendo la colaboración y el intercambio de conocimientos; o mantenerlo privado para uso personal o empresarial.
+            
+            Además del alojamiento de código fuente, GitHub también ofrece herramientas de seguimiento de problemas, donde los desarrolladores pueden reportar y resolver errores, solicitar nuevas características y discutir mejoras en el software. Esto facilita la comunicación y la colaboración entre los usuarios, además de mejorar la calidad del software desarrollado.
+            
+            \newpage
+
+
+        \subsection{Wordpress}
+
+            
+        
+        
+        \subsection{Docker}
+        
+            Docker es una plataforma de software que permite crear, implementar y administrar aplicaciones en contenedores, siendo un contenedor un entorno aislado y seguro que recoge una aplicación y todas sus dependencias, lo que permite que se ejecute sin problemas en cualquier entorno informático, independientemente de las diferencias entre los sistemas operativos o las configuraciones de hardware.
+            
+            \begin{figure}[h]
+                \centering
+                \begin{subfigure}[h]{\textwidth}
+                    \includegraphics[width=\textwidth]{images/Diagramas/Esquema de Contenedores.png}
+                    \caption{Arquitectura de los contenedores}
+                    \label{fig:arquitectura-contenedores}
+                \end{subfigure}
+                
+                \begin{subfigure}[h]{\textwidth}
+                    \includegraphics[width=\textwidth]{images/Diagramas/Esquema de MVs.png}
+                    \caption{Arquitectura de las máquinas virtuales}
+                    \label{fig:arquitectura-maquinasvirtuales}
+                \end{subfigure}
+                \caption{Diferencias entre contenedores y las máquinas virtuales}
+                \label{fig:contenedores-vs-maquinasvirtuales}
+            \end{figure}
+            
+            Docker funciona con imágenes, que son plantillas o modelos que contienen todos los componentes necesarios para ejecutar una aplicación en un contenedor, incluidos el código fuente, las librerías, los archivos de configuración y las dependencias del sistema. Estas imágenes pueden ser descargadas desde un registro centralizado llamado Docker Hub o construirse localmente por los desarrolladores.
+            
+            Una vez obtenida una imagen, puede usarse Docker para crear un contenedor a partir de ella, lo que implica crear una instancia de aplicación y, por tanto, el entorno en el que se ejecuta; los contenedores de Docker se pueden transferir fácilmente entre diferentes sistemas y entornos, lo que facilita la implementación y el escalado de aplicaciones. Además, Docker proporciona herramientas de administración de contenedores, como la capacidad de iniciar, detener, reiniciar y eliminar contenedores, así como la capacidad de monitorear su uso y rendimiento.
+            
+            \newpage
+    
+     
+\chapter{Estado del arte}
+
+    Actualmente existen diversas plataformas web de entrenamiento en ciberseguridad que ofrecen laboratorios y desafíos para mejorar las habilidades de seguridad ofensiva y defensiva de los usuarios; dichas plataformas han experimentado un crecimiento en popularidad en los últimos años debido a la creciente demanda de profesionales en el campo de la seguridad informática y a la necesidad de mejorar las habilidades tanto de los estudiantes como de los profesionales en el campo.
+    
+    Estas plataformas varían en su enfoque y contenido, desde laboratorios que simulan entornos de la vida real hasta desafíos de explotación de vulnerabilidades, así como eventos de naturaleza más lúdica y competitiva como los retos de capturar la bandera, también conocidos como CTFs (\textit{Capture The Flag}).
+    
+    Algunas de estas plataformas han sido utilizadas en la educación, ya que permiten a los estudiantes practicar y aplicar conceptos teóricos de seguridad informática en un entorno práctico; y también pueden ser útiles para empresas y organizaciones, ya sea para evaluar las habilidades de seguridad de los empleados o para mejorar la seguridad de sus sistemas.
+    
+    Respecto al futuro, se espera que continúen creciendo en popularidad y que aumente la variedad de laboratorios y desafíos que ofrecen, siendo muy probable que se produzca una mayor integración con otras tecnologías de inteligencia artificial, quizás dando lugar a una mejora en la calidad de esos desafíos y laboratorios mencionados, para que proporcionen una experiencia de usuario más personalizada.
+    
+    A continuación se presenta una breve descripción de algunas de las plataformas más populares actualmente, donde se muestran sus similitudes y sus diferencias:
+    
+    \newpage
+    
+    
+    \section{Hack The Box}
+    
+    Plataforma web de entrenamiento que ofrece más de 200 desafíos y laboratorios de amplia variedad, diseñados para mejorar las habilidades de seguridad ofensiva y defensiva de los usuarios. Hack The Box se ha vuelto \textbf{la plataforma más popular} en la comunidad de seguridad informática debido a su \textbf{enfoque en la calidad de los desafíos y laboratorios} y su \textbf{comunidad activa de usuarios}.
+    
+    Sus retos abarcan desde desafíos básicos de hacking hasta laboratorios avanzados, y también ofrece una función llamada \textit{Boxes} diseñada para simular entornos de la vida real, como redes empresariales, que contienen múltiples vulnerabilidades que los usuarios pueden explotar para ganar acceso a sistemas y obtener información confidencial.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{images/Capturas/Web de HTB.png}
+        \caption{Web de Hack The Box}
+        \label{fig:HTB-web}
+    \end{figure}
+    
+    Una de las características más interesantes de esta plataforma es su enfoque en el hacking ético, ya que se fomenta una cultura de hacking responsable y legal y requiere que los usuarios acepten un código de conducta antes de unirse. Los usuarios también son alentados a informar sobre cualquier vulnerabilidad que encuentren en la plataforma.
+    
+    Hack the Box ofrece diferentes \textbf{planes de suscripción} para los usuarios interesados en acceder a su contenido:
+    
+    \begin{itemize}
+        \item \textbf{Plan gratuito}: acceso limitado a una selección de desafíos y laboratorios, pero no incluye acceso a los \textit{boxes}.
+    
+        \item \textbf{Plan VIP}: acceso completo a la plataforma (todos los laboratorios, desafíos y \textit{boxes} disponibles).
+    
+        \item \textbf{Planes empresariales}: personalizados para empresas y organizaciones que deseen utilizar la plataforma para la formación y evaluación de sus empleados en seguridad informática.
+    \end{itemize}
+    
+    \newpage
+    
+    
+    \subsection{HTB Academy}
+    
+    Esta es una iniciativa de Hack The Box que también ofrece formación, pero al contrario que Hack The Box, centrada en la práctica y el desafío en tiempo real, HTB Academy \textbf{se enfoca en la enseñanza práctica de habilidades a través de cursos y laboratorios}.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{images/Capturas/Web de HTB Academy.png}
+        \caption{Web de HTB Academy}
+        \label{fig:HTB-Academy-web}
+    \end{figure}
+    
+    Los cursos están diseñados para ser prácticos, con una orientación en la experimentación activa que permite a los estudiantes adquirir habilidades en la práctica, y no solo a través de la teoría; cubren una amplia gama de temas, desde los fundamentos de la seguridad informática hasta temas avanzados como el análisis de malware, el hacking web y la ingeniería inversa, ya que están diseñados para ser accesibles desde principiantes hasta expertos en el sector.
+    
+    Esta plataforma cuenta con los mismos tipos de \textbf{planes de suscripción} que Hack The Box: gratuito, VIP y empresarial; aunque es importante destacar que tanto Hack The Box como HTB Academy son servicios diferentes, por lo que \textbf{los planes de ambas plataformas son completamente independientes entre sí}.
+    
+    \newpage
+    
+    
+    \section{TryHackMe}
+    
+    Plataforma de aprendizaje de ciberseguridad basada en la experimentación activa, que proporciona una variedad de entornos de laboratorio virtuales y desafíos prácticos para ayudar a los usuarios a aprender y mejorar sus habilidades en seguridad informática; su contenido se encuentra organizado en \textbf{diferentes rutas de aprendizaje} que permiten a los usuarios desarrollar su conocimiento de forma estructurada.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{images/Capturas/Web de THM.png}
+        \caption{Web de TryHackMe}
+        \label{fig:THM-web}
+    \end{figure}
+    
+    La plataforma también cuenta con una comunidad activa y una función de \textit{gamificación} que proporciona una experiencia de aprendizaje más interactiva y entretenida, permitiendo que los usuarios puedan competir entre ellos, ganando puntos y recompensas por completar desafíos y resolver problemas de seguridad.
+    
+    TryHackMe ofrece diferentes \textbf{planes de suscripción} para los usuarios interesados:
+    
+    \begin{itemize}
+        \item \textbf{Plan gratuito}: acceso limitado a una selección de desafíos y laboratorios.
+    
+        \item \textbf{Plan premium}: acceso completo a la plataforma (todos los laboratorios y desafíos).
+    
+        \item \textbf{Planes empresariales}: personalizados para empresas y organizaciones que deseen utilizar la plataforma para la formación y evaluación de sus empleados en seguridad informática.
+    \end{itemize}
+    
+    \newpage
+    
+    
+    \section{VulnHub}
+    
+    Plataforma de laboratorios que proporciona una gran cantidad de \textbf{máquinas virtuales vulnerables que los usuarios pueden descargar} y configurar en sus propios entornos de laboratorio para luego explotar sus vulnerabilidades; cada máquina virtual cuenta con descripción detallada de su objetivo y una guía paso a paso para ayudar a los estudiantes en su proceso de aprendizaje.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{images/Capturas/Web de VulnHub.png}
+        \caption{Web de VulnHub}
+        \label{fig:VulnHub-web}
+    \end{figure}
+    
+    Estos desafíos son diseñados por la comunidad, y la plataforma también ofrece la opción de que los usuarios puedan crear y compartir sus propios desafíos y máquinas virtuales.
+    
+    Al contrario de lo que sucede con otras plataformas, entre ellas Hack The Box y TryHackMe mencionadas anteriormente, \textbf{esta plataforma es completamente gratuita} y todo su contenido está construido por y para los usuarios.
+    
+    \newpage
+    
+    
+    \section{OverTheWire}
+    
+    Plataforma de laboratorios \textbf{diseñada de manera progresiva}, donde los usuarios pueden avanzar en su aprendizaje de forma gradual, comenzando con los niveles más fáciles y avanzando hacia los más complejos; cada nivel de desafío presenta un objetivo diferente, haciendo que los usuarios deban usar su ingenio y habilidades en seguridad informática para resolver los desafíos y avanzar al siguiente nivel.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{images/Capturas/Web de OverTheWire.png}
+        \caption{Web de OverTheWire}
+        \label{fig:OverTheWire-web}
+    \end{figure}
+    
+    Uno de los aspectos únicos de OverTheWire es que los desafíos están diseñados para simular situaciones del mundo real, lo que permite a los estudiantes adquirir habilidades prácticas y relevantes para el mundo laboral de la ciberseguridad; pudiendo aplicar lo aprendido a situaciones reales y utilizar sus habilidades para asegurar sistemas y aplicaciones.
+    
+    Al contrario de lo que sucede con otras plataformas, entre ellas Hack The Box y TryHackMe mencionadas anteriormente, \textbf{esta plataforma es completamente gratuita} y todo su contenido está construido por y para los usuarios.
+    
+    \cleardoublepage
+    
+    
+
+\chapter{Diseño y desarrollo de la plataforma}
+    
+    \section{Ingeniería de Requisitos}
+        \label{cha:ingenieria-requisitos}
+        
+        
+        
+        El único actor de la plataforma será el usuario que haga uso de ella, esté o no registrado en la misma, por lo que no se especificará este detalle en los Casos de Uso (\autoref{sec:casos-uso}) puesto que siempre será el mismo.
+        
+        
+        \subsection{Casos de uso}
+            \label{sec:casos-uso}
+            
+            \begin{figure}[h]
+                \centering
+                \includegraphics[scale=0.125]{images/Diagramas/Casos de uso.png}
+                \caption{Casos de uso}
+                \label{fig:casos-uso}
+            \end{figure}
+            
+            \newpage
+        
+        
+        \subsection{Requisitos funcionales}
+            \label{sec:requisitos-funcionales}
+            
+            Los casos de uso permiten identificar los requisitos funcionales necesarios para satisfacer las necesidades del usuario y asegurarse de que el sistema cumpla con sus objetivos y expectativas. Teniendo eso en cuenta, los casos de uso describen cómo interactúan los usuarios con el sistema y qué acciones o funcionalidades deben estar disponibles en cada situación.
+            
+            Para este proyecto, se han definido los siguientes requisitos en función de los casos de uso mencionados en la sección anterior \ref{sec:casos-uso}:
+            
+            
+            \subsubsection{Usuarios}
+            
+                Requisitos relacionados con la gestión de usuarios y sus datos.
+                
+                \begin{table}[!htbp]
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        \hline
+                        \textbf{RF - 01} & \textbf{Registro de usuarios} \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            El sistema debe permitir que los usuarios se registren y creen una cuenta en la plataforma para poder usar las \textit{sandboxes}.
+                        } \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            \begin{itemize}
+                                \item Nombre de usuario.
+                                \item Dirección de correo electrónico.
+                                \item Contraseña.
+                            \end{itemize}
+                            } \\
+                        \hline
+                    \end{tabular}
+                    \label{tab:RF1}
+                \end{table}
+                
+                \begin{table}[!htbp]
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        \hline
+                        \textbf{RF - 02} & \textbf{Inicio de sesión} \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            El sistema debe permitir que los usuarios registrados puedan iniciar sesión para poder acceder al uso de las \textit{sandboxes}.
+                        } \\
+                        \hline
+                    \end{tabular}
+                    \label{tab:RF2}
+                \end{table}
+                
+                \begin{table}[!htbp]
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        \hline
+                        \textbf{RF - 03} & \textbf{Validación de los datos de registro} \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            El sistema debe comprobar que los datos de registro de un usuario sean válidos.
+                        } \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            \begin{itemize}
+                                \item No se registró un usuario con el mismo nombre de usuario ni correo electrónico.
+                                \item Si alguno de los datos no es válido (error), se informará al usuario.
+                            \end{itemize}
+                            } \\
+                        \hline
+                    \end{tabular}
+                    \label{tab:RF3}
+                \end{table}
+            
+            
+            \subsubsection{Contenido}
+            
+                Requisitos relacionados con la gestión de contenido y sus características.
+                
+                \begin{table}[!htbp]
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        \hline
+                        \textbf{RF - 04} & \textbf{Consulta de contenido} \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            El sistema debe proporcionar contenido relevante que permita a los usuarios adquirir los conocimientos necesarios para realizar las pruebas.
+                        } \\
+                        \hline
+                    \end{tabular}
+                    \label{tab:RF4}
+                \end{table}
+                
+                \newpage
+            
+            
+            \subsubsection{\textit{Sandboxes}}
+            
+                Requisitos relacionados con la gestión de los entornos virtualizados.
+                
+                \begin{table}[!htbp]
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        \hline
+                        \textbf{RF - 05} & \textbf{Creación de \textit{sandboxes}} \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            El sistema debe permitir que los usuarios seleccionen e inicien un laboratorio de pruebas que deseen realizar.
+                        } \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            \begin{itemize}
+                                \item Si no es posible iniciar un laboratorio (error), se informará al usuario.
+                            \end{itemize}
+                            } \\
+                        \hline
+                    \end{tabular}
+                    \label{tab:RF5}
+                \end{table}
+                
+                \begin{table}[!htbp]
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        \hline
+                        \textbf{RF - 06} & \textbf{Tiempo de vida de las \textit{sandboxes}} \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            El sistema debe destruir automáticamente un laboratorio iniciado una vez que se haya superado un tiempo de vida definido.
+                        } \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            \begin{itemize}
+                                \item Definir un tiempo de vida fijo para las \textit{sandboxes}.
+                            \end{itemize}
+                            } \\
+                        \hline
+                    \end{tabular}
+                    \label{tab:RF6}
+                \end{table}
+                
+                \begin{table}[!htbp]
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        \hline
+                        \textbf{RF - 07} & \textbf{Número máximo de \textit{sandboxes} iniciadas} \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            El sistema no debe permitir el inicio de infinitos laboratorios.
+                        } \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            \begin{itemize}
+                                \item Definir un número máximo de instancias posibles.
+                            \end{itemize}
+                            } \\
+                        \hline
+                    \end{tabular}
+                    \label{tab:RF7}
+                \end{table}
+                
+                \begin{table}[!htbp]
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        \hline
+                        \textbf{RF - 08} & \textbf{Uso de una \textit{sandbox} iniciada} \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            El sistema debe permitir que los usuarios puedan conectarse a un laboratorio una vez este se haya iniciado.
+                        } \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            \begin{itemize}
+                                \item Proporcionar los datos de conexión a un laboratorio al usuario.
+                                \item La conexión se realizará por el propio usuario a través de SSH.
+                            \end{itemize}
+                            } \\
+                        \hline
+                    \end{tabular}
+                    \label{tab:RF8}
+                \end{table}
+                
+                \begin{table}[!htbp]
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        \hline
+                        \textbf{RF - 09} & \textbf{Destrucción de \textit{sandboxes}} \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            El sistema debe permitir que los usuarios puedan apagar una \textit{sandbox}, lo que equivale a destruirla manualmente (en lugar de esperar a que se cumpla su tiempo de vida).
+                        } \\
+                        \hline
+                        \multicolumn{2}{|p{15cm}|}{
+                            \begin{itemize}
+                                \item Si no es posible destruir un laboratorio (error), se informará al usuario.
+                            \end{itemize}
+                            } \\
+                        \hline
+                    \end{tabular}
+                    \label{tab:RF09}
+                \end{table}
+                
+                \newpage
+        
+        
+        \subsection{Requisitos no funcionales}
+            \label{sec:requisitos-nofuncionales}
+            
+            Por otro lado, los requisitos no funcionales describen las cualidades o atributos que debe tener un sistema, enfocándose en cómo hace el sistema lo que hace; es decir, cómo se comporta en términos de calidad.
+            
+            Para este proyecto, se han definido los siguientes requisitos en función de los requisitos mencionados en la sección anterior \ref{sec:requisitos-funcionales} y los objetivos de la plataforma:
+            
+            \begin{table}[!htbp]
+                \centering
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RNF - 01} & \textbf{Privacidad de los datos} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe garantizar la seguridad y privacidad de los datos de los usuarios.
+                    } \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        \begin{itemize}
+                            \item Aplicar una política de cifrado para las contraseñas.
+                        \end{itemize}
+                        } \\
+                    \hline
+                \end{tabular}
+                \label{tab:RNF1}
+            \end{table}
+            
+            \begin{table}[!htbp]
+                \centering
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RNF - 02} & \textbf{Aislamiento de las \textit{sandboxes}} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe garantizar la seguridad y aislamiento de los laboratorios de prueba de la plataforma.
+                    } \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        \begin{itemize}
+                            \item Aislar completamente los laboratorios sin afectar al resto de la plataforma.
+                        \end{itemize}
+                        } \\
+                    \hline
+                \end{tabular}
+                \label{tab:RNF2}
+            \end{table}
+            
+            \begin{table}[!htbp]
+                \centering
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RNF - 03} & \textbf{Seguridad de la plataforma} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe implementar medidas de seguridad para prevenir ataques externos o internos a la plataforma.
+                    } \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        \begin{itemize}
+                            \item Medidas de autenticación y autorización para garantizar el acceso solo a usuarios autorizados.
+                        \end{itemize}
+                        } \\
+                    \hline
+                \end{tabular}
+                \label{tab:RNF3}
+            \end{table}
+            
+            \begin{table}[!htbp]
+                \centering
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RNF - 04} & \textbf{Accesibilidad} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        La plataforma debe ser accesible para cualquier usuario, independientemente de su nivel de experiencia en ciberseguridad.
+                    } \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        \begin{itemize}
+                            \item Contenido claro y accesible.
+                            \item Laboratorios bien estructurados.
+                        \end{itemize}
+                        } \\
+                    \hline
+                \end{tabular}
+                \label{tab:RNF4}
+            \end{table}
+            
+            \begin{table}[!htbp]
+                \centering
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RNF - 05} & \textbf{Usabilidad} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        La plataforma debe ser fácil de usar y accesible para cualquier usuario, independientemente de su nivel de experiencia en ciberseguridad.
+                    } \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        \begin{itemize}
+                            \item Interfaz de usuario intuitiva, clara y organizada.
+                        \end{itemize}
+                        } \\
+                    \hline
+                \end{tabular}
+                \label{tab:RNF5}
+            \end{table}
+            
+            \begin{table}[!htbp]
+                \centering
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RNF - 06} & \textbf{Escalabilidad / Extensibilidad} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        La plataforma debe ser fácilmente escalable, permitiendo la futura integración de más contenido y laboratorios de pruebas.
+                    } \\
+                    \hline
+                \end{tabular}
+                \label{tab:RNF6}
+            \end{table}
+            
+            \cleardoublepage
+    
+    
+    \section{Arquitectura}
+        \label{sec:arquitectura}
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.20]{images/Diagramas/Arquitectura.png}
+            \caption{Arquitectura}
+            \label{fig:arquitectura}
+        \end{figure}
+        
+        \subsection{Conexión a una \textit{sandbox}}
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.20]{images/Diagramas/Arquitectura 1.png}
+            \caption{Uso normal}
+            \label{fig:conexion-sandbox}
+        \end{figure}
+        
+        El usuario está registrado, ya que en caso contrario, no podría acceder a esta funcionalidad del sistema.
+        
+        \begin{itemize}
+            \item El usuario que ha accedido a la plataforma quiere encender una \textit{sandbox}.
+            \item Se informa al servidor de dicha acción y se consulta en la base de datos la información de dicho entorno virtualizado (ID, nombre, características de construcción, tiempo de vida...).
+            \item Una vez obtenido dicha información, se procesa y se inicia la construcción de una instancia de la \textit{sandbox}.
+            \item Finalmente, tras haberse construido el entorno, el usuario recibe un mensaje con los datos de conexión y puede proceder a conectarse al entorno a través de SSH.
+        \end{itemize}
+        
+        \newpage
+    
+    
+    \section{Modelado de actividades y transiciones}
+        \label{sec:modelado-actividades-transiciones}
+        
+        \subsection{Tratamiento de usuarios}
+        
+            \begin{figure}[h]
+                \centering
+                \begin{subfigure}{0.45\textwidth}
+                    \centering
+                    \includegraphics[scale=0.15]{images/Diagramas/Actividades y transiciones 1.png}
+                    \caption{Registro de un usuario}
+                    \label{fig:registro-usuario}
+                \end{subfigure}
+                \hfill
+                \begin{subfigure}{0.45\textwidth}
+                    \centering
+                    \includegraphics[scale=0.15]{images/Diagramas/Actividades y transiciones 2.png}
+                    \caption{Inicio de sesión de un usuario}
+                    \label{fig:inicio-usuario}
+                \end{subfigure}
+                \caption{Modelado de actividades y transiciones}
+                \label{fig:actividades-transiciones}
+            \end{figure}
+            
+            Los diagramas presentados en esta sección definen la gestión de usuarios que permite el registro e inicio de sesión de los mismos en la plataforma.
+            
+            El proceso de registro de un usuario mostrará inicialmente un formulario para poder obtener sus datos, debiendo verificar que dichos datos no pertenecen a un usario previamente registrado, puesto que los usuarios deben ser únicos.
+            
+            El proceso de inicio de sesión de un usuario mostrará un funcionamiento similar al de registro, pero esta vez, para comprobar que el usuario sí ha sido registrado anteriormente.
+            
+            \newpage
+            
+            
+        \subsection{Consulta de la documentación}
+            \label{sec:consulta-documentacion}
+            
+            \begin{figure}[h]
+                \centering
+                \includegraphics[scale=0.20]{images/Diagramas/Actividades y transiciones 3.png}
+                \caption{Consulta de documentación}
+                \label{fig:consulta-documentacion}
+            \end{figure}
+            
+            El diagrama presentado en esta sección define el consumo de contenido de la plataforma por parte de un usuario, esté registrado o no, ya que el contenido instructivo de la plataforma se considera público, al contrario que el uso de las \textit{sandboxes} que requerirá un registro por parte del usuario.
+            
+            El proceso de consulta de documentación es bastante simple: un usuario puede consumir contenido de forma continua, pero al estar dividido por conceptos, necesitará cambiar de ubicación dentro de la plataforma para poder seguir accediendo a contenido nuevo.
+            
+            \newpage
+            
+            
+        \subsection{Tratamiento de \textit{sandboxes}}
+        
+            \begin{figure}[h]
+                \centering
+                \begin{subfigure}{0.45\textwidth}
+                    \centering
+                    \includegraphics[scale=0.115]{images/Diagramas/Actividades y transiciones 4.png}
+                    \caption{Creación de una \textit{sandbox}}
+                    \label{fig:creacion-sandbox}
+                \end{subfigure}
+                \hfill
+                \begin{subfigure}{0.45\textwidth}
+                    \centering
+                    \includegraphics[scale=0.13]{images/Diagramas/Actividades y transiciones 5.png}
+                    \caption{Destrucción de una \textit{sandbox}}
+                    \label{fig:destruccion-sandbox}
+                \end{subfigure}
+                \caption{Tratamiento de \textit{sandboxes}}
+                \label{fig:tratamiento-sandboxes}
+            \end{figure}
+            
+            Los diagramas presentados en esta sección definen la gestión de entornos virtualizados de la plataforma.
+            
+            El proceso de creación de una \textit{sandbox} iniciará pulsando un botón, preferiblemente ubicado al final de un contenido instructivo descrito anteriormente en la \autoref{sec:consulta-documentacion}, debiendo verificar que es posible crear dicha \textit{sandbox}.
+            
+            El proceso de destrucción de una \textit{sandbox} seguirá el mismo proceso que el anterior, pero realizará la opción opuesta.
+            
+            \newpage
+        
+        
+    \section{Catálogo de conceptos}
+    
+        \subsection{Escaneo de puertos y enumeración de servicios}
+        
+            El escaneo de puertos es una técnica donde se envían paquetes a un rango de puertos de un sistema con el objetivo de encontrar aquellos que están abiertos y escuchando conexiones; esta técnica se utiliza para descubrir posibles vulnerabilidades en sistemas informáticos y redes.
+            
+            La enumeración de servicios, por otro lado, es el proceso de identificación y catalogación de los servicios que se están ejecutando en un sistema informático. Los servicios son programas que se ejecutan en segundo plano en un sistema informático y que se utilizan para proporcionar una funcionalidad específica.
+            
+            
+        \subsection{Inyección SQL}
+            
+            La inyección SQL es una técnica de ataque que se utiliza para explotar vulnerabilidades en las aplicaciones web que interactúan con bases de datos. Esta técnica se basa en la inserción de código SQL malintencionado en los campos de entrada de una aplicación, con el fin de obtener acceso no autorizado a los datos almacenados en la base de datos o incluso tomar el control del servidor.
+            
+            La inyección SQL se aprovecha de la falta de validación o sanitización de los datos de entrada que son utilizados en las consultas SQL. Cuando los datos de entrada no son validados correctamente, los atacantes pueden introducir código SQL malintencionado que es ejecutado por la aplicación. Esto puede permitir a los atacantes extraer información confidencial, realizar modificaciones en la base de datos o incluso tomar el control total del servidor.
+        
+        
+        \subsection{Ataques de fuerza bruta}
+            
+            Los ataques de fuerza bruta son una técnica de hacking en la que un atacante intenta adivinar una contraseña o credencial de acceso al probar diferentes combinaciones de contraseñas hasta encontrar la correcta. Estos ataques suelen ser automatizados y pueden ser extremadamente efectivos si el atacante tiene suficiente tiempo y recursos.
+        
+        
+        \subsection{Escalada de privilegios}
+            
+            La escalada de privilegios es una técnica de hacking que se utiliza para obtener acceso a sistemas o recursos que normalmente estarían restringidos por permisos de seguridad. Esta técnica se utiliza cuando un atacante ya ha obtenido acceso a un sistema con un conjunto limitado de permisos, pero necesita obtener permisos adicionales para llevar a cabo acciones malintencionadas.
+            
+            En este tipo de ataque, el atacante busca explotar vulnerabilidades en el sistema operativo o en las aplicaciones instaladas para obtener permisos de administrador o de otro usuario privilegiado. Una vez que se obtienen estos permisos, el atacante puede tener acceso a información confidencial, instalar malware o tomar el control total del sistema.
+        
+        
+        \subsection{Ataques de \textit{buffer overflow}}
+            
+            Un ataque de \textit{buffer overflow} es una técnica de explotación de vulnerabilidades en la memoria de un programa que permite a un atacante ejecutar código malicioso en un sistema. El ataque se produce cuando un programa intenta escribir datos en un buffer de memoria, pero la cantidad de datos escritos excede la capacidad del buffer, permitiendo al atacante escribir un bloque de código malicioso en el buffer y sobreescribir la dirección de retorno de la función, para que apunte al código malicioso en lugar de volver a la función llamada originalmente.
+            
+            Este tipo de ataque puede ser especialmente peligroso si el programa original que se está ejecutando tiene privilegios elevados, ya que el código malicioso puede ejecutarse con esos mismos privilegios. Por lo tanto, los ataques de \textit{buffer overflow} pueden ser utilizados para obtener acceso no autorizado a un sistema o para ejecutar código malicioso en un sistema.
+        
+        
+        \subsection{Análisis de tráfico}
+            
+            El análisis de tráfico es una técnica de ciberseguridad que implica la monitorización y el examen de los datos que fluyen a través de una red de comunicaciones. Este análisis puede incluir la recopilación de información sobre el origen y el destino de los datos, el tipo de protocolo utilizado, la cantidad de datos transmitidos y otros metadatos relacionados con el tráfico; puede ser utilizado para detectar patrones de actividad sospechosa en una red, como la transferencia de grandes cantidades de datos o la comunicación con direcciones IP o puertos inusuales. También puede ser utilizado para identificar amenazas específicas, como ataques de denegación de servicio o intentos de acceso no autorizado a sistemas.
+            
+            El análisis de tráfico puede llevarse a cabo utilizando herramientas de software especializadas que pueden recopilar y analizar los datos de la red en tiempo real. Estas herramientas pueden generar alertas automáticas cuando se detecta actividad sospechosa y proporcionar informes detallados sobre el tráfico de red.
+            
+            Se debe tener en cuenta que el análisis de tráfico puede presentar desafíos legales y de privacidad, ya que puede involucrar la monitorización de datos confidenciales, por lo que es importante asegurarse de que cualquier análisis de tráfico se lleve a cabo de manera legal y ética y que se respeten las políticas de privacidad y seguridad de la organización.
+        
+        \subsection{Análisis de metadatos}
+            
+            El análisis de metadatos es una técnica de ciberseguridad que implica analizar los metadatos asociados con diferentes tipos de archivos. Los metadatos son información adicional que se almacena junto con los archivos, como la fecha de creación, la ubicación, el tipo de archivo, el autor y otros detalles. Este análisis se utiliza a menudo para identificar posibles amenazas de ciberseguridad, como la presencia de archivos maliciosos o la detección de patrones de actividad sospechosa.
+            
+            Python es un lenguaje de programación popular en ciberseguridad debido a su capacidad para procesar grandes cantidades de datos y su amplia gama de librerías, por lo que es muy común encontrarlo en contextos de análisis de datos.
+            
+            \cleardoublepage
+
+
+
+\chapter{Resultados}
+
+    \section{Cumplimiento de los requisitos}
+    
+    \section{Conclusiones}
+    
+    \section{Futuras líneas de trabajo}
+        \label{sec:futuras-lineas-trabajo}
+        
+        Expandir el contenido de la plataforma mediante más documentación sobre conceptos adicionales, junto a nuevas pruebas virtualizadas.
+        
+        Elaboración de Módulos o Rutas, que se definirían como un grupo de conceptos a tratar en un orden determinado, para obtener conocimiento sobre un tema concreto.
+        
+        El enfoque inicial de la plataforma era el pentesting, pero si se aplicara lo anterior, podría establecerse una naturaleza genérica para abarcar muchos más conceptos, separados en Módulos o Rutas, donde varios de ellos podrían estar orientados a Red Team, otros a Blue Team, etc., dando lugar a una plataforma más eficiente y parecida a otras ya existentes; sin embargo, debiendo mantener la diferencia que se fomentaba al inicio del proyecto (Introducción/Objetivo): una plataforma ligera, open-source y fácilmente extensible.
+    
+
+
+% Capítulo para representar el trabajo en estado WIP o "cosas que podría usar después".
+
+\chapter{Borrador}
+    \label{cha:borrador}
+    
+    \section{GNS3}
+    
+        GNS3 (Graphical Network Simulator 3) es un software libre y gratuito que permite simular redes informáticas complejas, donde los usuarios pueden crear y configurar redes virtuales con dispositivos de red virtuales, como routers, switches y firewalls, y conectarlos para crear topologías de red complejas.
+        
+        Página: \url{https://gns3.com/software}
+        
+        La herramienta es especialmente útil para la formación en redes, ya que permite la simulación de redes reales sin necesidad de hardware físico costoso. Además, GNS3 permite a los usuarios crear y probar configuraciones complejas de red antes de implementarlas en una red real, lo que puede ayudar a reducir el tiempo y los costos de implementación.
+        
+        Documento relacionado: \url{https://riuma.uma.es/xmlui/handle/10630/18975}
+        
+        \cleardoublepage
+
+
+    \section{Análisis de Tecnologías}
+
+        \subsection{GitHub vs GitLab}
+
+        \begin{table}[!htbp]
+            \centering
+            \begin{tabular}{|>{\centering\arraybackslash}p{5cm}|>{\centering\arraybackslash}p{5cm}|>{\centering\arraybackslash}p{5cm}|}
+                \hline
+                \textbf{Característica} & \textbf{GitHub} & \textbf{GitLab} \\
+                \hline
+                Tipo de alojamiento & En la nube & En la nube o en el servidor local \\
+                \hline
+                Gestión de repositorios & \multicolumn{2}{c|}{Sí} \\
+                \hline
+                Control de versiones & \multicolumn{2}{c|}{Sí} \\
+                \hline
+                Integración con otros servicios & Integración con varios servicios de terceros, como Slack y Trello. & Integración con servicios de terceros a través de complementos y API. \\
+                \hline
+                Control de acceso y permisos & \multicolumn{2}{c|}{Sí} \\
+                \hline
+                Wiki y seguimiento de problemas & \multicolumn{2}{c|}{Sí} \\
+                \hline
+                Integración continua & \multicolumn{2}{c|}{Sí} \\
+                \hline
+                Lenguajes de programación compatibles & \multicolumn{2}{c|}{Compatible con una amplia gama de lenguajes de programación} \\
+                \hline
+                Comentarios en línea y aprobación de solicitudes de extracción & \multicolumn{2}{>{\centering\arraybackslash}c|}{Sí} \\
+                \hline
+                Almacenamiento de artefactos & \multicolumn{2}{c|}{Sí} \\
+                \hline
+                Monitoreo y seguimiento de errores & \multicolumn{2}{c|}{Sí} \\
+                \hline
+                Precios & \multicolumn{2}{>{\centering\arraybackslash}c|}{Gratuito para repositorios públicos y planes de pago para repositorios privados} \\
+                \hline
+            \end{tabular}
+            \caption{Comparativa entre GitHub y GitLab}
+            \label{tabla:comparativa-github-gitlab}
+        \end{table}
+
+    
+    
+    
+% Capítulo para representar el historial del trabajo.
+    
+\chapter{Diario}
+    \label{cha:diario}
+    
+    \textbf{Se crearon los capítulos: Diario \ref{cha:diario} y Borrador \ref{cha:borrador}}\\
+    El primero, para incluir un historial de mi progreso; el segundo, para subir contenido WIP (\textit{work in progress}) al documento.
+    
+    \textbf{Se modificó el diagrama: casos de uso \ref{fig:casos-uso}}\\
+    Se aplicó un estilo estándar y se mejoraron las dependencias.
+    
+    \textbf{Se creó la sección: Arquitectura \ref{sec:arquitectura}}\\
+    Se incluyeron nuevos diagramas y contenido descriptivo sobre la arquitectura del proyecto.
+    
+    \textbf{Se creó la sección: Modelado de Actividades y Transacciones \ref{sec:modelado-actividades-transiciones}}\\
+    Se incluyeron nuevos diagramas y contenido descriptivo de los procesos del proyecto.
+    
+    \textbf{Se modificó la sección: Ingeniería de Requisitos \ref{cha:ingenieria-requisitos}}\\
+    Se descompusieron los requisitos anteriores en requisitos más atómicos y se han añadido nuevos requisitos no funcionales.
+    

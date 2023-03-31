@@ -1,0 +1,68 @@
+% Núcleo
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[american, spanish, es-tabla]{babel}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{emptypage}
+
+% Gráficos
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{epsfig}
+
+% Bibliografía
+\usepackage[autostyle]{csquotes}
+\usepackage[bibstyle=science, 
+            citestyle=authoryear,
+            sorting=none, 
+            autopunct=false,
+            uniquename=init, 
+            maxbibnames=4,
+            articletitle=true]{biblatex}
+\addbibresource{references.bib}
+\AtEveryCite{\color{blue}}
+\DefineBibliographyStrings{spanish}{
+    presentedat = {presentado en~}
+}
+
+% Cabeceras y pies de página elegantes
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+
+\fancypagestyle{onlyfooter}
+{
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyfoot[C]{\thepage}
+    \fancyhead{}
+}
+
+\pagestyle{fancy}
+\setlength{\headheight}{20pt}
+\fancyfoot[C]{\thepage}
+\fancyhead[LE,RO]{\leftmark}
+\fancyhead[RE,LO]{}
+
+% Anexo
+\usepackage[titletoc]{appendix}
+
+
+
+% AJUSTES
+
+% Tamaño pequeño de los subtítulos
+\usepackage[font=small]{caption}
+
+% No identar párrafos
+\usepackage{parskip}
+\setlength\parindent{0em}
+
+% Reducir el espacio antes/después de una sub-subsección
+\usepackage{titlesec}
+\titlespacing*{\subsection}{0pt}{2.25ex plus 1ex minus .2ex}{0.1ex plus .2ex minus .2ex}
+\titleformat{\chapter}[display]
+    {\bfseries\Large}
+    {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+    {1ex}
+    {\titlerule\vspace{1ex}\filleft}
+    [\vspace{1ex}\titlerule]
