@@ -295,6 +295,164 @@
 
 \chapter{Investigación previa}
     \label{cap:investigacion-previa}
+
+    \section{Proceso creativo}
+        \label{sec:proceso-creativo}
+
+        Durante la investigación previa al desarrollo de este trabajo, se plantearon distintas opciones para la creación de la plataforma web. Algunas de ellas fueron descartadas, pero las más relevantes se detallan a continuación.
+
+        \subsection{Plataforma como portal de descargas}
+
+            Tomando como ejemplo los retos descargables de la Academia Hacker de Incibe \cite{retos-INCIBE}, se planteó la posibilidad de crear máquinas virtuales y alojarlas en el servidor a modo de elemento descargable; es decir, la página ofrecería información documentada sobre distintos conceptos de ciberseguridad, pero la virtualización se llevaría a cabo por el propio usuario y en su propio equipo, experimentando localmente.
+
+            Sin embargo, no existiría la posibilidad de ofrecer un entorno de trabajo en el que el usuario pudiera interactuar con los laboratorios de forma remota, y es que uno de los objetivos a llevar a cabo con este proyecto consiste en que el usuario se encuentre con la menor fricción posible durante todo el proceso de aprendizaje y práctica; por tanto, si este debe descargar y configurar un hypervisor, o descargar e instalar Docker para acceder a los entornos de prueba en su equipo, se perdería esa esencia y facilidad que debería ofrecer la plataforma.
+            
+
+        \subsection{Sobre Jupyter}
+
+            \subsubsection{Jupyter Notebooks}
+                
+                Jupyter \cite{jupyter} es un proyecto \textit{open-source} que permite crear documentos interactivos llamados \textit{notebooks} que contienen código ejecutable, ecuaciones, visualizaciones y texto explicativo que sigue un formato de Markdown enriquecido y estructurado en bloques. Estos \textit{notebooks} están basadas en JSON y se pueden compartir con otros usuarios, por lo que se convierten en una herramienta muy útil para la investigación y el análisis de datos, pero sobre todo para la colaboración y el aprendizaje.
+            
+                Debido a la naturaleza de este proyecto, se planteó la idea de incluir páginas en la plataforma que fueran Jupyter Notebooks, de esta forma el usuario podría acceder a la página que contendría documentación y código anidado (característica principal de Jupyter), y en ella podría insertar y ejecutar código, así como generar distintos recursos de forma interactiva para que el usuario pudiera experimentar con ella.
+
+                Sin embargo, se descartó la idea ya que no constituía una prioridad en el desarrollo del proyecto y sus casos de uso eran muy limitados, puesto que el código verdaderamente importante sería ejecutado en las \textit{sandboxes}.
+                
+
+            \subsubsection{JupyterHub}
+
+                JupyterHub \cite{jupyterhub} es una aplicación que permite crear un entorno de Jupyter Notebooks en un servidor remoto, de forma que los usuarios puedan acceder a él a través de un navegador web. Esta aplicación es muy útil para la colaboración y el aprendizaje, ya que permite a los usuarios compartir documentos y ejecutar código en un entorno seguro y controlado.
+                
+                Siguiendo con lo mencionado en el apartado anterior, se planteó la idea de usar JupyterHub para crear distintos entornos de Jupyter Notebook en la nube para que los usuarios pudieran acceder a un entorno de Jupyter Notebooks en el que pudieran ejecutar código y experimentar con los recursos generados por el sistema, en lugar de integrarlos en la plataforma.
+
+                Esta idea también se descartó por ser ser una versión más compleja de la anterior.
+                
+                \newpage
+
+                
+        \subsection{Sobre Docker}
+
+            Docker, descrito en la sección \ref{sec:docker}, permitiría la creación de contenedores para los distintos laboratorios.
+                
+            Esta idea surgió a partir del artículo \textit{Cyber Security Testbeds and Malware Testing} \cite{securitylab-malware-analysis} de la Universidad de Trento, donde un grupo de investigación realizaban un estudio sobre los efectos de un \textit{exploit} de una aplicación sobre varias versiones de la misma y usada en distintos entornos de desarrollo.
+
+            \begin{quotation}
+                
+                Given a software environment $E$, an exploit $X$ that successfully subverts an application $A$, that is running on $E$:
+                
+                \begin{itemize}
+                    \item Will $X$ be successful on an application $A$ running on another environment $E'$?
+                    \item Will $X$ be successful on another version of $A$, $A'$, running on $E$?
+                    \item Will $X$ be successful on another version of $A$, $A'$, running on $E'$?
+                \end{itemize}
+
+            \end{quotation}
+
+            Para ello, el grupo de investigación desarrolló un conjunto de pruebas a partir de contenedores, usando combinaciones de un \textbf{conenedor principal} junto a \textbf{contenedores secundarios}.
+
+            \begin{quote}
+
+                Instead of creating separate virtual machines for every application/configuration we use the Linux Containers technology that provides virtualization capabilities on the operation system level. \[...\] We use Docker to implement two types of containers: (1) software-specific that contain operating system, webserver and database engine; (2) application-specific that is build on top of a desired software-specific container and also encapsulates the application files. The figure on the right shows an example Wordpress3.2 application container that has been built on top of the “ubuntu-apache-mysql” software container.
+
+            \end{quote}
+
+            Y la figura que representa dicho planteamiento es la siguiente:
+
+            \begin{figure}[htbp]
+                \centering
+                \includegraphics[scale=0.75]{images/Diagramas/Articulo.png}
+                \caption{Contenedor de Wordpress3.2 sobre contenedor con Ubuntu + Apache + MySQL}
+                \label{fig:articulo}
+            \end{figure}
+
+            \newpage
+            
+
+            \subsubsection{Red de contenedores de Docker}
+
+                Inicialmente se interpretó el sistema del artículo anterior como una red de contenedores.
+                
+                Por tanto, en lugar de crear un contenedor para cada \textit{sandbox}, se planteó la idea de crear una red contenedores para cada laboratorio, de forma que cada red estuviera compuesta por aquellos elementos a tratar en dicho laboratorio, y que a su vez sería accesible desde el exterior a través de un puerto específico, permitiendo a un usuario conectarse a través de SSH.
+
+                Esto podría lograrse usando Docker Compose \cite{docker-compose}, que permite crear y ejecutar aplicaciones Docker de forma sencilla, usando un archivo YAML que describe los servicios que componen la aplicación, así como las dependencias entre ellos.
+
+                Visto en perspectiva, queda bastante claro que el mecanismo del proyecto planteado en el artículo y el propuesto en esta sección no son similares más allá del uso de contenedores.
+                
+                
+            \subsubsection{Dependencia de contenedores de Docker}
+
+                Por tanto, el planteamiento inicial de usar una red de contenedores era errónea.
+                
+                La estructura descrita en el artículo se forma a través del uso de la tecnología de contenedores de Linux, alojando cada aplicación y configuración de software en un contenedor.
+
+                Una posible réplica de ese mecanismo podría realizarse de la siguiente forma:
+
+                \begin{enumerate}
+
+                    \item \textbf{Instalar Docker en el sistema operativo}
+                    
+                    Realizable siguiendo las instrucciones de instalación en el sitio web oficial de Docker.
+                
+                    \item \textbf{Crear imágenes específicas del software}
+                    
+                    Realizable utilizando un archivo Dockerfile que describa la configuración y los componentes que deben incluirse en dicha imagen.
+
+                    \item \textbf{Crear un contenedor específico de la aplicación}
+
+                    Para crear este tipo de contenedor, se debe construir sobre un contenedor específico del software previamente creado; para ello, se deben encapsular los archivos de la aplicación dentro del contenedor específico del software.
+
+                    \item \textbf{Ejecutar contenedores}
+                    
+                    Una vez creados los contenedores específicos del software y de la aplicación, pueden ejecutarse con el comando \texttt{docker run} de Docker.
+
+                \end{enumerate}
+
+                En el paso 2 se crea una imagen específica del software a partir de un archivo Dockerfile que describe la configuración y los componentes que deben incluirse en los contenedores resultantes de dicha imagen.
+
+                En el paso 3, se crea una imagen específica de la aplicación que se construye sobre la imagen del software previamente creada; es decir, se crea una nueva imagen que constituye una capa de configuración adicional sobre la configuración de la propia imagen del software, que actua como base. Esta nueva imagen encapsula los archivos de la aplicación y se crea también a partir de un archivo Dockerfile.
+
+                El resultado final es un contenedor específico de la aplicación que reutiliza el sistema operativo y los componentes incluidos en la imagen del software, pero que añade los archivos específicos para el funcionamiento de la aplicación.
+
+                A continuación se muestran 2 pseudo-códigos que representan el resultado final descrito:
+
+                \begin{figure}[!htbp]
+                    \centering
+                    
+                    \begin{subfigure}[!htbp]{\textwidth}
+                        \centering
+                        \includegraphics[width=0.8\textwidth]{images/Contenedor A.png}
+                        \caption{Dockerfile de una imagen principal (padre)}
+                    \end{subfigure}
+                    
+                    \begin{subfigure}[!htbp]{\textwidth}
+                        \centering
+                        \includegraphics[width=0.8\textwidth]{images/Contenedor B.png}
+                        \caption{Dockerfile de una imagen secundaria (hija)}
+                    \end{subfigure}
+                    
+                    \caption{Dependencia de contenedores}
+                    \label{fig:dependencia-contenedores}
+                \end{figure}
+                
+                El Dockerfile de la imagen hija hace referencia a la imagen padre mediante la línea $\texttt{FROM software\_container}$, estableciendo la dependencia. Además, se copian los archivos de la aplicación en la imagen y se establece como el directorio de trabajo. Finalmente, se ejecuta la aplicación con la línea $\verb|CMD ["python", "app.py"]|$, lo que mantendrá activos los contenedores resultantes de dicha imagen.
+
+                \begin{figure}[!htbp]
+                    \centering
+                    \includegraphics[scale=0.14]{images/Diagramas/Contenedor A.png}
+                    \caption{Creación de contenedores principales (padres)}
+                    \label{fig:contenedor-padre}
+                \end{figure}
+                
+                \begin{figure}[!htbp]
+                    \centering
+                    \includegraphics[scale=0.14]{images/Diagramas/Contenedor B.png}
+                    \caption{Creación de contenedores secundarios (hijos)}
+                    \label{fig:contenedor-hijo}
+                \end{figure}
+                
+                \newpage
+
+
     
     \section{Análisis de Tecnologías}
         
@@ -531,163 +689,7 @@
 
                     Este planteamiento sería más adecuado para un estado más avanzado de la plataforma web, para un uso real y con un número de usuarios considerable y consistente; mientras que para el caso actual, se requiere una gestión más simple y sencilla para los contenedores Docker.
 
-                
-
-    \section{Proceso creativo}
-        \label{sec:proceso-creativo}
-
-        Durante la investigación previa al desarrollo de este trabajo, se plantearon distintas opciones para la creación de la plataforma web. Algunas de ellas fueron descartadas, pero las más relevantes se detallan a continuación.
-
-        \subsection{Plataforma como portal de descargas}
-
-            Tomando como ejemplo los retos descargables de la Academia Hacker de Incibe \cite{retos-INCIBE}, se planteó la posibilidad de crear máquinas virtuales y alojarlas en el servidor a modo de elemento descargable; es decir, la página ofrecería información documentada sobre distintos conceptos de ciberseguridad, pero la virtualización se llevaría a cabo por el propio usuario y en su propio equipo, experimentando localmente.
-
-            Sin embargo, no existiría la posibilidad de ofrecer un entorno de trabajo en el que el usuario pudiera interactuar con los laboratorios de forma remota, y es que uno de los objetivos a llevar a cabo con este proyecto consiste en que el usuario se encuentre con la menor fricción posible durante todo el proceso de aprendizaje y práctica; por tanto, si este debe descargar y configurar un hypervisor, o descargar e instalar Docker para acceder a los entornos de prueba en su equipo, se perdería esa esencia y facilidad que debería ofrecer la plataforma.
-            
-
-        \subsection{Jupyter}
-
-            \subsubsection{Jupyter Notebooks}
-                
-                Jupyter \cite{jupyter} es un proyecto \textit{open-source} que permite crear documentos interactivos llamados \textit{notebooks} que contienen código ejecutable, ecuaciones, visualizaciones y texto explicativo que sigue un formato de Markdown enriquecido y estructurado en bloques. Estos \textit{notebooks} están basadas en JSON y se pueden compartir con otros usuarios, por lo que se convierten en una herramienta muy útil para la investigación y el análisis de datos, pero sobre todo para la colaboración y el aprendizaje.
-            
-                Debido a la naturaleza de este proyecto, se planteó la idea de incluir páginas en la plataforma que fueran Jupyter Notebooks, de esta forma el usuario podría acceder a la página que contendría documentación y código anidado (característica principal de Jupyter), y en ella podría insertar y ejecutar código, así como generar distintos recursos de forma interactiva para que el usuario pudiera experimentar con ella.
-
-                Sin embargo, se descartó la idea ya que no constituía una prioridad en el desarrollo del proyecto y sus casos de uso eran muy limitados, puesto que el código verdaderamente importante sería ejecutado en las \textit{sandboxes}.
-                
-
-            \subsubsection{JupyterHub}
-
-                JupyterHub \cite{jupyterhub} es una aplicación que permite crear un entorno de Jupyter Notebooks en un servidor remoto, de forma que los usuarios puedan acceder a él a través de un navegador web. Esta aplicación es muy útil para la colaboración y el aprendizaje, ya que permite a los usuarios compartir documentos y ejecutar código en un entorno seguro y controlado.
-                
-                Siguiendo con lo mencionado en el apartado anterior, se planteó la idea de usar JupyterHub para crear distintos entornos de Jupyter Notebook en la nube para que los usuarios pudieran acceder a un entorno de Jupyter Notebooks en el que pudieran ejecutar código y experimentar con los recursos generados por el sistema, en lugar de integrarlos en la plataforma.
-
-                Esta idea también se descartó por ser ser una versión más compleja de la anterior.
-                
-                \newpage
-
-                
-        \subsection{Sobre Docker}
-
-            Docker, descrito en la sección \ref{sec:docker}, permitiría la creación de contenedores para los distintos laboratorios.
-                
-            Esta idea surgió a partir del artículo \textit{Cyber Security Testbeds and Malware Testing} \cite{securitylab-malware-analysis} de la Universidad de Trento, donde un grupo de investigación realizaban un estudio sobre los efectos de un \textit{exploit} de una aplicación sobre varias versiones de la misma y usada en distintos entornos de desarrollo.
-
-            \begin{quotation}
-                
-                Given a software environment $E$, an exploit $X$ that successfully subverts an application $A$, that is running on $E$:
-                
-                \begin{itemize}
-                    \item Will $X$ be successful on an application $A$ running on another environment $E'$?
-                    \item Will $X$ be successful on another version of $A$, $A'$, running on $E$?
-                    \item Will $X$ be successful on another version of $A$, $A'$, running on $E'$?
-                \end{itemize}
-
-            \end{quotation}
-
-            Para ello, el grupo de investigación desarrolló un conjunto de pruebas a partir de contenedores, usando combinaciones de un \textbf{conenedor principal} junto a \textbf{contenedores secundarios}.
-
-            \begin{quote}
-
-                Instead of creating separate virtual machines for every application/configuration we use the Linux Containers technology that provides virtualization capabilities on the operation system level. \[...\] We use Docker to implement two types of containers: (1) software-specific that contain operating system, webserver and database engine; (2) application-specific that is build on top of a desired software-specific container and also encapsulates the application files. The figure on the right shows an example Wordpress3.2 application container that has been built on top of the “ubuntu-apache-mysql” software container.
-
-            \end{quote}
-
-            Y la figura que representa dicho planteamiento es la siguiente:
-
-            \begin{figure}[htbp]
-                \centering
-                \includegraphics[scale=0.75]{images/Diagramas/Articulo.png}
-                \caption{Contenedor de Wordpress3.2 sobre contenedor con Ubuntu + Apache + MySQL}
-                \label{fig:articulo}
-            \end{figure}
-
-            \newpage
-            
-
-            \subsubsection{Red de contenedores de Docker}
-
-                Inicialmente se interpretó el sistema del artículo anterior como una red de contenedores.
-                
-                Por tanto, en lugar de crear un contenedor para cada \textit{sandbox}, se planteó la idea de crear una red contenedores para cada laboratorio, de forma que cada red estuviera compuesta por aquellos elementos a tratar en dicho laboratorio, y que a su vez sería accesible desde el exterior a través de un puerto específico, permitiendo a un usuario conectarse a través de SSH.
-
-                Esto podría lograrse usando Docker Compose \cite{docker-compose}, que permite crear y ejecutar aplicaciones Docker de forma sencilla, usando un archivo YAML que describe los servicios que componen la aplicación, así como las dependencias entre ellos.
-
-                Visto en perspectiva, queda bastante claro que el mecanismo del proyecto planteado en el artículo y el propuesto en esta sección no son similares más allá del uso de contenedores.
-                
-                
-            \subsubsection{Dependencia de contenedores de Docker}
-
-                Por tanto, el planteamiento inicial de usar una red de contenedores era errónea.
-                
-                La estructura descrita en el artículo se forma a través del uso de la tecnología de contenedores de Linux, alojando cada aplicación y configuración de software en un contenedor.
-
-                Una posible réplica de ese mecanismo podría realizarse de la siguiente forma:
-
-                \begin{enumerate}
-
-                    \item \textbf{Instalar Docker en el sistema operativo}
-                    
-                    Realizable siguiendo las instrucciones de instalación en el sitio web oficial de Docker.
-                
-                    \item \textbf{Crear imágenes específicas del software}
-                    
-                    Realizable utilizando un archivo Dockerfile que describa la configuración y los componentes que deben incluirse en dicha imagen.
-
-                    \item \textbf{Crear un contenedor específico de la aplicación}
-
-                    Para crear este tipo de contenedor, se debe construir sobre un contenedor específico del software previamente creado; para ello, se deben encapsular los archivos de la aplicación dentro del contenedor específico del software.
-
-                    \item \textbf{Ejecutar contenedores}
-                    
-                    Una vez creados los contenedores específicos del software y de la aplicación, pueden ejecutarse con el comando \texttt{docker run} de Docker.
-
-                \end{enumerate}
-
-                En el paso 2 se crea una imagen específica del software a partir de un archivo Dockerfile que describe la configuración y los componentes que deben incluirse en los contenedores resultantes de dicha imagen.
-
-                En el paso 3, se crea una imagen específica de la aplicación que se construye sobre la imagen del software previamente creada; es decir, se crea una nueva imagen que constituye una capa de configuración adicional sobre la configuración de la propia imagen del software, que actua como base. Esta nueva imagen encapsula los archivos de la aplicación y se crea también a partir de un archivo Dockerfile.
-
-                El resultado final es un contenedor específico de la aplicación que reutiliza el sistema operativo y los componentes incluidos en la imagen del software, pero que añade los archivos específicos para el funcionamiento de la aplicación.
-
-                A continuación se muestran 2 pseudo-códigos que representan el resultado final descrito:
-
-                \begin{figure}[!htbp]
-                    \centering
-                    
-                    \begin{subfigure}[!htbp]{\textwidth}
-                        \centering
-                        \includegraphics[width=0.8\textwidth]{images/Contenedor A.png}
-                        \caption{Dockerfile de una imagen principal (padre)}
-                    \end{subfigure}
-                    
-                    \begin{subfigure}[!htbp]{\textwidth}
-                        \centering
-                        \includegraphics[width=0.8\textwidth]{images/Contenedor B.png}
-                        \caption{Dockerfile de una imagen secundaria (hija)}
-                    \end{subfigure}
-                    
-                    \caption{Dependencia de contenedores}
-                    \label{fig:dependencia-contenedores}
-                \end{figure}
-                
-                El Dockerfile de la imagen hija hace referencia a la imagen padre mediante la línea $\texttt{FROM software\_container}$, estableciendo la dependencia. Además, se copian los archivos de la aplicación en la imagen y se establece como el directorio de trabajo. Finalmente, se ejecuta la aplicación con la línea $\verb|CMD ["python", "app.py"]|$, lo que mantendrá activos los contenedores resultantes de dicha imagen.
-
-                \begin{figure}[!htbp]
-                    \centering
-                    \includegraphics[scale=0.14]{images/Diagramas/Contenedor A.png}
-                    \caption{Creación de contenedores principales (padres)}
-                    \label{fig:contenedor-padre}
-                \end{figure}
-                
-                \begin{figure}[!htbp]
-                    \centering
-                    \includegraphics[scale=0.14]{images/Diagramas/Contenedor B.png}
-                    \caption{Creación de contenedores secundarios (hijos)}
-                    \label{fig:contenedor-hijo}
-                \end{figure}
-                
-                \cleardoublepage
+                    \cleardoublepage
 
 
 
