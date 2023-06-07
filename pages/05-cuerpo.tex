@@ -17,6 +17,7 @@
     
     
     \section{Objetivos}
+        \label{sec:objetivos}
     
         Se busca desarrollar de una plataforma web que sea ligera, gratuita, \textit{open-source} y fácilmente extensible, con el objetivo principal de simplificar la introducción de futuros estudiantes en el sector de la ciberseguridad, con un enfoque específico en el pentesting.
         
@@ -38,6 +39,7 @@
         \newpage
     
     \section{Estructura global del proyecto}
+        \label{sec:estructura-global}
         
         El proyecto se divide en tres pilares principales: la creación de una plataforma web, la investigación y selección de conceptos de pentesting y la virtualización de los entornos de prueba, resultando en el objetivo de este proyecto de trabajo de fin de grado, una plataforma web que proporcionará información sobre técnicas de pentesting y ofrecerá acceso a pruebas virtualizadas en forma de laboratorios. 
         
@@ -56,7 +58,7 @@
 
             También se tuvieron en cuenta distintos constructores de páginas webs como Cargo Collective o Square Space.
 
-            Finalmente, se decidió usar Wordpress por su sencillez y su biblioteca de plugins, que permitiría integrar diferentes funcionalidades extra en lugar de programarlas manualmente como podría haber ocurrido con el uso de un framework.
+            Finalmente, se decidió usar WordPress por su sencillez y su biblioteca de plugins, que permitiría integrar diferentes funcionalidades extra en lugar de programarlas manualmente como podría haber ocurrido con el uso de un framework.
                 
             \subsubsection{Alojamiento}
             
@@ -64,11 +66,11 @@
                 
                 Sin embargo, al tratarse de una prueba de concepto, se ha decidido elaborar la infraestructura de forma local, lo que permitirá un mayor control y flexibilidad en el desarrollo, dando lugar a mejoras en futuras líneas de trabajo \ref{sec:futuras-lineas-trabajo}.
 
-                En cuanto a la base de datos, se ha decidido utilizar MySQL por ser una opción muy utilizada, fácil de configurar y por ser nativamente compatible con WordPress. La base de datos tendrá la menor cantidad de tablas posibles, almacenando únicamente la información necesaria sobre los usuarios registrados y sobre los laboratorios.
+                En cuanto a la base de datos, se ha decidido utilizar MySQL por ser una opción muy utilizada, fácil de configurar y ser nativamente compatible con WordPress. La base de datos tendrá la menor cantidad de tablas posibles, almacenando únicamente la información necesaria sobre los usuarios registrados y sobre los laboratorios.
             
         \subsection{Investigación}
         
-            Se centrará en recopilar y seleccionar diferentes conceptos y técnicas relacionados con el pentesting.
+            Se centrará en recopilar y seleccionar diferentes conceptos y técnicas relacionados con el pentesting. Este apartado se verá mejor reflejado en la sección Catálogo \ref{sec:catalogo}.
         
         \subsection{Virtualización}
 
@@ -79,7 +81,10 @@
             Se pueden utilizar diversas herramientas para gestionar los contenedores, en función de las necesidades específicas de cada laboratorio; por ejemplo, Kubernetes es una buena herramienta para la gestión de contenedores a gran escala (clústers de contenedores). Además, Docker Compose es una opción conveniente para configurar y ejecutar aplicaciones de contenedores múltiples.
             
             Por otro lado, también se consideraron plataformas que brindan servicios de almacenamiento y distribución de imágenes, como DockerHub para imágenes de contenedores de Docker y Vagrant Cloud para máquinas virtuales preconfiguradas. Estas dos plataformas brindan enlaces de descargas con las que un usuario puede acceder a recursos previamente montados por su autor.
-        
+
+            \newpage
+
+            
     \section{Tecnologías}
     
         Las siguientes tecnologías y herramientas se emplearon en el desarrollo del proyecto:
@@ -92,20 +97,28 @@
             
             Además del alojamiento de código fuente, GitHub también ofrece herramientas de seguimiento de problemas, donde los desarrolladores pueden reportar y resolver errores, solicitar nuevas características y discutir mejoras en el software. Esto facilita la comunicación y la colaboración entre los usuarios, además de mejorar la calidad del software desarrollado.
             
+            
+        \subsection{WordPress}
+            
+            WordPress \cite{wordpress} es una plataforma de código abierto para la creación y gestión de sitios web que fue publicada en 2003 y desde entonces, se ha convertido en una de las plataformas más populares y utilizadas en todo el mundo, siendo especialmente popular para la creación de blogs, aunque también es utilizada para sitios web corporativos, tiendas en línea, portafolios, entre otros. 
+            
+            WordPress es utilizado por muchos grandes sitios web y empresas, como el blog de noticias TIME \cite{time-web} y el sitio web de la BBC America \cite{bbc-america-web}. También es utilizado por miles de bloggers y pequeñas empresas en todo el mundo debido a su facilidad de uso y capacidad de personalización.
+
+            Una de las principales ventajas de WordPress es que es muy fácil de usar y no se requiere experiencia técnica previa para comenzar a utilizarlo. Otra ventaja de WordPress es su personalización gracias a la gran cantidad de temas y complementos (plugins) disponibles. Estos complementos permiten añadir nuevas funcionalidades a un sitio web, como formularios de contacto, galerías de imágenes, integración con redes sociales... evitando la necesidad de programar dichas funcionalidades de forma manual.
+            
+            Por otra parte, WordPress es muy \textit{SEO-friendly}, incluyendo características que ayudan a mejorar el posicionamiento en los motores de búsqueda, como la capacidad de editar títulos, descripciones y etiquetas de metadatos, así como la posibilidad de utilizar herramientas de optimización de motores de búsqueda (SEO).
+            
             \newpage
 
-
-        \subsection{Wordpress}
-
             
-        
-        
         \subsection{Docker}
+            \label{sec:docker}
         
             Docker es una plataforma de software que permite crear, implementar y administrar aplicaciones en contenedores, siendo un contenedor un entorno aislado y seguro que recoge una aplicación y todas sus dependencias, lo que permite que se ejecute sin problemas en cualquier entorno informático, independientemente de las diferencias entre los sistemas operativos o las configuraciones de hardware.
             
             \begin{figure}[h]
                 \centering
+                
                 \begin{subfigure}[h]{\textwidth}
                     \includegraphics[width=\textwidth]{images/Diagramas/Esquema de Contenedores.png}
                     \caption{Arquitectura de los contenedores}
@@ -117,6 +130,7 @@
                     \caption{Arquitectura de las máquinas virtuales}
                     \label{fig:arquitectura-maquinasvirtuales}
                 \end{subfigure}
+                
                 \caption{Diferencias entre contenedores y las máquinas virtuales}
                 \label{fig:contenedores-vs-maquinasvirtuales}
             \end{figure}
@@ -126,6 +140,38 @@
             Una vez obtenida una imagen, puede usarse Docker para crear un contenedor a partir de ella, lo que implica crear una instancia de aplicación y, por tanto, el entorno en el que se ejecuta; los contenedores de Docker se pueden transferir fácilmente entre diferentes sistemas y entornos, lo que facilita la implementación y el escalado de aplicaciones. Además, Docker proporciona herramientas de administración de contenedores, como la capacidad de iniciar, detener, reiniciar y eliminar contenedores, así como la capacidad de monitorear su uso y rendimiento.
             
             \newpage
+
+
+        \subsection{LAMP}
+
+            Este es un acrónimo que se utiliza comúnmente en el mundo de los servidores para describir un conjunto de tecnologías de código abierto que se utilizan para construir y ejecutar aplicaciones web dinámicas.
+
+            \begin{table}[!htbp]
+                  \centering
+                  
+                  \begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{8cm}|}
+                        \hline
+                        \textbf{Componente} & \textbf{Tipo} & \textbf{Descripción} \\
+                        \hline
+                        \hline
+                        \textbf{Linux} & Sistema Operativo & Utilizado ampliamente en servidores web debido a su fiabilidad, seguridad y flexibilidad. \\
+                        \hline
+                        \textbf{Apache} & Servidor Web & Alojamiento de sitios web y aplicaciones web. \\
+                        \hline
+                        \textbf{MySQL} & RDBMS & Almacenamiento y recuperación de información para aplicaciones web. \\
+                        \hline
+                        \textbf{PHP} & Lenguaje de Programación & Creación de sitios web y aplicaciones web dinámicas. Procesa la lógica de la aplicación en el servidor. \\
+                        \hline
+                  \end{tabular}
+
+                  \caption{Componentes habituales de la pila de software LAMP}
+                  \label{table:lamp}
+            \end{table}
+            
+            Algunas veces, la P de LAMP es sustituida por Perl o Python.                  
+
+            \cleardoublepage
+
     
      
 \chapter{Estado del arte}
@@ -252,14 +298,328 @@
     
     
 
+\chapter{Investigación previa}
+    \label{cap:investigacion-previa}
+    
+    \section{Análisis de Tecnologías}
+        
+        \subsection{Página web}
+
+            \begin{table}[!htbp]
+                \centering
+                
+                \small
+                
+                \begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3.5cm}|>{\centering\arraybackslash}m{3.5cm}|>{\centering\arraybackslash}m{3.5cm}|}
+                    \hline
+                    \textbf{Características} & \textbf{WordPress} & \textbf{Astro} & \textbf{Drupal} \\
+                    \hline
+                    \hline
+                    \textbf{Tipo de plataforma} & CMS & Framework & CMS \\
+                    \hline
+                    \textbf{Orientación} & Sitios web: pequeños y medianos & Aplicaciones web & Sitios web: grandes y complejos\\
+                    \hline
+                    \textbf{Lenguaje de programación} & PHP & Javascript & PHP \\
+                    \hline
+                    \textbf{Facilidad de uso} & Simple: no requiere experiencia técnica ni programación & Compleja: requiere experiencia técnica y en programación & Compleja: requiere experiencia con el propio CMS \\
+                    \hline
+                    \textbf{Personalización} & Alta: temas y plugins & Muy alta: desarrollo web & Alta: módulos y extensiones \\
+                    \hline
+                    \textbf{Escalabilidad} & Sí: sitios web pequeños y medianos & Sí: aplicaciones web pequeñas y grandes & Sí: sitios grandes y complejos \\
+                    \hline
+                    \textbf{Comunidad} & Grande: usuarios y desarrolladores & Creciente: desarrolladores & Mediana: usuarios y desarrolladores, muy dedicados y comprometidos \\
+                    \hline
+                    \textbf{Popularidad} & El CMS más popular & Un framework relativamente nuevo & Uno de los CMS más usados \\
+                    \hline
+                    \textbf{Seguridad} & Alta: pero es vulnerable a ataques por su popularidad & Variable: depende de la implementación del desarrollador & Alta: CMS centrado en la seguridad y la protección \\
+                    \hline
+                \end{tabular}
+                
+                \caption{Comparativa entre WordPress, Astro y Drupal}
+                \label{tab:wordpress-vs-astro-vs-drupal}
+            \end{table}
+
+            Se ha elegido WordPress como la plataforma para la creación de la página web del proyecto debido a sus ventajas en cuanto a facilidad de uso, personalización y escalabilidad, que eran los principales aspectos a tener en cuenta para el desarrollo.
+
+            
+            \subsubsection{WordPress y Astro}
+
+            \paragraph{Facilidad de uso}
+                
+                Factor importante en la decisión de elegir esta herramienta ya que no se cuentan con conocimientos previos de programación web ni a nivel técnico, por lo que debía usarse una herramienta que no tuviera en cuenta esas necesidades.
+                
+                WordPress parece cubrir ese aspecto de forma notable debido a que su popularidad se basa, precisamente, en la cantidad de usuarios que son capaces de crear una página web sin necesidad de ser desarrolladores o contar con experiencia previa.
+            
+            \paragraph{Personalización}
+            
+                También fue considerada un factor clave ya que se contaba con la creación de una página web atractiva y funcional.
+                
+                Teniendo en cuenta lo mencionado en el punto anterior acerca de la falta de conocimientos previos, se hubiera empleado una gran cantidad de tiempo no solo en aprender a elaborar un buen \textit{frontend} desde cero, sino que el objetivo principal de este trabajo de fin de grado no se centra tanto en la página web, sino en el sistema completo, pudiendo considerar la mejora del \textit{frontend} como una posible futura línea de trabajo \ref{sec:futuras-lineas-trabajo}.
+            
+            \paragraph{Escalabilidad}
+            
+                Si bien este proyecto constituye una prueba de concepto, uno de los objetivos \ref{sec:objetivos} a tener en cuenta se trataba de construir una plataforma web fácilmente extensible.
+
+                La escalabilidad de WordPress es una de sus principales fortalezas y uno de los motivos por los que es una plataforma popular y confiable para la creación de sitios web de cualquier tamaño. Su arquitectura modular y su capacidad para trabajar con bases de datos y servidores de alta gama, la convierten en opción sólida para aquellos que buscan crear sitios web que puedan crecer y adaptarse a sus necesidades en el futuro.
+
+
+            \subsubsection{WordPress y Drupal}
+
+                También se tuvo en cuenta Drupal \cite{drupal}, otro CMS \textit{open-source} que se encuentra entre los más populares y que, a pesar de no ser tan conocido como WordPress, también es una opción muy interesante para la creación de páginas web.
+
+                \paragraph{Facilidad de uso, personalización y escalabilidad}
+                
+                    Observando la tabla anterior se puede apreciar varios motivos por los que se ha optado usar Wordpress en lugar de Drupal, pero todos ellos relacionados al mismo punto: \textbf{la complejidad de Drupal no se ajusta a las necesidades de este proyecto}.
+    
+                    Si bien puede ser una idea interesante a largo plazo y en un hipotético caso de evolución de la plataforma web a un proyecto superior, para una prueba de concepto como la que se está llevando a cabo, se debe optar por una herramienta más sencilla y fácil de usar.
+    
+                    \newpage
+    
+
+        \subsection{Base de Datos}
+        
+            \subsubsection{SQLite vs MySQL}
+
+                SQLite es un RDBMS \cite{sqlite} que se caracteriza por ser ligero, rápido y fácil de usar; se trata de una buena opción para proyectos pequeños, pero no es recomendable para proyectos de gran envergadura, ya que no es capaz de manejar grandes cantidades de datos.
+                
+                Por otro lado, MySQL también es otro RDBMS \cite{mysql} que se caracteriza por ser rápido, seguro y fácil de usar; al contrario que con SQLite, MySQL sí es recomendable para proyectos de gran envergadura, ya que es capaz de manejar grandes cantidades de datos.
+
+                \begin{table}[h]
+                    \centering
+                    
+                    \begin{tabular}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{5cm}|}
+                        \hline
+                         \textbf{Características} & \textbf{SQLite} & \textbf{MySQL} \\
+                        \hline
+                        \hline
+                        \textbf{Tipo de base de datos} & Relacional, integrada & Relacional, cliente-servidor \\
+                        \hline
+                        \textbf{Gestión de usuarios} & Debe programarse & Integrada \\
+                        \hline
+                        \textbf{Escalabilidad} & Limitada: por su naturaleza integrada & Escalable: en función del hardware disponible \\
+                        \hline
+                        \textbf{Confiabilidad} & Menor capacidad de recuperación de datos & Mayor capacidad de recuperación de datos \\
+                        \hline
+                        \textbf{Flexibilidad} & Limitada en cuanto a configuración de memoria & Mayor flexibilidad en configuración \\
+                        \hline
+                        \textbf{Seguridad} & Limitada: no ofrece encriptación de datos & Mayor seguridad: ofrece encriptación de datos \\
+                        \hline
+                    \end{tabular}
+                        
+                    \caption{Comparativa entre SQLite y MySQL.}
+                    \label{tabla:mysql-vs-sqlite}
+                \end{table}
+
+                En función de la naturaleza del proyecto a realizar, se ha considerado usar MySQl debido a las siguientes razones:
+
+                \begin{itemize}
+                        
+                    \item Gestión de usuarios integrada
+                    
+                    Al tratarse de una plataforma web que requiere la gestión de usuarios, MySQL ofrece una gestión de usuarios integrada, lo que simplifica y agiliza el proceso de gestión de usuarios en comparación con SQLite.
+
+                    \item Escalabilidad
+                    
+                    MySQL ofrece una mayor escalabilidad que SQLite debido a su arquitectura cliente-servidor. Esto significa que puede manejar grandes cantidades de datos y muchos usuarios de manera simultánea, lo que es importante en un entorno en el que se espera que varios usuarios se conecten y utilicen la plataforma al mismo tiempo.
+
+                    \item Confiabilidad
+                    
+                    MySQL ofrece una mayor capacidad de recuperación de datos en comparación con SQLite. Esto es importante en un proyecto que busca ser utilizado por varias personas, ya que cualquier pérdida de datos podría tener un impacto significativo.
+
+                    \item Seguridad
+                    
+                    MySQL ofrece mayor seguridad que SQLite al contar con encriptación de datos. Esto es importante en un proyecto que busca proteger los datos de los usuarios y prevenir posibles ciberataques.
+
+                \end{itemize}
+
+                Además, también se ha tenido en cuenta su integración con WordPress, herramienta sleccionada para la página web de la plataforma, ya que WordPress cuenta con integración inmediata con MySQL desde su instalación.    
+
+
+        \subsection{Alojamiento}
+
+            \subsubsection{Local}
+
+                
+            \subsubsection{Linode}
+
+            \subsubsection{Amazon Web Service (AWS)}
+
+            \subsubsection{Google Cloud Platform (GCP)}
+
+                \paragraph{Google Kubernetes Engine (GKE)}
+
+                \paragraph{Cloud Run}
+
+                \paragraph{Computing Engine}
+
+                
+
+    \section{Proceso creativo}
+        \label{sec:proceso-creativo}
+
+        Durante la investigación previa al desarrollo de este trabajo, se plantearon distintas opciones para la creación de la plataforma web. Algunas de ellas fueron descartadas, pero las más relevantes se detallan a continuación.
+
+        \subsection{Plataforma como portal de descargas}
+
+            Tomando como ejemplo los retos descargables de la Academia Hacker de Incibe \cite{retos-INCIBE}, se planteó la posibilidad de crear máquinas virtuales y alojarlas en el servidor a modo de elemento descargable; es decir, la página ofrecería información documentada sobre distintos conceptos de ciberseguridad, pero la virtualización se llevaría a cabo por el propio usuario y en su propio equipo, experimentando localmente.
+
+            Sin embargo, no existiría la posibilidad de ofrecer un entorno de trabajo en el que el usuario pudiera interactuar con los laboratorios de forma remota, y es que uno de los objetivos a llevar a cabo con este proyecto consiste en que el usuario se encuentre con la menor fricción posible durante todo el proceso de aprendizaje y práctica; por tanto, si este debe descargar y configurar un hypervisor, o descargar e instalar Docker para acceder a los entornos de prueba en su equipo, se perdería esa esencia y facilidad que debería ofrecer la plataforma.
+            
+
+        \subsection{Jupyter}
+
+            \subsubsection{Jupyter Notebooks}
+                
+                Jupyter \cite{jupyter} es un proyecto \textit{open-source} que permite crear documentos interactivos llamados \textit{notebooks} que contienen código ejecutable, ecuaciones, visualizaciones y texto explicativo que sigue un formato de Markdown enriquecido y estructurado en bloques. Estos \textit{notebooks} están basadas en JSON y se pueden compartir con otros usuarios, por lo que se convierten en una herramienta muy útil para la investigación y el análisis de datos, pero sobre todo para la colaboración y el aprendizaje.
+            
+                Debido a la naturaleza de este proyecto, se planteó la idea de incluir páginas en la plataforma que fueran Jupyter Notebooks, de esta forma el usuario podría acceder a la página que contendría documentación y código anidado (característica principal de Jupyter), y en ella podría insertar y ejecutar código, así como generar distintos recursos de forma interactiva para que el usuario pudiera experimentar con ella.
+
+                Sin embargo, se descartó la idea ya que no constituía una prioridad en el desarrollo del proyecto y sus casos de uso eran muy limitados, puesto que el código verdaderamente importante sería ejecutado en las \textit{sandboxes}.
+                
+
+            \subsubsection{JupyterHub}
+
+                JupyterHub \cite{jupyterhub} es una aplicación que permite crear un entorno de Jupyter Notebooks en un servidor remoto, de forma que los usuarios puedan acceder a él a través de un navegador web. Esta aplicación es muy útil para la colaboración y el aprendizaje, ya que permite a los usuarios compartir documentos y ejecutar código en un entorno seguro y controlado.
+                
+                Siguiendo con lo mencionado en el apartado anterior, se planteó la idea de usar JupyterHub para crear distintos entornos de Jupyter Notebook en la nube para que los usuarios pudieran acceder a un entorno de Jupyter Notebooks en el que pudieran ejecutar código y experimentar con los recursos generados por el sistema, en lugar de integrarlos en la plataforma.
+
+                Esta idea también se descartó por ser ser una versión más compleja de la anterior.
+                
+                \newpage
+
+                
+        \subsection{Sobre Docker}
+
+            Docker, descrito en la sección \ref{sec:docker}, permitiría la creación de contenedores para los distintos laboratorios.
+                
+            Esta idea surgió a partir del artículo \textit{Cyber Security Testbeds and Malware Testing} \cite{securitylab-malware-analysis} de la Universidad de Trento, donde un grupo de investigación realizaban un estudio sobre los efectos de un \textit{exploit} de una aplicación sobre varias versiones de la misma y usada en distintos entornos de desarrollo.
+
+            \begin{quotation}
+                
+                Given a software environment $E$, an exploit $X$ that successfully subverts an application $A$, that is running on $E$:
+                
+                \begin{itemize}
+                    \item Will $X$ be successful on an application $A$ running on another environment $E'$?
+                    \item Will $X$ be successful on another version of $A$, $A'$, running on $E$?
+                    \item Will $X$ be successful on another version of $A$, $A'$, running on $E'$?
+                \end{itemize}
+
+            \end{quotation}
+
+            Para ello, el grupo de investigación desarrolló un conjunto de pruebas a partir de contenedores, usando combinaciones de un \textbf{conenedor principal} junto a \textbf{contenedores secundarios}.
+
+            \begin{quote}
+
+                Instead of creating separate virtual machines for every application/configuration we use the Linux Containers technology that provides virtualization capabilities on the operation system level. \[...\] We use Docker to implement two types of containers: (1) software-specific that contain operating system, webserver and database engine; (2) application-specific that is build on top of a desired software-specific container and also encapsulates the application files. The figure on the right shows an example Wordpress3.2 application container that has been built on top of the “ubuntu-apache-mysql” software container.
+
+            \end{quote}
+
+            Y la figura que representa dicho planteamiento es la siguiente:
+
+            \begin{figure}[htbp]
+                \centering
+                \includegraphics[scale=0.75]{images/Diagramas/Articulo.png}
+                \caption{Contenedor de Wordpress3.2 sobre contenedor con Ubuntu + Apache + MySQL}
+                \label{fig:articulo}
+            \end{figure}
+
+            \newpage
+            
+
+            \subsubsection{Red de contenedores de Docker}
+
+                Inicialmente se interpretó el sistema del artículo anterior como una red de contenedores.
+                
+                Por tanto, en lugar de crear un contenedor para cada \textit{sandbox}, se planteó la idea de crear una red contenedores para cada laboratorio, de forma que cada red estuviera compuesta por aquellos elementos a tratar en dicho laboratorio, y que a su vez sería accesible desde el exterior a través de un puerto específico, permitiendo a un usuario conectarse a través de SSH.
+
+                Esto podría lograrse usando Docker Compose \cite{docker-compose}, que permite crear y ejecutar aplicaciones Docker de forma sencilla, usando un archivo YAML que describe los servicios que componen la aplicación, así como las dependencias entre ellos.
+
+                Visto en perspectiva, queda bastante claro que el mecanismo del proyecto planteado en el artículo y el propuesto en esta sección no son similares más allá del uso de contenedores.
+                
+                
+            \subsubsection{Dependencia de contenedores de Docker}
+
+                Por tanto, el planteamiento inicial de usar una red de contenedores era errónea.
+                
+                La estructura descrita en el artículo se forma a través del uso de la tecnología de contenedores de Linux, alojando cada aplicación y configuración de software en un contenedor.
+
+                Una posible réplica de ese mecanismo podría realizarse de la siguiente forma:
+
+                \begin{enumerate}
+
+                    \item \textbf{Instalar Docker en el sistema operativo}
+                    
+                    Realizable siguiendo las instrucciones de instalación en el sitio web oficial de Docker.
+                
+                    \item \textbf{Crear imágenes específicas del software}
+                    
+                    Realizable utilizando un archivo Dockerfile que describa la configuración y los componentes que deben incluirse en dicha imagen.
+
+                    \item \textbf{Crear un contenedor específico de la aplicación}
+
+                    Para crear este tipo de contenedor, se debe construir sobre un contenedor específico del software previamente creado; para ello, se deben encapsular los archivos de la aplicación dentro del contenedor específico del software.
+
+                    \item \textbf{Ejecutar contenedores}
+                    
+                    Una vez creados los contenedores específicos del software y de la aplicación, pueden ejecutarse con el comando \texttt{docker run} de Docker.
+
+                \end{enumerate}
+
+                En el paso 2 se crea una imagen específica del software a partir de un archivo Dockerfile que describe la configuración y los componentes que deben incluirse en los contenedores resultantes de dicha imagen.
+
+                En el paso 3, se crea una imagen específica de la aplicación que se construye sobre la imagen del software previamente creada; es decir, se crea una nueva imagen que constituye una capa de configuración adicional sobre la configuración de la propia imagen del software, que actua como base. Esta nueva imagen encapsula los archivos de la aplicación y se crea también a partir de un archivo Dockerfile.
+
+                El resultado final es un contenedor específico de la aplicación que reutiliza el sistema operativo y los componentes incluidos en la imagen del software, pero que añade los archivos específicos para el funcionamiento de la aplicación.
+
+                A continuación se muestran 2 pseudo-códigos que representan el resultado final descrito:
+
+                \begin{figure}[!htbp]
+                    \centering
+                    
+                    \begin{subfigure}[!htbp]{\textwidth}
+                        \centering
+                        \includegraphics[width=0.8\textwidth]{images/Contenedor A.png}
+                        \caption{Dockerfile de una imagen principal (padre)}
+                    \end{subfigure}
+                    
+                    \begin{subfigure}[!htbp]{\textwidth}
+                        \centering
+                        \includegraphics[width=0.8\textwidth]{images/Contenedor B.png}
+                        \caption{Dockerfile de una imagen secundaria (hija)}
+                    \end{subfigure}
+                    
+                    \caption{Dependencia de contenedores}
+                    \label{fig:dependencia-contenedores}
+                \end{figure}
+                
+                El Dockerfile de la imagen hija hace referencia a la imagen padre mediante la línea $\texttt{FROM software\_container}$, estableciendo la dependencia. Además, se copian los archivos de la aplicación en la imagen y se establece como el directorio de trabajo. Finalmente, se ejecuta la aplicación con la línea $\verb|CMD ["python", "app.py"]|$, lo que mantendrá activos los contenedores resultantes de dicha imagen.
+
+                \begin{figure}[!htbp]
+                    \centering
+                    \includegraphics[scale=0.14]{images/Diagramas/Contenedor A.png}
+                    \caption{Creación de contenedores principales (padres)}
+                    \label{fig:contenedor-padre}
+                \end{figure}
+                
+                \begin{figure}[!htbp]
+                    \centering
+                    \includegraphics[scale=0.14]{images/Diagramas/Contenedor B.png}
+                    \caption{Creación de contenedores secundarios (hijos)}
+                    \label{fig:contenedor-hijo}
+                \end{figure}
+                
+                \cleardoublepage
+
+
+
 \chapter{Diseño y desarrollo de la plataforma}
     
     \section{Ingeniería de Requisitos}
-        \label{cha:ingenieria-requisitos}
+        \label{cap:ingenieria-requisitos}
         
         
         
-        El único actor de la plataforma será el usuario que haga uso de ella, esté o no registrado en la misma, por lo que no se especificará este detalle en los Casos de Uso (\autoref{sec:casos-uso}) puesto que siempre será el mismo.
+        El único actor de la plataforma será el usuario que haga uso de ella, esté o no registrado en la misma, por lo que no se especificará este detalle en los Casos de Uso \ref{sec:casos-uso} puesto que siempre será el mismo.
         
         
         \subsection{Casos de uso}
@@ -464,6 +824,7 @@
                         \multicolumn{2}{|p{15cm}|}{
                             \begin{itemize}
                                 \item Si no es posible destruir un laboratorio (error), se informará al usuario.
+                                \item Un administrador podrá acceder a registros de uso de los laboratorios.
                             \end{itemize}
                             } \\
                         \hline
@@ -582,15 +943,21 @@
                 \label{tab:RNF5}
             \end{table}
             
-            \begin{table}[!htbp]
+            \begin{table}[H]
                 \centering
                 \begin{tabular}{|c|c|}
                     \hline
-                    \textbf{RNF - 06} & \textbf{Escalabilidad / Extensibilidad} \\
+                    \textbf{RNF - 06} & \textbf{Extensibilidad} \\
                     \hline
                     \multicolumn{2}{|p{15cm}|}{
-                        La plataforma debe ser fácilmente escalable, permitiendo la futura integración de más contenido y laboratorios de pruebas.
+                        La plataforma debe ser fácilmente extensible, permitiendo la futura integración de más contenido y laboratorios de pruebas.
                     } \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        \begin{itemize}
+                            \item Contenedores Docker y páginas de documentación en el sitio web.
+                        \end{itemize}
+                        } \\
                     \hline
                 \end{tabular}
                 \label{tab:RNF6}
@@ -608,6 +975,38 @@
             \caption{Arquitectura}
             \label{fig:arquitectura}
         \end{figure}
+
+        Los componentes de la plataforma podrían dividirse en 4 partes fundamentales: el front-end, el back-end, la base de datos y los contenedores Docker (laboratorios). Todos estos están desplegados en un servidor que utiliza LAMP.
+
+        \subsection{\textit{Front-end}: WordPress}
+
+            El front-end es la parte de la plataforma que interactúa con el usuario. En este caso, se ha desarrollado una aplicación web que permite al usuario acceder a la plataforma y realizar las acciones que se describen en la sección \ref{sec:casos-uso}.
+            
+            Esta plataforma web se ha desarrollado utilizando el gestor de contenidos WordPress, ya que permite crear sitios web de forma rápida y sencilla, sin necesidad de tener conocimientos avanzados de programación. Además, cuenta con una gran comunidad de desarrolladores que crean y mantienen plugins y temas para extender las funcionalidades de la plataforma.
+
+
+        \subsection{\textit{Back-end}: \texttt{functions.php}}
+        
+            El back-end es la parte de la plataforma que se encarga de procesar las peticiones del usuario y de gestionar los recursos de la plataforma. En este caso, se encarga de gestionar las peticiones del usuario y de comunicarse con la base de datos y los contenedores Docker.
+            
+            Se ha usado el fichero \textit{functions.php} de WordPress para implementar el back-end de la plataforma, ya que permite extender las funcionalidades de WordPress de forma sencilla. Se ejecuta en cada petición que se realiza a la plataforma, por lo que se ha usado para implementar las funcionalidades necesarias para la gestión y configuración de los laboratorios de pruebas ejecutados por los usuarios.
+
+            Además, se ha añadido una tarea de cron con la que comprobar si algún laboratorio de pruebas superó su tiempo de vida (1 hora). Esta tarea se ejecuta cada minuto y destruye dichos laboratorios, liberando recursos en el sistema.
+
+
+        \subsection{Base de datos: MySQL}
+
+            La base de datos es la parte de la plataforma que se encarga de almacenar la información de los usuarios y de los laboratorios de pruebas. En este caso, se ha usado para almacenar la información de los usuarios registrados en la plataforma y de los laboratorios de pruebas que han sido creados por dichos usuarios.
+            
+            Se ha usado MySQL como gestor de base de datos, ya que es un sistema de gestión de bases de datos relacional, de código abierto y muy popular. Además, es compatible con WordPress, por lo que se puede acceder a la base de datos desde el fichero \textit{functions.php}.
+        
+        
+        \subsection{Contenedores Docker: laboratorios de pruebas}
+
+            Los contenedores Docker son la parte de la plataforma que se encarga de ejecutar los laboratorios de pruebas. En este caso, se ha usado para ejecutar los laboratorios de pruebas que han sido creados por los usuarios.
+            
+            Se ha usado Docker para ejecutar los laboratorios de pruebas, ya que permite ejecutar aplicaciones en contenedores de software. Estos contenedores son ligeros y portables, por lo que se pueden ejecutar en cualquier máquina que tenga Docker instalado. Además, se pueden crear imágenes de los contenedores, lo que permite crear laboratorios de pruebas personalizados y compartirlos con otros usuarios.
+            
         
         \subsection{Conexión a una \textit{sandbox}}
         
@@ -684,19 +1083,27 @@
         
             \begin{figure}[h]
                 \centering
+                
                 \begin{subfigure}{0.45\textwidth}
                     \centering
+                    
                     \includegraphics[scale=0.115]{images/Diagramas/Actividades y transiciones 4.png}
+                    
                     \caption{Creación de una \textit{sandbox}}
                     \label{fig:creacion-sandbox}
                 \end{subfigure}
+
                 \hfill
+                
                 \begin{subfigure}{0.45\textwidth}
                     \centering
-                    \includegraphics[scale=0.13]{images/Diagramas/Actividades y transiciones 5.png}
+                    
+                    \includegraphics[scale=0.11]{images/Diagramas/Actividades y transiciones 5.png}
+                    
                     \caption{Destrucción de una \textit{sandbox}}
                     \label{fig:destruccion-sandbox}
                 \end{subfigure}
+                
                 \caption{Tratamiento de \textit{sandboxes}}
                 \label{fig:tratamiento-sandboxes}
             \end{figure}
@@ -711,6 +1118,11 @@
         
         
     \section{Catálogo de conceptos}
+        \label{sec:catalogo}
+
+        \subsection{Introducción básica a Linux y Bash scripting}
+
+            
     
         \subsection{Escaneo de puertos y enumeración de servicios}
         
@@ -757,12 +1169,15 @@
             
             El análisis de metadatos es una técnica de ciberseguridad que implica analizar los metadatos asociados con diferentes tipos de archivos. Los metadatos son información adicional que se almacena junto con los archivos, como la fecha de creación, la ubicación, el tipo de archivo, el autor y otros detalles. Este análisis se utiliza a menudo para identificar posibles amenazas de ciberseguridad, como la presencia de archivos maliciosos o la detección de patrones de actividad sospechosa.
             
-            Python es un lenguaje de programación popular en ciberseguridad debido a su capacidad para procesar grandes cantidades de datos y su amplia gama de librerías, por lo que es muy común encontrarlo en contextos de análisis de datos.
-            
             \cleardoublepage
 
 
+\chapter{Problemas encontrados}
 
+    \section{Gestión y automatización local de contenedores Docker}
+
+    
+    
 \chapter{Resultados}
 
     \section{Cumplimiento de los requisitos}
@@ -776,87 +1191,86 @@
         
         Elaboración de Módulos o Rutas, que se definirían como un grupo de conceptos a tratar en un orden determinado, para obtener conocimiento sobre un tema concreto.
         
-        El enfoque inicial de la plataforma era el pentesting, pero si se aplicara lo anterior, podría establecerse una naturaleza genérica para abarcar muchos más conceptos, separados en Módulos o Rutas, donde varios de ellos podrían estar orientados a Red Team, otros a Blue Team, etc., dando lugar a una plataforma más eficiente y parecida a otras ya existentes; sin embargo, debiendo mantener la diferencia que se fomentaba al inicio del proyecto (Introducción/Objetivo): una plataforma ligera, open-source y fácilmente extensible.
-    
+        El enfoque inicial de la plataforma era el pentesting, pero si se aplicara lo anterior, podría establecerse una naturaleza genérica para abarcar muchos más conceptos de distitnas áreas de la seguridad: Administración de Sistemas, Desarrollo y Análisis de Malware... dando lugar a una plataforma más eficiente y parecida a otras ya existentes, pero manteniendo la diferencia que se fomentaba al inicio del proyecto en la sección Objetivos \ref{sec:objetivos}: una plataforma ligera, \textit{open-source} y fácilmente extensible.
 
-
-% Capítulo para representar el trabajo en estado WIP o "cosas que podría usar después".
-
-\chapter{Borrador}
-    \label{cha:borrador}
-    
-    \section{GNS3}
-    
-        GNS3 (Graphical Network Simulator 3) es un software libre y gratuito que permite simular redes informáticas complejas, donde los usuarios pueden crear y configurar redes virtuales con dispositivos de red virtuales, como routers, switches y firewalls, y conectarlos para crear topologías de red complejas.
-        
-        Página: \url{https://gns3.com/software}
-        
-        La herramienta es especialmente útil para la formación en redes, ya que permite la simulación de redes reales sin necesidad de hardware físico costoso. Además, GNS3 permite a los usuarios crear y probar configuraciones complejas de red antes de implementarlas en una red real, lo que puede ayudar a reducir el tiempo y los costos de implementación.
-        
-        Documento relacionado: \url{https://riuma.uma.es/xmlui/handle/10630/18975}
-        
         \cleardoublepage
+        
 
 
-    \section{Análisis de Tecnologías}
-
-        \subsection{GitHub vs GitLab}
-
-        \begin{table}[!htbp]
-            \centering
-            \begin{tabular}{|>{\centering\arraybackslash}p{5cm}|>{\centering\arraybackslash}p{5cm}|>{\centering\arraybackslash}p{5cm}|}
-                \hline
-                \textbf{Característica} & \textbf{GitHub} & \textbf{GitLab} \\
-                \hline
-                Tipo de alojamiento & En la nube & En la nube o en el servidor local \\
-                \hline
-                Gestión de repositorios & \multicolumn{2}{c|}{Sí} \\
-                \hline
-                Control de versiones & \multicolumn{2}{c|}{Sí} \\
-                \hline
-                Integración con otros servicios & Integración con varios servicios de terceros, como Slack y Trello. & Integración con servicios de terceros a través de complementos y API. \\
-                \hline
-                Control de acceso y permisos & \multicolumn{2}{c|}{Sí} \\
-                \hline
-                Wiki y seguimiento de problemas & \multicolumn{2}{c|}{Sí} \\
-                \hline
-                Integración continua & \multicolumn{2}{c|}{Sí} \\
-                \hline
-                Lenguajes de programación compatibles & \multicolumn{2}{c|}{Compatible con una amplia gama de lenguajes de programación} \\
-                \hline
-                Comentarios en línea y aprobación de solicitudes de extracción & \multicolumn{2}{>{\centering\arraybackslash}c|}{Sí} \\
-                \hline
-                Almacenamiento de artefactos & \multicolumn{2}{c|}{Sí} \\
-                \hline
-                Monitoreo y seguimiento de errores & \multicolumn{2}{c|}{Sí} \\
-                \hline
-                Precios & \multicolumn{2}{>{\centering\arraybackslash}c|}{Gratuito para repositorios públicos y planes de pago para repositorios privados} \\
-                \hline
-            \end{tabular}
-            \caption{Comparativa entre GitHub y GitLab}
-            \label{tabla:comparativa-github-gitlab}
-        \end{table}
-
-    
-    
-    
-% Capítulo para representar el historial del trabajo.
-    
 \chapter{Diario}
-    \label{cha:diario}
+    \label{cap:diario}
+
+    Cada sección representa los cambios realizados hasta cada reunión.
+
+    \section{7ª reunión: 12/04/2023}
     
-    \textbf{Se crearon los capítulos: Diario \ref{cha:diario} y Borrador \ref{cha:borrador}}\\
-    El primero, para incluir un historial de mi progreso; el segundo, para subir contenido WIP (\textit{work in progress}) al documento.
+        \textbf{Se crearon los capítulos: Diario \ref{cap:diario} y Borrador \ref{cap:investigacion-previa}} \\
+        El primero, para incluir un historial de mi progreso; el segundo, para subir contenido WIP (\textit{work in progress}) al documento.
+        
+        \textbf{Se modificó el diagrama: casos de uso \ref{fig:casos-uso}} \\
+        Se aplicó un estilo estándar y se mejoraron las dependencias.
+        
+        \textbf{Se creó la sección: Arquitectura \ref{sec:arquitectura}} \\
+        Se incluyeron nuevos diagramas y contenido descriptivo sobre la arquitectura del proyecto.
+        
+        \textbf{Se creó la sección: Modelado de Actividades y Transacciones \ref{sec:modelado-actividades-transiciones}} \\
+        Se incluyeron nuevos diagramas y contenido descriptivo de los procesos del proyecto.
+        
+        \textbf{Se modificó la sección: Ingeniería de Requisitos \ref{cap:ingenieria-requisitos}} \\
+        Se descompusieron los requisitos anteriores en requisitos más atómicos y se han añadido nuevos requisitos no funcionales.
     
-    \textbf{Se modificó el diagrama: casos de uso \ref{fig:casos-uso}}\\
-    Se aplicó un estilo estándar y se mejoraron las dependencias.
+        \textbf{Se creó la sección: Estructura global del proyecto \ref{sec:estructura-global}} \\
+        Se incluyó una descripción de lo que se plantea realizar con este TFG separándolo en 3 pilares fundamentales.
     
-    \textbf{Se creó la sección: Arquitectura \ref{sec:arquitectura}}\\
-    Se incluyeron nuevos diagramas y contenido descriptivo sobre la arquitectura del proyecto.
+        \textbf{Se creó la sección: Proceso Creativo \ref{sec:proceso-creativo}} \\
+        Se incluyó una descripción de distintos planteamientos sobre la plataforma web que tuvieron lugar durante la investigación previa del TFG. \\
+        El nombre de esta sección puede variar, pero al ser un borrador, se elegió algo \textit{llamativo}.
     
-    \textbf{Se creó la sección: Modelado de Actividades y Transacciones \ref{sec:modelado-actividades-transiciones}}\\
-    Se incluyeron nuevos diagramas y contenido descriptivo de los procesos del proyecto.
-    
-    \textbf{Se modificó la sección: Ingeniería de Requisitos \ref{cha:ingenieria-requisitos}}\\
-    Se descompusieron los requisitos anteriores en requisitos más atómicos y se han añadido nuevos requisitos no funcionales.
-    
+        \textbf{Se inició la creación de un prototipo de la plataforma} \\
+        Se está configurando una página WordPress (WIP).\\
+        Se está practicando con contenedores de Docker (WIP)\\ 
+        Se está tratando de levantar un contenedor a través de la página (WIP).
+
+        \newpage
+
+
+    \section{8ª reunión: 03/05/2023}
+
+        \textbf{Se añadió una página: contraportada} \\
+        Se unió el documento PDF de la contraportada del campus virtual al final del documento.
+
+        \textbf{Se modificó la bibliografía: enlace de la ADA \cite{articulo-ada}} \\
+        Se sustituyó por una versión corta y equivalente. Ahora todos los enlaces caben en la página.
+
+        \textbf{Se modificó un diagrama: destrucción de una \textit{sandbox} \ref{fig:destruccion-sandbox}} \\
+        Se añadió un caso de control de errores y el tratamiento del tiempo de vida.
+
+        \textbf{Se modificó una tabla: Wordpress vs Astro vs Drupal \ref{tab:wordpress-vs-astro-vs-drupal}} \\
+        Se combinaron las tablas Wordpress vs Astro y Wordpress vs Drupal, de forma que aunque se mantienen sus secciones separadas (porque las comparaciones fueron distintas), solo hay una tabla como referencia.
+
+        \textbf{Se modificó la sección: Futuras líneas de trabajo \ref{sec:futuras-lineas-trabajo}} \\
+        Se reformuló el último párrafo, haciendo más hincapié en la posible expansión de la plataforma con más recursos y conceptos fuera del ámbito del pentesting, convirtiéndola no en la temática principal, sino en una de múltiples temáticas.
+
+        \textbf{Se modificó la sección: Jupyter 5.2.2} \\
+        Se estableció una conclusión para el descarte de esta tecnología en el proyecto.
+
+        \textbf{Se modificó la sección: WordPress 1.5.2} \\
+        Se añadieron nuevas referencias a la bibliografía.
+
+        \textbf{Se creó un laboratorio: Bypass} \\
+        Define el concepto de Bypass y la vulnerabilidad CVE-2017-8386 como ejemplo. \\
+        El laboratorio contiene dicha vulnerabilidad para explotarla.
+        
+        \textbf{Se creó un laboratorio: Fuerza Bruta} \\
+        Define el concepto de Fuerza Bruta, tipos de ataques más comunes y herramientas. \\
+        El laboratorio contiene las herramientas \texttt{nmap} e \texttt{hydra} para que el usuario pueda obtener las credenciales del usuario administrador del entorno.
+        
+        \textbf{Se arregló la sección: Dependencias de contenedores Docker} \\
+        La sección hacía referencia a \textit{contenedores} de Docker cuando en realidad se trataban de \textit{imágenes}. Ahora la sección cuenta con rigor y se ha optimizado el texto.
+
+        \newpage
+
+    \section{9ª reunión: 18/05/2023}
+
+        \textbf{Se movió el capítulo: Borrador} \\
+        El capítulo ahora es \textit{Investigación previa} (\ref{cap:investigacion-previa}).

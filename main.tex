@@ -54,8 +54,8 @@
     
     \tableofcontents
     
-    \listoffigures  % Añadido por mí
-    \listoftables   % Añadido por mí
+    \listoffigures  % Modificación: añadido por mí
+    \listoftables   % Modificación: añadido por mí
     
                     % <- Glosario aquí (revisar las notas)
     
@@ -75,6 +75,8 @@
     
     \addcontentsline{toc}{chapter}{Bibliografía}
     \label{chapter:references}
+    
+    \nocite{*}                  % Modificado: añadido por mí
     \printbibliography
     
     \ifdef{\addappendix}{
@@ -94,5 +96,6 @@
         \end{appendices}
     }{}
 
+    \includepdf{pages/08-contraportada.pdf}     % Modificado: añadido por mí
 
 \end{document}
