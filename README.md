@@ -1,8 +1,6 @@
-<p align="center">
-  <br/>
-  <img src=images/marcauma-total-2.jpg alt="UMA">
-  <br/>
-</p>
+<div align="center">
+    <img src=images/Logos/uma.png alt="UMA" width="30%">
+</div>
 
 # TFG-UMA
 
@@ -16,7 +14,7 @@ El método más sencillo para usar esta plantilla es crear un nuevo proyecto en 
 
 El alumno solo debe modificar el fichero `datos.tex` e introducir la información que se solicita. A continuación, podrá completar la memoria modificando los ficheros que se encuentran en la carpeta [pages](pages).
 
-> La primera página del documento se corresponde con la *etiqueta*, que **NO** debe incluirse en la memoria. Irá pegada sobre la cubierta facilitada por el centro.
+> La primera página del documento se corresponde con la _etiqueta_, que **NO** debe incluirse en la memoria. Irá pegada sobre la cubierta facilitada por el centro.
 
 > La plantilla fuerza que las páginas de agradecimientos, el resumen, los capítulos del cuerpo y los anexos empiecen en páginas impares siguiendo el formato de un libro.
 
