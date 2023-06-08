@@ -306,24 +306,27 @@
         
         La mayoría -y más conocidas- de estas plataformas son CTFs (Capture The Flag), y aunque son muy útiles para poner en práctica los conocimientos adquiridos, no suelen ofrecer un entorno de aprendizaje guiado, sino que el usuario debe resolver los desafíos por su cuenta, sin ningún tipo de documentación que le ayude a resolverlos, más allá de las pistas que ofrezca la propia plataforma o las soluciones que hayan publicado otros usuarios en Internet.
 
-        Sin embargo, esto no siempre es así. Como se vió en el apartado anterior: Try Hack Me \cite{tryhackme} ofrece tanto retos guiados e instructivos, como retos puramente prácticos y competitivos; mientras que Hack The Box \cite{hackthebox}, al ser la plataforma de CTFs prácticos más reconocida, ha sido capaz de lanzar su propia plataforma educativa con retos guiados: HTB Academy \cite{hackthebox-academy}. 
+        Sin embargo, esto no siempre es así, ya que como se vió en el apartado anterior: Try Hack Me \cite{tryhackme} ofrece tanto retos instructivos como retos puramente prácticos y competitivos; mientras que Hack The Box \cite{hackthebox}, la plataforma más reconocida, ha sido capaz de lanzar su propia plataforma educativa con retos guiados: HTB Academy \cite{hackthebox-academy}.
+
+        Teniendo eso cuenta, se plantearon las siguientes ideas para afrontar el proyecto.
+
 
         \subsection{Plataforma de CTFs}
 
-            La primera idea planteada fue, precisamente, replicar una plataforma de CTFs (Capture The Flag). Esta versión del proyecto se centraría más en enseñar al usuario distintos conceptos de la ciberseguridad, acompañados de una serie de retos que pondrían a prueba los conocimientos adquiridos; algo parecido a las plataformas existentes mencionadas en el apartado anterior.
+            La primera idea planteada fue, precisamente, replicar una plataforma de CTFs (Capture The Flag). Esta versión del proyecto se centraría más en enseñar distintos conceptos de la ciberseguridad al usuario, acompañados de una serie de retos que pondrían a prueba los conocimientos adquiridos; algo parecido a las plataformas TryHackMe y HTB Academy mencionadas en el apartado anterior.
 
-            Esta idea fue descartada porque ya existen muchas plataformas de CTFs, y la voluntad con este proyecto era de hacer algo distinto. Se requería un entorno de aprendizaje guiado y como se mencionó anteriormente, los CTFs no suelen ofrecerlo.
+            Esta idea fue descartada porque ya existen muchas plataformas de CTFs, y se pretendía hacer algo distinto con este proyecto. Se requería un entorno de aprendizaje guiado y como se mencionó anteriormente, los CTFs no suelen ofrecerlo.
 
         
         \subsection{Plataforma como portal de descargas}
 
             Tomando como ejemplo los retos descargables de la Academia Hacker de Incibe \cite{retos-INCIBE}, se planteó la posibilidad de crear máquinas virtuales y alojarlas en el servidor a modo de elementos descargables; es decir, la plataforma contaría con un sitio web que ofrecería información documentada sobre distintos conceptos de ciberseguridad, pero la virtualización se llevaría a cabo por el propio usuario en su equipo, experimentando localmente.
 
-            Esta idea también fue descartada porque no solo plantea el mismo problema de fricción descrito en la idea anterior, sino que además plantea otros problemas relacionados con el espacio de almacenamiento (tanto en el servidor como en el equipo del usuario) y con la necesidad del usuario de gestionar máquinas virtuales.
+            Esta idea también fue descartada porque plantea un gran problema de fricción entre el usuario y el objetivo de la plataforma: no existiría la posibilidad de ofrecer un entorno de trabajo en el que el usuario pudiera interactuar con los laboratorios de forma remota y con herramientas aisladas, sino que este debería descargar y configurar un hypervisor, o instalar Docker para acceder a los entornos de prueba en su equipo. Debido a esto, se perdería esa esencia de minimalismo y sencillez que debería ofrecer la plataforma.
             
-            No existiría la posibilidad de ofrecer un entorno de trabajo en el que el usuario pudiera interactuar con los laboratorios de forma remota y si además, este debe descargar y configurar un hypervisor, o instalar Docker para acceder a los entornos de prueba en su equipo, se perdería esa esencia de minimalismo y sencillez que debería ofrecer la plataforma.
+            Además, plantea otros problemas relacionados con el espacio de almacenamiento (tanto en el servidor como en el equipo del usuario).
 
-            Sin embargo, cabe destacar que existen herramientas que podrían ser de utilidad para este proyecto, como: Vagrant \cite{vagrant}, que permite automatizar la creación y configuración de máquinas virtuales de forma declarativa; y Vagrant Cloud \cite{vagrant-cloud}, que es un repositorio de máquinas virtuales ya configuradas para instalar usando \texttt{vagrant}. También puede ser útil incluir en la plataforma de una guía introductoria a la configuración de una máquina virtual para tests de intrusión (pentesing) con Kali Linux, ya que si bien no es objeto de este proyecto que los usuarios aprendan sobre virtualización, no se puede ignorar el hecho de que es necesario el uso de máquinas virtuales para el sector de la ciberseguridad.
+            Sin embargo, cabe destacar la existencia herramientas que podrían ser de utilidad para este proyecto, como: Vagrant \cite{vagrant}, que permite automatizar la creación y configuración de máquinas virtuales de forma declarativa; y Vagrant Cloud \cite{vagrant-cloud}, que es un repositorio de máquinas virtuales ya configuradas para instalar usando \texttt{vagrant}. También puede ser útil incluir en la plataforma de una guía introductoria a la configuración de una máquina virtual para tests de intrusión (pentesing) con Kali Linux, ya que si bien no es objeto de este proyecto que los usuarios aprendan sobre virtualización, no se puede ignorar el hecho de que es necesario el uso de máquinas virtuales para el sector de la ciberseguridad.
 
         
         \subsection{Plataforma de laboratorios}
