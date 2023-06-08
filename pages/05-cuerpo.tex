@@ -26,10 +26,45 @@
     \section{Metodología}
     
         Se ha empleado un \textbf{desarrollo incremental} para la elaboración del proyecto: se partió de una base a la que se añadieron sucesivas mejoras sin que estas perjudicaran al resto del proyecto desarrollado hasta ese momento.
+
+        \begin{figure}[htbp]
+            \centering
+
+            \includegraphics[width=0.75\textwidth]{images/Capturas/Notion resumen.png}
+            \caption{Resumen del estado del proyecto en Notion al momento de la captura}
+            \label{fig:notion-resumen}
+        \end{figure}
+
+        Se ha utilizado la herramienta \textbf{Notion} para llevar a cabo este proyecto, una aplicación que permite la creación de notas -llamadas páginas- cuyo contenido puede ser variado: texto, imágenes, tablas, listas, archivos, enlaces... y que además, permite la creación de bases de datos que pueden ser utilizadas para crear tablones Kanban, diagramas de Gantt, y otros tipos de vistas dinámicas.
+
+        Notion también cuenta con otra funcionalidad recientemente añadida: la integración con GitHub \cite{github}. Esto permite añadir a cualquier página de Notion una base de datos generada a partir del estado de un repositorio remoto -\textit{Issues}, \textit{Projects} y \textit{Pull Requests}-, permitiendo además la manipulación y la actualización del contenido en ambas direcciones, todo sincronizado a tiempo real. 
+
+        El proceso que se ha seguido para el desarrollo del proyecto ha sido definir tareas en Notion y descomponerlas en tareas más simples, atómicas y tratables, clasificadas en función de su propósito: componer la memoria, desarrollar la plataforma web o crear entornos de pruebas virtualizados. Por otra parte, se han asignado dependencias entre las tareas, por lo que en la mayoría de ocasiones resultaba intuitivo y visual establecer el orden que debían seguir dichas tareas.
+
+        \newpage
+
+        \begin{figure}[!htbp]
+            \centering
+
+            \begin{subfigure}[!htbp]{\textwidth}
+                \centering
+
+                \includegraphics[width=0.8\textwidth]{images/Capturas/Notion Kanban.png}
+                \caption{Vista de Kanban}
+            \end{subfigure}
+            
+            \begin{subfigure}[!htbp]{\textwidth}
+                \centering
+
+                \includegraphics[width=0.8\textwidth]{images/Capturas/Notion Gantt.png}
+                \caption{Vista de Gantt}
+            \end{subfigure}
+            
+            \caption{Gestión de tareas del proyecto en una base de datos de Notion}
+            \label{fig:notion-vistas}
+        \end{figure}
         
-        El desarrollo de dichas mejoras se ha llevado a cabo utilizando el \textbf{sistema Kanban} de gestión de tareas, descomponiendo el proyecto en tareas lo más simples y atómicas posibles, distribuyendo los \textit{issues} por una serie de etapas conforme se iban realizando (\textit{Pendiente}, \textit{En progreso} y \textit{Terminado}), llevando a cabo un seguimiento de la evolución y el estado del proyecto.
-        
-        
+        El desarrollo se ha llevado a cabo utilizando, principalmente, las vistas de los sistemas: Kanban, con las tareas clasificadas en función de su estado; y Gantt, con las tareas clasificadas y ordenadas en función de sus dependencias. No obstante, también se han utilizado las vistas de Lista para visualizar las tareas de una forma más compacta y ordenada, y de Calendario para visualizar las tareas en función de su fecha de finalización.
         
         \newpage
     
