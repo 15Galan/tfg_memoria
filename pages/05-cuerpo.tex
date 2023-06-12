@@ -625,7 +625,7 @@
                         \hline
                     \end{tabular}
                         
-                    \caption{Comparativa entre SQLite y MySQL.}
+                    \caption{Comparativa entre SQLite y MySQL}
                     \label{tabla:mysql-vs-sqlite}
                 \end{table}
 
@@ -671,7 +671,7 @@
                     \centering
 
                     \includegraphics[width=0.15\textwidth]{images/Logos/linode.png}
-                    \caption{Logo de Linode.}
+                    \caption{Logo de Linode}
 
                     \label{fig:linode-logo}
                 \end{figure}
@@ -688,7 +688,7 @@
                         \centering
     
                         \includegraphics[width=0.15\textwidth]{images/Logos/lke.png}
-                        \caption{Logo de Linode Kubernetes Engine.}
+                        \caption{Logo de Linode Kubernetes Engine}
     
                         \label{fig:lke-logo}
                     \end{figure}
@@ -707,7 +707,7 @@
                     \centering
 
                     \includegraphics[width=0.15\textwidth]{images/Logos/aws.png}
-                    \caption{Logo de AWS.}
+                    \caption{Logo de AWS}
 
                     \label{fig:aws-logo}
                 \end{figure}
@@ -724,7 +724,7 @@
                         \centering
     
                         \includegraphics[width=0.15\textwidth]{images/Logos/eks.png}
-                        \caption{Logo de Amazon Elastic Kubernes Services.}
+                        \caption{Logo de Amazon Elastic Kubernes Services}
     
                         \label{fig:eks-logo}
                     \end{figure}
@@ -740,7 +740,7 @@
                     \centering
 
                     \includegraphics[width=0.15\textwidth]{images/Logos/gcp.png}
-                    \caption{Logo de Google Cloud Platform.}
+                    \caption{Logo de Google Cloud Platform}
 
                     \label{fig:gcp-logo}
                 \end{figure}
@@ -757,7 +757,7 @@
                         \centering
 
                         \includegraphics[width=0.15\textwidth]{images/Logos/gke.png}
-                        \caption{Logo de Google Kubernetes Engine.}
+                        \caption{Logo de Google Kubernetes Engine}
                         
                         \label{fig:gke-logo}
                     \end{figure}
@@ -776,7 +776,7 @@
                         \centering
 
                         \includegraphics[width=0.15\textwidth]{images/Logos/gcr.png}
-                        \caption{Logo de Cloud Run.}
+                        \caption{Logo de Cloud Run}
                         
                         \label{fig:gcr-logo}
                     \end{figure}
@@ -795,7 +795,7 @@
                         \centering
 
                         \includegraphics[width=0.15\textwidth]{images/Logos/gce.png}
-                        \caption{Logo de Compute Engine.}
+                        \caption{Logo de Compute Engine}
                         
                         \label{fig:gce-logo}
                     \end{figure}
@@ -1185,14 +1185,14 @@
         
             El back-end es la parte de la plataforma que se encarga de procesar las peticiones del usuario y de gestionar los recursos de la plataforma. En este caso, se encarga de gestionar las peticiones del usuario y de comunicarse con la base de datos y los contenedores Docker.
             
-            Se ha usado el fichero \textit{functions.php} de WordPress para implementar el back-end de la plataforma, ya que permite extender las funcionalidades de WordPress de forma sencilla. Se ejecuta en cada petición que se realiza a la plataforma, por lo que se ha usado para implementar las funcionalidades necesarias para la gestión y configuración de los laboratorios de pruebas ejecutados por los usuarios.
+            Se ha usado el fichero \texttt{functions.php} de WordPress para implementar el back-end de la plataforma, ya que permite extender las funcionalidades de WordPress de forma sencilla. Se ejecuta en cada petición que se realiza a la plataforma, por lo que se ha usado para implementar las funcionalidades necesarias para la gestión y configuración de los laboratorios de pruebas ejecutados por los usuarios.
 
             Además, se ha añadido una tarea de cron con la que comprobar si algún laboratorio de pruebas superó su tiempo de vida (1 hora). Esta tarea se ejecuta cada minuto y destruye dichos laboratorios, liberando recursos en el sistema.
 
 
         \subsection{Base de datos: MySQL}
 
-            La base de datos es la parte de la plataforma que se encarga de almacenar la información de los usuarios y de los laboratorios de pruebas. En este caso, se ha usado para almacenar la información de los usuarios registrados en la plataforma y de los laboratorios de pruebas que han sido creados por dichos usuarios.
+            La base de datos es la parte de la plataforma que se encarga de almacenar la información de los usuarios y de los laboratorios de pruebas; en este caso, se ha usado para almacenar la información de los usuarios registrados en la plataforma y de los laboratorios de pruebas que han sido creados por dichos usuarios.
             
             Se ha usado MySQL como gestor de base de datos, ya que es un sistema de gestión de bases de datos relacional, de código abierto y muy popular. Además, es compatible con WordPress, por lo que se puede acceder a la base de datos desde el fichero \textit{functions.php}.
         
@@ -1385,7 +1385,7 @@
             Se detallan a continuación los pasos que se llevan a cabo:
 
             \begin{enumerate}
-                \item La tarea cron del sistema ejecuta un script de Bash para detener los contenedores Docker que se encuentren activos y cuyo tiempo de vida exceda a 1 hora. Esta tarea se ejecuta cada minuto.
+                \item La tarea de cron del sistema ejecuta un script de Bash para detener los contenedores Docker que se encuentren activos y cuyo tiempo de vida exceda a 1 hora. Esta tarea se ejecuta cada minuto.
 
                 \item Se hace una llamada al sistema para comprobar si hay contenedores activos y en caso afirmativo, obtener una lista de los IDs de esos contenedores; el script termina en caso de no haber ninguno.
 
