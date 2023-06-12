@@ -1176,18 +1176,26 @@
 
         \subsection{\textit{Front-end}: WordPress}
 
-            El front-end es la parte de la plataforma que interactúa con el usuario. En este caso, se ha desarrollado una aplicación web que permite al usuario acceder a la plataforma y realizar las acciones que se describen en la sección \ref{sec:casos-uso}.
+            El front-end es la parte de la plataforma que interactúa con el usuario; en este caso, se ha desarrollado una aplicación web que permite al usuario acceder a la plataforma y realizar las acciones que se describen en la sección \ref{sec:casos-uso}.
             
             Esta plataforma web se ha desarrollado utilizando el gestor de contenidos WordPress, ya que permite crear sitios web de forma rápida y sencilla, sin necesidad de tener conocimientos avanzados de programación. Además, cuenta con una gran comunidad de desarrolladores que crean y mantienen plugins y temas para extender las funcionalidades de la plataforma.
+
+            Se ha usado un tema hijo del tema \textit{Divi}, que permite crear sitios web de forma visual, sin necesidad de escribir código. Este tema hijo se ha usado para personalizar el tema \textit{Divi} y adaptarlo a las necesidades de la plataforma. Se seleccionó este tema porque es muy conocido y está muy bien valorado en la comunidad.
 
 
         \subsection{\textit{Back-end}: \texttt{functions.php}}
         
-            El back-end es la parte de la plataforma que se encarga de procesar las peticiones del usuario y de gestionar los recursos de la plataforma. En este caso, se encarga de gestionar las peticiones del usuario y de comunicarse con la base de datos y los contenedores Docker.
+            El back-end es la parte de la plataforma que se encarga de procesar las peticiones del usuario y de gestionar los recursos de la plataforma; en este proyecto, se encarga de gestionar las peticiones del usuario y de comunicarse con la base de datos y los contenedores Docker.
             
-            Se ha usado el fichero \texttt{functions.php} de WordPress para implementar el back-end de la plataforma, ya que permite extender las funcionalidades de WordPress de forma sencilla. Se ejecuta en cada petición que se realiza a la plataforma, por lo que se ha usado para implementar las funcionalidades necesarias para la gestión y configuración de los laboratorios de pruebas ejecutados por los usuarios.
+            Se ha usado el fichero \texttt{functions.php} de WordPress para implementar el back-end de la plataforma, ya que permite extender las funcionalidades de un sitio web de WordPress de forma sencilla.
+            
+            Este fichero se ejecuta en cada petición que se realiza a la plataforma, lo que permite interactuar con la página cada vez que un usuario interactúa con ella.
 
-            Además, se ha añadido una tarea de cron con la que comprobar si algún laboratorio de pruebas superó su tiempo de vida (1 hora). Esta tarea se ejecuta cada minuto y destruye dichos laboratorios, liberando recursos en el sistema.
+            \subsubsection{\textit{Back-end}: Tareas de Cron}
+
+                Las tareas de cron son tareas que se ejecutan de forma periódica en el servidor; se ha usado una para comprobar si algún laboratorio de pruebas superó su tiempo de vida (1 hora) y detenerlo de forma automática.
+                
+                Esta tarea se ha implementado directamente en el servidor, ya que se consideró la opción más rápida y sencilla: se ejecuta cada minuto y destruye aquellos laboratorios que hayan excedido su tiempo de vida, liberando recursos en el sistema y permitiendo un uso de contenedores dinámico.
 
 
         \subsection{Base de datos: MySQL}
@@ -1202,25 +1210,8 @@
             Los contenedores Docker son la parte de la plataforma que se encarga de ejecutar los laboratorios de pruebas. En este caso, se ha usado para ejecutar los laboratorios de pruebas que han sido creados por los usuarios.
             
             Se ha usado Docker para ejecutar los laboratorios de pruebas, ya que permite ejecutar aplicaciones en contenedores de software. Estos contenedores son ligeros y portables, por lo que se pueden ejecutar en cualquier máquina que tenga Docker instalado. Además, se pueden crear imágenes de los contenedores, lo que permite crear laboratorios de pruebas personalizados y compartirlos con otros usuarios.
-            
-        
-        \subsection{Conexión a un laboratorio}
-        
-            \begin{figure}[h]
-                \centering
-                \includegraphics[scale=0.20]{images/Diagramas/Arquitectura 1.png}
-                \caption{Uso normal}
-                \label{fig:conexion-sandbox}
-            \end{figure}
-            
-            El usuario está registrado, ya que en caso contrario, no podría acceder a esta funcionalidad del sistema.
-            
-            \begin{itemize}
-                \item El usuario que ha accedido a la plataforma quiere encender un laboratorio.
-                \item Se informa al servidor de dicha acción y se consulta en la base de datos la información de dicho entorno virtualizado (ID, nombre, características de construcción, tiempo de vida...).
-                \item Una vez obtenido dicha información, se procesa y se inicia la construcción de una instancia del laboratorio.
-                \item Finalmente, tras haberse construido el entorno, el usuario recibe un mensaje con los datos de conexión y puede proceder a conectarse al entorno a través de SSH.
-            \end{itemize}
+
+            Por otra parte, los laboratorios son construidos a partir de imágenes contruidas con ficheros \texttt{Dockerfile} locales, por lo que pueden crearse nuevos laboratorios de pruebas de forma rápida y sencilla para extender la plataforma.
             
             \newpage
     
