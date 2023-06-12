@@ -1204,29 +1204,33 @@
             Se ha usado Docker para ejecutar los laboratorios de pruebas, ya que permite ejecutar aplicaciones en contenedores de software. Estos contenedores son ligeros y portables, por lo que se pueden ejecutar en cualquier máquina que tenga Docker instalado. Además, se pueden crear imágenes de los contenedores, lo que permite crear laboratorios de pruebas personalizados y compartirlos con otros usuarios.
             
         
-        \subsection{Conexión a una \textit{sandbox}}
+        \subsection{Conexión a un laboratorio}
         
-        \begin{figure}[h]
-            \centering
-            \includegraphics[scale=0.20]{images/Diagramas/Arquitectura 1.png}
-            \caption{Uso normal}
-            \label{fig:conexion-sandbox}
-        \end{figure}
-        
-        El usuario está registrado, ya que en caso contrario, no podría acceder a esta funcionalidad del sistema.
-        
-        \begin{itemize}
-            \item El usuario que ha accedido a la plataforma quiere encender una \textit{sandbox}.
-            \item Se informa al servidor de dicha acción y se consulta en la base de datos la información de dicho entorno virtualizado (ID, nombre, características de construcción, tiempo de vida...).
-            \item Una vez obtenido dicha información, se procesa y se inicia la construcción de una instancia de la \textit{sandbox}.
-            \item Finalmente, tras haberse construido el entorno, el usuario recibe un mensaje con los datos de conexión y puede proceder a conectarse al entorno a través de SSH.
-        \end{itemize}
-        
-        \newpage
+            \begin{figure}[h]
+                \centering
+                \includegraphics[scale=0.20]{images/Diagramas/Arquitectura 1.png}
+                \caption{Uso normal}
+                \label{fig:conexion-sandbox}
+            \end{figure}
+            
+            El usuario está registrado, ya que en caso contrario, no podría acceder a esta funcionalidad del sistema.
+            
+            \begin{itemize}
+                \item El usuario que ha accedido a la plataforma quiere encender un laboratorio.
+                \item Se informa al servidor de dicha acción y se consulta en la base de datos la información de dicho entorno virtualizado (ID, nombre, características de construcción, tiempo de vida...).
+                \item Una vez obtenido dicha información, se procesa y se inicia la construcción de una instancia del laboratorio.
+                \item Finalmente, tras haberse construido el entorno, el usuario recibe un mensaje con los datos de conexión y puede proceder a conectarse al entorno a través de SSH.
+            \end{itemize}
+            
+            \newpage
     
     
     \section{Modelado de actividades y transiciones}
         \label{sec:modelado-actividades-transiciones}
+
+        Los diagramas mostrados a continuación presentan las actividades que puede realizar un usuario en la plataforma y las transiciones entre dichas actividades.
+        
+        Estos diagramas se han desarrollado utilizando la herramienta \textit{draw.io}.
         
         \subsection{Tratamiento de usuarios}
         
@@ -1246,7 +1250,7 @@
                     \label{fig:inicio-usuario}
                 \end{subfigure}
                 \caption{Modelado de actividades y transiciones}
-                \label{fig:actividades-transiciones}
+                \label{fig:tratamiento-usuarios}
             \end{figure}
             
             Los diagramas presentados en esta sección definen la gestión de usuarios que permite el registro e inicio de sesión de los mismos en la plataforma.
@@ -1268,48 +1272,138 @@
                 \label{fig:consulta-documentacion}
             \end{figure}
             
-            El diagrama presentado en esta sección define el consumo de contenido de la plataforma por parte de un usuario, esté registrado o no, ya que el contenido instructivo de la plataforma se considera público, al contrario que el uso de las \textit{sandboxes} que requerirá un registro por parte del usuario.
+            El diagrama presentado en esta sección define el consumo de contenido de la plataforma por parte de un usuario, esté registrado o no, ya que el contenido instructivo de la plataforma se considera público, al contrario que el uso de los laboratorios que requerirá un registro por parte del usuario.
             
             El proceso de consulta de documentación es bastante simple: un usuario puede consumir contenido de forma continua, pero al estar dividido por conceptos, necesitará cambiar de ubicación dentro de la plataforma para poder seguir accediendo a contenido nuevo.
             
             \newpage
             
             
-        \subsection{Tratamiento de \textit{sandboxes}}
+        \subsection{Tratamiento de laboratorios}
         
             \begin{figure}[h]
                 \centering
-                
                 \begin{subfigure}{0.45\textwidth}
                     \centering
-                    
                     \includegraphics[scale=0.115]{images/Diagramas/Actividades y transiciones 4.png}
-                    
-                    \caption{Creación de una \textit{sandbox}}
-                    \label{fig:creacion-sandbox}
+                    \caption{Creación de un laboratorio}
+                    \label{fig:creacion-laboratorio}
                 \end{subfigure}
-
                 \hfill
-                
                 \begin{subfigure}{0.45\textwidth}
                     \centering
-                    
-                    \includegraphics[scale=0.10]{images/Diagramas/Actividades y transiciones 5.png}
-                    
-                    \caption{Destrucción de una \textit{sandbox}}
-                    \label{fig:destruccion-sandbox}
+                    \includegraphics[scale=0.115]{images/Diagramas/Actividades y transiciones 5.png}
+                    \caption{Destrucción de un laboratorio}
+                    \label{fig:destruccion-laboratorio}
                 \end{subfigure}
-                
-                \caption{Tratamiento de \textit{sandboxes}}
-                \label{fig:tratamiento-sandboxes}
+                \caption{Tratamiento de laboratorios}
+                \label{fig:tratamiento-laboratorios}
             \end{figure}
             
             Los diagramas presentados en esta sección definen la gestión de entornos virtualizados de la plataforma.
             
-            El proceso de creación de una \textit{sandbox} iniciará pulsando un botón, preferiblemente ubicado al final de un contenido instructivo descrito anteriormente en \textit{Consulta de la documentación} \ref{sec:consulta-documentacion}, debiendo verificar que es posible crear dicha \textit{sandbox}.
+            El proceso de creación de un laboratorio iniciará pulsando un botón, preferiblemente ubicado al final de un contenido instructivo descrito anteriormente en \textit{Consulta de la documentación} \ref{sec:consulta-documentacion}, debiendo verificar que es posible crear dicho laboratorio.
             
-            El proceso de destrucción de una \textit{sandbox} seguirá el mismo proceso que el anterior, pero realizará la opción opuesta.
+            El proceso de destrucción de un laboratorio seguirá el mismo proceso que el anterior, pero realizará la opción opuesta.
+
+            \newpage
+
+
+            \begin{figure}[h]
+                \centering
+
+                \includegraphics[scale=0.125]{images/Diagramas/iniciar.png}
+                \caption{Inicio de un laboratorio desde el sitio web}
+                    \label{fig:inicio-laboratorio}
+            \end{figure}
+
+            Este diagrama representa un uso normal de la plataforma, donde el usuario accede a la página web y desea iniciar un laboratorio para probar el concepto tratado en la página informativa.
+
+            Se detallan a continuación los pasos que se llevan a cabo:
+
+            \begin{enumerate}
+                \item El usuario solicita crear un laboratorio para probar el concepto tratado en la página informativa pulsando el botón de inicio, ejecutando algunas de las funcionalidades de la plataforma definidas en \texttt{functions.php}.
+
+                \item Se comprueba en la base de datos que el usuario activo no tiene ningún otro laboratorio activo; si lo tuviera, mostraría una advertencia y un enlace a la página del laboratorio activo en la sección \textit{Laboratorio} de la página.
+
+                \item Se obtiene un puerto disponible en el servidor y se hace una llamada al sistema para crear un contenedor Docker mapeando su puerto 22 (SSH por defecto) con el puerto obtenido. La ejecución del comando en el sistema devuelve la ID del contenedor creado, almacenándola en \texttt{functions.php}.
+
+                \item Se vuelve a llamar al sistema para extraer los datos de dicho contenedor usando el ID del paso anterior, porque en el paso anterior el contenedor todavía no existía y por tanto, no era posible extraer información.
+                
+                \item Se registran los datos recopilados en la base de datos en formato JSON para usar una única celda de la tabla y poder extraerlos cómodamente en \texttt{functions.php}.
+
+                \item Se cambia el estado de la sección \textit{Laboratorio} de la página: se añade la IP de la plataforma (en este caso, \textit{localhost}), el puerto del sistema asociado al contenedor y se cambia el botón de la sección para que ahora detenga el laboratorio.
+            \end{enumerate}
+
+            Para facilitar la interpretación, no se han contemplado los errores que pueden ocurrir durante el proceso.
             
+            \newpage
+
+
+            \begin{figure}
+                \centering
+
+                \includegraphics[scale=0.125]{images/Diagramas/detener.png}
+                \caption{Destrucción de un laboratorio desde el sitio web}
+                    \label{fig:detener-laboratorio}
+            \end{figure}
+
+            Este diagrama representa un uso normal de la plataforma, donde el usuario accede a la página web y desea detener el laboratorio activo.
+
+            Se detallan a continuación los pasos que se llevan a cabo:
+
+            \begin{enumerate}
+                \item El usuario solicita detener el laboratorio activo porque ha terminado de usarlo (o quiere usar otro) pulsando el botón de detener, ejecutando algunas de las funcionalidades de la plataforma definidas en \texttt{functions.php}.
+
+                \item Se comprueba en la base de datos que el usuario activo tiene un laboratorio activo y se obtienen los datos del mismo.
+
+                \item Se hace una llamada al sistema para detener el contenedor Docker usando la ID obtenida en el paso anterior. Como todos los contenedores se han creado con la opción \texttt{--rm}, al detenerse son eliminados.
+
+                \item Se hace una llamada al sistema para comprobar que el contenedor se ha eliminado correctamente. Se ejecuta el comando \texttt{docker ps -aq} (lista de IDs de todos los contenedores existentes) y se comprueba que no aparece el contenedor en la lista.
+                
+                \item Se elimina la entrada de la base de datos asociada al laboratorio activo.
+
+                \item Se cambia el estado de la sección \textit{Laboratorio} de la página: se elimina la IP de la plataforma y el puerto del sistema asociado al contenedor y se cambia el botón de la sección para que ahora inicie de nuevo el laboratorio.
+                
+            \end{enumerate}
+
+            Para facilitar la interpretación, no se han contemplado los errores que pueden ocurrir durante el proceso.
+
+            \newpage
+
+
+            \begin{figure}
+                \centering
+
+                \includegraphics[scale=0.15]{images/Diagramas/detener-cron.png}
+                \caption{Destrucción automática de un laboratorio}
+                    \label{fig:detener-cron-laboratorio}
+            \end{figure}
+
+            Este diagrama representa un uso normal de una tarea de cron con la que detener y eliminar automáticamente laboratorios que excedan su tiempo de vida.
+
+            Se detallan a continuación los pasos que se llevan a cabo:
+
+            \begin{enumerate}
+                \item La tarea cron del sistema ejecuta un script de Bash para detener los contenedores Docker que se encuentren activos y cuyo tiempo de vida exceda a 1 hora. Esta tarea se ejecuta cada minuto.
+
+                \item Se hace una llamada al sistema para comprobar si hay contenedores activos y en caso afirmativo, obtener una lista de los IDs de esos contenedores; el script termina en caso de no haber ninguno.
+
+                \item Se usa la lista en un bucle para iterar sobre ella y se hace una llamada al sistema para obtener la hora de creación del contenedor actual. Esos datos se usan para calcular el tiempo de vida del contenedor actual.
+                
+                \item Se comprueba si el tiempo de vida del contenedor actual excede a 1 hora y si es así, se detiene. Como los contenedores han sido creados con la opción \texttt{--rm}, al detenerse son eliminados.
+            \end{enumerate}
+
+            Este script muestra información cada vez que se ejecuta, haciendo que la tarea de cron almacene dicha información en un archivo de texto a modo de registro.
+
+            \begin{figure}[htbp]
+                \centering
+
+                \includegraphics[scale=0.3]{images/Capturas/cron-log.png}
+                \caption{Salida del script de la tarea de cron}
+                    \label{fig:detener-cron-log}
+            \end{figure}
+
             \newpage
         
         
@@ -1596,7 +1690,7 @@
         \textbf{Se modificó la bibliografía: enlace de la ADA \cite{articulo-ada}} \\
         Se sustituyó por una versión corta y equivalente. Ahora todos los enlaces caben en la página.
 
-        \textbf{Se modificó un diagrama: destrucción de una \textit{sandbox} \ref{fig:destruccion-sandbox}} \\
+        \textbf{Se modificó un diagrama: destrucción de una \textit{sandbox} \ref{fig:destruccion-laboratorio}} \\
         Se añadió un caso de control de errores y el tratamiento del tiempo de vida.
 
         \textbf{Se modificó una tabla: Wordpress vs Astro vs Drupal \ref{tab:wordpress-vs-astro-vs-drupal}} \\
