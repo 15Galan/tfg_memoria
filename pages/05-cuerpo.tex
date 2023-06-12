@@ -1622,9 +1622,147 @@
 
 \chapter{Problemas encontrados}
 
+        Esta sección tratará distintas problemáticas que se han abordado durante el desarrollo del proyecto, de forma que se puedan entender mejor las decisiones tomadas y redactadas en los capítulos anteriores de esta memoria.
+
+        No se incluyen aquellos problemas que se hayan resuelto con investigación, como por ejemplo: saber usar algunas funcionalidades de WordPress, qué casos incluir en los laboratorios, etc.
+
     \section{Gestión local de contenedores Docker}
 
-    \section{Limitación de los contenedores Docker}
+        Durante todo el documento se ha hablado de la funcionalidad del proyecto: una plataforma web que permite a los usuarios acceder a laboratorios virtuales donde poner en práctica los conocimientos adquiridos en la propia plataforma, siendo dichos laboratorios contenedores Docker que el usuario puede iniciar o detener a voluntad desde el sitio web, aunque con ciertas limitaciones.
+        
+        Sin embargo, esto planteaba un problema: cómo se podrían gestionar esos contenedores Docker. 
+
+        \subsubsection{Conexión entre el sitio web y Docker}
+
+            El objetivo se trataba de algo tan simple como levantar y destruir contenedores Docker, sin embargo, esto debía hacerse de forma dinámica, ya que el resultado final esperado era tener un sistema donde los contenedores no estuvieran permanentemente activos, sino que fueran activados y desactivados en función de su uso.
+            
+            El uso de estrategias como Kubernetes excedían a las propias necesidades del proyecto, ya que al tratarse de una prueba de concepto no se requería gestionar un gran número de contenedores, ni tampoco era necesario que se organizaran en clústeres; por tanto, se decidió que los contenedores se gestionarían de forma local.
+            \begin{figure}[htbp]
+                \centering
+
+                \includegraphics[width=0.5\textwidth]{images/Diagramas/conexion.png}
+                \caption{Representación gráfica del problema de conexión entre el sitio y los contenedores}
+                \label{fig:conexion}
+            \end{figure}
+
+            Tampoco se usaron APIs ni librerías, ya que se consideró que no era necesario, y que se podía hacer uso de los propios comandos del sistema para gestionar los contenedores Docker; de nuevo, porque la idea en sí resultaba muy simple, aunque más tarde su complejidad fue creciendo.
+
+            El resultado final fue el uso del siguiente comando del sistema, que se ejecuta usando \texttt{shell\_exec()} en el fichero \texttt{functions.php} del sitio web:
+            
+            $$
+            \texttt{docker run --rm -p \${puerto}/22 -d \${laboratorio}:latest}
+            $$
+            
+            El comando recibe un puerto libre del sistema y el nombre del laboratorio (imagen Docker) para crear el contenedor, indicado como variables PHP en la instrucción anterior. La opción \texttt{--rm} se usa para que el contenedor se destruya automáticamente al detenerse, y la opción \texttt{-d} para que se ejecute en segundo plano (aún en segundo plano devolverá la ID del contenedor creado).
+
+
+        \subsubsection{Mapeo de puertos si solapamientos}
+
+            Por otro lado, se presentaba el siguiente problema, ¿cómo se podría gestionar el mapeo de puertos de los contenedores Docker de forma automática?
+
+            Al no usar Kubernetes, no se podía usar el mapeo de puertos de forma dinámica, ya que los contenedores se gestionaban de forma local y no se podía acceder a ellos desde fuera de la máquina donde se ejecutaban, por lo que se decidió que los contenedores se gestionarían de forma local.
+
+            \begin{figure}[htbp]
+                \centering
+
+                \includegraphics[width=0.5\textwidth]{images/Diagramas/puertos.png}
+                \caption{Representación gráfica del problema de mapeo de puertos}
+                \label{fig:mapeo-puertos}
+            \end{figure}
+
+            La opción \texttt{-p} de Docker permite mapear puertos de forma estática, lo que implica que si se usaba un puerto que ya estuviera en uso, la creación del contenedor fallaría.
+            
+            Por otra parte, es posible usar un rango de puertos con esa opción, lo que permite a Docker mapear un puerto del contenedor a cualquier puerto libre en el rango específicado de forma automática y aleatoria (la selección no es secuencial); esta parecería la opción perfecta pero tenía una gran limitación: los puertos libres de un rango de puertos solo son conocidos entre los contenedores de la misma imagen, y por tanto, como cada laboratorio es una imagen Docker de la que se construyen contenedores para los usuarios, esto quiere decir que no era posible determinar todos los puertos libres para todas las imágenes.
+            
+            Otra opción que se contempló fue la de usar el mismo rango para todas las imágenes, pero uno tan amplio que se redujera todo lo posible la posibilidad de colisiones de puertos entre contenedores de distintas imágenes; sin embargo, esta opción fue descartada porque, aunque pudiera haber sido efectiva en esta prueba de concepto, no dejaba de existir la posibilidad de que se produjeran colisiones, y por tanto, no se consideró una solución aceptable.
+
+            El uso de ficheros \texttt{docker-compose.yml} también era muy restrictivo, ya que no permitía la gestión dinámica de puertos; para ser más específicos, este fichero almacena una configuración a la que se puede llegar usando combinaciones de opciones y valores de comandos Docker, por lo que no añade ninguna funcionalidad adicional, sino que solo permite almacenar una configuración. Aquí se reptite exactamente el mismo problema de las colisiones descrito en el párrafo anterior.
+
+            Finalmente, se optó por generar puertos disponibles usando código en \texttt{functions.php}: se define un rango inicial \texttt{(5555 - 9999)} predefinido y para cada laboratorio que quiere iniciar un usuario, se busca en la base de datos qué puertos están siendo ocupados por otros laboratorios, se calcula la diferencia entre el rango inicial y los puertos ocupados, y se selecciona un puerto aleatorio dentro de ese rango.
+
+            Como el puerto obtenido se usa para el laboratorio, al almacenarse esa información en la base de datos, el puerto queda registrado; del mismo modo cuando el usuario o la tarea de cron destruyan un laboratorio, los datos serán liberados de la base de datos y el puerto volverá a estar disponible para su uso.
+
+
+    \section{Limitaciones del uso de contenedores y Docker}
+        
+        Cuando una persona piensa en la ciberseguridad, se imagina la clásica imagen de un hacker tecleando comandos en una pantalla llena de terminales, pero lo cierto es que aunque muchas herramientas se usan como scripts o comandos, no todas son así y algunas requieren una interfaz gráfica para su uso.
+
+        Sin embargo, ocurre que para este caso concreto, no podrían usarse contenedores para aplicaciones que se usen con GUI. Los contenedores pueden llegar a ejecutar aplicaciones gráficas, pero esto implicaría que los usuarios descargaran la imagen y ellos crearan los contenedores, porque si no, estarían abriendo la aplicación en el servidor, donde no tienen acceso más allá de del acceso al contenedor por SSH.
+
+        En algunas ocasiones es posible ejecutar una GUI a través del navegador, lo que sumado al mapeo de puertos, podría permitir que el usuario accediera a la aplicación, pero esto no es posible en todos los casos y además, no es una solución que se pueda aplicar de forma genérica.
+        
+        Por otra parte, existe la limitación actual de solo abrir y mapear un puerto por contenedor, teniendo que tomar la decisión sobre qué hacer en cada caso o qué finalidad tiene el laboratorio: entorno virtualizado con herramientas preinstaladas y casos de uso para dichas herramientas, o contenedor vulnerable con el que trabajar desde una máquina virtual propia del usuario.
+
+
+    \section{Procesos bajo el usuario \texttt{www-data}}
+
+        Al no usar una herramienta externa como Kubernetes, todos los procesos se realizan de forma local, por lo que el usuario que ejecuta los comandos es el usuario que ejecuta el servidor web, en este caso, \texttt{www-data}.
+
+        Esto quiere decir que para que el proyecto funcione, el usuario \texttt{www-data} debe ser el que inicie el servicio de Docker, por lo que debe tener permisos para ello.
+
+        \begin{figure}[htbp]
+            \centering
+
+            \includegraphics[width=0.75\textwidth]{images/Capturas/comandos/systemctl.png}
+            \caption{Comando para iniciar el servicio de Docker como \texttt{www-data}}
+            \label{fig:servicio-docker}
+        \end{figure}
+
+        Por otra parte, también necesario añadir el usuario \texttt{www-data} al grupo \texttt{docker} para que pueda ejecutar los comandos de Docker.
+
+        \begin{figure}[!htbp]
+            \centering
+
+            \includegraphics[width=0.75\textwidth]{images/Capturas/comandos/usermod.png}
+            \caption{Cómo añadir el usuario \texttt{www-data} al grupo \texttt{docker}}
+            \label{fig:usermod}
+        \end{figure}
+
+        Una vez añadido, puede comprobarse que el usuario \texttt{www-data} pertenece al grupo \texttt{docker} usando el comando \texttt{groups} o el comando \texttt{id}.
+
+        \begin{figure}[htbp]
+            \centering
+            \begin{subfigure}[!htbp]{\textwidth}
+                \centering
+
+                \includegraphics[width=0.75\textwidth]{images/Capturas/comandos/groups.png}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[!htbp]{\textwidth}
+                \centering
+
+                \includegraphics[width=0.75\textwidth]{images/Capturas/comandos/id.png}
+            \end{subfigure}
+
+            \caption{Comprobación de que el usuario \texttt{www-data} pertenece al grupo \texttt{docker}}
+            \label{fig:grupo-docker}
+        \end{figure}
+
+        Además, del mismo modo, tendrá que crear previamente todas las imágenes de los laboratorios para que aparezcan disponibles en Docker y pueda utilizarlas: las imágenes Docker creadas por un usuario solo son visibles para ese usuario, por lo que si el usuario \texttt{www-data} no crea las imágenes, no podrá usarlas.
+
+        Durante el desarrollo del proyecto se creó un repositorio para la creación de los laboratorios y se incluyó un script con el que actualizar las imágenes de laboratorios en el servidor, así como añadir laboratorios que no estuvieran previamente. Este script automatiza el proceso de creación de imágenes, por lo que puede ejecutarse del mismo modo que se ha mostrado con las capturas anteriores.
+
+        \begin{figure}[!htbp]
+            \centering
+
+            \includegraphics[width=0.5\textwidth]{images/Capturas/comandos/instalacion.png}
+            \caption{Creación y actualización de las imágenes del proyecto}
+            \label{fig:instalacion}
+        \end{figure}
+
+        Y por último, pasa lo mismo con la tarea de cron que automatiza la destrucción de los laboratorios: debe ser el usuario \texttt{www-data} quien defina y active la tarea de cron.
+
+        \begin{figure}[!htbp]
+            \centering
+
+            \includegraphics[width=0.5\textwidth]{images/Capturas/comandos/crontab.png}
+            \caption{Comando para editar la tarea de cron como \texttt{www-data}}
+            \label{fig:crontab}
+        \end{figure}
+
+        \cleardoublepage
+
+
     
 \chapter{Resultados}
 
