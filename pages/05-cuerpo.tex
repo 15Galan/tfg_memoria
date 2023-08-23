@@ -1398,217 +1398,194 @@
             \newpage
         
         
-    \section{Catálogo de conceptos}
-        \label{sec:catalogo}
+\chapter{Catálogo de conceptos}
+    \label{sec:catalogo}
 
-        A continuación se muestra una serie de conceptos que se consideran básicos para todo usuario que quiera aprender sobre pentesting. El catálogo incluye conceptos genéricos, ataques más comunes y algunos casos más específicos para que el usuario pueda tener una visión general de las posibilidades que ofrece el sector de la ciberseguridad.
+    A continuación se muestra una serie de conceptos que se consideran básicos para todo usuario que quiera aprender sobre pentesting. El catálogo incluye conceptos genéricos, ataques más comunes y algunos casos más específicos para que el usuario pueda tener una visión general de las posibilidades que ofrece el sector de la ciberseguridad.
 
-        Cada concepto incluye una pequeña descripción, el motivo de inclusión al sitio web y una breve descripción de la funcionalidad de un laboratorio asociado.
+    Cada concepto incluye una pequeña descripción, el motivo de inclusión al sitio web y una breve descripción de la funcionalidad de un laboratorio asociado.
 
-        También, cabe destacar que el texto mostrado en este documento en relación a los conceptos no se corresponde con la versión final -más elaborada y detallada- del sitio web del proyecto, ya que está orientado a la memoria y no al usuario final.
+    También, cabe destacar que el texto mostrado en este documento en relación a los conceptos no se corresponde con la versión final -más elaborada y detallada- del sitio web del proyecto, ya que está orientado a la memoria y no al usuario final.
 
-        \subsection{Introducción básica a Linux y Bash scripting}
-            \label{sec:catalogo-linux-bash}
+    \section{Introducción básica a Linux y Bash scripting}
+        \label{sec:catalogo-linux-bash}
 
-            Linux es un sistema operativo de código abierto basado en UNIX creado en 1991, y aunque inicialmente fue desarrollado para ordenadores personales, actualmente se utiliza en una gran variedad de dispositivos (servidores, dispositivos móviles, sistemas embebidos...).
+        Linux es un sistema operativo de código abierto basado en UNIX creado en 1991, y aunque inicialmente fue desarrollado para ordenadores personales, actualmente se utiliza en una gran variedad de dispositivos (servidores, dispositivos móviles, sistemas embebidos...).
 
-            Por otro lado, Bash es un lenguaje de scripting que se ejecuta en la terminal de Linux, y que permite automatizar tareas de forma sencilla.
+        Por otro lado, Bash es un lenguaje de scripting que se ejecuta en la terminal de Linux, y que permite automatizar tareas de forma sencilla.
 
-            Este proyecto está orientado a aquellos usuarios que quieren empezar en el sector de la ciberseguridad, por lo que se ha considerado adecuado incluir una breve introducción tanto para Linux como para scripting con Bash: la primera, porque resulta evidente el abundante uso de sistemas operativos basados en Linux en el sector; y la segunda, porque es el lenguaje de scripting más utilizado en dichos sistemas operativos.
+        Este proyecto está orientado a aquellos usuarios que quieren empezar en el sector de la ciberseguridad, por lo que se ha considerado adecuado incluir una breve introducción tanto para Linux como para scripting con Bash: la primera, porque resulta evidente el abundante uso de sistemas operativos basados en Linux en el sector; y la segunda, porque es el lenguaje de scripting más utilizado en dichos sistemas operativos.
 
-            \begin{tabular}{|m{0.45\linewidth}|m{0.45\linewidth}|}                
-                \hline
-                \textbf{Linux} & \textbf{Bash} \\
-                \hline
-                Estructura y función de los directorios & Ejecución de comandos \\
-                Permisos de archivos y directorios & Variables \\
-                Gestión de procesos & Estructuras de control \\
-                Gestión de usuarios y grupos & Funciones \\
-                Gestión de paquetes & Expresiones regulares \\
-                Gestión de servicios & \\
-                \hline
-            \end{tabular}
+        \begin{tabular}{|m{0.45\linewidth}|m{0.45\linewidth}|}                
+            \hline
+            \textbf{Linux} & \textbf{Bash} \\
+            \hline
+            Estructura y función de los directorios & Ejecución de comandos \\
+            Permisos de archivos y directorios & Variables \\
+            Gestión de procesos & Estructuras de control \\
+            Gestión de usuarios y grupos & Funciones \\
+            Gestión de paquetes & Expresiones regulares \\
+            Gestión de servicios & \\
+            \hline
+        \end{tabular}
 
-            \paragraph{Laboratorio}
+        \paragraph{Laboratorio}
 
-                Un entorno virtualizado que usara un sistema operativo basado en UNIX donde el usuario pudiera revisar y manipular su contenido, así como ejecutar comandos de Bash.
+            Un entorno virtualizado que usara un sistema operativo basado en UNIX donde el usuario pudiera revisar y manipular su contenido, así como ejecutar comandos de Bash.
 
-                Este entorno podría ser útil para aquellos usuarios que no dispongan de un sistema operativo basado en UNIX, o que no quieran modificar el suyo para realizar pruebas.
+            Este entorno podría ser útil para aquellos usuarios que no dispongan de un sistema operativo basado en UNIX, o que no quieran modificar el suyo para realizar pruebas.
 
-                Se podrían plantear las siguientes opciones:
-                
-                \begin{itemize}
-                    \item Una serie de ficheros preparados para que el usuario comprobara el funcionamiento de los permisos y pudiera modificarlos.
-                    \item Solicitar al usuario datos e información del sistema operativo extraíbles mediante comandos de Bash.
-                    \item Incluir scripts de prueba que realizaran distintas funciones y que mostraran los distintos aspectos del lenguaje.
-                \end{itemize}
-
-
-        \subsection{OSINT y Esteganografía}
-
-            La inteligencia de código abierto (\textit{Open Source INTelligence}) es una técnica de investigación que se basa en la obtención de información a partir de fuentes de acceso público. Esta técnica se utiliza en el sector de la ciberseguridad para obtener información sobre un objetivo, como puede ser una persona, una empresa o una organización, con el objetivo de realizar un ataque posterior.
-
-            La esteganografía es una técnica de ocultación de información dentro de un archivo, como puede ser una imagen, un vídeo o un archivo de audio. Esta técnica se utiliza en el sector de la ciberseguridad para ocultar información sensible dentro de archivos que no levanten sospechas, como puede ser una imagen de perfil de una red social, un vídeo de YouTube o un archivo de audio de Spotify.
-
-            Ambas técnicas suelen ir de la mano y son bastante comunes aplicarlas en situaciones reales, por lo que se ha considerado adecuado incluir las para que el usuario pueda familiarizarse con ellas.
-                
-            \paragraph{Laboratorio}
-
-                Un entorno virtualizado que incluyera una serie de archivos con información oculta que el usuario pudiera extraer mediante distintas herramientas de esteganografía.
-
-                Previamente, se mostraría en la sección teórica algunas herramientas online y de escritorio que permiten extraer información oculta de archivos.
-
-                Se podrían plantear las siguientes opciones:
-                
-                \begin{itemize}
-                    \item Ocultar información en distintos archivos, haciendo que el usuario ponga en práctica lo aprendido acerca de técnicas y herramientas de OSINT junto a esteganografía.
-                \end{itemize}
-
+            Se podrían plantear las siguientes opciones:
             
-            \subsection{Hash-cracking y Fuerza Bruta}
-
-                El hash-cracking es una técnica de ataque que se utiliza para obtener la contraseña original a partir de un hash.
-
-                La fuerza bruta es una técnica de hacking en la que se intenta adivinar una contraseña o credencial de acceso probando diferentes combinaciones hasta encontrar la correcta.
-                
-                Estos ataques suelen ser automatizados y pueden ser extremadamente efectivos si el atacante tiene suficiente tiempo y recursos. No obstante, ambas técnicas son utilizadas con frecuencia en los tests de intrusión para comprobar la seguridad y robustez de una contraseña.
-
-                Estos conceptos del catálogo van de la mano con los siguientes, pero se ha considerado adecuado separarlos porque estos se centran más en la obtención de contraseñas, mientras que los siguientes se centran justo en lo contrario, en la creación de contraseñas robustas. 
-
-                \paragraph{Laboratorio}
-
-                    Un entorno virtualizado que incluyera una serie de hashes con distintos algoritmos y diccionarios de contraseñas.
-
-                    Se podrían plantear las siguientes opciones:
-                    
-                    \begin{itemize}
-                        \item Incluir usuarios en el sistema con contraseñas conocidas y solicitar al usuario obtenerlas con fuerza bruta usando diccionarios de contraseñas.
-                        \item Incluir diversos hashes de algoritmos disintos y solicitar al usuario obtener las contraseñas originales mediante hash-cracking.
-                    \end{itemize}
+            \begin{itemize}
+                \item Una serie de ficheros preparados para que el usuario comprobara el funcionamiento de los permisos y pudiera modificarlos.
+                \item Solicitar al usuario datos e información del sistema operativo extraíbles mediante comandos de Bash.
+                \item Incluir scripts de prueba que realizaran distintas funciones y que mostraran los distintos aspectos del lenguaje.
+            \end{itemize}
 
 
-            \subsection{Criptografía y Cifrado}
+    \section{OSINT y Esteganografía}
 
-                La criptografía es una técnica que se utiliza para cifrar y descifrar información, cuyo objetivo es que solo el emisor y el receptor puedan acceder a ella.
+        La inteligencia de código abierto (\textit{Open Source INTelligence}) es una técnica de investigación que se basa en la obtención de información a partir de fuentes de acceso público. Esta técnica se utiliza en el sector de la ciberseguridad para obtener información sobre un objetivo, como puede ser una persona, una empresa o una organización, con el objetivo de realizar un ataque posterior.
 
-                El cifrado es una técnica que se utiliza para codificar información, con el objetivo de que solo el emisor y el receptor puedan acceder a ella.
+        La esteganografía es una técnica de ocultación de información dentro de un archivo, como puede ser una imagen, un vídeo o un archivo de audio. Esta técnica se utiliza en el sector de la ciberseguridad para ocultar información sensible dentro de archivos que no levanten sospechas, como puede ser una imagen de perfil de una red social, un vídeo de YouTube o un archivo de audio de Spotify.
 
-                Ambas técnicas son utilizadas con frecuencia en los tests de intrusión para comprobar la seguridad y robustez de una contraseña.
+        Ambas técnicas suelen ir de la mano y son bastante comunes aplicarlas en situaciones reales, por lo que se ha considerado adecuado incluir las para que el usuario pueda familiarizarse con ellas.
+            
+        \paragraph{Laboratorio}
 
-                Estos conceptos del catálogo van de la mano con los anteriores, pero se ha considerado adecuado separarlos porque estos se centran más en la creación de contraseñas robustas, mientras que los anteriores se centran justo en lo contrario, en la obtención de contraseñas. 
+            Un entorno virtualizado que incluyera una serie de archivos con información oculta que el usuario pudiera extraer mediante distintas herramientas de esteganografía.
 
-                \paragraph{Laboratorio}
+            Previamente, se mostraría en la sección teórica algunas herramientas online y de escritorio que permiten extraer información oculta de archivos.
 
-                    Un entorno virtualizado que incluyera una serie de archivos cifrados y que el usuario pudiera descifrar mediante distintas herramientas de criptografía y cifrado.
-
-                    Se podrían plantear las siguientes opciones:
-                    
-                    \begin{itemize}
-                        \item Incluir archivos cifrados con distintos algoritmos y solicitar al usuario descifrarlos mediante distintas herramientas de criptografía.
-                        \item Incluir archivos cifrados con distintos algoritmos y solicitar al usuario descifrarlos mediante distintas herramientas de cifrado.
-                    \end{itemize}
+            Se podrían plantear las siguientes opciones:
+            
+            \begin{itemize}
+                \item Ocultar información en distintos archivos, haciendo que el usuario ponga en práctica lo aprendido acerca de técnicas y herramientas de OSINT junto a esteganografía.
+            \end{itemize}
 
         
-        \subsection{Escalada de privilegios en Linux}
+        \section{Hash-cracking y Fuerza Bruta}
 
-            La escalada de privilegios es una técnica de hacking que se utiliza para obtener acceso a sistemas o recursos que normalmente estarían restringidos por permisos de seguridad. Esta técnica se utiliza cuando un atacante ya ha obtenido acceso a un sistema con un conjunto limitado de permisos, pero necesita obtener permisos adicionales para llevar a cabo acciones malintencionadas.
-                
-            En este tipo de ataque, el atacante busca explotar vulnerabilidades en el sistema operativo o en las aplicaciones instaladas para obtener permisos de administrador o de otro usuario privilegiado. Una vez que se obtienen estos permisos, el atacante puede tener acceso a información confidencial, instalar malware o tomar el control total del sistema.
+            El hash-cracking es una técnica de ataque que se utiliza para obtener la contraseña original a partir de un hash.
+
+            La fuerza bruta es una técnica de hacking en la que se intenta adivinar una contraseña o credencial de acceso probando diferentes combinaciones hasta encontrar la correcta.
+            
+            Estos ataques suelen ser automatizados y pueden ser extremadamente efectivos si el atacante tiene suficiente tiempo y recursos. No obstante, ambas técnicas son utilizadas con frecuencia en los tests de intrusión para comprobar la seguridad y robustez de una contraseña.
+
+            Estos conceptos del catálogo van de la mano con los siguientes, pero se ha considerado adecuado separarlos porque estos se centran más en la obtención de contraseñas, mientras que los siguientes se centran justo en lo contrario, en la creación de contraseñas robustas. 
 
             \paragraph{Laboratorio}
 
-                Un entorno virtualizado que incluyera un sistema Linux con vulnerabilidades de escalada de privilegios registradas y replicables usando GTFOBins.
+                Un entorno virtualizado que incluyera una serie de hashes con distintos algoritmos y diccionarios de contraseñas.
 
                 Se podrían plantear las siguientes opciones:
                 
                 \begin{itemize}
-                    \item Ganar acceso a una shell root usando \texttt{find}.
-                    \item Ganar acceso a una shell root usando \texttt{sudo}.
-                    \item Ganar acceso a una shell root usando una tarea de cron.
+                    \item Incluir usuarios en el sistema con contraseñas conocidas y solicitar al usuario obtenerlas con fuerza bruta usando diccionarios de contraseñas.
+                    \item Incluir diversos hashes de algoritmos disintos y solicitar al usuario obtener las contraseñas originales mediante hash-cracking.
                 \end{itemize}
 
-        
-        \subsection{Introducción a Redes y Protocolos}
 
-            Una red de ordenadores es un conjunto de dispositivos electrónicos conectados entre sí a través de un medio, que intercambian información y comparten recursos.
-            
-            Los protocolos de red definen un conjunto de reglas y convenciones para lelvar a cabo la comunicación entre dispositivos en una red. Los protocolos de red incluyen mecanismos para la autenticación, la transferencia de datos, la detección de errores y la corrección de errores, y la señalización.
+        \section{Criptografía y Cifrado}
 
-            Al igual que pasó con la sección \textit{Introducción básica a Linux y Bash scripting} \ref{sec:catalogo-linux-bash}, esta podría consistir en una introducción a conceptos relevantes sobre este campo, ya que será más útil en el resto de componenentes del catálogo.
+            La criptografía es una técnica que se utiliza para cifrar y descifrar información, cuyo objetivo es que solo el emisor y el receptor puedan acceder a ella.
 
-            
-        \subsection{Análisis de tráfico}
-            
-            Esta es una técnica de ciberseguridad que implica la monitorización y el examen de los datos que fluyen a través de una red de comunicaciones; puede incluir la recopilación de información sobre el origen y el destino de los datos, el tipo de protocolo utilizado, la cantidad de datos transmitidos y otros metadatos relacionados con el tráfico... y puede ser utilizado para detectar patrones de actividad sospechosa en una red, como la transferencia de grandes cantidades de datos o la comunicación con direcciones IP o puertos inusuales. También puede ser utilizado para identificar amenazas específicas, como ataques de denegación de servicio o intentos de acceso no autorizado a sistemas.
-            
-            El análisis de tráfico puede llevarse a cabo utilizando herramientas de software especializadas que pueden recopilar y analizar los datos de la red en tiempo real. Estas herramientas pueden generar alertas automáticas cuando se detecta actividad sospechosa y proporcionar informes detallados sobre el tráfico de red.
-            
-            Cabe resaltar que el análisis de tráfico puede presentar desafíos legales y de privacidad, ya que puede involucrar la monitorización de datos confidenciales, por lo que es importante asegurarse de que cualquier análisis de tráfico se lleve a cabo de manera legal y ética y que se respeten las políticas de privacidad y seguridad de la organización.
+            El cifrado es una técnica que se utiliza para codificar información, con el objetivo de que solo el emisor y el receptor puedan acceder a ella.
+
+            Ambas técnicas son utilizadas con frecuencia en los tests de intrusión para comprobar la seguridad y robustez de una contraseña.
+
+            Estos conceptos del catálogo van de la mano con los anteriores, pero se ha considerado adecuado separarlos porque estos se centran más en la creación de contraseñas robustas, mientras que los anteriores se centran justo en lo contrario, en la obtención de contraseñas. 
 
             \paragraph{Laboratorio}
 
-                Un entorno virtualizado que incluyera algunas herramientas con las que generar tráfico de red, para que el usuario pueda conectarse a él e intercambiar tráfico usando su propio entorno virtualizado o
+                Un entorno virtualizado que incluyera una serie de archivos cifrados y que el usuario pudiera descifrar mediante distintas herramientas de criptografía y cifrado.
 
                 Se podrían plantear las siguientes opciones:
+                
+                \begin{itemize}
+                    \item Incluir archivos cifrados con distintos algoritmos y solicitar al usuario descifrarlos mediante distintas herramientas de criptografía.
+                    \item Incluir archivos cifrados con distintos algoritmos y solicitar al usuario descifrarlos mediante distintas herramientas de cifrado.
+                \end{itemize}
+
+    
+    \section{Escalada de privilegios en Linux}
+
+        La escalada de privilegios es una técnica de hacking que se utiliza para obtener acceso a sistemas o recursos que normalmente estarían restringidos por permisos de seguridad. Esta técnica se utiliza cuando un atacante ya ha obtenido acceso a un sistema con un conjunto limitado de permisos, pero necesita obtener permisos adicionales para llevar a cabo acciones malintencionadas.
+            
+        En este tipo de ataque, el atacante busca explotar vulnerabilidades en el sistema operativo o en las aplicaciones instaladas para obtener permisos de administrador o de otro usuario privilegiado. Una vez que se obtienen estos permisos, el atacante puede tener acceso a información confidencial, instalar malware o tomar el control total del sistema.
+
+        \paragraph{Laboratorio}
+
+            Un entorno virtualizado que incluyera un sistema Linux con vulnerabilidades de escalada de privilegios registradas y replicables usando GTFOBins.
+
+            Se podrían plantear las siguientes opciones:
+            
+            \begin{itemize}
+                \item Ganar acceso a una shell root usando \texttt{find}.
+                \item Ganar acceso a una shell root usando \texttt{sudo}.
+                \item Ganar acceso a una shell root usando una tarea de cron.
+            \end{itemize}
+
+    
+    \section{Introducción a Redes y Protocolos}
+
+        Una red de ordenadores es un conjunto de dispositivos electrónicos conectados entre sí a través de un medio, que intercambian información y comparten recursos.
+        
+        Los protocolos de red definen un conjunto de reglas y convenciones para lelvar a cabo la comunicación entre dispositivos en una red. Los protocolos de red incluyen mecanismos para la autenticación, la transferencia de datos, la detección de errores y la corrección de errores, y la señalización.
+
+        Al igual que pasó con la sección \textit{Introducción básica a Linux y Bash scripting} \ref{sec:catalogo-linux-bash}, esta podría consistir en una introducción a conceptos relevantes sobre este campo, ya que será más útil en el resto de componenentes del catálogo.
+
+        
+    \section{Análisis de tráfico}
+        
+        Esta es una técnica de ciberseguridad que implica la monitorización y el examen de los datos que fluyen a través de una red de comunicaciones; puede incluir la recopilación de información sobre el origen y el destino de los datos, el tipo de protocolo utilizado, la cantidad de datos transmitidos y otros metadatos relacionados con el tráfico... y puede ser utilizado para detectar patrones de actividad sospechosa en una red, como la transferencia de grandes cantidades de datos o la comunicación con direcciones IP o puertos inusuales. También puede ser utilizado para identificar amenazas específicas, como ataques de denegación de servicio o intentos de acceso no autorizado a sistemas.
+        
+        El análisis de tráfico puede llevarse a cabo utilizando herramientas de software especializadas que pueden recopilar y analizar los datos de la red en tiempo real. Estas herramientas pueden generar alertas automáticas cuando se detecta actividad sospechosa y proporcionar informes detallados sobre el tráfico de red.
+        
+        Cabe resaltar que el análisis de tráfico puede presentar desafíos legales y de privacidad, ya que puede involucrar la monitorización de datos confidenciales, por lo que es importante asegurarse de que cualquier análisis de tráfico se lleve a cabo de manera legal y ética y que se respeten las políticas de privacidad y seguridad de la organización.
+
+        \paragraph{Laboratorio}
+
+            Un entorno virtualizado que incluyera algunas herramientas con las que generar tráfico de red, para que el usuario pueda conectarse a él e intercambiar tráfico usando su propio entorno virtualizado o
+
+            Se podrían plantear las siguientes opciones:
+
+            \begin{itemize}
+                \item Incluir \texttt{ftp} para que el usuario pueda ver el tráfico -en texto claro- generado al transferir archivos.
+            \end{itemize}
+
+
+    \section{Conceptos extra}
+
+        Estos elementos del catálogo son algo más específicos, pero se han incluido porque son conceptos que se suelen encontrar en el mundo de la ciberseguridad y que pueden ser interesantes de conocer.
+
+        \subsection{Bypass}
+
+            Esta técnica se utiliza para evitar un mecanismo de seguridad o restricción, y puede ser utilizada por atacantes para eludir las medidas de seguridad de un sistema o para evadir las restricciones de acceso a los recursos de un sistema.
+
+            \paragraph{Laboratorio}
+
+                Un entorno virtualizado que incluyera un sistema con algún tipo de restricción de acceso a un recurso, para que el usuario pudiera intentar eludir dicha restricción.
 
                 \begin{itemize}
-                    \item Incluir \texttt{ftp} para que el usuario pueda ver el tráfico -en texto claro- generado al transferir archivos.
+                    \item Un servidor de Git con la vulnerabilidad CVE-2017-8386.
                 \end{itemize}
 
 
-        \subsection{Conceptos a revisar}
-
-            \subsubsection{Escaneo de puertos y enumeración de servicios}
+        \subsection{Ransomware}
         
-                El escaneo de puertos es una técnica donde se envían paquetes a un rango de puertos de un sistema con el objetivo de encontrar aquellos que están abiertos y escuchando conexiones; esta técnica se utiliza para descubrir posibles vulnerabilidades en sistemas informáticos y redes.
-                
-                La enumeración de servicios, por otro lado, es el proceso de identificación y catalogación de los servicios que se están ejecutando en un sistema informático. Los servicios son programas que se ejecutan en segundo plano en un sistema informático y que se utilizan para proporcionar una funcionalidad específica.
-                
-                
-            \subsubsection{Inyección SQL}
-                
-                La inyección SQL es una técnica de ataque que se utiliza para explotar vulnerabilidades en las aplicaciones web que interactúan con bases de datos. Esta técnica se basa en la inserción de código SQL malintencionado en los campos de entrada de una aplicación, con el fin de obtener acceso no autorizado a los datos almacenados en la base de datos o incluso tomar el control del servidor.
-                
-                La inyección SQL se aprovecha de la falta de validación o sanitización de los datos de entrada que son utilizados en las consultas SQL. Cuando los datos de entrada no son validados correctamente, los atacantes pueden introducir código SQL malintencionado que es ejecutado por la aplicación. Esto puede permitir a los atacantes extraer información confidencial, realizar modificaciones en la base de datos o incluso tomar el control total del servidor.
+            El ransomware es un tipo de malware que se utiliza para cifrar los archivos de un sistema informático y exigir un rescate a cambio de la clave de descifrado. Este tipo de malware se propaga a través de archivos adjuntos de correo electrónico, sitios web maliciosos o a través de vulnerabilidades en el sistema operativo o las aplicaciones instaladas.
             
+            El ransomware puede ser especialmente peligroso porque puede cifrar los archivos de un sistema informático y exigir un rescate a cambio de la clave de descifrado. Esto puede causar graves daños a las organizaciones, ya que puede provocar la pérdida de datos importantes o incluso la interrupción de las operaciones comerciales.
+
+            Esta sección pretende enseñar al usuario lo sencillo que es desarrollar un ransomware al mismo tiempo que se muestra lo verdaderamente peligroso que puede llegar a ser.
             
-            \subsubsection{Ataques de \textit{buffer overflow}}
-                
-                Un ataque de \textit{buffer overflow} es una técnica de explotación de vulnerabilidades en la memoria de un programa que permite a un atacante ejecutar código malicioso en un sistema. El ataque se produce cuando un programa intenta escribir datos en un buffer de memoria, pero la cantidad de datos escritos excede la capacidad del buffer, permitiendo al atacante escribir un bloque de código malicioso en el buffer y sobreescribir la dirección de retorno de la función, para que apunte al código malicioso en lugar de volver a la función llamada originalmente.
-                
-                Este tipo de ataque puede ser especialmente peligroso si el programa original que se está ejecutando tiene privilegios elevados, ya que el código malicioso puede ejecutarse con esos mismos privilegios. Por lo tanto, los ataques de \textit{buffer overflow} pueden ser utilizados para obtener acceso no autorizado a un sistema o para ejecutar código malicioso en un sistema.
-
-
-        \subsection{Conceptos extra}
-
-            Estos elementos del catálogo son algo más específicos, pero se han incluido porque son conceptos que se suelen encontrar en el mundo de la ciberseguridad y que pueden ser interesantes de conocer.
-
-            \subsubsection{Bypass}
-
-                Esta técnica se utiliza para evitar un mecanismo de seguridad o restricción, y puede ser utilizada por atacantes para eludir las medidas de seguridad de un sistema o para evadir las restricciones de acceso a los recursos de un sistema.
-
-                \paragraph{Laboratorio}
-
-                    Un entorno virtualizado que incluyera un sistema con algún tipo de restricción de acceso a un recurso, para que el usuario pudiera intentar eludir dicha restricción.
-
-                    \begin{itemize}
-                        \item Un servidor de Git con la vulnerabilidad CVE-2017-8386.
-                    \end{itemize}
-
-
-            \subsubsection{Ransomware}
+            \paragraph{Laboratorio}
             
-                El ransomware es un tipo de malware que se utiliza para cifrar los archivos de un sistema informático y exigir un rescate a cambio de la clave de descifrado. Este tipo de malware se propaga a través de archivos adjuntos de correo electrónico, sitios web maliciosos o a través de vulnerabilidades en el sistema operativo o las aplicaciones instaladas.
-                
-                El ransomware puede ser especialmente peligroso porque puede cifrar los archivos de un sistema informático y exigir un rescate a cambio de la clave de descifrado. Esto puede causar graves daños a las organizaciones, ya que puede provocar la pérdida de datos importantes o incluso la interrupción de las operaciones comerciales.
-
-                Esta sección pretende enseñar al usuario lo sencillo que es desarrollar un ransomware al mismo tiempo que se muestra lo verdaderamente peligroso que puede llegar a ser.
-                
-                \paragraph{Laboratorio}
-                
-                    Un entorno virtualizado con un ransomware ejecutable por el usuario.
-            
-            \cleardoublepage
+                Un entorno virtualizado con un ransomware ejecutable por el usuario.
+        
+        \cleardoublepage
 
 
 \chapter{Problemas encontrados}
