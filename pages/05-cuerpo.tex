@@ -1588,7 +1588,184 @@
         \cleardoublepage
 
 
-\chapter{Problemas encontrados}
+
+\chapter{Resultados}
+    
+    \section{Conclusiones}
+
+        La realización de este proyecto me ha permitido profundizar en el mundo de la ciberseguridad, así como en el desarrollo web y la virtualización con Docker; considero que me ha servido para ampliar mis conocimientos en estas áreas y para aprender nuevas técnicas y herramientas que no conocía.
+    
+        Personalmente, tenía 2 objetivos principales al llevar a cabo este proyecto: ampliar mi conocimiento sobre ciberseguridad y pentesting; y aprender sobre Docker.
+
+        Respecto al primer objetivo, he podido adquirir más conocimientos sobre algunos conceptos que ya conocía, como: OSINT, esteganografía y fuerza bruta; pero también he podido avanzar en aquellos otros conceptos en los que considero que era necesario aprender más, como: el análisis de tráfico, la escalada de privilegios y el hash-cracking.
+        
+        Por otra parte, también me ha resultado útil para revisar algunos conceptos tratados durante la carrera o debido a la misma, como Bash scripting y redes.
+
+        Respecto al segundo objetivo, he aprendido a usar Docker y he sido testigo no solo de la potencia de esta herramienta, sino de la infinidad de posibilidades que esta plantea, tanto en el ámbito de desarrollo, como en el de producción de sistemas y servicios.
+
+        Si bien no ha sido necesario un uso avanzado de Docker para este proyecto, sí he investigado y aprendido acerca de todas sus otras funcionalidades, como los volúmenes, las redes y los ficheros \textit{dockercompose}.
+
+        Por último, con este proyecto también he adquirido experiencia en el desarrollo web a través de una de las herramientas más usadas: WordPress. Nunca trabajé con ella, por lo que considero que ha sido una buena oportunidad para aprender más sobre esta herramienta y cómo funcionan los sitios web construidos sobre ella.
+
+    
+    \section{Futuras líneas de trabajo}
+        \label{sec:futuras-lineas-trabajo}
+
+        Este proyecto ha consistido en el desarrollo de una plataforma de introducción al pentesting, pero durante el mismo, se han planteado diversas ideas que podrían ser implementadas en un futuro para mejorar la plataforma.
+
+        \subsection{Expansión del contenido de pentesting}
+
+            Actualmente la plataforma describe 12 conceptos que cubren los aspectos descritos en el Catálogo \ref{sec:catalogo}, pero se podrían describir y añadir más conceptos junto a sus laboratorios, para ampliar el contenido de la plataforma y ofrecer más experiencias instructivas a los usuarios.
+
+            Por ejemplo: simulación de nuevos ataques, explotación de vulnerabilidades, etc.
+        
+        \subsection{Optimización de la plataforma}
+
+            Actualmente, la plataforma está construida sobre WordPress, pero se podría plantear la posibilidad de desarrollarla desde cero, ya que WordPress es una herramienta muy potente, pero también muy pesada y compleja, por lo que podría ser interesante desarrollar una plataforma más ligera y personalizada.
+
+            Por otra parte, también existen herramientas alternativas que han sido diseñadas específicamente para crear plataformas de CTFs, como: Mellivora \cite{mellivora}, CTFd \cite{ctfd}, Root The Box \cite{root-the-box}, etc.
+
+            \paragraph{Importante}
+            
+                Cabe destacar que \textbf{este proyecto no es una plataforma de CTFs}, ni debe serlo, ya que los laboratorios planteados quedan a disposición completa del usuario para que los use como desee; sin embargo, sí podría ser interesante investigar estas herramientas y quizás, aplicar modificaciones para que las pruebas virtualizadas no requieran de una bandera, convirtiendo la plataforma en una herramienta de aprendizaje y no de competición.
+            
+        \subsection{Generalización del contenido}
+            
+            El contenido inicial de la plataforma está enfocado al pentesting, pero podría establecerse una temática genérica para abarcar muchos más conceptos de distintas áreas de la seguridad.
+            
+            Por ejemplo: administración de sistemas, análisis de malware, desarrollo seguro, hacking web, etc. diferentes ramas y especializaciones de ciberseguridad.
+            
+            Esto daría lugar a una plataforma más eficiente y parecida a otras ya existentes, pero manteniendo la diferencia que se fomentaba al inicio del proyecto en la sección Objetivos \ref{sec:objetivos}: una plataforma ligera, \textit{open-source} y fácilmente extensible, que permita a los usuarios aprender y practicar conceptos de ciberseguridad mediante laboratorios.
+
+        \subsection{Organización de contenido}
+        
+            Elaboración de \textit{módulos} o \textit{rutas} de aprendizaje que permitan al usuario seguir un orden lógico al adquirir conocimientos, en lugar de elegir un conceptos al azar o tratar de asumir un orden por su cuenta.
+
+            Por ejemplo: un módulo de introducción a redes, otro de ciber-defensa, etc; una ruta para aprender sobre herramientas de fuerza bruta y explorar sus posibilidades, otra para herramientas como IDS o IPS, etc.
+
+            Esto podría favorecer a la velocidad de aprendizaje del usuario, ya que no tendría que pensar en qué concepto aprender a continuación, sino que podría seguir una ruta de aprendizaje establecida por la plataforma, diseñada para que las conexiones entre las temáticas sean más claras y lógicas.
+
+            \cleardoublepage
+
+            
+            
+\chapter{Diario}
+    \label{cap:diario}
+
+    Cada sección representa los cambios realizados hasta cada reunión.
+
+    \section{7ª reunión: 12/04/2023}
+    
+        \textbf{Se crearon los capítulos: Diario \ref{cap:diario} y Borrador \ref{cap:investigacion-previa}} \\
+        El primero, para incluir un historial de mi progreso; el segundo, para subir contenido WIP (\textit{work in progress}) al documento.
+        
+        \textbf{Se modificó el diagrama: casos de uso \ref{fig:casos-uso}} \\
+        Se aplicó un estilo estándar y se mejoraron las dependencias.
+        
+        \textbf{Se creó la sección: Arquitectura \ref{sec:arquitectura}} \\
+        Se incluyeron nuevos diagramas y contenido descriptivo sobre la arquitectura del proyecto.
+        
+        \textbf{Se creó la sección: Modelado de Actividades y Transacciones \ref{sec:modelado-actividades-transiciones}} \\
+        Se incluyeron nuevos diagramas y contenido descriptivo de los procesos del proyecto.
+        
+        \textbf{Se modificó la sección: Ingeniería de Requisitos \ref{cap:ingenieria-requisitos}} \\
+        Se descompusieron los requisitos anteriores en requisitos más atómicos y se han añadido nuevos requisitos no funcionales.
+    
+        \textbf{Se creó la sección: Estructura global del proyecto \ref{sec:estructura-global}} \\
+        Se incluyó una descripción de lo que se plantea realizar con este TFG separándolo en 3 pilares fundamentales.
+    
+        \textbf{Se creó la sección: Proceso Creativo \ref{sec:proceso-creativo}} \\
+        Se incluyó una descripción de distintos planteamientos sobre la plataforma web que tuvieron lugar durante la investigación previa del TFG. \\
+        El nombre de esta sección puede variar, pero al ser un borrador, se elegió algo \textit{llamativo}.
+    
+        \textbf{Se inició la creación de un prototipo de la plataforma} \\
+        Se está configurando una página WordPress (WIP).\\
+        Se está practicando con contenedores de Docker (WIP)\\ 
+        Se está tratando de levantar un contenedor a través de la página (WIP).
+
+        \newpage
+
+
+    \section{8ª reunión: 03/05/2023}
+
+        \textbf{Se añadió una página: contraportada} \\
+        Se unió el documento PDF de la contraportada del campus virtual al final del documento.
+
+        \textbf{Se modificó la bibliografía: enlace de la ADA \cite{articulo-ada}} \\
+        Se sustituyó por una versión corta y equivalente. Ahora todos los enlaces caben en la página.
+
+        \textbf{Se modificó un diagrama: destrucción de una \textit{sandbox} \ref{fig:destruccion-laboratorio}} \\
+        Se añadió un caso de control de errores y el tratamiento del tiempo de vida.
+
+        \textbf{Se modificó una tabla: Wordpress vs Astro vs Drupal \ref{tab:wordpress-vs-astro-vs-drupal}} \\
+        Se combinaron las tablas Wordpress vs Astro y Wordpress vs Drupal, de forma que aunque se mantienen sus secciones separadas (porque las comparaciones fueron distintas), solo hay una tabla como referencia.
+
+        \textbf{Se modificó la sección: Futuras líneas de trabajo \ref{sec:futuras-lineas-trabajo}} \\
+        Se reformuló el último párrafo, haciendo más hincapié en la posible expansión de la plataforma con más recursos y conceptos fuera del ámbito del pentesting, convirtiéndola no en la temática principal, sino en una de múltiples temáticas.
+
+        \textbf{Se modificó la sección: Jupyter 5.2.2} \\
+        Se estableció una conclusión para el descarte de esta tecnología en el proyecto.
+
+        \textbf{Se modificó la sección: WordPress 1.5.2} \\
+        Se añadieron nuevas referencias a la bibliografía.
+
+        \textbf{Se creó un laboratorio: Bypass} \\
+        Define el concepto de Bypass y la vulnerabilidad CVE-2017-8386 como ejemplo. \\
+        El laboratorio contiene dicha vulnerabilidad para explotarla.
+        
+        \textbf{Se creó un laboratorio: Fuerza Bruta} \\
+        Define el concepto de Fuerza Bruta, tipos de ataques más comunes y herramientas. \\
+        El laboratorio contiene las herramientas \texttt{nmap} e \texttt{hydra} para que el usuario pueda obtener las credenciales del usuario administrador del entorno.
+        
+        \textbf{Se arregló la sección: Dependencias de contenedores Docker} \\
+        La sección hacía referencia a \textit{contenedores} de Docker cuando en realidad se trataban de \textit{imágenes}. Ahora la sección cuenta con rigor y se ha optimizado el texto.
+
+        \newpage
+
+    \section{9ª reunión: 18/05/2023}
+
+        \textbf{Se movió el capítulo: Borrador} \\
+        El capítulo ahora es \textit{Investigación previa} (\ref{cap:investigacion-previa}).
+
+        \newpage
+
+
+    \section{10ª reunión: 15/06/2023}
+
+        \textbf{Sección de Alojamiento descrita} \\
+        Se añadieron imágenes.
+
+        \textbf{Logos de la UMA renombrados y movidos a la carpeta Logos} \\
+        Ahora están todos los logos juntos.
+
+        \textbf{Secciones Proceso Creativo y Análisis de Tecnologías intercambiadas} \\
+        Tiene más sentido analizar las tecnologías una vez se ha pasado por un proceso creativo para decidir qué hacer.
+
+        \textbf{Sección de Proceso Creativo mejorada} \\
+        Más contenido y mejor redactado.
+
+        \textbf{Sección de Metodología mejorada} \\
+        Más contenido junto a imágenes del proceso.
+
+        \textbf{Contenido de la sección Catálogo mejorado} \\
+        Se describieron brevemente los conceptos y sus posibles laboratorios.
+
+        \textbf{Contenido de la sección Alojamiento mejorado} \\
+        Se incluyeron descripciones e imágenes.
+
+        \textbf{Diagramas de Modelado de Actividades y Transiciones mejorados} \\
+        Se incluyeron nuevos diagramas, más específicos.
+
+        \textbf{Sección de Problemas Encontrados añadida} \\
+        Describe, guía y documenta los problemas encontrados durante el desarrollo del proyecto así como la toma de decisiones frente a ellos.
+
+        \cleardoublepage
+
+
+
+\begin{appendices}
+
+    \chapter{Toma de decisiones}
 
         Esta sección tratará distintas problemáticas que se han abordado durante el desarrollo del proyecto, de forma que se puedan entender mejor las decisiones tomadas y redactadas en los capítulos anteriores de esta memoria.
 
