@@ -35,7 +35,7 @@
             \label{fig:notion-resumen}
         \end{figure}
 
-        Se ha utilizado la herramienta \textbf{Notion} para llevar a cabo este proyecto, una aplicación que permite la creación de notas -llamadas páginas- cuyo contenido puede ser variado: texto, imágenes, tablas, listas, archivos, enlaces... y que además, permite la creación de bases de datos que pueden ser utilizadas para crear tablones Kanban, diagramas de Gantt, y otros tipos de vistas dinámicas.
+        Se ha utilizado la herramienta \textbf{Notion} para llevar a cabo este proyecto, una aplicación que permite la creación de notas -llamadas páginas- cuyo contenido puede ser variado: texto, imágenes, tablas, listas, archivos, enlaces, etc. y que además, permite la creación de bases de datos que pueden ser utilizadas para crear tablones Kanban, diagramas de Gantt, y otros tipos de vistas dinámicas.
 
         Notion también cuenta con otra funcionalidad recientemente añadida: la integración con GitHub \cite{github}. Esto permite añadir a cualquier página de Notion una base de datos generada a partir del estado de un repositorio remoto -\textit{Issues}, \textit{Projects} y \textit{Pull Requests}-, permitiendo además la manipulación y la actualización del contenido en ambas direcciones, todo sincronizado a tiempo real. 
 
@@ -134,7 +134,7 @@
             
             WordPress es utilizado por muchos grandes sitios web y empresas, como el blog de noticias TIME \cite{time-web} y el sitio web de la BBC America \cite{bbc-america-web}. También es utilizado por miles de bloggers y pequeñas empresas en todo el mundo debido a su facilidad de uso y capacidad de personalización.
 
-            Una de las principales ventajas de WordPress es que es muy fácil de usar y no se requiere experiencia técnica previa para comenzar a utilizarlo. Otra ventaja de WordPress es su personalización gracias a la gran cantidad de temas y complementos (plugins) disponibles. Estos complementos permiten añadir nuevas funcionalidades a un sitio web, como formularios de contacto, galerías de imágenes, integración con redes sociales... evitando la necesidad de programar dichas funcionalidades de forma manual.
+            Una de las principales ventajas de WordPress es que es muy fácil de usar y no se requiere experiencia técnica previa para comenzar a utilizarlo. Otra ventaja de WordPress es su personalización gracias a la gran cantidad de temas y complementos (plugins) disponibles. Estos complementos permiten añadir nuevas funcionalidades a un sitio web, como formularios de contacto, galerías de imágenes, integración con redes sociales, etc. evitando la necesidad de programar dichas funcionalidades de forma manual.
             
             Por otra parte, WordPress es muy \textit{SEO-friendly}, incluyendo características que ayudan a mejorar el posicionamiento en los motores de búsqueda, como la capacidad de editar títulos, descripciones y etiquetas de metadatos, así como la posibilidad de utilizar herramientas de optimización de motores de búsqueda (SEO).
             
@@ -1410,7 +1410,7 @@
     \section{Introducción básica a Linux y Bash scripting}
         \label{sec:catalogo-linux-bash}
 
-        Linux es un sistema operativo de código abierto basado en UNIX creado en 1991, y aunque inicialmente fue desarrollado para ordenadores personales, actualmente se utiliza en una gran variedad de dispositivos (servidores, dispositivos móviles, sistemas embebidos...).
+        Linux es un sistema operativo de código abierto basado en UNIX creado en 1991, y aunque inicialmente fue desarrollado para ordenadores personales, actualmente se utiliza en una gran variedad de dispositivos (servidores, dispositivos móviles, sistemas embebidos, etc.).
 
         Por otro lado, Bash es un lenguaje de scripting que se ejecuta en la terminal de Linux, y que permite automatizar tareas de forma sencilla.
 
@@ -1420,12 +1420,11 @@
             \hline
             \textbf{Linux} & \textbf{Bash} \\
             \hline
-            Estructura y función de los directorios & Ejecución de comandos \\
+            Estructura y función de los directorios & Shebang \\
             Permisos de archivos y directorios & Variables \\
-            Gestión de procesos & Estructuras de control \\
+            La terminal y comandos básicos & Estructuras de control \\
             Gestión de usuarios y grupos & Funciones \\
-            Gestión de paquetes & Expresiones regulares \\
-            Gestión de servicios & \\
+            & Expresiones regulares \\
             \hline
         \end{tabular}
 
@@ -1539,7 +1538,7 @@
         
     \section{Análisis de tráfico}
         
-        Esta es una técnica de ciberseguridad que implica la monitorización y el examen de los datos que fluyen a través de una red de comunicaciones; puede incluir la recopilación de información sobre el origen y el destino de los datos, el tipo de protocolo utilizado, la cantidad de datos transmitidos y otros metadatos relacionados con el tráfico... y puede ser utilizado para detectar patrones de actividad sospechosa en una red, como la transferencia de grandes cantidades de datos o la comunicación con direcciones IP o puertos inusuales. También puede ser utilizado para identificar amenazas específicas, como ataques de denegación de servicio o intentos de acceso no autorizado a sistemas.
+        Esta es una técnica de ciberseguridad que implica la monitorización y el examen de los datos que fluyen a través de una red de comunicaciones; puede incluir la recopilación de información sobre el origen y el destino de los datos, el tipo de protocolo utilizado, la cantidad de datos transmitidos y otros metadatos relacionados con el tráfico, etc. y puede ser utilizado para detectar patrones de actividad sospechosa en una red, como la transferencia de grandes cantidades de datos o la comunicación con direcciones IP o puertos inusuales. También puede ser utilizado para identificar amenazas específicas, como ataques de denegación de servicio o intentos de acceso no autorizado a sistemas.
         
         El análisis de tráfico puede llevarse a cabo utilizando herramientas de software especializadas que pueden recopilar y analizar los datos de la red en tiempo real. Estas herramientas pueden generar alertas automáticas cuando se detecta actividad sospechosa y proporcionar informes detallados sobre el tráfico de red.
         
@@ -1782,6 +1781,7 @@
             El objetivo se trataba de algo tan simple como levantar y destruir contenedores Docker, sin embargo, esto debía hacerse de forma dinámica, ya que el resultado final esperado era tener un sistema donde los contenedores no estuvieran permanentemente activos, sino que fueran activados y desactivados en función de su uso.
             
             El uso de estrategias como Kubernetes excedían a las propias necesidades del proyecto, ya que al tratarse de una prueba de concepto no se requería gestionar un gran número de contenedores, ni tampoco era necesario que se organizaran en clústeres; por tanto, se decidió que los contenedores se gestionarían de forma local.
+
             \begin{figure}[htbp]
                 \centering
 
@@ -1801,7 +1801,7 @@
             El comando recibe un puerto libre del sistema y el nombre del laboratorio (imagen Docker) para crear el contenedor, indicado como variables PHP en la instrucción anterior. La opción \texttt{--rm} se usa para que el contenedor se destruya automáticamente al detenerse, y la opción \texttt{-d} para que se ejecute en segundo plano (aún en segundo plano devolverá la ID del contenedor creado).
 
 
-        \subsubsection{Mapeo de puertos si solapamientos}
+        \subsubsection{Mapeo de puertos sin solapamientos}
 
             Por otro lado, se presentaba el siguiente problema, ¿cómo se podría gestionar el mapeo de puertos de los contenedores Docker de forma automática?
 
