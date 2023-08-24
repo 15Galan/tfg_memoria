@@ -13,3 +13,79 @@
 \usepackage{multirow}
 \usepackage{array}
 \usepackage{pdfpages}
+\usepackage{listings}   % Código de programación
+\usepackage{xcolor}     % Colores para aplicar al código
+
+
+% Definición de colores para PHP
+\definecolor{php_keywords}{RGB}{0,0,255}
+\definecolor{php_strings}{RGB}{0,128,0}
+\definecolor{php_comments}{RGB}{128,128,128}
+
+% Definición de colores para Dockerfile
+\definecolor{dockerfile_keywords}{RGB}{0,0,255}
+\definecolor{dockerfile_strings}{RGB}{0,128,0}
+\definecolor{dockerfile_comments}{RGB}{128,128,128}
+
+% Definición de colores para Shell
+\definecolor{bash_keywords}{RGB}{255,0,0}
+\definecolor{bash_strings}{RGB}{0,128,0}
+\definecolor{bash_comments}{RGB}{128,128,128}
+
+
+% Configuración del entorno listings para PHP
+\lstdefinestyle{php_style}{
+    language=php,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{php_keywords},
+    stringstyle=\color{php_strings},
+    commentstyle=\color{php_comments},
+    tabsize=4,
+    showstringspaces=false,
+    breaklines=true,
+    frame=shadowbox,
+    backgroundcolor=\color{black!5},
+    captionpos=b
+}
+
+% Configuración del entorno listings para Dockerfile
+\lstdefinestyle{dockerfile_style}{
+    language=bash,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{dockerfile_keywords},
+    stringstyle=\color{dockerfile_strings},
+    commentstyle=\color{dockerfile_comments},
+    tabsize=4,
+    showstringspaces=false,
+    breaklines=true,
+    frame=shadowbox,
+    backgroundcolor=\color{black!5},
+    captionpos=b
+}
+
+% Configuración del entorno listings para Shell
+\lstdefinestyle{bash_style}{
+    language=bash,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{bash_keywords},
+    stringstyle=\color{bash_strings},
+    commentstyle=\color{bash_comments},
+    tabsize=4,
+    showstringspaces=false,
+    breaklines=true,
+    frame=shadowbox,
+    backgroundcolor=\color{black!5},
+    captionpos=b
+}
+
+% Configuración del entorno listings para explicar comandos
+\lstdefinestyle{comment_style}{
+    basicstyle=\ttfamily\small,
+    tabsize=4,
+    showstringspaces=false,
+    breaklines=true,
+    frame=shadowbox,
+    backgroundcolor=\color{white!5},
+    captionpos=b,
+    escapechar=&
+}
