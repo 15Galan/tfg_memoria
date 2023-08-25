@@ -31,6 +31,7 @@
             \centering
 
             \includegraphics[width=0.75\textwidth]{images/Capturas/Notion resumen.png}
+
             \caption{Resumen del estado del proyecto en Notion al momento de la captura}
             \label{fig:notion-resumen}
         \end{figure}
@@ -68,6 +69,7 @@
         
         \newpage
     
+
     \section{Estructura global del proyecto}
         \label{sec:estructura-global}
         
@@ -75,7 +77,9 @@
         
         \begin{figure}[h]
             \centering
+
             \includegraphics[scale=0.30]{images/Diagramas/Estructura global.png}
+            
             \caption{Pilares fundamentales del proyecto}
             \label{fig:estructura-global}
         \end{figure}
@@ -127,7 +131,6 @@
             
             Además del alojamiento de código fuente, GitHub también ofrece herramientas de seguimiento de problemas, donde los desarrolladores pueden reportar y resolver errores, solicitar nuevas características y discutir mejoras en el software. Esto facilita la comunicación y la colaboración entre los usuarios, además de mejorar la calidad del software desarrollado.
             
-            
         \subsection{WordPress}
             
             WordPress \cite{wordpress} es una plataforma de código abierto para la creación y gestión de sitios web que fue publicada en 2003 y desde entonces, se ha convertido en una de las plataformas más populares y utilizadas en todo el mundo, siendo especialmente popular para la creación de blogs, aunque también es utilizada para sitios web corporativos, tiendas en línea, portafolios, entre otros. 
@@ -170,7 +173,6 @@
             Una vez obtenida una imagen, puede usarse Docker para crear un contenedor a partir de ella, lo que implica crear una instancia de aplicación y, por tanto, el entorno en el que se ejecuta; los contenedores de Docker se pueden transferir fácilmente entre diferentes sistemas y entornos, lo que facilita la implementación y el escalado de aplicaciones. Además, Docker proporciona herramientas de administración de contenedores, como la capacidad de iniciar, detener, reiniciar y eliminar contenedores, así como la capacidad de monitorear su uso y rendimiento.
             
             \newpage
-
 
         \subsection{LAMP}
 
@@ -228,7 +230,9 @@
         
         \begin{figure}[h]
             \centering
+
             \includegraphics[width=\textwidth]{images/Capturas/Web de HTB.png}
+
             \caption{Web de Hack The Box}
             \label{fig:HTB-web}
         \end{figure}
@@ -254,7 +258,9 @@
         
         \begin{figure}[h]
             \centering
+
             \includegraphics[width=\textwidth]{images/Capturas/Web de HTB Academy.png}
+            
             \caption{Web de HTB Academy}
             \label{fig:HTB-Academy-web}
         \end{figure}
@@ -272,7 +278,9 @@
         
         \begin{figure}[h]
             \centering
+
             \includegraphics[width=\textwidth]{images/Capturas/Web de THM.png}
+
             \caption{Web de TryHackMe}
             \label{fig:THM-web}
         \end{figure}
@@ -298,7 +306,9 @@
         
         \begin{figure}[h]
             \centering
+
             \includegraphics[width=\textwidth]{images/Capturas/Web de VulnHub.png}
+
             \caption{Web de VulnHub}
             \label{fig:VulnHub-web}
         \end{figure}
@@ -316,7 +326,9 @@
         
         \begin{figure}[h]
             \centering
+
             \includegraphics[width=\textwidth]{images/Capturas/Web de OverTheWire.png}
+
             \caption{Web de OverTheWire}
             \label{fig:OverTheWire-web}
         \end{figure}
@@ -345,14 +357,12 @@
 
         Teniendo eso cuenta, se plantearon las siguientes ideas para afrontar el proyecto.
 
-
         \subsection{Plataforma de CTFs}
 
             La primera idea planteada fue, precisamente, replicar una plataforma de CTFs (Capture The Flag). Esta versión del proyecto se centraría más en enseñar distintos conceptos de la ciberseguridad al usuario, acompañados de una serie de retos que pondrían a prueba los conocimientos adquiridos; algo parecido a las plataformas TryHackMe y HTB Academy mencionadas en el apartado anterior.
 
             Esta idea fue descartada porque ya existen muchas plataformas de CTFs, y se pretendía hacer algo distinto con este proyecto. Se requería un entorno de aprendizaje guiado y como se mencionó anteriormente, los CTFs no suelen ofrecerlo.
 
-        
         \subsection{Plataforma como portal de descargas}
 
             Tomando como ejemplo los retos descargables de la Academia Hacker de Incibe \cite{retos-INCIBE}, se planteó la posibilidad de crear máquinas virtuales y alojarlas en el servidor a modo de elementos descargables; es decir, la plataforma contaría con un sitio web que ofrecería información documentada sobre distintos conceptos de ciberseguridad, pero la virtualización se llevaría a cabo por el propio usuario en su equipo, experimentando localmente.
@@ -363,7 +373,6 @@
 
             Sin embargo, cabe destacar la existencia herramientas que podrían ser de utilidad para este proyecto, como: Vagrant \cite{vagrant}, que permite automatizar la creación y configuración de máquinas virtuales de forma declarativa; y Vagrant Cloud \cite{vagrant-cloud}, que es un repositorio de máquinas virtuales ya configuradas para instalar usando \texttt{vagrant}. También puede ser útil incluir en la plataforma de una guía introductoria a la configuración de una máquina virtual para tests de intrusión (pentesing) con Kali Linux, ya que si bien no es objeto de este proyecto que los usuarios aprendan sobre virtualización, no se puede ignorar el hecho de que es necesario el uso de máquinas virtuales para el sector de la ciberseguridad.
 
-        
         \subsection{Plataforma de laboratorios}
 
             Por último, se planteó crear una plataforma de laboratorios con la que el usuario pudiera acceder a distintos entornos de forma remota, sin necesidad de descargar ni configurar nada en su equipo. La plataforma estaría compuesta de un sitio web donde estaría recogida la documentación, mientras que el servidor alojaría los entornos virtualizados asociados a dicha documentación.
@@ -384,7 +393,6 @@
 
                 Sin embargo, se descartó la idea ya que no constituía una prioridad en el desarrollo del proyecto y sus casos de uso eran muy limitados, puesto que el código verdaderamente importante sería ejecutado en las \textit{sandboxes}.
                 
-
             \subsubsection{JupyterHub}
 
                 JupyterHub \cite{jupyterhub} es una aplicación que permite crear un entorno de Jupyter Notebooks en un servidor remoto, de forma que los usuarios puedan acceder a él a través de un navegador web. Esta aplicación es muy útil para la colaboración y el aprendizaje, ya que permite a los usuarios compartir documentos y ejecutar código en un entorno seguro y controlado.
@@ -395,7 +403,6 @@
                 
                 \newpage
 
-                
         \subsection{Sobre Docker}
 
             Docker, descrito en la sección \ref{sec:docker}, permitiría la creación de contenedores para los distintos laboratorios.
@@ -426,14 +433,15 @@
 
             \begin{figure}[htbp]
                 \centering
+
                 \includegraphics[scale=0.75]{images/Diagramas/Articulo.png}
-                \caption{Contenedor de Wordpress3.2 sobre contenedor con Ubuntu + Apache + MySQL}
+
+                \caption{Contenedor de Wordpress 3.2 sobre contenedor con Ubuntu + Apache + MySQL}
                 \label{fig:articulo}
             \end{figure}
 
             \newpage
             
-
             \subsubsection{Red de contenedores de Docker}
 
                 Inicialmente se interpretó el sistema del artículo anterior como una red de contenedores.
@@ -443,7 +451,6 @@
                 Esto podría lograrse usando Docker Compose \cite{docker-compose}, que permite crear y ejecutar aplicaciones Docker de forma sencilla, usando un archivo YAML que describe los servicios que componen la aplicación, así como las dependencias entre ellos.
 
                 Visto en perspectiva, queda bastante claro que el mecanismo del proyecto planteado en el artículo y el propuesto en esta sección no son similares más allá del uso de contenedores.
-                
                 
             \subsubsection{Dependencia de contenedores de Docker}
 
@@ -504,24 +511,27 @@
 
                 \begin{figure}[!htbp]
                     \centering
+
                     \includegraphics[scale=0.14]{images/Diagramas/Contenedor A.png}
+
                     \caption{Creación de contenedores principales (padres)}
                     \label{fig:contenedor-padre}
                 \end{figure}
                 
                 \begin{figure}[!htbp]
                     \centering
+
                     \includegraphics[scale=0.14]{images/Diagramas/Contenedor B.png}
+
                     \caption{Creación de contenedores secundarios (hijos)}
                     \label{fig:contenedor-hijo}
                 \end{figure}
                 
                 \newpage
 
-
     
     \section{Análisis de Tecnologías}
-        
+
         \subsection{Página web}
 
             \begin{table}[!htbp]
@@ -559,7 +569,6 @@
             \end{table}
 
             Se ha elegido WordPress como la plataforma para la creación de la página web del proyecto debido a sus ventajas en cuanto a facilidad de uso, personalización y escalabilidad, que eran los principales aspectos a tener en cuenta para el desarrollo.
-
             
             \subsubsection{WordPress y Astro}
 
@@ -581,7 +590,6 @@
 
                     La escalabilidad de WordPress es una de sus principales fortalezas y uno de los motivos por los que es una plataforma popular y confiable para la creación de sitios web de cualquier tamaño. Su arquitectura modular y su capacidad para trabajar con bases de datos y servidores de alta gama, la convierten en opción sólida para aquellos que buscan crear sitios web que puedan crecer y adaptarse a sus necesidades en el futuro.
 
-
             \subsubsection{WordPress y Drupal}
 
                 También se tuvo en cuenta Drupal \cite{drupal}, otro CMS \textit{open-source} que se encuentra entre los más populares y que, a pesar de no ser tan conocido como WordPress, también es una opción muy interesante para la creación de páginas web.
@@ -594,7 +602,6 @@
     
                     \newpage
     
-
         \subsection{Base de Datos}
         
             \subsubsection{SQLite vs MySQL}
@@ -647,8 +654,7 @@
                     
                     MySQL ofrece mayor seguridad que SQLite al contar con encriptación de datos. Esto es importante en un proyecto que busca proteger los datos de los usuarios y prevenir posibles ciberataques.
 
-                Además, también se ha tenido en cuenta su integración con WordPress, herramienta sleccionada para la página web de la plataforma, ya que WordPress cuenta con integración inmediata con MySQL desde su instalación.    
-
+                    Además, también se ha tenido en cuenta su integración con WordPress, herramienta seleccionada para la página web de la plataforma, ya que WordPress cuenta con integración inmediata con MySQL desde su instalación.    
 
         \subsection{Alojamiento}
 
@@ -657,7 +663,6 @@
                 Inicialmente, se planteó el uso de un servidor local para el alojamiento de la plataforma web, lo que permite realizar pruebas de forma maś rápida y sencilla, sin necesidad de contratar un servidor externo.
 
                 Actualmente, esta es la opción que se está utilizando para el proyecto, pero se espera trasladarlo a una plataforma cloud para que este sea accesible públicamente, primeramente para beta-testers y posteriormente, usuarios finales.
-
                 
             \subsubsection{Linode}
 
@@ -695,7 +700,6 @@
                     
                     Además, Linode Kubernetes Engine (LKE) es compatible con herramientas y servicios de terceros, lo que permite a los usuarios integrar fácilmente sus aplicaciones con otros servicios en la nube.
 
-
             \subsubsection{Amazon Web Service (AWS)}
                 \label{sec:aws}
 
@@ -728,7 +732,6 @@
     
                         \label{fig:eks-logo}
                     \end{figure}
-
 
             \subsubsection{Google Cloud Platform (GCP)}
 
@@ -813,23 +816,21 @@
     \section{Ingeniería de Requisitos}
         \label{cap:ingenieria-requisitos}
         
-        
-        
         El único actor de la plataforma será el usuario que haga uso de ella, esté o no registrado en la misma, por lo que no se especificará este detalle en los Casos de Uso \ref{sec:casos-uso} puesto que siempre será el mismo.
-        
         
         \subsection{Casos de uso}
             \label{sec:casos-uso}
             
             \begin{figure}[h]
                 \centering
+
                 \includegraphics[scale=0.125]{images/Diagramas/Casos de uso.png}
+
                 \caption{Casos de uso}
                 \label{fig:casos-uso}
             \end{figure}
             
             \newpage
-        
         
         \subsection{Requisitos funcionales}
             \label{sec:requisitos-funcionales}
@@ -838,13 +839,13 @@
             
             Para este proyecto, se han definido los siguientes requisitos en función de los casos de uso mencionados en la sección anterior \ref{sec:casos-uso}:
             
-            
             \subsubsection{Usuarios}
             
                 Requisitos relacionados con la gestión de usuarios y sus datos.
                 
                 \begin{table}[!htbp]
                     \centering
+
                     \begin{tabular}{|c|c|}
                         \hline
                         \textbf{RF - 01} & \textbf{Registro de usuarios} \\
@@ -862,11 +863,13 @@
                             } \\
                         \hline
                     \end{tabular}
+
                     \label{tab:RF1}
                 \end{table}
                 
                 \begin{table}[!htbp]
                     \centering
+
                     \begin{tabular}{|c|c|}
                         \hline
                         \textbf{RF - 02} & \textbf{Inicio de sesión} \\
@@ -876,11 +879,13 @@
                         } \\
                         \hline
                     \end{tabular}
+
                     \label{tab:RF2}
                 \end{table}
                 
                 \begin{table}[!htbp]
                     \centering
+
                     \begin{tabular}{|c|c|}
                         \hline
                         \textbf{RF - 03} & \textbf{Validación de los datos de registro} \\
@@ -897,9 +902,9 @@
                             } \\
                         \hline
                     \end{tabular}
+
                     \label{tab:RF3}
                 \end{table}
-            
             
             \subsubsection{Contenido}
             
@@ -907,6 +912,7 @@
                 
                 \begin{table}[!htbp]
                     \centering
+
                     \begin{tabular}{|c|c|}
                         \hline
                         \textbf{RF - 04} & \textbf{Consulta de contenido} \\
@@ -916,11 +922,11 @@
                         } \\
                         \hline
                     \end{tabular}
+
                     \label{tab:RF4}
                 \end{table}
                 
                 \newpage
-            
             
             \subsubsection{\textit{Sandboxes}}
             
@@ -928,6 +934,7 @@
                 
                 \begin{table}[!htbp]
                     \centering
+
                     \begin{tabular}{|c|c|}
                         \hline
                         \textbf{RF - 05} & \textbf{Creación de \textit{sandboxes}} \\
@@ -943,11 +950,13 @@
                             } \\
                         \hline
                     \end{tabular}
+
                     \label{tab:RF5}
                 \end{table}
                 
                 \begin{table}[!htbp]
                     \centering
+
                     \begin{tabular}{|c|c|}
                         \hline
                         \textbf{RF - 06} & \textbf{Tiempo de vida de las \textit{sandboxes}} \\
@@ -963,11 +972,13 @@
                             } \\
                         \hline
                     \end{tabular}
+
                     \label{tab:RF6}
                 \end{table}
                 
                 \begin{table}[!htbp]
                     \centering
+
                     \begin{tabular}{|c|c|}
                         \hline
                         \textbf{RF - 07} & \textbf{Número máximo de \textit{sandboxes} iniciadas} \\
@@ -983,11 +994,13 @@
                             } \\
                         \hline
                     \end{tabular}
+
                     \label{tab:RF7}
                 \end{table}
                 
                 \begin{table}[!htbp]
                     \centering
+
                     \begin{tabular}{|c|c|}
                         \hline
                         \textbf{RF - 08} & \textbf{Uso de una \textit{sandbox} iniciada} \\
@@ -1004,11 +1017,13 @@
                             } \\
                         \hline
                     \end{tabular}
+
                     \label{tab:RF8}
                 \end{table}
                 
                 \begin{table}[!htbp]
                     \centering
+
                     \begin{tabular}{|c|c|}
                         \hline
                         \textbf{RF - 09} & \textbf{Destrucción de \textit{sandboxes}} \\
@@ -1025,11 +1040,11 @@
                             } \\
                         \hline
                     \end{tabular}
+
                     \label{tab:RF09}
                 \end{table}
                 
                 \newpage
-        
         
         \subsection{Requisitos no funcionales}
             \label{sec:requisitos-nofuncionales}
@@ -1040,6 +1055,7 @@
             
             \begin{table}[!htbp]
                 \centering
+
                 \begin{tabular}{|c|c|}
                     \hline
                     \textbf{RNF - 01} & \textbf{Privacidad de los datos} \\
@@ -1055,11 +1071,13 @@
                         } \\
                     \hline
                 \end{tabular}
+
                 \label{tab:RNF1}
             \end{table}
             
             \begin{table}[!htbp]
                 \centering
+
                 \begin{tabular}{|c|c|}
                     \hline
                     \textbf{RNF - 02} & \textbf{Aislamiento de las \textit{sandboxes}} \\
@@ -1075,11 +1093,13 @@
                         } \\
                     \hline
                 \end{tabular}
+
                 \label{tab:RNF2}
             \end{table}
             
             \begin{table}[!htbp]
                 \centering
+
                 \begin{tabular}{|c|c|}
                     \hline
                     \textbf{RNF - 03} & \textbf{Seguridad de la plataforma} \\
@@ -1095,11 +1115,13 @@
                         } \\
                     \hline
                 \end{tabular}
+
                 \label{tab:RNF3}
             \end{table}
             
             \begin{table}[!htbp]
                 \centering
+
                 \begin{tabular}{|c|c|}
                     \hline
                     \textbf{RNF - 04} & \textbf{Accesibilidad} \\
@@ -1116,11 +1138,13 @@
                         } \\
                     \hline
                 \end{tabular}
+
                 \label{tab:RNF4}
             \end{table}
             
             \begin{table}[!htbp]
                 \centering
+
                 \begin{tabular}{|c|c|}
                     \hline
                     \textbf{RNF - 05} & \textbf{Usabilidad} \\
@@ -1136,11 +1160,13 @@
                         } \\
                     \hline
                 \end{tabular}
+
                 \label{tab:RNF5}
             \end{table}
             
             \begin{table}[H]
                 \centering
+
                 \begin{tabular}{|c|c|}
                     \hline
                     \textbf{RNF - 06} & \textbf{Extensibilidad} \\
@@ -1156,18 +1182,20 @@
                         } \\
                     \hline
                 \end{tabular}
+
                 \label{tab:RNF6}
             \end{table}
             
-            \cleardoublepage
-    
+            \newpage
     
     \section{Arquitectura}
         \label{sec:arquitectura}
         
         \begin{figure}[h]
             \centering
+
             \includegraphics[scale=0.20]{images/Diagramas/Arquitectura.png}
+
             \caption{Arquitectura}
             \label{fig:arquitectura}
         \end{figure}
@@ -1181,7 +1209,6 @@
             Esta plataforma web se ha desarrollado utilizando el gestor de contenidos WordPress, ya que permite crear sitios web de forma rápida y sencilla, sin necesidad de tener conocimientos avanzados de programación. Además, cuenta con una gran comunidad de desarrolladores que crean y mantienen plugins y temas para extender las funcionalidades de la plataforma.
 
             Se ha usado un tema hijo del tema \textit{Divi}, que permite crear sitios web de forma visual, sin necesidad de escribir código. Este tema hijo se ha usado para personalizar el tema \textit{Divi} y adaptarlo a las necesidades de la plataforma. Se seleccionó este tema porque es muy conocido y está muy bien valorado en la comunidad.
-
 
         \subsection{\textit{Back-end}: \texttt{functions.php}}
         
@@ -1197,13 +1224,11 @@
                 
                 Esta tarea se ha implementado directamente en el servidor, ya que se consideró la opción más rápida y sencilla: se ejecuta cada minuto y destruye aquellos laboratorios que hayan excedido su tiempo de vida, liberando recursos en el sistema y permitiendo un uso de contenedores dinámico.
 
-
         \subsection{Base de datos: MySQL}
 
             La base de datos es la parte de la plataforma que se encarga de almacenar la información de los usuarios y de los laboratorios de pruebas; en este caso, se ha usado para almacenar la información de los usuarios registrados en la plataforma y de los laboratorios de pruebas que han sido creados por dichos usuarios.
             
             Se ha usado MySQL como gestor de base de datos, ya que es un sistema de gestión de bases de datos relacional, de código abierto y muy popular. Además, es compatible con WordPress, por lo que se puede acceder a la base de datos desde el fichero \textit{functions.php}.
-        
         
         \subsection{Contenedores Docker: laboratorios de pruebas}
 
@@ -1214,7 +1239,6 @@
             Por otra parte, los laboratorios son construidos a partir de imágenes contruidas con ficheros \texttt{Dockerfile} locales, por lo que pueden crearse nuevos laboratorios de pruebas de forma rápida y sencilla para extender la plataforma.
             
             \newpage
-    
     
     \section{Modelado de actividades y transiciones}
         \label{sec:modelado-actividades-transiciones}
@@ -1227,6 +1251,7 @@
         
             \begin{figure}[h]
                 \centering
+
                 \begin{subfigure}{0.45\textwidth}
                     \centering
                     \includegraphics[scale=0.15]{images/Diagramas/Actividades y transiciones 1.png}
@@ -1240,6 +1265,7 @@
                     \caption{Inicio de sesión de un usuario}
                     \label{fig:inicio-usuario}
                 \end{subfigure}
+
                 \caption{Modelado de actividades y transiciones}
                 \label{fig:tratamiento-usuarios}
             \end{figure}
@@ -1252,13 +1278,14 @@
             
             \newpage
             
-            
         \subsection{Consulta de la documentación}
             \label{sec:consulta-documentacion}
             
             \begin{figure}[h]
                 \centering
+                
                 \includegraphics[scale=0.20]{images/Diagramas/Actividades y transiciones 3.png}
+
                 \caption{Consulta de documentación}
                 \label{fig:consulta-documentacion}
             \end{figure}
@@ -1269,11 +1296,11 @@
             
             \newpage
             
-            
         \subsection{Tratamiento de laboratorios}
         
             \begin{figure}[h]
                 \centering
+                
                 \begin{subfigure}{0.45\textwidth}
                     \centering
                     \includegraphics[scale=0.115]{images/Diagramas/Actividades y transiciones 4.png}
@@ -1287,6 +1314,7 @@
                     \caption{Destrucción de un laboratorio}
                     \label{fig:destruccion-laboratorio}
                 \end{subfigure}
+
                 \caption{Tratamiento de laboratorios}
                 \label{fig:tratamiento-laboratorios}
             \end{figure}
@@ -1299,11 +1327,11 @@
 
             \newpage
 
-
             \begin{figure}[h]
                 \centering
 
                 \includegraphics[scale=0.125]{images/Diagramas/iniciar.png}
+
                 \caption{Inicio de un laboratorio desde el sitio web}
                     \label{fig:inicio-laboratorio}
             \end{figure}
@@ -1330,11 +1358,11 @@
             
             \newpage
 
-
             \begin{figure}
                 \centering
 
                 \includegraphics[scale=0.125]{images/Diagramas/detener.png}
+
                 \caption{Destrucción de un laboratorio desde el sitio web}
                     \label{fig:detener-laboratorio}
             \end{figure}
@@ -1355,18 +1383,17 @@
                 \item Se elimina la entrada de la base de datos asociada al laboratorio activo.
 
                 \item Se cambia el estado de la sección \textit{Laboratorio} de la página: se elimina la IP de la plataforma y el puerto del sistema asociado al contenedor y se cambia el botón de la sección para que ahora inicie de nuevo el laboratorio.
-                
             \end{enumerate}
 
             Para facilitar la interpretación, no se han contemplado los errores que pueden ocurrir durante el proceso.
 
             \newpage
 
-
             \begin{figure}
                 \centering
 
                 \includegraphics[scale=0.15]{images/Diagramas/detener-cron.png}
+
                 \caption{Destrucción automática de un laboratorio}
                     \label{fig:detener-cron-laboratorio}
             \end{figure}
@@ -1391,8 +1418,9 @@
                 \centering
 
                 \includegraphics[scale=0.3]{images/Capturas/cron-log.png}
+
                 \caption{Salida del script de la tarea de cron}
-                    \label{fig:detener-cron-log}
+                \label{fig:detener-cron-log}
             \end{figure}
 
             \newpage
@@ -1406,6 +1434,7 @@
     Cada concepto incluye una pequeña descripción, el motivo de inclusión al sitio web y una breve descripción de la funcionalidad de un laboratorio asociado.
 
     También, cabe destacar que el texto mostrado en este documento en relación a los conceptos no se corresponde con la versión final -más elaborada y detallada- del sitio web del proyecto, ya que está orientado a la memoria y no al usuario final.
+
 
     \section{Introducción básica a Linux y Bash scripting}
         \label{sec:catalogo-linux-bash}
@@ -1464,48 +1493,48 @@
             \end{itemize}
 
         
-        \section{Hash-cracking y Fuerza Bruta}
+    \section{Hash-cracking y Fuerza Bruta}
 
-            El hash-cracking es una técnica de ataque que se utiliza para obtener la contraseña original a partir de un hash.
+        El hash-cracking es una técnica de ataque que se utiliza para obtener la contraseña original a partir de un hash.
 
-            La fuerza bruta es una técnica de hacking en la que se intenta adivinar una contraseña o credencial de acceso probando diferentes combinaciones hasta encontrar la correcta.
+        La fuerza bruta es una técnica de hacking en la que se intenta adivinar una contraseña o credencial de acceso probando diferentes combinaciones hasta encontrar la correcta.
+        
+        Estos ataques suelen ser automatizados y pueden ser extremadamente efectivos si el atacante tiene suficiente tiempo y recursos. No obstante, ambas técnicas son utilizadas con frecuencia en los tests de intrusión para comprobar la seguridad y robustez de una contraseña.
+
+        Estos conceptos del catálogo van de la mano con los siguientes, pero se ha considerado adecuado separarlos porque estos se centran más en la obtención de contraseñas, mientras que los siguientes se centran justo en lo contrario, en la creación de contraseñas robustas. 
+
+        \paragraph{Laboratorio}
+
+            Un entorno virtualizado que incluyera una serie de hashes con distintos algoritmos y diccionarios de contraseñas.
+
+            Se podrían plantear las siguientes opciones:
             
-            Estos ataques suelen ser automatizados y pueden ser extremadamente efectivos si el atacante tiene suficiente tiempo y recursos. No obstante, ambas técnicas son utilizadas con frecuencia en los tests de intrusión para comprobar la seguridad y robustez de una contraseña.
-
-            Estos conceptos del catálogo van de la mano con los siguientes, pero se ha considerado adecuado separarlos porque estos se centran más en la obtención de contraseñas, mientras que los siguientes se centran justo en lo contrario, en la creación de contraseñas robustas. 
-
-            \paragraph{Laboratorio}
-
-                Un entorno virtualizado que incluyera una serie de hashes con distintos algoritmos y diccionarios de contraseñas.
-
-                Se podrían plantear las siguientes opciones:
-                
-                \begin{itemize}
-                    \item Incluir usuarios en el sistema con contraseñas conocidas y solicitar al usuario obtenerlas con fuerza bruta usando diccionarios de contraseñas.
-                    \item Incluir diversos hashes de algoritmos disintos y solicitar al usuario obtener las contraseñas originales mediante hash-cracking.
-                \end{itemize}
+            \begin{itemize}
+                \item Incluir usuarios en el sistema con contraseñas conocidas y solicitar al usuario obtenerlas con fuerza bruta usando diccionarios de contraseñas.
+                \item Incluir diversos hashes de algoritmos disintos y solicitar al usuario obtener las contraseñas originales mediante hash-cracking.
+            \end{itemize}
 
 
-        \section{Criptografía y Cifrado}
+    \section{Criptografía y Cifrado}
 
-            La criptografía es una técnica que se utiliza para cifrar y descifrar información, cuyo objetivo es que solo el emisor y el receptor puedan acceder a ella.
+        La criptografía es una técnica que se utiliza para cifrar y descifrar información, cuyo objetivo es que solo el emisor y el receptor puedan acceder a ella.
 
-            El cifrado es una técnica que se utiliza para codificar información, con el objetivo de que solo el emisor y el receptor puedan acceder a ella.
+        El cifrado es una técnica que se utiliza para codificar información, con el objetivo de que solo el emisor y el receptor puedan acceder a ella.
 
-            Ambas técnicas son utilizadas con frecuencia en los tests de intrusión para comprobar la seguridad y robustez de una contraseña.
+        Ambas técnicas son utilizadas con frecuencia en los tests de intrusión para comprobar la seguridad y robustez de una contraseña.
 
-            Estos conceptos del catálogo van de la mano con los anteriores, pero se ha considerado adecuado separarlos porque estos se centran más en la creación de contraseñas robustas, mientras que los anteriores se centran justo en lo contrario, en la obtención de contraseñas. 
+        Estos conceptos del catálogo van de la mano con los anteriores, pero se ha considerado adecuado separarlos porque estos se centran más en la creación de contraseñas robustas, mientras que los anteriores se centran justo en lo contrario, en la obtención de contraseñas. 
 
-            \paragraph{Laboratorio}
+        \paragraph{Laboratorio}
 
-                Un entorno virtualizado que incluyera una serie de archivos cifrados y que el usuario pudiera descifrar mediante distintas herramientas de criptografía y cifrado.
+            Un entorno virtualizado que incluyera una serie de archivos cifrados y que el usuario pudiera descifrar mediante distintas herramientas de criptografía y cifrado.
 
-                Se podrían plantear las siguientes opciones:
-                
-                \begin{itemize}
-                    \item Incluir archivos cifrados con distintos algoritmos y solicitar al usuario descifrarlos mediante distintas herramientas de criptografía.
-                    \item Incluir archivos cifrados con distintos algoritmos y solicitar al usuario descifrarlos mediante distintas herramientas de cifrado.
-                \end{itemize}
+            Se podrían plantear las siguientes opciones:
+            
+            \begin{itemize}
+                \item Incluir archivos cifrados con distintos algoritmos y solicitar al usuario descifrarlos mediante distintas herramientas de criptografía.
+                \item Incluir archivos cifrados con distintos algoritmos y solicitar al usuario descifrarlos mediante distintas herramientas de cifrado.
+            \end{itemize}
 
     
     \section{Escalada de privilegios en Linux}
