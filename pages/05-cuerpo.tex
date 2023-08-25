@@ -2188,7 +2188,7 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data),999(docker)
         sudo apt-get update -qq
         sudo apt-get install -y vagrant virtualbox > /dev/null 2>&1
     
-         Comprobar si se han instalado correctamente
+        # Comprobar si se han instalado correctamente
         if [[ $? -eq 0 ]]; then
             echo "Paquetes instalados correctamente."
         else
@@ -2199,7 +2199,7 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data),999(docker)
     
     # Crea el directorio para el Vagrantfile.
     function build_directory {
-         Directorio para los archivos de Vagrant
+        # Directorio para los archivos de Vagrant
         if [[ -d $VF_DIR && -f $VF_DIR/Vagrantfile ]]; then
             echo "El directorio seleccionado no esta vacio."
             read -p "Sobreescribirlo? [s/n]: " answer
@@ -2217,14 +2217,6 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data),999(docker)
         fi
     
         mkdir -p $VF_DIR
-    
-        # Directorio para la carpeta compartida
-        # if [ -d $VF_DIR/shared ]; then
-        #     echo "El directorio '$VF_DIR/shared' ya existe."
-        # else
-        #     echo "Creando el directorio '$VF_DIR/shared'..."
-        #     mkdir -p $VF_DIR/shared
-        # fi
     
         # Comprobar si se han creado correctamente
         if [[ $? -eq 0 ]]; then
