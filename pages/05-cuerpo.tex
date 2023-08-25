@@ -1776,7 +1776,7 @@
         
         Sin embargo, esto planteaba un problema: cómo se podrían gestionar esos contenedores Docker. 
 
-        \subsubsection{Conexión entre el sitio web y Docker}
+        \subsection{Conexión entre el sitio web y Docker}
 
             El objetivo se trataba de algo tan simple como levantar y destruir contenedores Docker, sin embargo, esto debía hacerse de forma dinámica, ya que el resultado final esperado era tener un sistema donde los contenedores no estuvieran permanentemente activos, sino que fueran activados y desactivados en función de su uso.
             
@@ -1802,7 +1802,7 @@
             El comando recibe un puerto libre del sistema y el nombre del laboratorio (imagen Docker) para crear el contenedor, indicado como variables PHP en la instrucción anterior. La opción \texttt{--rm} se usa para que el contenedor se destruya automáticamente al detenerse, y la opción \texttt{-d} para que se ejecute en segundo plano (aún en segundo plano devolverá la ID del contenedor creado).
 
 
-        \subsubsection{Mapeo de puertos sin solapamientos}
+        \subsection{Mapeo de puertos sin solapamientos}
 
             Por otro lado, se presentaba el siguiente problema, ¿cómo se podría gestionar el mapeo de puertos de los contenedores Docker de forma automática?
 
