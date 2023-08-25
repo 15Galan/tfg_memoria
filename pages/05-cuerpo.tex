@@ -2023,6 +2023,37 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data),999(docker)
     
     echo
             \end{lstlisting}
+        
+            \newpage
+
+            Con el fin de optimizar los recursos, la plataforma no tendrá laboratorios activos cuando esta no se esté usando, por lo que se ha creado una tarea de cron que se ejecuta cada minuto y comprueba si hay contenedores activos, y en caso de haberlos, comprueba si alguno ha superado el tiempo de vida establecido (1 hora por defecto) y lo destruye.
+
+            El script anterior se encarga de comprobar el tiempo que el contenedor de un laboratorio ha estado activo, y lo destruye cuando este supera el tiempo establecido.
+            
+            El script realiza las siguientes acciones:
+
+            \paragraph{Obtener los contenedores activos}
+            
+                Usando el comando \texttt{docker ps -q} se obtiene una lista de los contenedores activos, pero solo sus IDs, lo que permite recorrerlos de forma más sencilla; esta información se almacena en la variable \texttt{CONTENEDORES}, que se usará para recorrer los contenedores activos.
+
+            Para cada contenedor de la lista anterior, se realizan los siguientes procesos:
+
+            \paragraph{Obtener el tiempo de creación}
+            
+                Usando el comando \texttt{docker inspect --format '\{\{ .State.StartedAt \}\}'} se obtiene el tiempo de creación de un contenedor en formato ISO 8601, que es el formato que usa Docker para almacenar la fecha y hora de creación de un contenedor; esta información se almacena en la variable \texttt{CREACION}.
+
+            \paragraph{Obtener el tiempo de ejecución}
+            
+                Usando el comando \verb|date --date="$CREACION" +%s| se obtiene el tiempo de ejecución de un contenedor en segundos, y usando el comando \verb|date +%s| se obtiene el tiempo actual en segundos; con estos dos valores se calcula la diferencia entre ellos, que es el tiempo que ha estado activo el contenedor; esta información se almacena en la variable \texttt{DIFF} y corresponde a los segundos que han pasado desde que se creó el contenedor hasta el momento actual.
+
+            \paragraph{Comprobar si el contenedor debe detenerse}
+
+                Finalmente, se comprueba si el contenedor ha superado el tiempo de vida establecido, y en caso de haberlo superado, se detiene el contenedor usando el comando \texttt{docker stop \$CONTENEDOR}.
+
+            Cabe destacar que el script muestra la información correspondiente por la pantalla, pero la tarea cron redirige su salida a \texttt{/dev/null}, por lo que no se mostrará nada por pantalla cuando se ejecute la tarea de cron; sin embargo, el script puede ejecutarse manualmente y observar el estado de los contenedores en cualquier momento.
+
+            \newpage
+
 
         \section{Actualización de los laboratorios}
             
@@ -2090,6 +2121,43 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data),999(docker)
         echo "* $image"
     done
                 \end{lstlisting}
+
+            \newpage
+
+            Los entornos virtualizados de la plataforma están compuestos por imágenes Docker, que son creadas a partir de un fichero \texttt{Dockerfile} que contiene las instrucciones necesarias para crear la imagen. Estas imágenes son los laboratorios, y siguiendo la misma estructura planteada en el repositorio de laboratorios, es posible tanto añadir, modificar o eliminar más contenedores a la plataforma.
+
+            Técnicamente, no es necesario que los laboratorios pertenezcan al repositorios, lo esencial es que su imagen Docker esté construida en el sistema y disponible para el usuario \texttt{www-data}. Sin embargo, el repositorio permite gestionar los laboratorios de forma más sencilla, ya que solo es necesario añadir una carpeta con el nombre del laboratorio y el fichero \texttt{Dockerfile} dentro.
+
+            El script anterior contenido en la carpeta \texttt{labs/} del repositorio, y permite hacer un barrido del mismo y crear aquellos laboratorios que no estén presentes en el sistema, así como actualizar aquellos que hayan sido modificados.
+            
+            El script realiza las siguientes acciones:
+
+            \paragraph{Obtener las carpetas del repositorio}
+            
+                Usando el comando \verb|ls -d */| se obtienen todas las carpetas del repositorio, y usando el comando \verb|grep -v '^logs/$'| se filtran todas las carpetas excepto la carpeta \texttt{logs/}, que es donde se almacenan los registros de las ejecuciones del script; finalmente, usando el comando \verb|sed 's#/##'| se elimina el carácter \texttt{/} de cada carpeta, ya que no es necesario para el script. Esto resulta en una lista de nombres que se usarán para crear las imágenes Docker.
+
+            \paragraph{Crear la carpeta de registros}
+
+                Usando el comando \texttt{mkdir -p logs} se crea la carpeta \texttt{logs/} en caso de que no exista, y en caso de existir, no hace nada. Esto hace que se puedan comprobar los registros de ejecuciones anteriores y los fallos en la construcción de las imágenes Docker de los laboratorios.
+
+            Acto seguido, para cada carpeta de la lista obtenida al inicio, se realizan los siguientes procesos:
+
+            \paragraph{Eliminar la imagen anterior}
+
+                Usando el comando \verb|docker images -q $carpeta| se comprueba si existe una imagen con el nombre de la carpeta actual, y en caso de existir, se elimina usando el comando \verb|docker rmi $carpeta|; esto produce que se actualice una imagen existente. La imagen se elimina previamente debido a que si se crea una imagen con el mismo nombre que otra, Docker no elimina la anterior, sino que la renombra a \texttt{<none>}.
+
+            \paragraph{Construir una imagen}
+
+                Usando el comando \texttt{docker build -t \$carpeta \$carpeta/} se construye la nueva imagen Docker usando el fichero \texttt{Dockerfile} de la carpeta actual, y se le asigna el nombre de dicha carpeta; esto permite que la imagen tenga el mismo nombre que la carpeta, y por tanto, que sea más fácil de identificar.
+
+            \paragraph{Almacenar la imagen en una lista}
+
+                Usando el comando \verb|docker images -q $carpeta| se comprueba si existe una imagen con el nombre de la carpeta actual, lo que indicaría que la imagen se creó correctamente, y en caso de existir, se añade el nombre de la carpeta a la variable \texttt{images}, que se usará para mostrar las imágenes creadas al finalizar la ejecución del script.
+
+            Finalmente, se muestran las imágenes creadas en la ejecución del script.
+
+            \newpage
+
 
         \section{Instalación de Kali Linux usando Vagrant}
 
@@ -2186,6 +2254,46 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data),999(docker)
     echo "Fin de la instalacion."
                 \end{lstlisting}
 
+                La plataforma también ofrece a los usuarios una forma de instalar una máquina virtual de Kali Linux usando una herramienta llamada Vagrant, que permite crear y gestionar máquinas virtuales de forma sencilla.
+
+                El script anterior permite realizar la instalación desde cero, instalando Vagrant y VirtualBox, creando un directorio para la máquina virtual y creando la máquina virtual de Kali Linux usando Vagrant.
+
+                Este script se trata de una herramienta de desarrollo para agilizar la ejecución de pruebas; la plataforma ya cuenta con un apartado donde se describen estos mismos pasos, con comandos, para que el usuario pueda replicarlo.
+
+                El script realiza las siguientes acciones:
+
+                \paragraph{Instalar las dependencias}
+
+                    Usando la función \texttt{install\_dependencies} se instalan las dependencias necesarias para la máquina virtual, que en este caso son Vagrant y VirtualBox.
+
+                    Usando el comando \texttt{apt-get update -qq} se actualiza la lista de paquetes disponibles en el sistema sin mostrar información por pantalla, y usando el comando \texttt{apt-get install -y vagrant virtualbox} se instalan los paquetes \texttt{vagrant} y \texttt{virtualbox}, enviando la salida a \texttt{/dev/null} para que no se muestre información por pantalla.
+
+                    Además, se comprueba si la instalación se ha realizado correctamente usando el código de salida del comando anterior, que es 0 si se ha realizado correctamente, y 1 si ha habido algún error; en caso de error, el script se detiene.
+
+                \paragraph{Definir la ubicación del Vagrantfile}
+                
+                    Usando la función \texttt{define\_directory} actualiza la ubicación del Vagrantfile por la ruta recibida como argumento \texttt{\$1} del script; si no se recibe ninguna ruta, se usa la ruta por defecto \texttt{\$HOME/Vagrant/Kali}.
+
+                \paragraph{Crear el directorio}
+
+                    Usando la función \texttt{build\_directory} se crea el directorio donde se almacenará el Vagrantfile, y se comprueba si ya existe un directorio en la ruta seleccionada; en caso de existir, se pregunta al usuario si desea sobreescribirlo, y en caso de no existir, se crea el directorio.
+
+                    Además, se comprueba si el directorio se ha creado correctamente usando el código de salida del comando anterior, que es 0 si se ha realizado correctamente, y 1 si ha habido algún error; en caso de error, el script se detiene.
+
+                \paragraph{Crear la máquina virtual}
+                
+                    Por último, usando la función \texttt{build\_kali} se crea la máquina virtual de Kali Linux usando Vagrant.
+
+                    Usando el comando \texttt{cd \$VF\_DIR} se cambia el directorio actual al directorio donde se almacenará el Vagrantfile.
+                    
+                    Usando el comando \texttt{vagrant init elrey741/kali-linux\_amd64} se inicializa Vagrant en el directorio anterior, y usando el comando \texttt{vagrant up} se levanta la máquina virtual de Kali Linux.
+
+                    Cabe destacar que el comando \texttt{vagrant init} crea un fichero llamado \texttt{Vagrantfile} en el directorio actual, que contiene la configuración de la máquina virtual; este fichero se usa para crear la máquina virtual usando el comando \texttt{vagrant up}, y este último es necesario para que la máquina virtual se cree y se inicie. No es posible construir la máquina virtual sin iniciarla al menos una vez.
+
+                    Además, se comprueba si la máquina virtual se ha creado correctamente usando el código de salida del comando anterior, que es 0 si se ha realizado correctamente, y 1 si ha habido algún error; en caso de error, el script se detiene.
+
+                \newpage
+                
 \end{appendices}
 
 \begin{appendices}
