@@ -391,7 +391,7 @@
             
                 Debido a la naturaleza de este proyecto, se planteó la idea de incluir páginas en la plataforma que fueran Jupyter Notebooks, de esta forma el usuario podría acceder a la página que contendría documentación y código anidado (característica principal de Jupyter), y en ella podría insertar y ejecutar código, así como generar distintos recursos de forma interactiva para que el usuario pudiera experimentar con ella.
 
-                Sin embargo, se descartó la idea ya que no constituía una prioridad en el desarrollo del proyecto y sus casos de uso eran muy limitados, puesto que el código verdaderamente importante sería ejecutado en las \textit{sandboxes}.
+                Sin embargo, se descartó la idea ya que no constituía una prioridad en el desarrollo del proyecto y sus casos de uso eran muy limitados, puesto que el código verdaderamente importante sería ejecutado en los laboratorios de pruebas.
                 
             \subsubsection{JupyterHub}
 
@@ -851,7 +851,7 @@
                         \textbf{RF - 01} & \textbf{Registro de usuarios} \\
                         \hline
                         \multicolumn{2}{|p{15cm}|}{
-                            El sistema debe permitir que los usuarios se registren y creen una cuenta en la plataforma para poder usar las \textit{sandboxes}.
+                            El sistema debe permitir que los usuarios se registren y creen una cuenta en la plataforma para poder usar los laboratorios de pruebas.
                         } \\
                         \hline
                         \multicolumn{2}{|p{15cm}|}{
@@ -875,7 +875,7 @@
                         \textbf{RF - 02} & \textbf{Inicio de sesión} \\
                         \hline
                         \multicolumn{2}{|p{15cm}|}{
-                            El sistema debe permitir que los usuarios registrados puedan iniciar sesión para poder acceder al uso de las \textit{sandboxes}.
+                            El sistema debe permitir que los usuarios registrados puedan iniciar sesión para poder acceder al uso de los laboratorios de pruebas.
                         } \\
                         \hline
                     \end{tabular}
@@ -928,7 +928,7 @@
                 
                 \newpage
             
-            \subsubsection{\textit{Sandboxes}}
+            \subsubsection{Laboratorios de pruebas}
             
                 Requisitos relacionados con la gestión de los entornos virtualizados.
                 
@@ -937,7 +937,7 @@
 
                     \begin{tabular}{|c|c|}
                         \hline
-                        \textbf{RF - 05} & \textbf{Creación de \textit{sandboxes}} \\
+                        \textbf{RF - 05} & \textbf{Inicio de laboratorios de pruebas} \\
                         \hline
                         \multicolumn{2}{|p{15cm}|}{
                             El sistema debe permitir que los usuarios seleccionen e inicien un laboratorio de pruebas que deseen realizar.
@@ -959,7 +959,7 @@
 
                     \begin{tabular}{|c|c|}
                         \hline
-                        \textbf{RF - 06} & \textbf{Tiempo de vida de las \textit{sandboxes}} \\
+                        \textbf{RF - 06} & \textbf{Tiempo de vida de los laboratorios de pruebas} \\
                         \hline
                         \multicolumn{2}{|p{15cm}|}{
                             El sistema debe destruir automáticamente un laboratorio iniciado una vez que se haya superado un tiempo de vida definido.
@@ -967,7 +967,7 @@
                         \hline
                         \multicolumn{2}{|p{15cm}|}{
                             \begin{itemize}
-                                \item Definir un tiempo de vida fijo para las \textit{sandboxes}.
+                                \item Definir un tiempo de vida fijo para los laboratorios de pruebas.
                             \end{itemize}
                             } \\
                         \hline
@@ -981,7 +981,7 @@
 
                     \begin{tabular}{|c|c|}
                         \hline
-                        \textbf{RF - 07} & \textbf{Número máximo de \textit{sandboxes} iniciadas} \\
+                        \textbf{RF - 07} & \textbf{Número máximo de laboratorios de pruebas} \\
                         \hline
                         \multicolumn{2}{|p{15cm}|}{
                             El sistema no debe permitir el inicio de infinitos laboratorios.
@@ -1003,7 +1003,7 @@
 
                     \begin{tabular}{|c|c|}
                         \hline
-                        \textbf{RF - 08} & \textbf{Uso de una \textit{sandbox} iniciada} \\
+                        \textbf{RF - 08} & \textbf{Uso de un laboratorio de pruebas iniciado} \\
                         \hline
                         \multicolumn{2}{|p{15cm}|}{
                             El sistema debe permitir que los usuarios puedan conectarse a un laboratorio una vez este se haya iniciado.
@@ -1026,10 +1026,10 @@
 
                     \begin{tabular}{|c|c|}
                         \hline
-                        \textbf{RF - 09} & \textbf{Destrucción de \textit{sandboxes}} \\
+                        \textbf{RF - 09} & \textbf{Detención de laboratorios de pruebas} \\
                         \hline
                         \multicolumn{2}{|p{15cm}|}{
-                            El sistema debe permitir que los usuarios puedan apagar una \textit{sandbox}, lo que equivale a destruirla manualmente (en lugar de esperar a que se cumpla su tiempo de vida).
+                            El sistema debe permitir que los usuarios puedan apagar un laboratorio de pruebas, lo que equivale a destruirla manualmente (en lugar de esperar a que se cumpla su tiempo de vida).
                         } \\
                         \hline
                         \multicolumn{2}{|p{15cm}|}{
@@ -1080,7 +1080,7 @@
 
                 \begin{tabular}{|c|c|}
                     \hline
-                    \textbf{RNF - 02} & \textbf{Aislamiento de las \textit{sandboxes}} \\
+                    \textbf{RNF - 02} & \textbf{Aislamiento de los laboratorios de pruebas} \\
                     \hline
                     \multicolumn{2}{|p{15cm}|}{
                         El sistema debe garantizar la seguridad y aislamiento de los laboratorios de prueba de la plataforma.
