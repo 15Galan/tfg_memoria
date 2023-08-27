@@ -200,28 +200,276 @@
 \chapter{Contenido de los laboratorios}
 
     \section{Introducción a Linux}
+
+        Este laboratorio se presentó como una introducción al sistema de jerarquía de ficheros y directorios de Linux, así como a la gestión de permisos, grupos y usuarios del sistema. También se incluyó una introducción a la terminal de Linux y a distintos comandos clasificados por categorías.
+
+        \subsection{Motivación}
+
+            Tener un profundo conocimiento de la jerarquía de ficheros y directorios, la gestión de permisos, grupos y usuarios, así como el uso de la terminal, es fundamental para llevar a cabo pruebas de penetración efectivas y descubrir posibles vulnerabilidades y puntos débiles en un sistema. Un Pentester debe comprender esta jerarquía para ubicar rápidamente recursos críticos y datos sensibles.
+
+            Comprender cómo funcionan los permisos, cómo se asignan a usuarios y grupos específicos, y cómo se heredan en la jerarquía de archivos, es esencial para evaluar la seguridad. Los Pentesters pueden identificar vulnerabilidades al explorar archivos con permisos incorrectos, que podrían permitir el acceso no autorizado o la ejecución de comandos peligrosos.
+
+            La terminal en sistemas Linux es una interfaz de línea de comandos que brinda un control profundo sobre el sistema; para un Pentester, la terminal es una herramienta poderosa para ejecutar comandos, navegar por la jerarquía de directorios, buscar información, manipular archivos y mucho más. Tener un conocimiento sólido de comandos como "ls", "cd", "chmod", "chown" y "grep" es esencial para realizar pruebas de penetración y análisis exhaustivos.
+
+        \subsection{Laboratorio}
+
+            Se proporciona al usuario un entorno donde poder ejecutar comandos de Linux.
+
+            \newpage
+
     
     \section{Introducción a Bash}
 
-    \section{Introducción a redes}
+        Este laboratorio se presentó como una introducción al lenguaje Bash, abarcando desde la sintaxis básica hasta el uso de variables, funciones, bucles y condicionales.
+
+        \subsection{Motivación}
+
+            Una de las habilidades más recomendables para llevar a cabo un pentesting efectivo es el conocimiento y manejo de Bash, ya que este intérprete de comandos es una herramienta poderosa para la automatización de tareas y la administración del sistema en dispositivos Unix y Linux.
+                        
+            Durante una prueba de penetración, hay muchas tareas que se deben realizar de manera repetitiva, como el escaneo de puertos, la recolección de información, la enumeración de servicios, entre otros; con Bash scripting, es posible crear scripts que realicen estas tareas automáticamente, lo que ahorra tiempo y reduce errores humanos.
+
+            Resulta común crear exploits o pruebas específicas para aprovechar vulnerabilidades y evaluar la resistencia de un sistema durante una prueba de penetración, por lo que es importante contar con conocimientos de Bash para adaptarse a las necesidades de la prueba y crear scripts personalizados que permitan realizar pruebas de manera eficiente.
+
+            Por último, el proceso de crear scripts en Bash puede fomentar un conocimiento más profundo sobre cómo funcionan los sistemas operativos y las redes, lo que puede mejorar la comprensión general de los conceptos de seguridad informática y permitir al pentester detectar vulnerabilidades que podrían pasar desapercibidas de otra forma.
+
+        \subsection{Laboratorio}
+
+            Se proporciona al usuario un entorno donde poder ejecutar comandos de Bash.
+
+            \newpage
+
+
+    \section{Introducción a las redes}
+
+        Este laboratorio se presentó como una introducción a los conceptos básicos de redes, que abarca algunos de los protocolos más comunes, como TCP/IP, UDP y SSH, así como los tipos y topologías de redes, y ataques comunes a redes.
+
+        \subsection{Motivación}
+
+            Entre las habilidades esenciales para llevar a cabo un pentesting efectivo, el conocimiento de las redes ocupa un lugar destacado debido a su importancia fundamental en la seguridad de los sistemas.
+
+            Antes de realizar una prueba de penetración, es vital identificar los objetivos y las áreas de interés en la red. Esto incluye conocer las direcciones IP y los servicios que se ejecutan en cada sistema. Sin esta información, sería difícil determinar qué sistemas atacar y dónde centrar los esfuerzos de prueba.
+
+            El conocimiento de las direcciones IP y los protocolos utilizados por los sistemas en la red permite a los profesionales de seguridad seleccionar las herramientas y técnicas adecuadas para las pruebas. Diferentes sistemas y servicios pueden requerir enfoques de ataque específicos, y esta elección informada es esencial para simular con precisión los métodos utilizados por los atacantes reales.
+
+            PComprender la topología de la red, es decir, cómo están conectados los sistemas y las interacciones entre ellos, es fundamental. Esto ayuda a identificar puntos únicos de falla, rutas alternativas y posibles vectores de ataque. El conocimiento de la topología también permite a los pentesters evaluar cómo un ataque en un punto de la red podría propagarse o afectar a otras partes.
+
+            Por último, al conocer los protocolos y servicios en ejecución, los pentesters pueden reconocer posibles vulnerabilidades conocidas asociadas con esos protocolos. Esto facilita la identificación de debilidades que podrían ser explotadas por atacantes reales. Por ejemplo, si se sabe que un sistema utiliza una versión vulnerable de un protocolo, se puede buscar una explotación específica para esa versión.
+
+            \newpage
+        
 
     \section{Análisis de tráfico}
 
+        Este laboratorio se presentó como una introducción al análisis de tráfico, abarcando la captura de tráfico con Wireshark y el análisis de paquetes.
+
+        \subsection{Motivación}
+
+            El análisis de tráfico es una habilidad esencial para los profesionales de la seguridad informática, ya que permite identificar y comprender el tráfico de red, lo que facilita la detección de anomalías y la identificación de posibles amenazas.
+
+            Durante una prueba de penetración, el análisis de tráfico puede ayudar a identificar sistemas y servicios en la red, así como a comprender cómo interactúan entre sí. Esto permite a los pentesters identificar posibles vulnerabilidades y vectores de ataque, y seleccionar las herramientas y técnicas adecuadas para la prueba.
+
+            El análisis de tráfico también puede ayudar a los pentesters a identificar posibles amenazas y anomalías en la red. Esto incluye el reconocimiento de comportamientos sospechosos, como el uso de protocolos inusuales o el envío de paquetes de datos inesperados. Al comprender el tráfico normal, los pentesters pueden identificar fácilmente comportamientos anormales que podrían indicar un ataque.
+
+            Por último, el análisis de tráfico puede ayudar a los pentesters a identificar posibles vulnerabilidades en los sistemas y servicios de la red. Esto incluye la identificación de protocolos y servicios vulnerables, así como el reconocimiento de paquetes de datos que podrían indicar un intento de explotación. Al comprender el tráfico normal, los pentesters pueden identificar fácilmente comportamientos anormales que podrían indicar un ataque.
+
+        \subsection{Laboratorio}
+
+            Este entorno permite al usuario usar Wireshark en el propio navegador, alojando el servicio en otro puerto del servidor, accesible desde la propia plataforma; contiene 4 capturas de tráfico que involucran los protocolos ICMP, ARP, TCP y FTP.
+            
+            La página de la plataforma hace un recorrido y explicación de 2 de ellas:
+
+            La captura \texttt{SSL.pcap} contiene el intercambio de datos de una conexión TCP, donde se produce el proceso de \textit{handshake} de SSL/TLS, que permite el cifrado de la conexión; el usuario puede usar Wireshark para explorar distintos detalles sobre las versiones de TLS utilizadas y cómo se han decidido utilizar. Se muestra cómo se han obtenido los algoritmos de cifrados y las características de la conexión.
+
+            La captura \texttt{filezilla.pcap} contiene el intercambio de datos de una conexión FTP, donde se produce el proceso de autenticación del usuario, que permite el acceso al servidor FTP; el usuario puede usar Wireshark para explorar distintos detalles sobre el intercambio de datos, como el usuario y contraseña, así como el uso de comandos FTP para la gestión de archivos. También es posible observar el contenido de los ficheros enviados.
+
+            Las otras 3 capturas, llamadas \texttt{Internet.pcap}, \texttt{ping.pcap} y \texttt{SSH.pcap} muestran información sobre otros protocolos útiles como ICMP, SSH y ARP.
+
+            \newpage
+
     \section{Introducción a OSINT}
+        \label{sec:osint}
+
+        Este laboratorio se presentó como una introducción a OSINT, abarcando la búsqueda de información en Internet, el uso de herramientas de OSINT y la búsqueda de información en redes sociales.
+
+        Se muestra información sobre distintas herramientas como los \textit{Google Dorks}, \textit{Shodan.io}, \textit{VirusTotal} y \textit{WHOIS}.
+
+        \subsection{Motivación}
+
+            El OSINT es una habilidad esencial para los profesionales de la seguridad informática, ya que permite recopilar información sobre sistemas y redes, lo que facilita la identificación de posibles amenazas y vulnerabilidades durante la fase previa al pentesting: el reconocimiento.
+
+            Este 
+
+        \subsection{Laboratorio}
+
+            Este entorno presenta un proyecto de Python con el que extraer información de una IP de varias fuentes de información, entre las que se encuentran Shodan, VirusTotal y WHOIS.
+
+            El proyecto consiste en una interfaz de línea de comandos que permite al usuario introducir una IP o una lista de IPs (en un archivo de texto) y obtener información de cada una de ellas usando las fuentes mencionadas, entre otras.
+            
+            \paragraph{Nota} La información de Shodan.io y VirusTotal se obtiene a través de sus APIs públicas, por lo que es necesario tener una cuenta en cada una de ellas y obtener una clave de API para poder usarlas. No usar una clave no afectará al programa más allá de no usar esas 2 fuentes de información.
+
+            La herramienta desarrollada para este laboratorio se explica en mayor profundidad en el apéndice \ref{sec:ip-osint}.
+
+            \newpage
+        
 
     \section{Esteganografía}
 
+        Este laboratorio presenta una definición de esteganografía y muestra de herramientas comunes, como \texttt{steghide} y \texttt{exiftools}.
+
+        \subsection{Motivación}
+
+            La esteganografía permite ocultar información en archivos de imagen, audio y vídeo, entre otros, lo que facilita la transmisión de datos confidenciales sin ser detectados.
+
+            Durante una prueba de penetración, conocimientos de esteganografía pueden ayudar a descubrir información oculta en archivos multimedia.
+
+        \subsection{Laboratorio}
+
+            Este entorno presenta un proyecto de Python con el que extraer información de una imagen o un archivo de audio.
+
+            El proyecto consiste en una interfaz de línea de comandos que permite al usuario introducir una imagen o un archivo de audio y obtener información de cada una de ellas, como el tamaño, el tipo de archivo, la resolución, etc.
+
+            \newpage
+
+
     \section{Fuerza bruta}
+
+        Este laboratorio se presentó como una introducción a la fuerza bruta, abarcando el uso de herramientas de fuerza bruta para descifrar contraseñas.
+
+        \subsection{Motivación}
+
+            La fuerza bruta es una habilidad esencial para los profesionales de la seguridad informática, ya que permite descifrar contraseñas y claves de cifrado, lo que facilita la identificación de posibles amenazas y vulnerabilidades durante la fase previa al pentesting: el reconocimiento.
+
+            La fuerza bruta puede ayudar a identificar sistemas y servicios en la red, así como a comprender cómo interactúan entre sí. Esto permite a los pentesters identificar posibles vulnerabilidades y vectores de ataque, y seleccionar las herramientas y técnicas adecuadas para la prueba.
+
+            La fuerza bruta también puede ayudar a los pentesters a identificar posibles amenazas y anomalías en la red. Esto incluye el reconocimiento de comportamientos sospechosos, como el uso de protocolos inusuales o el envío de paquetes de datos inesperados. Al comprender el tráfico normal, los pentesters pueden identificar fácilmente comportamientos anormales que podrían indicar un ataque.
+
+            Por último, la fuerza bruta puede ayudar a los pentesters a identificar posibles vulnerabilidades en los sistemas y servicios de la red. Esto incluye la identificación de protocolos y servicios vulnerables, así como el reconocimiento de paquetes de datos que podrían indicar un intento de explotación. Al comprender el tráfico normal, los pentesters pueden identificar fácilmente comportamientos anormales que podrían indicar un ataque.
+
+        \subsection{Laboratorio}
+
+            Este entorno presenta un proyecto de Python con el que descifrar contraseñas usando fuerza bruta.
+
+            El proyecto consiste en una interfaz de línea de comandos que permite al usuario introducir una contraseña cifrada y un diccionario de contraseñas, y obtener la contraseña descifrada.
+
+            \newpage
+
 
     \section{Hash-cracking}
 
+        Este laboratorio se presentó como una introducción al hash-cracking, abarcando el uso de herramientas de hash-cracking para descifrar contraseñas.
+
+        \subsection{Motivación}
+
+            Utilizar técnicas de hash-cracking permite evaluar la robustez de las contraseñas almacenadas en un sistema y la eficacia de los mecanismos de seguridad asociados.
+
+            Las contraseñas rara vez se almacenan en texto plano debido a los riesgos de seguridad asociados; en su lugar, se transforman en valores hash utilizando algoritmos de hash criptográficos.
+            
+            Conocer técnicas de hash-cracking permite a los pentesters evaluar la calidad de las contraseñas utilizadas por los usuarios en un sistema. Utilizando herramientas y técnicas adecuadas, los pentesters pueden intentar descifrar contraseñas a partir de hashes obtenidos, lo que proporciona una idea de cuán seguras son las contraseñas en el sistema. Si las contraseñas se descifran con relativa facilidad, esto indica que los usuarios están utilizando contraseñas débiles, lo que representa un riesgo de seguridad significativo.
+            
+            Si durante el proceso de pentesting se logra descifrar un gran número de contraseñas, esto podría ser indicativo de que el sistema subyacente tiene deficiencias en la forma en que almacena y protege las contraseñas.
+            
+            Por último, si los pentesters logran descifrar contraseñas y acceder a cuentas o sistemas protegidos, pueden demostrar el impacto real que tendría un ataque exitoso. Esto es especialmente valioso para concienciar a las partes interesadas sobre la importancia de mejorar la seguridad de las contraseñas y tomar medidas adecuadas.
+
+        \subsection{Laboratorio}
+
+            Este entorno presenta 3 bases de datos cuyas contraseñas han sido almacenadas usando 3 algoritmos de hash diferentes: MD5, SHA1 y SHA256.
+
+            El usuario puede emplear las herramientas descritas en la plataforma para llevar a cabo una extracción de las contraseñas de cada base de datos.
+
+            Además, se le proporciona al usuario una breve guía de comandos SQL para usar, ya que la finalidad de este laboratorio no es el manejo de bases de datos.
+            
+            \newpage
+
+
     \section{Criptografía}
+
+        Este laboratorio se presentó como una introducción a la criptografía, abarcando el uso de herramientas de criptografía para cifrar y descifrar mensajes.
+
+        \subsection{Motivación}
+
+            La criptografía es una habilidad esencial para los profesionales de la seguridad informática, ya que permite cifrar y descifrar mensajes, lo que facilita la identificación de posibles amenazas y vulnerabilidades durante la fase previa al pentesting: el reconocimiento.
+
+            La criptografía puede ayudar a identificar sistemas y servicios en la red, así como a comprender cómo interactúan entre sí. Esto permite a los pentesters identificar posibles vulnerabilidades y vectores de ataque, y seleccionar las herramientas y técnicas adecuadas para la prueba.
+
+            También puede ayudar a los pentesters a identificar posibles amenazas y anomalías en la red. Esto incluye el reconocimiento de comportamientos sospechosos, como el uso de protocolos inusuales o el envío de paquetes de datos inesperados. Al comprender el tráfico normal, los pentesters pueden identificar fácilmente comportamientos anormales que podrían indicar un ataque.
+
+            Por último, la criptografía puede ayudar a los pentesters a identificar posibles vulnerabilidades en los sistemas y servicios de la red. Esto incluye la identificación de protocolos y servicios vulnerables, así como el reconocimiento de paquetes de datos que podrían indicar un intento de explotación. Al comprender el tráfico normal, los pentesters pueden identificar fácilmente comportamientos anormales que podrían indicar un ataque.
+
+            \newpage
 
     \section{Escalada de privilegios}
 
+        Este laboratorio se presentó como una introducción a la escalada de privilegios, abarcando el uso de herramientas de escalada de privilegios para obtener acceso de administrador.
+
+        \subsection{Motivación}
+
+            La escalada de privilegios es una habilidad esencial para los profesionales de la seguridad informática, ya que permite obtener acceso de administrador, lo que facilita la identificación de posibles amenazas y vulnerabilidades durante la fase previa al pentesting: el reconocimiento.
+
+            La escalada de privilegios puede ayudar a identificar sistemas y servicios en la red, así como a comprender cómo interactúan entre sí. Esto permite a los pentesters identificar posibles vulnerabilidades y vectores de ataque, y seleccionar las herramientas y técnicas adecuadas para la prueba.
+
+            También puede ayudar a los pentesters a identificar posibles amenazas y anomalías en la red. Esto incluye el reconocimiento de comportamientos sospechosos, como el uso de protocolos inusuales o el envío de paquetes de datos inesperados. Al comprender el tráfico normal, los pentesters pueden identificar fácilmente comportamientos anormales que podrían indicar un ataque.
+
+            Por último, la escalada de privilegios puede ayudar a los pentesters a identificar posibles vulnerabilidades en los sistemas y servicios de la red. Esto incluye la identificación de protocolos y servicios vulnerables, así como el reconocimiento de paquetes de datos que podrían indicar un intento de explotación. Al comprender el tráfico normal, los pentesters pueden identificar fácilmente comportamientos anormales que podrían indicar un ataque.
+
+        \subsection{Laboratorio}
+
+            Este entorno presenta una vulnerabilidad de permisos débiles; en esta ocasión, el fichero \texttt{/etc/shadow} tiene permisos de lectura para todos los usuarios, por lo que cualquier usuario puede leer el contenido del fichero, que contiene las contraseñas cifradas de los usuarios del sistema.
+
+            Una vez se lee el fichero, se puede observar que existen 2 usuarios: \texttt{root} y \texttt{user}, siendo este último el que maneja la conexión SSH para el usuario de la plataforma.
+
+            Además, haciendo un estudio del formato de los hashes almacenados, es posible llegar a la conclusión de que las contraseñas están usando MD5 crypt, por lo que es posible descifrarlas usando una herramienta de hash-cracking.
+
+            Obteniendo así, la contraseña del usuario \texttt{root} y pudiendo acceder al sistema como administrador.
+
+            \newpage
+
+
     \section{Bypass}
 
+        El laboratorio describe el concepto de bypass a través de la vulnerabilidad CVE-2017-8386, que permite a un atacante remoto omitir la autenticación en un servidor Git.
+
+        \subsection{Motivación}
+
+            Un bypass es una vulnerabilidad que permite a un atacante evadir un mecanismo de seguridad, como la autenticación, para obtener acceso no autorizado a un sistema o recurso.
+
+        \subsection{Laboratorio}
+
+            Este laboratorio simula un servidor de Git con la vulnerabilidad CVE-2017-8386.
+
+            Se requiere una clave SSH privada, proporcionada en la misma plataforma, para que se realice la conexión correctamente.
+
+            Una vez hayas completado esos preparativos, podrás llevar a cabo la explotación mencionada anteriormente y explorar las posibilidades que te da ese bypass.
+
+            \newpage
+
+
     \section{Ransomware}
+        \label{sec:ransomware}
+
+        El laboratorio contempla un ataque de ransomware, qué sucede y cómo funciona un ransomware simple desarrollado en Python.
+
+        \subsection{Motivación}
+
+            Este es un laboratorio especial -algo más alejado del pentesting- que trata la peligrosidad de un ransomware, al mismo tiempo que se observa la sencillez con la que este puede causar mucho daño en un sistema.
+            
+            El ransomware es una de las amenazas más comunes en la actualidad, ya que permite a los atacantes obtener un beneficio económico de sus víctimas, por lo que es importante conocer cómo funciona.
+
+        \subsection{Laboratorio}
+
+            Este entorno contiene una muestra de ransomware muy simple, pero igualmente peligrosa si no se trata con cuidado; el ransomware se llama \texttt{stockholm.py} y ha sido desarrollado en Python.
+            
+            El script se encuentra en el directorio del usuario \texttt{root} y realizará las siguientes acciones:
+            
+            \begin{enumerate}
+                \item Creará una clave de cifrado aleatoria.
+                \item Buscará una carpeta llamada \texttt{infection/} en la carpeta del usuario \texttt{root}.
+                \item Usando la clave, cifrará todos los archivos de la carpeta \texttt{infection/} cuya extensión también fuera afectada por \textit{WannaCry}.
+                \item Guardará la clave de cifrado de forma segura en un archivo llamado \texttt{clave.key}.
+            \end{enumerate}
+
+            No obstante, como solo es un ejemplo, el script también puede devolver los archivos a su estado original, siempre y cuando se le proporcione la clave de cifrado correcta (paso 1); ejecutar \texttt{stockholm.py -r \{clave\}} revertirá el cifrado.
+            
+            El objetivo de este laboratorio es que observes el funcionamiento de un ransomware y expermientes con él para que puedas entender mejor cómo funcionan y cómo se pueden evitar.
 
             \cleardoublepage
 
@@ -742,6 +990,7 @@
         Estos pueden ejecutarse como \texttt{./\{fichero\}.py} añadiendo permisos de ejecución al fichero indicado (\texttt{chmod +x \{fichero\}.py}), o bien de la forma convencional \texttt{python3 \{fichero\}.py}, usando el comando \texttt{python3}.
 
         \subsection{\texttt{ip-osint}}
+            \label{sec:ip-osint}
 
             Proyecto implementado en el laboratorio de introducción al OSINT \ref{sec:osint} con el que se puede obtener información de una dirección IP.
             \\
