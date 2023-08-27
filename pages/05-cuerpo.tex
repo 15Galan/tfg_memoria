@@ -1618,6 +1618,294 @@
 
 
 \chapter{Resultados}
+
+    \section{Cumplimiento de los requisitos}
+        
+        Esta sección abarcará el cumplimiento de los requisitos funcionales y no funcionales del proyecto, así como el cumplimiento de los objetivos planteados en la sección Objetivos \ref{sec:objetivos}.
+
+        Para ello, se han llevado a cabo pruebas manuales.
+
+        \subsection{Requisitos funcionales}
+
+            \begin{table}[!htbp]
+                \centering
+
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RF - 01} & \textbf{Registro de usuarios} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe permitir que los usuarios se registren y creen una cuenta en la plataforma para poder usar los laboratorios de pruebas.
+                    } \\                    
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Registro correcto de un usuario.} \\
+                    cuando & Estoy en la página de registro. \\
+                    entonces & Relleno el formulario de registro con datos válidos. \\
+                    y & Pulso el botón de registro. \\
+                    entonces & Un mensaje me indica que mi usuario ha sido creado correctamente. \\
+                    cuando & Estoy en la página de inicio de sesión. \\
+                    entonces & Puedo iniciar sesión con el usuario que acabo de crear. \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Registro incorrecto de un usuario.} \\
+                    cuando & Estoy en la página de registro. \\
+                    entonces & Relleno el formulario de registro con datos inválidos. \\
+                    y & Pulso el botón de registro. \\
+                    entonces & Un mensaje me indica que ha ocurrido un error al crear mi usuario. \\
+                    \hline
+                \end{tabular}
+            \end{table}
+
+            \begin{table}[!htbp]
+                \centering
+
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RF - 02} & \textbf{Inicio de sesión} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe permitir que los usuarios inicien sesión en la plataforma para poder usar los laboratorios de pruebas.
+                    } \\                    
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Inicio de sesión correcto de un usuario.} \\
+                    cuando & Estoy en la página de inicio de sesión. \\
+                    entonces & Relleno el formulario de inicio de sesión con datos válidos. \\
+                    y & Pulso el botón de inicio de sesión. \\
+                    entonces & Soy redirigido a la página de inicio. \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Inicio de sesión incorrecto de un usuario.} \\
+                    cuando & Estoy en la página de inicio de sesión. \\
+                    entonces & Relleno el formulario de inicio de sesión con datos inválidos. \\
+                    y & Pulso el botón de inicio de sesión. \\
+                    entonces & Un mensaje me indica que ha ocurrido un error al iniciar sesión. \\
+                    \hline
+                \end{tabular}
+            \end{table}
+
+            \begin{table}[!htbp]
+                \centering
+
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RF - 03} & \textbf{Validación de los datos de registro} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe validar los datos de registro de los usuarios para poder crear una cuenta en la plataforma.
+                    } \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Validación correcta de los datos de registro.} \\
+                    cuando & Estoy en la página de registro. \\
+                    entonces & Relleno el formulario de registro con datos válidos. \\
+                    y & Pulso el botón de registro. \\
+                    entonces & Un mensaje me indica que mi usuario ha sido creado correctamente. \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Validación incorrecta de los datos de registro.} \\
+                    cuando & Estoy en la página de registro. \\
+                    entonces & Relleno el formulario de registro con datos inválidos. \\
+                    y & Pulso el botón de registro. \\
+                    entonces & Un mensaje me indica que ha ocurrido un error al crear mi usuario. \\
+                    \hline
+                \end{tabular}
+            \end{table}
+
+            \begin{table}[!htbp]
+                \centering
+
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RF - 04} & \textbf{Consulta de documentación} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe permitir que los usuarios consulten la documentación de la plataforma para poder aprender sobre los conceptos de ciberseguridad.
+                    } \\                    
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Consulta de documentación.} \\
+                    cuando & Estoy en la página de laboratorios. \\
+                    entonces & Puedo ver una lista de conceptos de ciberseguridad. \\
+                    cuando & Estoy en la página de un concepto. \\
+                    entonces & Puedo ver una descripción del concepto asociado. \\
+                    y & Avanzando en la página. \\
+                    entonces & Puedo ver un laboratorio asociado (si lo hubiera). \\
+                    \hline
+                \end{tabular}
+            \end{table}
+
+            \begin{table}[!htbp]
+                \centering
+
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RF - 05} & \textbf{Inicio de laboratorios} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe permitir que los usuarios inicien y detengan laboratorios de pruebas para poder practicar los conceptos de ciberseguridad.
+                    } \\                    
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Inicio correcto de un laboratorio de pruebas.} \\
+                    cuando & Estoy en la página de un concepto. \\
+                    y & Existe un laboratorio de pruebas asociado. \\
+                    y & He iniciado sesión en la plataforma. \\
+                    y & No tengo ningún laboratorio de pruebas activo. \\
+                    y & Pulso el botón de inicio del laboratorio. \\
+                    entonces & Se crea un laboratorio de pruebas alojado en un puerto. \\
+                    \hline
+                    \textbf{escenario} & \textbf{Inicio incorrecto de un laboratorio de pruebas} \\
+                    cuando & Estoy en la página de un concepto. \\
+                    y & Existe un laboratorio de pruebas asociado. \\
+                    y & No he iniciado sesión en la plataforma. \\
+                    entonces & Un mensaje me indica que debo iniciar sesión. \\
+                    cuando & Estoy en la página de un concepto. \\
+                    y & Existe un laboratorio de pruebas asociado. \\
+                    y & He iniciado sesión en la plataforma. \\
+                    y & Tengo un laboratorio de pruebas activo. \\
+                    entonces & Un mensaje me indica que ya tengo un laboratorio activo. \\
+                    \hline
+
+                \end{tabular}
+            \end{table}
+
+            \begin{table}[!htbp]
+                \centering
+
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RF - 06} & \textbf{Tiempo de vida de un laboratorio} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe permitir que los usuarios inicien y detengan laboratorios de pruebas para poder practicar los conceptos de ciberseguridad.
+                    } \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Tiempo de vida alcanzado (1 hora).} \\
+                    cuando & Estoy dentro del laboratorio.\\
+                    y & El laboratorio alcanza su tiempo de vida. \\
+                    entonces & El laboratorio se detiene automáticamente. \\
+                    y & Soy expulsado de la sesión SSH. \\
+                    \hline
+                \end{tabular}
+            \end{table}
+
+            \newpage
+
+            \begin{table}[!htbp]
+                \centering
+
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RF - 07} & \textbf{Número máximo de laboratorios} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe permitir que los usuarios inicien y detengan laboratorios de pruebas para poder practicar los conceptos de ciberseguridad.
+                    } \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Número máximo de laboratorios alcanzado.} \\
+                    cuando & Estoy en la página de un concepto. \\
+                    y & Existe un laboratorio de pruebas asociado. \\
+                    y & He iniciado sesión en la plataforma. \\
+                    y & Tengo un laboratorio de pruebas activo. \\
+                    entonces & Un mensaje me indica que ya tengo un laboratorio activo. \\
+                    \hline
+                \end{tabular}
+            \end{table}
+
+            \begin{table}[!htbp]
+                \centering
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RF - 08} & \textbf{Uso de un laboratorio iniciado} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe permitir que los usuarios inicien y detengan laboratorios de pruebas para poder practicar los conceptos de ciberseguridad.
+                    } \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Quiero usar un laboratorio que aún no he detenido.} \\
+                    cuando & Estoy en la página del concepto del laboratorio. \\
+                    y & Existe un laboratorio de pruebas asociado. \\
+                    y & He iniciado sesión en la plataforma. \\
+                    y & Tengo el laboratorio de pruebas activo. \\
+                    y & El laboratorio no ha alcanzado su tiempo de vida. \\
+                    entonces & Un mensaje me indica que el laboratorio está activo. \\
+                    y & Puedo conectarme usando SSH. \\
+                    \hline
+                \end{tabular}
+            \end{table}
+
+            \begin{table}[!htbp]
+                \centering
+
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{RF - 09} & \textbf{Detener de laboratorios} \\
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        El sistema debe permitir que los usuarios detengan laboratorios de pruebas para poder practicar los conceptos de ciberseguridad.
+                    } \\                    
+                    \hline
+                    \multicolumn{2}{|p{15cm}|}{
+                        %% Vacío
+                    } \\
+                    \hline
+                    \textbf{escenario} & \textbf{Detención correcta de un laboratorio de pruebas.} \\
+                    cuando & Estoy en la página de un concepto. \\
+                    y & Existe un laboratorio de pruebas asociado. \\
+                    y & He iniciado sesión en la plataforma. \\
+                    y & Tengo el laboratorio de pruebas activo. \\
+                    y & Pulso el botón de detención del laboratorio. \\
+                    entonces & Se detiene el laboratorio de pruebas alojado en un puerto. \\
+                    \hline
+                    \textbf{escenario} & \textbf{Detención incorrecta de un laboratorio de pruebas} \\
+                    cuando & Estoy en la página de un concepto. \\
+                    y & Existe un laboratorio de pruebas asociado. \\
+                    y & No he iniciado sesión en la plataforma. \\
+                    entonces & Un mensaje me indica que debo iniciar sesión. \\
+                    \hline
+                \end{tabular}
+            \end{table}
+
+            \newpage
+            
     
     \section{Conclusiones}
 
