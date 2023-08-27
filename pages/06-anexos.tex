@@ -95,7 +95,7 @@
         \\
 
      \begin{lstlisting}[style=bash_style]
-$ sudo usermod -aG docker www-data
+    $ sudo usermod -aG docker www-data
         \end{lstlisting}
 
         \begin{lstlisting}[style=comment_style]
@@ -119,7 +119,7 @@ $ sudo usermod -aG docker www-data
     Este comando solo muestra los grupos a los que pertenece el usuario indicado.
         \end{lstlisting}
 
-        \begin{lstlisting}[style=bash_style]
+        \begin{lstlisting}[style=bash_style, basicstyle=\ttfamily\scriptsize]
     $ id www-data
 
     uid=33(www-data) gid=33(www-data) groups=33(www-data),999(docker)
@@ -128,10 +128,10 @@ $ sudo usermod -aG docker www-data
         \begin{lstlisting}[style=comment_style]
     id: mostrar informaci&ó&n sobre un usuario.
 
-    Este comando muestra diversas caracter&í&sticas sobre el usuario:
+    Este comando muestra diversas caracter&í&sticas del usuario:
         uid: identificador de usuario en el sistema.
         gid: identificador de grupo de usuario en el sistema.
-        groups: identificadores de grupos a los que pertenece el usuario.
+        groups: identificadores de grupos del usuario.
         \end{lstlisting}
 
         Además, del mismo modo, tendrá que crear previamente todas las imágenes de los laboratorios para que aparezcan disponibles en Docker y pueda utilizarlas: las imágenes Docker creadas por un usuario solo son visibles para ese usuario, por lo que si el usuario \texttt{www-data} no crea las imágenes, no podrá usarlas.
@@ -190,7 +190,7 @@ $ sudo usermod -aG docker www-data
     # 
     # m h  dom mon dow   command
 
-    * * * * * /bin/bash /var/www/html/scripts/stop-1h-container.sh > /var/www/html/>
+    * * * * * /bin/bash /var/www/html/scripts/stop-1h-container.sh > /var/www/html/scripts/stop-1h-container.log 2>&1
         \end{lstlisting}
 
         \cleardoublepage
