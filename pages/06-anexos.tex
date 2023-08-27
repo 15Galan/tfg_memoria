@@ -197,7 +197,7 @@ $ sudo usermod -aG docker www-data
 
 
 
-\chapter{Laboratorios}
+\chapter{Contenido de los laboratorios}
 
     \section{Introducción a Linux}
     
@@ -223,7 +223,7 @@ $ sudo usermod -aG docker www-data
 
     \section{Ransomware}
 
-    \cleardoublepage
+            \cleardoublepage
 
 
 
@@ -422,11 +422,13 @@ $ sudo usermod -aG docker www-data
 
             
 
-\chapter{Scripts}
+\chapter{Código desarrollado}
 
-    \section{Gestión del tiempo de vida de contenedores}
+    \section{Scripts para la plataforma}
+
+        \subsection{Gestión del tiempo de vida de contenedores}
             
-        \begin{lstlisting}[style=bash_style, basicstyle=\ttfamily\scriptsize]
+            \begin{lstlisting}[style=bash_style, basicstyle=\ttfamily\scriptsize]
     #!/bin/bash
 
 
@@ -472,42 +474,41 @@ $ sudo usermod -aG docker www-data
     done
 
     echo
-        \end{lstlisting}
+            \end{lstlisting}
     
-        \newpage
+            \newpage
 
-        Con el fin de optimizar los recursos, la plataforma no tendrá laboratorios activos cuando esta no se esté usando, por lo que se ha creado una tarea de cron que se ejecuta cada minuto y comprueba si hay contenedores activos, y en caso de haberlos, comprueba si alguno ha superado el tiempo de vida establecido (1 hora por defecto) y lo destruye.
+            Con el fin de optimizar los recursos, la plataforma no tendrá laboratorios activos cuando esta no se esté usando, por lo que se ha creado una tarea de cron que se ejecuta cada minuto y comprueba si hay contenedores activos, y en caso de haberlos, comprueba si alguno ha superado el tiempo de vida establecido (1 hora por defecto) y lo destruye.
 
-        El script anterior se encarga de comprobar el tiempo que el contenedor de un laboratorio ha estado activo, y lo destruye cuando este supera el tiempo establecido.
+            El script anterior se encarga de comprobar el tiempo que el contenedor de un laboratorio ha estado activo, y lo destruye cuando este supera el tiempo establecido.
         
-        El script realiza las siguientes acciones:
+            El script realiza las siguientes acciones:
 
-        \paragraph{Obtener los contenedores activos}
+            \paragraph{Obtener los contenedores activos}
+            
+                Usando el comando \texttt{docker ps -q} se obtiene una lista de los contenedores activos, pero solo sus IDs, lo que permite recorrerlos de forma más sencilla; esta información se almacena en la variable \texttt{CONTENEDORES}, que se usará para recorrer los contenedores activos.
+
+            Para cada contenedor de la lista anterior, se realizan los siguientes procesos:
+
+            \paragraph{Obtener el tiempo de creación}
+            
+                Usando el comando \texttt{docker inspect --format '\{\{ .State.StartedAt \}\}'} se obtiene el tiempo de creación de un contenedor en formato ISO 8601, que es el formato que usa Docker para almacenar la fecha y hora de creación de un contenedor; esta información se almacena en la variable \texttt{CREACION}.
+
+            \paragraph{Obtener el tiempo de ejecución}
+            
+                Usando el comando \verb|date --date="$CREACION" +%s| se obtiene el tiempo de ejecución de un contenedor en segundos, y usando el comando \verb|date +%s| se obtiene el tiempo actual en segundos; con estos dos valores se calcula la diferencia entre ellos, que es el tiempo que ha estado activo el contenedor; esta información se almacena en la variable \texttt{DIFF} y corresponde a los segundos que han pasado desde que se creó el contenedor hasta el momento actual.
+
+            \paragraph{Comprobar si el contenedor debe detenerse}
+
+                Finalmente, se comprueba si el contenedor ha superado el tiempo de vida establecido, y en caso de haberlo superado, se detiene el contenedor usando el comando \texttt{docker stop \$CONTENEDOR}.
+
+                Cabe destacar que el script muestra la información correspondiente por la pantalla, pero la tarea cron redirige su salida a \texttt{/dev/null}, por lo que no se mostrará nada por pantalla cuando se ejecute la tarea de cron; sin embargo, el script puede ejecutarse manualmente y observar el estado de los contenedores en cualquier momento.
+
+                \newpage
+
+        \subsection{Actualización de los laboratorios}
         
-            Usando el comando \texttt{docker ps -q} se obtiene una lista de los contenedores activos, pero solo sus IDs, lo que permite recorrerlos de forma más sencilla; esta información se almacena en la variable \texttt{CONTENEDORES}, que se usará para recorrer los contenedores activos.
-
-        Para cada contenedor de la lista anterior, se realizan los siguientes procesos:
-
-        \paragraph{Obtener el tiempo de creación}
-        
-            Usando el comando \texttt{docker inspect --format '\{\{ .State.StartedAt \}\}'} se obtiene el tiempo de creación de un contenedor en formato ISO 8601, que es el formato que usa Docker para almacenar la fecha y hora de creación de un contenedor; esta información se almacena en la variable \texttt{CREACION}.
-
-        \paragraph{Obtener el tiempo de ejecución}
-        
-            Usando el comando \verb|date --date="$CREACION" +%s| se obtiene el tiempo de ejecución de un contenedor en segundos, y usando el comando \verb|date +%s| se obtiene el tiempo actual en segundos; con estos dos valores se calcula la diferencia entre ellos, que es el tiempo que ha estado activo el contenedor; esta información se almacena en la variable \texttt{DIFF} y corresponde a los segundos que han pasado desde que se creó el contenedor hasta el momento actual.
-
-        \paragraph{Comprobar si el contenedor debe detenerse}
-
-            Finalmente, se comprueba si el contenedor ha superado el tiempo de vida establecido, y en caso de haberlo superado, se detiene el contenedor usando el comando \texttt{docker stop \$CONTENEDOR}.
-
-        Cabe destacar que el script muestra la información correspondiente por la pantalla, pero la tarea cron redirige su salida a \texttt{/dev/null}, por lo que no se mostrará nada por pantalla cuando se ejecute la tarea de cron; sin embargo, el script puede ejecutarse manualmente y observar el estado de los contenedores en cualquier momento.
-
-        \newpage
-
-
-    \section{Actualización de los laboratorios}
-        
-        \begin{lstlisting}[style=bash_style, basicstyle=\ttfamily\scriptsize]
+            \begin{lstlisting}[style=bash_style, basicstyle=\ttfamily\scriptsize]
     #!/bin/sh
 
 
@@ -570,166 +571,378 @@ $ sudo usermod -aG docker www-data
     for image in $images; do
         echo "* $image"
     done
-        \end{lstlisting}
+            \end{lstlisting}
 
-        \newpage
+            \newpage
 
-        Los entornos virtualizados de la plataforma están compuestos por imágenes Docker, que son creadas a partir de un fichero \texttt{Dockerfile} que contiene las instrucciones necesarias para crear la imagen. Estas imágenes son los laboratorios, y siguiendo la misma estructura planteada en el repositorio de laboratorios, es posible tanto añadir, modificar o eliminar más contenedores a la plataforma.
+            Los entornos virtualizados de la plataforma están compuestos por imágenes Docker, que son creadas a partir de un fichero \texttt{Dockerfile} que contiene las instrucciones necesarias para crear la imagen. Estas imágenes son los laboratorios, y siguiendo la misma estructura planteada en el repositorio de laboratorios, es posible tanto añadir, modificar o eliminar más contenedores a la plataforma.
 
-        Técnicamente, no es necesario que los laboratorios pertenezcan al repositorios, lo esencial es que su imagen Docker esté construida en el sistema y disponible para el usuario \texttt{www-data}. Sin embargo, el repositorio permite gestionar los laboratorios de forma más sencilla, ya que solo es necesario añadir una carpeta con el nombre del laboratorio y el fichero \texttt{Dockerfile} dentro.
+            Técnicamente, no es necesario que los laboratorios pertenezcan al repositorios, lo esencial es que su imagen Docker esté construida en el sistema y disponible para el usuario \texttt{www-data}. Sin embargo, el repositorio permite gestionar los laboratorios de forma más sencilla, ya que solo es necesario añadir una carpeta con el nombre del laboratorio y el fichero \texttt{Dockerfile} dentro.
 
-        El script anterior contenido en la carpeta \texttt{labs/} del repositorio, y permite hacer un barrido del mismo y crear aquellos laboratorios que no estén presentes en el sistema, así como actualizar aquellos que hayan sido modificados.
-        
-        El script realiza las siguientes acciones:
+            El script anterior contenido en la carpeta \texttt{labs/} del repositorio, y permite hacer un barrido del mismo y crear aquellos laboratorios que no estén presentes en el sistema, así como actualizar aquellos que hayan sido modificados.
+            
+            El script realiza las siguientes acciones:
 
-        \paragraph{Obtener las carpetas del repositorio}
-        
-            Usando el comando \verb|ls -d */| se obtienen todas las carpetas del repositorio, y usando el comando \verb|grep -v '^logs/$'| se filtran todas las carpetas excepto la carpeta \texttt{logs/}, que es donde se almacenan los registros de las ejecuciones del script; finalmente, usando el comando \verb|sed 's#/##'| se elimina el carácter \texttt{/} de cada carpeta, ya que no es necesario para el script. Esto resulta en una lista de nombres que se usarán para crear las imágenes Docker.
+            \paragraph{Obtener las carpetas del repositorio}
+            
+                Usando el comando \verb|ls -d */| se obtienen todas las carpetas del repositorio, y usando el comando \verb|grep -v '^logs/$'| se filtran todas las carpetas excepto la carpeta \texttt{logs/}, que es donde se almacenan los registros de las ejecuciones del script; finalmente, usando el comando \verb|sed 's#/##'| se elimina el carácter \texttt{/} de cada carpeta, ya que no es necesario para el script. Esto resulta en una lista de nombres que se usarán para crear las imágenes Docker.
 
-        \paragraph{Crear la carpeta de registros}
+            \paragraph{Crear la carpeta de registros}
 
-            Usando el comando \texttt{mkdir -p logs} se crea la carpeta \texttt{logs/} en caso de que no exista, y en caso de existir, no hace nada. Esto hace que se puedan comprobar los registros de ejecuciones anteriores y los fallos en la construcción de las imágenes Docker de los laboratorios.
+                Usando el comando \texttt{mkdir -p logs} se crea la carpeta \texttt{logs/} en caso de que no exista, y en caso de existir, no hace nada. Esto hace que se puedan comprobar los registros de ejecuciones anteriores y los fallos en la construcción de las imágenes Docker de los laboratorios.
 
-        Acto seguido, para cada carpeta de la lista obtenida al inicio, se realizan los siguientes procesos:
+            Acto seguido, para cada carpeta de la lista obtenida al inicio, se realizan los siguientes procesos:
 
-        \paragraph{Eliminar la imagen anterior}
+            \paragraph{Eliminar la imagen anterior}
 
-            Usando el comando \verb|docker images -q $carpeta| se comprueba si existe una imagen con el nombre de la carpeta actual, y en caso de existir, se elimina usando el comando \verb|docker rmi $carpeta|; esto produce que se actualice una imagen existente. La imagen se elimina previamente debido a que si se crea una imagen con el mismo nombre que otra, Docker no elimina la anterior, sino que la renombra a \texttt{<none>}.
+                Usando el comando \verb|docker images -q $carpeta| se comprueba si existe una imagen con el nombre de la carpeta actual, y en caso de existir, se elimina usando el comando \verb|docker rmi $carpeta|; esto produce que se actualice una imagen existente. La imagen se elimina previamente debido a que si se crea una imagen con el mismo nombre que otra, Docker no elimina la anterior, sino que la renombra a \texttt{<none>}.
 
-        \paragraph{Construir una imagen}
+            \paragraph{Construir una imagen}
 
-            Usando el comando \texttt{docker build -t \$carpeta \$carpeta/} se construye la nueva imagen Docker usando el fichero \texttt{Dockerfile} de la carpeta actual, y se le asigna el nombre de dicha carpeta; esto permite que la imagen tenga el mismo nombre que la carpeta, y por tanto, que sea más fácil de identificar.
+                Usando el comando \texttt{docker build -t \$carpeta \$carpeta/} se construye la nueva imagen Docker usando el fichero \texttt{Dockerfile} de la carpeta actual, y se le asigna el nombre de dicha carpeta; esto permite que la imagen tenga el mismo nombre que la carpeta, y por tanto, que sea más fácil de identificar.
 
-        \paragraph{Almacenar la imagen en una lista}
+            \paragraph{Almacenar la imagen en una lista}
 
-            Usando el comando \verb|docker images -q $carpeta| se comprueba si existe una imagen con el nombre de la carpeta actual, lo que indicaría que la imagen se creó correctamente, y en caso de existir, se añade el nombre de la carpeta a la variable \texttt{images}, que se usará para mostrar las imágenes creadas al finalizar la ejecución del script.
+                Usando el comando \verb|docker images -q $carpeta| se comprueba si existe una imagen con el nombre de la carpeta actual, lo que indicaría que la imagen se creó correctamente, y en caso de existir, se añade el nombre de la carpeta a la variable \texttt{images}, que se usará para mostrar las imágenes creadas al finalizar la ejecución del script.
 
-        Finalmente, se muestran las imágenes creadas en la ejecución del script.
+            Finalmente, se muestran las imágenes creadas en la ejecución del script.
 
-        \newpage
+        \subsection{Instalación de Kali Linux usando Vagrant}
 
-
-    \section{Instalación de Kali Linux usando Vagrant}
-
-        \begin{lstlisting}[style=bash_style, basicstyle=\ttfamily\scriptsize]
-    #!/bin/bash
+            \begin{lstlisting}[style=bash_style, basicstyle=\ttfamily\scriptsize]
+        #!/bin/bash
 
 
-    VF_DIR="$HOME/Vagrant/Kali"     # Ubicacion por defecto
+        VF_DIR="$HOME/Vagrant/Kali"     # Ubicacion por defecto
 
 
-    # Actualiza la ubicacion por defecto para el Vagrantfile.
-    # Argumentos:
-    #   $1: Nueva ruta del Vagrantfile
-    function define_directory {
-        # Se recibe un argumento y es valido
-        if [[ $# -eq 1 && -n "$1" ]]; then
-            VF_DIR="$1"
-        fi
+        # Actualiza la ubicacion por defecto para el Vagrantfile.
+        # Argumentos:
+        #   $1: Nueva ruta del Vagrantfile
+        function define_directory {
+            # Se recibe un argumento y es valido
+            if [[ $# -eq 1 && -n "$1" ]]; then
+                VF_DIR="$1"
+            fi
 
-        echo "Ubicacion del Vagrantfile: $VF_DIR"
-    }
+            echo "Ubicacion del Vagrantfile: $VF_DIR"
+        }
 
-    # Instala las dependencias necesarias para la maquina
-    # virtual, que en este caso son: Vagrant y VirtualBox.
-    function install_dependencies {
-        echo "Instalando dependencias..."
+        # Instala las dependencias necesarias para la maquina
+        # virtual, que en este caso son: Vagrant y VirtualBox.
+        function install_dependencies {
+            echo "Instalando dependencias..."
 
-        sudo apt-get update -qq
-        sudo apt-get install -y vagrant virtualbox > /dev/null 2>&1
+            sudo apt-get update -qq
+            sudo apt-get install -y vagrant virtualbox > /dev/null 2>&1
 
-        # Comprobar si se han instalado correctamente
-        if [[ $? -eq 0 ]]; then
-            echo "Paquetes instalados correctamente."
-        else
-            echo "Error al instalar los paquetes."
-            exit 1
-        fi
-    }
-
-    # Crea el directorio para el Vagrantfile.
-    function build_directory {
-        # Directorio para los archivos de Vagrant
-        if [[ -d $VF_DIR && -f $VF_DIR/Vagrantfile ]]; then
-            echo "El directorio seleccionado no esta vacio."
-            read -p "Sobreescribirlo? [s/n]: " answer
-
-            # Comprobar si debe reemplazarse
-            if [[ "$answer" != "${answer#[Ss]}" ]]; then
-                echo "Reiniciciando el directorio '$VF_DIR'..."
-                rm -rf $VF_DIR
+            # Comprobar si se han instalado correctamente
+            if [[ $? -eq 0 ]]; then
+                echo "Paquetes instalados correctamente."
             else
-                echo "No se puede continuar."
+                echo "Error al instalar los paquetes."
                 exit 1
             fi
-        else
-            echo "Creando el directorio '$VF_DIR'..."
-        fi
+        }
 
-        mkdir -p $VF_DIR
+        # Crea el directorio para el Vagrantfile.
+        function build_directory {
+            # Directorio para los archivos de Vagrant
+            if [[ -d $VF_DIR && -f $VF_DIR/Vagrantfile ]]; then
+                echo "El directorio seleccionado no esta vacio."
+                read -p "Sobreescribirlo? [s/n]: " answer
 
-        # Comprobar si se han creado correctamente
-        if [[ $? -eq 0 ]]; then
-            echo "Directorio creado correctamente."
-        else
-            echo "Error al crear el directorio."
-            exit 1
-        fi
-    }
+                # Comprobar si debe reemplazarse
+                if [[ "$answer" != "${answer#[Ss]}" ]]; then
+                    echo "Reiniciciando el directorio '$VF_DIR'..."
+                    rm -rf $VF_DIR
+                else
+                    echo "No se puede continuar."
+                    exit 1
+                fi
+            else
+                echo "Creando el directorio '$VF_DIR'..."
+            fi
 
-    # Crea la maquina virtual de Kali Linux usando Vagrant.
-    function build_kali {
-        cd $VF_DIR
+            mkdir -p $VF_DIR
 
-        echo "Creando la maquina virtual de Kali Linux..."
-        vagrant init elrey741/kali-linux_amd64  > /dev/null     # Inicializar Vagrant
-        vagrant up                                              # Inicializar la MV
-    }
+            # Comprobar si se han creado correctamente
+            if [[ $? -eq 0 ]]; then
+                echo "Directorio creado correctamente."
+            else
+                echo "Error al crear el directorio."
+                exit 1
+            fi
+        }
+
+        # Crea la maquina virtual de Kali Linux usando Vagrant.
+        function build_kali {
+            cd $VF_DIR
+
+            echo "Creando la maquina virtual de Kali Linux..."
+            vagrant init elrey741/kali-linux_amd64  > /dev/null     # Inicializar Vagrant
+            vagrant up                                              # Inicializar la MV
+        }
 
 
-    # Inicio del script
-    install_dependencies    # Instalar las dependencias
-    define_directory $1     # Actualizar la ubicacion de la MV
-    build_directory         # Crear el directorio
-    build_kali              # Crear la MV de Kali Linux
+        # Inicio del script
+        install_dependencies    # Instalar las dependencias
+        define_directory $1     # Actualizar la ubicacion de la MV
+        build_directory         # Crear el directorio
+        build_kali              # Crear la MV de Kali Linux
 
-    echo "Fin de la instalacion."
-        \end{lstlisting}
+        echo "Fin de la instalacion."
+            \end{lstlisting}
 
-        La plataforma también ofrece a los usuarios una forma de instalar una máquina virtual de Kali Linux usando una herramienta llamada Vagrant, que permite crear y gestionar máquinas virtuales de forma sencilla.
+            La plataforma también ofrece a los usuarios una forma de instalar una máquina virtual de Kali Linux usando una herramienta llamada Vagrant, que permite crear y gestionar máquinas virtuales de forma sencilla.
 
-        El script anterior permite realizar la instalación desde cero, instalando Vagrant y VirtualBox, creando un directorio para la máquina virtual y creando la máquina virtual de Kali Linux usando Vagrant.
+            El script anterior permite realizar la instalación desde cero, instalando Vagrant y VirtualBox, creando un directorio para la máquina virtual y creando la máquina virtual de Kali Linux usando Vagrant.
 
-        Este script se trata de una herramienta de desarrollo para agilizar la ejecución de pruebas; la plataforma ya cuenta con un apartado donde se describen estos mismos pasos, con comandos, para que el usuario pueda replicarlo.
+            Este script se trata de una herramienta de desarrollo para agilizar la ejecución de pruebas; la plataforma ya cuenta con un apartado donde se describen estos mismos pasos, con comandos, para que el usuario pueda replicarlo.
 
-        El script realiza las siguientes acciones:
+            El script realiza las siguientes acciones:
 
-        \paragraph{Instalar las dependencias}
+            \paragraph{Instalar las dependencias}
 
-            Usando la función \texttt{install\_dependencies} se instalan las dependencias necesarias para la máquina virtual, que en este caso son Vagrant y VirtualBox.
+                Usando la función \texttt{install\_dependencies} se instalan las dependencias necesarias para la máquina virtual, que en este caso son Vagrant y VirtualBox.
 
-            Usando el comando \texttt{apt-get update -qq} se actualiza la lista de paquetes disponibles en el sistema sin mostrar información por pantalla, y usando el comando \texttt{apt-get install -y vagrant virtualbox} se instalan los paquetes \texttt{vagrant} y \texttt{virtualbox}, enviando la salida a \texttt{/dev/null} para que no se muestre información por pantalla.
+                Usando el comando \texttt{apt-get update -qq} se actualiza la lista de paquetes disponibles en el sistema sin mostrar información por pantalla, y usando el comando \texttt{apt-get install -y vagrant virtualbox} se instalan los paquetes \texttt{vagrant} y \texttt{virtualbox}, enviando la salida a \texttt{/dev/null} para que no se muestre información por pantalla.
 
-            Además, se comprueba si la instalación se ha realizado correctamente usando el código de salida del comando anterior, que es 0 si se ha realizado correctamente, y 1 si ha habido algún error; en caso de error, el script se detiene.
+                Además, se comprueba si la instalación se ha realizado correctamente usando el código de salida del comando anterior, que es 0 si se ha realizado correctamente, y 1 si ha habido algún error; en caso de error, el script se detiene.
 
-        \paragraph{Definir la ubicación del Vagrantfile}
-        
-            Usando la función \texttt{define\_directory} actualiza la ubicación del Vagrantfile por la ruta recibida como argumento \texttt{\$1} del script; si no se recibe ninguna ruta, se usa la ruta por defecto \texttt{\$HOME/Vagrant/Kali}.
-
-        \paragraph{Crear el directorio}
-
-            Usando la función \texttt{build\_directory} se crea el directorio donde se almacenará el Vagrantfile, y se comprueba si ya existe un directorio en la ruta seleccionada; en caso de existir, se pregunta al usuario si desea sobreescribirlo, y en caso de no existir, se crea el directorio.
-
-            Además, se comprueba si el directorio se ha creado correctamente usando el código de salida del comando anterior, que es 0 si se ha realizado correctamente, y 1 si ha habido algún error; en caso de error, el script se detiene.
-
-        \paragraph{Crear la máquina virtual}
-        
-            Por último, usando la función \texttt{build\_kali} se crea la máquina virtual de Kali Linux usando Vagrant.
-
-            Usando el comando \texttt{cd \$VF\_DIR} se cambia el directorio actual al directorio donde se almacenará el Vagrantfile.
+            \paragraph{Definir la ubicación del Vagrantfile}
             
-            Usando el comando \texttt{vagrant init elrey741/kali-linux\_amd64} se inicializa Vagrant en el directorio anterior, y usando el comando \texttt{vagrant up} se levanta la máquina virtual de Kali Linux.
+                Usando la función \texttt{define\_directory} actualiza la ubicación del Vagrantfile por la ruta recibida como argumento \texttt{\$1} del script; si no se recibe ninguna ruta, se usa la ruta por defecto \texttt{\$HOME/Vagrant/Kali}.
 
-            Cabe destacar que el comando \texttt{vagrant init} crea un fichero llamado \texttt{Vagrantfile} en el directorio actual, que contiene la configuración de la máquina virtual; este fichero se usa para crear la máquina virtual usando el comando \texttt{vagrant up}, y este último es necesario para que la máquina virtual se cree y se inicie. No es posible construir la máquina virtual sin iniciarla al menos una vez.
+            \paragraph{Crear el directorio}
 
-            Además, se comprueba si la máquina virtual se ha creado correctamente usando el código de salida del comando anterior, que es 0 si se ha realizado correctamente, y 1 si ha habido algún error; en caso de error, el script se detiene.
+                Usando la función \texttt{build\_directory} se crea el directorio donde se almacenará el Vagrantfile, y se comprueba si ya existe un directorio en la ruta seleccionada; en caso de existir, se pregunta al usuario si desea sobreescribirlo, y en caso de no existir, se crea el directorio.
+
+                Además, se comprueba si el directorio se ha creado correctamente usando el código de salida del comando anterior, que es 0 si se ha realizado correctamente, y 1 si ha habido algún error; en caso de error, el script se detiene.
+
+            \paragraph{Crear la máquina virtual}
+            
+                Por último, usando la función \texttt{build\_kali} se crea la máquina virtual de Kali Linux usando Vagrant.
+
+                Usando el comando \texttt{cd \$VF\_DIR} se cambia el directorio actual al directorio donde se almacenará el Vagrantfile.
+                
+                Usando el comando \texttt{vagrant init elrey741/kali-linux\_amd64} se inicializa Vagrant en el directorio anterior, y usando el comando \texttt{vagrant up} se levanta la máquina virtual de Kali Linux.
+
+                Cabe destacar que el comando \texttt{vagrant init} crea un fichero llamado \texttt{Vagrantfile} en el directorio actual, que contiene la configuración de la máquina virtual; este fichero se usa para crear la máquina virtual usando el comando \texttt{vagrant up}, y este último es necesario para que la máquina virtual se cree y se inicie. No es posible construir la máquina virtual sin iniciarla al menos una vez.
+
+                Además, se comprueba si la máquina virtual se ha creado correctamente usando el código de salida del comando anterior, que es 0 si se ha realizado correctamente, y 1 si ha habido algún error; en caso de error, el script se detiene.
+
+                \newpage
+
+
+    \section{Contenido de los laboratorios}
+
+        Además de los ficheros \textit{Dockerfile}s y los recursos empleados para cada laboratorio, se han desarrollado 2 proyectos en Python para complementar los laboratorios de OSINT \ref{sec:osint} y de ransomware \ref{sec:ransomware} de la plataforma.
+
+        Estos pueden ejecutarse como \texttt{./\{fichero\}.py} añadiendo permisos de ejecución al fichero indicado (\texttt{chmod +x \{fichero\}.py}), o bien de la forma convencional \texttt{python3 \{fichero\}.py}, usando el comando \texttt{python3}.
+
+        \subsection{\texttt{ip-osint}}
+
+            Proyecto implementado en el laboratorio de introducción al OSINT \ref{sec:osint} con el que se puede obtener información de una dirección IP.
+            \\
+
+            \begin{lstlisting}[style=bash_style, caption={Menú de ayuda del proyecto}]
+    $ ./main.py -h
+    
+    usage: main.py [-h] [-i IP] [-l file] [-k file]
+
+    IP Information Lookup
+
+    optional arguments:
+    -h, --help            show this help message and exit
+    -i IP, --ip IP        IP address to check
+    -l file, --list file  text file with IP addresses to check
+    -k file, --keys file  JSON file with API keys
+            \end{lstlisting}
+
+            El proyecto está dividido en 2 secciones principales: los módulos y el script principal.
+
+            \paragraph{Módulos} Contenidos en la carpeta \texttt{utils/}, existe un módulo por cada fuente de datos que se usa para obtener información de una IP, actualmente compuestas de:
+
+                \begin{itemize}
+                    \item \texttt{tor.py}: comprueba si una IP es un nodo de salida de la red TOR.
+                    \item \texttt{who.py}: obtiene información de la base de datos WHOIS.
+                    \item \texttt{sho.py}: obtiene información usando la API de Shodan.io.
+                    \item \texttt{vir.py}: comprueba si una IP está registrada en VirusTotal.
+                    \item \texttt{geo.py}: obtiene datos de geolocalización y DNS inverso de una IP.
+                \end{itemize}
+
+                Adicionalmente, el existe un módulo \texttt{progressbar.py} que implementa una barra de progreso para la sección de Tor, actualizándose por cada nodo consultado.
+
+            \paragraph{Script principal} Ubicado en la raíz del proyecto, \texttt{main.py}, se encarga de obtener la información de una IP usando los módulos anteriores, y mostrarla por pantalla.
+
+            \newpage
+
+            \subsubsection{Ejemplo de salida}
+
+                \begin{lstlisting}[style=bash_style, basicstyle=\ttfamily\scriptsize, caption={Fragmento de la salida del proyecto \texttt{ip-osint}.}]
+    $ ./main.py -i 70.80.0.19
+
+    IP: 70.80.0.19
+
+    TOR
+    
+    Analizando 10201 nodos:
+    [##################################################] 100% 	
+    
+    No se encontro informacion sobre la IP.
+
+    (...)
+
+    whois
+    
+    Seccion 1/2
+    
+    NetRange       : 70.80.0.0 - 70.83.255.255
+    CIDR           : 70.80.0.0/14
+    NetName        : VL-17BL
+    NetHandle      : NET-70-80-0-0-1
+    Parent         : NET70 (NET-70-0-0-0-0)
+    NetType        : Direct Allocation
+    OriginAS       : Sin informacion
+    Organization   : Videotron Ltee (VL-421)
+    RegDate        : 2004-07-14
+    Updated        : 2020-10-08
+    Ref            : https://rdap.arin.net/registry/ip/70.80.0.0
+    
+    OrgName        : Videotron Ltee
+    OrgId          : VL-421
+    Address        : 150 Beaubien West
+    City           : Montreal
+    StateProv      : QC
+    PostalCode     : H2V 1C4
+    Country        : CA
+    RegDate        : 2020-05-15
+    Updated        : 2020-11-02
+    Comment        : https://www.videotron.com
+    Ref            : https://rdap.arin.net/registry/entity/VL-421
+    
+    OrgAbuseHandle : ABUSE263-ARIN
+    OrgAbuseName   : Network Operations Center
+    OrgAbusePhone  : +1-514-281-8498
+    OrgAbuseEmail  : abuse@videotron.ca
+    OrgAbuseRef    : https://rdap.arin.net/registry/entity/ABUSE263-ARIN
+    
+    OrgTechHandle  : NOC1226-ARIN
+    OrgTechName    : Network Operations Center
+    OrgTechPhone   : +1-514-380-7100
+    OrgTechEmail   : SRIP@videotron.com
+    OrgTechRef     : https://rdap.arin.net/registry/entity/NOC1226-ARIN
+
+    (...)
+    
+    Busqueda Inversa de IP
+    
+    modemcable019.0-80-70.mc.videotron.ca
+    
+    
+    VirusTotal
+    
+    La IP no esta registrada en VirusTotal.                    
+                \end{lstlisting}
+
+                \newpage
+
+        \subsection{\texttt{stockholm}}
+
+            Proyecto implementado en el laboratorio de ransomware \ref{sec:ransomware} con el que se puede cifrar y descifrar archivos de un directorio concreto de un sistema.
+            \\
+
+            \begin{lstlisting}[style=bash_style, caption={Menú de ayuda del proyecto}]
+    $ ./stockholm.py -h
+
+    usage: stockholm.py [-h] [-r clave] [-v] [-s] [-p carpeta]
+
+    Herramienta casera para 'secuestrar' y 'liberar' ficheros.
+
+    optional arguments:
+    -h, --help  show this help message and exit
+    -r clave    revierte la infeccion usando la clave de cifrado
+    -v          version del programa
+    -s          desactiva la informacion mostrada por pantalla
+    -p carpeta  descifra todos los ficheros y los almacena en la carpeta indicada
+            \end{lstlisting}
+
+            Se compone de las siguientes funciones:
+
+            \begin{itemize}
+                \item \texttt{inicializar\_analizador()}: Configura y crea el analizador de argumentos de línea de comandos con los que interpretar los valores recibidos.
+                \item \texttt{leer\_argumentos()}: Lee los argumentos de línea de comandos y devuelve las opciones seleccionadas.
+                \item \texttt{validar\_fichero(elemento, modo)}: Verifica si un archivo es válido para el cifrado o descifrado.
+                \item \texttt{contenido(carpeta)}: Genera una lista con todos los archivos de una carpeta, incluidos los de subcarpetas.
+                \item \texttt{secuestrar()}: Cifra los archivos con extensiones específicas en el directorio del script usando el módulo Fernet.
+                \item \texttt{liberar(carpeta)}: Descifra los archivos cifrados con extensión \texttt{.ft} en el directorio del script y los mueve a la carpeta especificada.
+            \end{itemize}
+
+            El script funcionará \textbf{si y solo si} existe una carpeta llamada \texttt{infection/} en la carpeta del usuario del sistema, y los archivos sobre los que se realizará el ataque serán \textbf{sola y exclusivamente} aquellos pertenecientes a dicha carpeta.
+
+            Si la carpeta no existe, mostrará un error, y si está vacía, no realizará ninguna acción.
+
+            \newpage
+
+            \subsubsection{Ejemplos básicos}
+
+                Cifrar todos los archivos de \texttt{/root/infection/}.
+                \\
+
+                \begin{lstlisting}[style=bash_style, basicstyle=\ttfamily\scriptsize, caption={Fragmento de la salida del proyecto \texttt{stockholm}.}]
+    $ ./stockholm.py
+
+    Cifrando archivos:
+        /root/infection/alpine-standard.iso
+        /root/infection/ft_split.c
+        /root/infection/libft.h
+        /root/infection/libft.pdf
+        /root/infection/backup.sql
+        /root/infection/nota.txt
+
+    Archivos cifrados:
+        /root/infection/alpine-standard.iso
+        /root/infection/backup.sql
+        /root/infection/ft_split.c
+        /root/infection/libft.h
+        /root/infection/libft.pdf
+        /root/infection/nota.txt
+
+        Resumen: 6/6 ficheros descifrados.
+                \end{lstlisting}
+                
+                Una vez se han cifrado los ficheros, se puede observar una clave generada en la carpeta \texttt{/root/}.
+
+                \begin{lstlisting}[style=bash_style]
+    $ ls
+
+    clave.key  infection  stockholm.py
+                \end{lstlisting}
+
+                Esta clave se puede utilizar para descifrar los ficheros de \texttt{/root/infection/} en la misma carpeta.
+                \\
+
+                \begin{lstlisting}[style=bash_style, basicstyle=\ttfamily\scriptsize, caption={Fragmento de la salida del proyecto \texttt{stockholm}.}]
+    $ ./stockholm.py -r clave.key
+
+    Archivos cifrados:
+        /root/infection/alpine-standard.iso.ft
+        /root/infection/backup.sql.ft
+        /root/infection/ft_split.c.ft
+        /root/infection/libft.h.ft
+        /root/infection/libft.pdf.ft
+        /root/infection/nota.txt.ft
+
+        Total: 6.
+
+    Archivos descifrados:
+        /root/infection/alpine-standard.iso.ft
+        /root/infection/backup.sql.ft
+        /root/infection/ft_split.c.ft
+        /root/infection/libft.h.ft
+        /root/infection/libft.pdf.ft
+        /root/infection/nota.txt.ft
+
+    Resumen: 6/6 ficheros descifrados.
+                \end{lstlisting}
