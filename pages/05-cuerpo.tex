@@ -488,40 +488,55 @@
 
                 A continuación se muestran 2 pseudo-códigos que representan el resultado final descrito:
 
-                \begin{figure}[!htbp]
-                    \centering
-                    
-                    \begin{subfigure}[!htbp]{\textwidth}
-                        \centering
-                        \includegraphics[width=0.8\textwidth]{images/Contenedor A.png}
-                        \caption{Dockerfile de una imagen principal (padre)}
-                    \end{subfigure}
-                    
-                    \begin{subfigure}[!htbp]{\textwidth}
-                        \centering
-                        \includegraphics[width=0.8\textwidth]{images/Contenedor B.png}
-                        \caption{Dockerfile de una imagen secundaria (hija)}
-                    \end{subfigure}
-                    
-                    \caption{Dependencia de contenedores}
-                    \label{fig:dependencia-contenedores}
-                \end{figure}
-                
-                El Dockerfile de la imagen hija hace referencia a la imagen padre mediante la línea $\texttt{FROM software\_container}$, estableciendo la dependencia. Además, se copian los archivos de la aplicación en la imagen y se establece como el directorio de trabajo. Finalmente, se ejecuta la aplicación con la línea $\verb|CMD ["python", "app.py"]|$, lo que mantendrá activos los contenedores resultantes de dicha imagen.
+                \paragraph{Imagen padre} Este Dockerfile establece una configuración básica del sistema operativo, y se instala el software necesario para el funcionamiento de la aplicación. Su propósito es servir como base para la creación de la imagen hija, que contendrá los archivos de la aplicación y se construirá sobre la imagen padre.
+                \\
+
+                \begin{lstlisting}[style=dockerfile_style, caption={Dockerfile de una imagen principal (padre)}]
+    # Se usa una imagen base con ubuntu
+    FROM ubuntu:20.04
+    
+    # Se instala el servidor web Apache
+    RUN apt-get update && apt-get install apache2 -y
+    
+    # Se instala el motor de la base de datos MySQL
+    RUN apt-get install mysql-server -y
+    
+    # Se especifica la ruta de ejecucion del servidor web
+    CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+                \end{lstlisting}
 
                 \begin{figure}[!htbp]
                     \centering
 
-                    \includegraphics[scale=0.14]{images/Diagramas/Contenedor A.png}
+                    \includegraphics[scale=0.15]{images/Diagramas/Contenedor A.png}
 
                     \caption{Creación de contenedores principales (padres)}
                     \label{fig:contenedor-padre}
                 \end{figure}
+
+                \newpage
+                
+                \paragraph{Imagen hija} Este Dockerfile hace referencia a la imagen padre mediante la línea \texttt{FROM software\_container}, estableciendo la dependencia. Además, se copian los archivos de la aplicación en la imagen y se establece como el directorio de trabajo. Finalmente, se ejecuta la aplicación con la línea $\verb|CMD ["python", "app.py"]|$, lo que mantendrá activos los contenedores resultantes de dicha imagen.
+                \\
+
+                \begin{lstlisting}[style=dockerfile_style, caption={Dockerfile de una imagen secundaria (hija)}]
+    # Se usa la imagen especifica del software como padre
+    FROM software_image
+
+    # Se copian los archivos de la aplicacion en la imagen
+    COPY . /var/www/html/app
+
+    # Se establece el directorio de trabajo
+    WORKDIR /var/www/html/app
+
+    # Se ejecuta la aplicacion
+    CMD ["python", "app.py"]
+                \end{lstlisting}
                 
                 \begin{figure}[!htbp]
                     \centering
 
-                    \includegraphics[scale=0.14]{images/Diagramas/Contenedor B.png}
+                    \includegraphics[scale=0.15]{images/Diagramas/Contenedor B.png}
 
                     \caption{Creación de contenedores secundarios (hijos)}
                     \label{fig:contenedor-hijo}
