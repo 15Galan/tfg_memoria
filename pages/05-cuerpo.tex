@@ -421,16 +421,6 @@
             \end{figure}
 
             \newpage
-            
-            \subsubsection{Red de contenedores de Docker}
-
-                Inicialmente se interpretó el sistema del artículo anterior como una red de contenedores.
-                
-                Por tanto, en lugar de crear un contenedor para cada \textit{sandbox}, se planteó la idea de crear una red contenedores para cada laboratorio, de forma que cada red estuviera compuesta por aquellos elementos a tratar en dicho laboratorio, y que a su vez sería accesible desde el exterior a través de un puerto específico, permitiendo a un usuario conectarse a través de SSH.
-
-                Esto podría lograrse usando Docker Compose \cite{docker-compose}, que permite crear y ejecutar aplicaciones Docker de forma sencilla, usando un archivo YAML que describe los servicios que componen la aplicación, así como las dependencias entre ellos.
-
-                Visto en perspectiva, queda bastante claro que el mecanismo del proyecto planteado en el artículo y el propuesto en esta sección no son similares más allá del uso de contenedores.
                 
             \subsubsection{Dependencia de contenedores de Docker}
 
