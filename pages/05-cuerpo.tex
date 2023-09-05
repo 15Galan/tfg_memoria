@@ -2,7 +2,7 @@
 
     \section{Motivación}
         
-        La Agencia Digital de Andalucía (ADA) presentó en 2021 un plan de inversión para los años 2022-2025 que se centra en varias áreas estratégicas de desarrollo tecnológico, incluyendo la ciberseguridad; esta inversión del Gobierno andaluz no solo impulsará la creación de un Centro de Ciberseguridad que coordinará la Estrategia Andaluza de Ciberseguridad 2022-2025, sino que además, pretende conseguir que revierta en el desarrollo económico de la región, que ya ha empezado a aceptar empresas como Google, que ha instalado su Centro de Excelencia de Ciberseguridad en Málaga.
+        La Agencia Digital de Andalucía presentó en 2021 un plan de inversión para los años 2022-2025 que se centra en varias áreas estratégicas de desarrollo tecnológico, incluyendo la ciberseguridad. Esta inversión del Gobierno andaluz no solo impulsará la creación de un Centro de Ciberseguridad que coordinará la Estrategia Andaluza de Ciberseguridad, sino que además, pretende conseguir que revierta en el desarrollo económico de la región, que ya ha empezado a aceptar empresas como Google, que ha instalado su Centro de Excelencia de Ciberseguridad en Málaga.
         
         Bajo el paraguas de este desarrollo tecnológico, el aumento de la demanda de profesionales en este campo ha despertado un gran interés en los estudiantes por aprender sobre la ciberseguridad.
         
@@ -14,9 +14,9 @@
     \section{Objetivos}
         \label{sec:objetivos}
     
-        Se busca desarrollar de una plataforma web que sea ligera, gratuita, \textit{open-source} y fácilmente extensible, con el objetivo principal de simplificar la introducción de futuros estudiantes en el sector de la ciberseguridad, con un enfoque específico en el pentesting.
+        Se busca desarrollar una plataforma web que sea ligera, gratuita, \textit{open-source} y fácilmente extensible, con el objetivo principal de simplificar la introducción de futuros estudiantes en el sector de la ciberseguridad, con un enfoque específico en el pentesting.
         
-        La plataforma proporcionará información documentada y sintetizada junto con entornos de prueba virtualizados para facilitar el aprendizaje mediante la experimentación.
+        La plataforma proporcionará información documentada y sintetizada junto con entornos de prueba virtualizados (laboratorios) para facilitar el aprendizaje mediante la experimentación.
         
         A diferencia de otras plataformas como Hack The Box y similares, el enfoque de esta plataforma no estará en la resolución de retos, como serían las pruebas de tipo CTF más habituales en el sector, sino en guiar e instruir a los usuarios de la plataforma sobre distintos conceptos y técnicas de pentesting, proporcionando entornos virtuales diseñados específicamente para experimentar y poner en práctica conceptos concretos.
         
@@ -25,7 +25,7 @@
     
     \section{Metodología}
     
-        Se ha empleado un \textbf{desarrollo incremental} para la elaboración del proyecto: se partió de una base a la que se añadieron sucesivas mejoras sin que estas perjudicaran al resto del proyecto desarrollado hasta ese momento.
+        Se ha empleado un desarrollo incremental para la elaboración del proyecto: se partió de una base a la que se añadieron sucesivas mejoras sin que estas perjudicaran al resto del proyecto desarrollado hasta ese momento.
 
         \begin{figure}[htbp]
             \centering
@@ -36,11 +36,11 @@
             \label{fig:notion-resumen}
         \end{figure}
 
-        Se ha utilizado la herramienta \textbf{Notion} para llevar a cabo este proyecto, una aplicación que permite la creación de notas -llamadas páginas- cuyo contenido puede ser variado: texto, imágenes, tablas, listas, archivos, enlaces, etc. y que además, permite la creación de bases de datos que pueden ser utilizadas para crear tablones Kanban, diagramas de Gantt, y otros tipos de vistas dinámicas.
+        Se ha utilizado la herramienta Notion para llevar a cabo este proyecto, una aplicación que permite la creación de notas -llamadas páginas- cuyo contenido puede ser variado: texto, imágenes, tablas, listas, archivos, enlaces, etc. y que además, permite la creación de bases de datos que pueden ser utilizadas para definir tablones Kanban, diagramas de Gantt, y otros tipos de vistas dinámicas.
 
-        Notion también cuenta con otra funcionalidad recientemente añadida: la integración con GitHub \cite{github}. Esto permite añadir a cualquier página de Notion una base de datos generada a partir del estado de un repositorio remoto -\textit{Issues}, \textit{Projects} y \textit{Pull Requests}-, permitiendo además la manipulación y la actualización del contenido en ambas direcciones, todo sincronizado a tiempo real. 
+        Notion también cuenta con otra funcionalidad recientemente añadida: la integración con GitHub \cite{github}. Esto permite añadir a cualquier página de Notion una base de datos generada a partir del estado de un repositorio remoto -\textit{Issues}, \textit{Projects} y \textit{Pull Requests}-, permitiendo además la manipulación y la actualización del contenido en ambas direcciones, todo sincronizado en tiempo real. 
 
-        El proceso que se ha seguido para el desarrollo del proyecto ha sido definir tareas en Notion y descomponerlas en tareas más simples, atómicas y tratables, clasificadas en función de su propósito: componer la memoria, desarrollar la plataforma web o crear entornos de pruebas virtualizados. Por otra parte, se han asignado dependencias entre las tareas, por lo que en la mayoría de ocasiones resultaba intuitivo y visual establecer el orden que debían seguir dichas tareas.
+        El proceso que se ha seguido para el desarrollo del proyecto ha sido definir tareas en Notion y descomponerlas en tareas más simples, atómicas y tratables, clasificadas en función de su propósito: componer la memoria, desarrollar la plataforma web o crear entornos de pruebas virtualizados (sección \ref{sec:estructura-global}). Por otra parte, se han asignado dependencias entre las tareas, por lo que en la mayoría de ocasiones resultaba intuitivo y visual establecer el orden que debían seguir dichas tareas.
 
         \newpage
 
@@ -73,7 +73,7 @@
     \section{Estructura global del proyecto}
         \label{sec:estructura-global}
         
-        El proyecto se divide en tres pilares principales: la creación de una plataforma web, la investigación y selección de conceptos de pentesting y la virtualización de los entornos de prueba, resultando en el objetivo de este proyecto de trabajo de fin de grado, una plataforma web que proporcionará información sobre técnicas de pentesting y ofrecerá acceso a pruebas virtualizadas en forma de laboratorios. 
+        El proyecto se divide en tres pilares principales: la creación de una plataforma web, la investigación -y selección- de conceptos de pentesting y la virtualización de los entornos de prueba:
         
         \begin{figure}[h]
             \centering
@@ -88,9 +88,12 @@
         
             La primera toma de contacto del usuario con la plataforma, la página web será la interfaz de usuario para acceder a los laboratorios y contenidos relacionados con la ciberseguridad.
             
-            Respecto a su construcción, se han considerado dos opciones: programarla desde cero o utilizar un CMS (Sistema de Gestión de Contenidos); para la primera opción, se optaría por el uso del framework Astro, que permite crear sitios web rápidamente, además de proporcionar un amplio conjunto de herramientas para su personalización; por otro lado, se ha considerado el uso de WordPress, uno de los CMS más utilizados en el mundo y que cuenta con una amplia variedad de plantillas disponibles, lo que facilitaría el diseño de la interfaz.
-
-            También se tuvieron en cuenta distintos constructores de páginas webs como Cargo Collective o Square Space.
+            Respecto a su construcción, se han considerado dos opciones:
+            
+            \begin{itemize}
+                \item \textbf{Programación desde cero}: se consideró el uso del framework Astro, que permite crear sitios web rápidamente, además de proporcionar un amplio conjunto de herramientas para su personalización.
+                \item \textbf{Utilizar un CMS (Sistema de Gestión de Contenido)}: se consideró el uso de WordPress, uno de los CMS más utilizados en el mundo y que cuenta con una amplia variedad de plantillas disponibles, lo que facilitaría el diseño de la interfaz.
+            \end{itemize}
 
             Finalmente, se decidió usar WordPress por su sencillez y su biblioteca de plugins, que permitiría integrar diferentes funcionalidades extra en lugar de programarlas manualmente como podría haber ocurrido con el uso de un framework.
                 
@@ -105,16 +108,16 @@
         \subsection{Investigación}
         
             Se centrará en recopilar y seleccionar diferentes conceptos y técnicas relacionados con el pentesting. Este apartado se verá mejor reflejado en la sección \ref{cap:catalogo}.
+
+            La investigación se llevará a cabo en paralelo con el desarrollo de la plataforma web, ya que los resultados de la investigación se utilizarán para crear los laboratorios.
         
         \subsection{Virtualización}
 
-            La virtualización es una parte integral del proyecto, ya que permite la creación de varios laboratorios de prueba donde los usuarios aplicarán los conocimientos adquiridos en la plataforma; concretamente, se consideraron contenedores de Docker y máquinas virtuales para crear estos laboratorios.
+            La virtualización es una parte integral del proyecto, ya que permite la creación de varios laboratorios de prueba donde los usuarios aplicarán los conocimientos adquiridos en la plataforma. Concretamente, se consideraron contenedores de Docker y máquinas virtuales para crear estos laboratorios.
             
             Elegir Docker como plataforma de contenedores es una buena opción porque ofrece una gestión de recursos eficiente y una generación de imágenes sencilla; por otro lado, Vagrant Cloud es una buena opción para crear máquinas virtuales, ya que ofrece una amplia gama de imágenes preconfiguradas y un entorno de desarrollo fácil de usar.
             
-            Se pueden utilizar diversas herramientas para gestionar los contenedores, en función de las necesidades específicas de cada laboratorio; por ejemplo, Kubernetes es una buena herramienta para la gestión de contenedores a gran escala (clústers de contenedores). Además, Docker Compose es una opción conveniente para configurar y ejecutar aplicaciones de contenedores múltiples.
-            
-            Por otro lado, también se consideraron plataformas que brindan servicios de almacenamiento y distribución de imágenes, como DockerHub para imágenes de contenedores de Docker y Vagrant Cloud para máquinas virtuales preconfiguradas. Estas dos plataformas brindan enlaces de descargas con las que un usuario puede acceder a recursos previamente montados por su autor.
+            Por otro lado, también se consideraron plataformas que brindan servicios de almacenamiento y distribución de imágenes, como DockerHub para imágenes de contenedores de Docker y Vagrant Cloud para máquinas virtuales preconfiguradas. Estas dos plataformas brindan enlaces de descargas con las que un usuario puede acceder a recursos previamente construidos por su autor.
 
             \newpage
 
@@ -125,9 +128,9 @@
         
         \subsection{GitHub}
         
-            GitHub es una plataforma de desarrollo colaborativo de software que ofrece alojamiento de código fuente, seguimiento de problemas y herramientas de colaboración para proyectos de programación.
+            GitHub \cite{github} es una plataforma de desarrollo colaborativo de software que ofrece alojamiento de código fuente, seguimiento de problemas y herramientas de colaboración para proyectos de programación.
             
-            Esta plataforma es muy popular en la comunidad de desarrolladores, ya que les permite compartir su trabajo con otros usuarios, pudiendo ser clonado, modificado y actualizado por otros desarrolladores, permitiendo la colaboración y el intercambio de conocimientos; o mantenerlo privado para uso personal o empresarial.
+            Esta plataforma es muy popular en la comunidad de desarrolladores, ya que les permite compartir su trabajo con otros usuarios, pudiendo ser clonado, modificado y actualizado por otros desarrolladores, permitiendo la colaboración y el intercambio de conocimientos, así como mantenerlo privado para uso personal o empresarial.
             
             Además del alojamiento de código fuente, GitHub también ofrece herramientas de seguimiento de problemas, donde los desarrolladores pueden reportar y resolver errores, solicitar nuevas características y discutir mejoras en el software. Esto facilita la comunicación y la colaboración entre los usuarios, además de mejorar la calidad del software desarrollado.
             
@@ -170,7 +173,9 @@
             
             Docker funciona con imágenes, que son plantillas o modelos que contienen todos los componentes necesarios para ejecutar una aplicación en un contenedor, incluidos el código fuente, las librerías, los archivos de configuración y las dependencias del sistema. Estas imágenes pueden ser descargadas desde un registro centralizado llamado Docker Hub o construirse localmente por los desarrolladores.
             
-            Una vez obtenida una imagen, puede usarse Docker para crear un contenedor a partir de ella, lo que implica crear una instancia de aplicación y, por tanto, el entorno en el que se ejecuta; los contenedores de Docker se pueden transferir fácilmente entre diferentes sistemas y entornos, lo que facilita la implementación y el escalado de aplicaciones. Además, Docker proporciona herramientas de administración de contenedores, como la capacidad de iniciar, detener, reiniciar y eliminar contenedores, así como la capacidad de monitorear su uso y rendimiento.
+            Una vez obtenida una imagen, se puede crear un contenedor a partir de ella, lo que implica crear una instancia de una aplicación y, por tanto, el entorno en el que se ejecuta. Los contenedores de Docker se pueden transferir fácilmente entre diferentes sistemas y entornos, lo que facilita la implementación y el escalado de aplicaciones.
+            
+            Además, Docker proporciona herramientas de administración de contenedores, como la capacidad de iniciar, detener, reiniciar y eliminar contenedores, así como la capacidad de monitorear su uso y rendimiento.
             
             \newpage
 
@@ -211,11 +216,13 @@
 \chapter{Estado del arte}
     \label{cap:estado-arte}
 
-    Actualmente existen diversas plataformas web de entrenamiento en ciberseguridad que ofrecen laboratorios y desafíos para mejorar las habilidades de seguridad ofensiva y defensiva de los usuarios; dichas plataformas han experimentado un crecimiento en popularidad en los últimos años debido a la creciente demanda de profesionales en el campo de la seguridad informática y a la necesidad de mejorar las habilidades tanto de los estudiantes como de los profesionales en el campo.
+    Actualmente existen diversas plataformas web de entrenamiento en ciberseguridad que ofrecen laboratorios y desafíos para mejorar las habilidades de seguridad ofensiva y defensiva de los usuarios.
+    
+    Dichas plataformas han experimentado un crecimiento en popularidad en los últimos años debido a la creciente demanda de profesionales en el campo de la seguridad informática y a la necesidad de mejorar las habilidades tanto de los estudiantes como de los profesionales en el campo.
     
     Estas plataformas varían en su enfoque y contenido, desde laboratorios que simulan entornos de la vida real hasta desafíos de explotación de vulnerabilidades, así como eventos de naturaleza más lúdica y competitiva como los retos de capturar la bandera, también conocidos como CTFs (\textit{Capture The Flag}).
     
-    Algunas de estas plataformas han sido utilizadas en la educación, ya que permiten a los usuarios practicar y aplicar conceptos teóricos de seguridad informática en un entorno práctico; y también pueden ser útiles para empresas y organizaciones, ya sea para evaluar las habilidades de seguridad de los empleados o para mejorar la seguridad de sus sistemas.
+    Algunas de estas plataformas han sido utilizadas en la educación, ya que permiten a los usuarios practicar y aplicar conceptos teóricos de seguridad informática en un entorno práctico, y también pueden ser útiles para empresas y organizaciones, ya sea para evaluar las habilidades de seguridad de los empleados o para mejorar la seguridad de sus sistemas.
     
     Respecto al futuro, se espera que continúen creciendo en popularidad y que aumente la variedad de laboratorios y desafíos que ofrecen, siendo muy probable que se produzca una mayor integración con otras tecnologías de inteligencia artificial, quizás dando lugar a una mejora en la calidad de esos desafíos y laboratorios mencionados, para que proporcionen una experiencia de usuario más personalizada.
     
@@ -267,7 +274,9 @@
             \label{fig:HTB-Academy-web}
         \end{figure}
         
-        Los cursos están diseñados para ser prácticos, con una orientación en la experimentación activa que permite a los usuarios adquirir habilidades en la práctica, y no solo a través de la teoría; cubren una amplia gama de temas, desde los fundamentos de la seguridad informática hasta temas avanzados como el análisis de malware, el hacking web y la ingeniería inversa, ya que están diseñados para ser accesibles desde principiantes hasta expertos en el sector.
+        Los cursos están diseñados para ser prácticos, con una orientación en la experimentación activa que permite a los usuarios adquirir habilidades en la práctica, y no solo a través de la teoría.
+        
+        Cubren una amplia gama de temas, desde los fundamentos de la seguridad informática hasta temas avanzados como el análisis de malware, el hacking web y la ingeniería inversa, ya que están diseñados para ser accesibles desde principiantes hasta expertos en el sector.
         
         Esta plataforma cuenta con los mismos tipos de \textbf{planes de suscripción} que Hack The Box: gratuito, VIP y empresarial; aunque es importante destacar que tanto Hack The Box como HTB Academy son servicios diferentes, por lo que \textbf{los planes de ambas plataformas son completamente independientes entre sí}.
         
@@ -276,7 +285,7 @@
     
     \section{TryHackMe}
     
-        Plataforma de aprendizaje de ciberseguridad basada en la experimentación activa, que proporciona una variedad de entornos de laboratorio virtuales y desafíos prácticos para ayudar a los usuarios a aprender y mejorar sus habilidades en seguridad informática; su contenido se encuentra organizado en \textbf{diferentes rutas de aprendizaje} que permiten a los usuarios desarrollar su conocimiento de forma estructurada.
+        Plataforma de aprendizaje de ciberseguridad basada en la experimentación activa, que proporciona una variedad de entornos de laboratorio virtuales y desafíos prácticos para ayudar a los usuarios a aprender y mejorar sus habilidades en seguridad informática. Su contenido se encuentra organizado en \textbf{diferentes rutas de aprendizaje} que permiten a los usuarios desarrollar su conocimiento de forma estructurada.
         
         \begin{figure}[h]
             \centering
@@ -304,7 +313,7 @@
     
     \section{VulnHub}
     
-        Plataforma de laboratorios que proporciona una gran cantidad de \textbf{máquinas virtuales vulnerables que los usuarios pueden descargar} y configurar en sus propios entornos de laboratorio para luego explotar sus vulnerabilidades; cada máquina virtual cuenta con descripción detallada de su objetivo y una guía paso a paso para ayudar a los usuarios en su proceso de aprendizaje.
+        Plataforma de laboratorios que proporciona una gran cantidad de \textbf{máquinas virtuales vulnerables que los usuarios pueden descargar} y configurar en sus propios entornos de laboratorio para luego explotar sus vulnerabilidades. Cada máquina virtual cuenta con descripción detallada de su objetivo y una guía paso a paso para ayudar a los usuarios en su proceso de aprendizaje.
         
         \begin{figure}[h]
             \centering
@@ -324,7 +333,7 @@
     
     \section{OverTheWire}
     
-        Plataforma de laboratorios \textbf{diseñada de manera progresiva}, donde los usuarios pueden avanzar en su aprendizaje de forma gradual, comenzando con los niveles más fáciles y avanzando hacia los más complejos; cada nivel de desafío presenta un objetivo diferente, haciendo que los usuarios deban usar su ingenio y habilidades en seguridad informática para resolver los desafíos y avanzar al siguiente nivel.
+        Plataforma de laboratorios \textbf{diseñada de manera progresiva}, donde los usuarios pueden avanzar en su aprendizaje de forma gradual, comenzando con los niveles más fáciles y avanzando hacia los más complejos. Cada nivel de desafío presenta un objetivo diferente, haciendo que los usuarios deban usar su ingenio y habilidades en seguridad informática para resolver los desafíos y avanzar al siguiente nivel.
         
         \begin{figure}[h]
             \centering
@@ -335,7 +344,7 @@
             \label{fig:OverTheWire-web}
         \end{figure}
         
-        Uno de los aspectos únicos de OverTheWire es que los desafíos están diseñados para simular situaciones del mundo real, lo que permite a los usuarios adquirir habilidades prácticas y relevantes para el mundo laboral de la ciberseguridad; pudiendo aplicar lo aprendido a situaciones reales y utilizar sus habilidades para asegurar sistemas y aplicaciones.
+        Uno de los aspectos únicos de OverTheWire es que los desafíos están diseñados para simular situaciones del mundo real, lo que permite a los usuarios adquirir habilidades prácticas y relevantes para el mundo laboral de la ciberseguridad, pudiendo aplicar lo aprendido a situaciones reales y utilizar sus habilidades para asegurar sistemas y aplicaciones.
         
         Al contrario de lo que sucede con otras plataformas, entre ellas Hack The Box y TryHackMe mencionadas anteriormente, \textbf{esta plataforma es completamente gratuita} y todo su contenido está construido por y para los usuarios.
         
@@ -355,31 +364,33 @@
         
         La mayoría -y más conocidas- de estas plataformas son CTFs (Capture The Flag), y aunque son muy útiles para poner en práctica los conocimientos adquiridos, no suelen ofrecer un entorno de aprendizaje guiado, sino que el usuario debe resolver los desafíos por su cuenta, sin ningún tipo de documentación que le ayude a resolverlos, más allá de las pistas que ofrezca la propia plataforma o las soluciones que hayan publicado otros usuarios en Internet.
 
-        Sin embargo, esto no siempre es así, ya que como se vió en el apartado anterior: Try Hack Me \cite{tryhackme} ofrece tanto retos instructivos como retos puramente prácticos y competitivos; mientras que Hack The Box \cite{hackthebox}, la plataforma más reconocida, ha sido capaz de lanzar su propia plataforma educativa con retos guiados: HTB Academy \cite{hackthebox-academy}.
+        Sin embargo, esto no siempre es así, ya que como se vió en el apartado anterior, Try Hack Me \cite{tryhackme} ofrece tanto retos instructivos como retos puramente prácticos y competitivos; mientras que Hack The Box \cite{hackthebox}, la plataforma más reconocida, ha sido capaz de lanzar su propia plataforma educativa con retos guiados: HTB Academy \cite{hackthebox-academy}.
 
-        Teniendo eso cuenta, se plantearon las siguientes ideas para afrontar el proyecto.
+        Teniendo eso en cuenta, se plantearon las siguientes ideas para afrontar el proyecto.
 
         \subsection{Plataforma de CTFs}
 
-            La primera idea planteada fue, precisamente, replicar una plataforma de CTFs (Capture The Flag). Esta versión del proyecto se centraría más en enseñar distintos conceptos de la ciberseguridad al usuario, acompañados de una serie de retos que pondrían a prueba los conocimientos adquiridos; algo parecido a las plataformas TryHackMe y HTB Academy mencionadas en el apartado anterior.
+            La primera idea planteada fue, precisamente, replicar una plataforma de CTFs (Capture The Flag). Esta versión del proyecto se centraría más en enseñar distintos conceptos de la ciberseguridad al usuario, acompañados de una serie de retos que pondrían a prueba los conocimientos adquiridos, parecido a las plataformas TryHackMe y HTB Academy mencionadas en el apartado anterior.
 
-            Esta idea fue descartada porque ya existen muchas plataformas de CTFs, y se pretendía hacer algo distinto con este proyecto. Se requería un entorno de aprendizaje guiado y como se mencionó anteriormente, los CTFs no suelen ofrecerlo.
+            Esta idea fue descartada porque ya existen muchas plataformas de CTFs y se pretendía hacer algo distinto con este proyecto. Se requería un entorno de aprendizaje guiado y como se mencionó anteriormente, los CTFs no suelen ofrecerlo.
 
         \subsection{Plataforma como portal de descargas}
 
-            Tomando como ejemplo los retos descargables de la Academia Hacker de Incibe \cite{retos-INCIBE}, se planteó la posibilidad de crear máquinas virtuales y alojarlas en el servidor a modo de elementos descargables; es decir, la plataforma contaría con un sitio web que ofrecería información documentada sobre distintos conceptos de ciberseguridad, pero la virtualización se llevaría a cabo por el propio usuario en su equipo, experimentando localmente.
+            Tomando como ejemplo los retos descargables de la Academia Hacker de Incibe \cite{retos-INCIBE}, se planteó la posibilidad de crear máquinas virtuales y alojarlas en el servidor a modo de elementos descargables.
+            
+            Es decir, la plataforma contaría con un sitio web que ofrecería información documentada sobre distintos conceptos de ciberseguridad, pero la virtualización se llevaría a cabo por el propio usuario en su equipo, experimentando localmente.
 
             Esta idea también fue descartada porque plantea un gran problema de fricción entre el usuario y el objetivo de la plataforma: no existiría la posibilidad de ofrecer un entorno de trabajo en el que el usuario pudiera interactuar con los laboratorios de forma remota y con herramientas aisladas, sino que este debería descargar y configurar un hypervisor, o instalar Docker para acceder a los entornos de prueba en su equipo. Debido a esto, se perdería esa esencia de minimalismo y sencillez que debería ofrecer la plataforma.
             
             Además, plantea otros problemas relacionados con el espacio de almacenamiento (tanto en el servidor como en el equipo del usuario).
-
-            Sin embargo, cabe destacar la existencia herramientas que podrían ser de utilidad para este proyecto, como: Vagrant \cite{vagrant}, que permite automatizar la creación y configuración de máquinas virtuales de forma declarativa; y Vagrant Cloud \cite{vagrant-cloud}, que es un repositorio de máquinas virtuales ya configuradas para instalar usando \texttt{vagrant}. También puede ser útil incluir en la plataforma de una guía introductoria a la configuración de una máquina virtual para tests de intrusión (pentesing) con Kali Linux, ya que si bien no es objeto de este proyecto que los usuarios aprendan sobre virtualización, no se puede ignorar el hecho de que es necesario el uso de máquinas virtuales para el sector de la ciberseguridad.
+            
+            También puede ser útil incluir en la plataforma de una guía introductoria a la configuración de una máquina virtual para tests de intrusión (pentesing) con Kali Linux, ya que si bien no es objeto de este proyecto que los usuarios aprendan sobre virtualización, no se puede ignorar el hecho de que es necesario el uso de máquinas virtuales para el sector de la ciberseguridad.
 
         \subsection{Plataforma de laboratorios}
 
             Por último, se planteó crear una plataforma de laboratorios con la que el usuario pudiera acceder a distintos entornos de forma remota, sin necesidad de descargar ni configurar nada en su equipo. La plataforma estaría compuesta de un sitio web donde estaría recogida la documentación, mientras que el servidor alojaría los entornos virtualizados asociados a dicha documentación.
             
-            La principal diferencia y rasgo a destacar de este planteamiento es que los laboratorios actuarían como \textit{sandboxes}; es decir, aunque un laboratorio estaría planteado para que el usuario pudiera resolver un problema descrito, también ofrecería al usuario contar con un entorno con herramientas preinstaladas en el caso de querer hacer sus propias pruebas sobre un concepto en específico.
+            La principal diferencia y rasgo a destacar de este planteamiento es que los laboratorios actuarían como \textit{sandboxes}; es decir, ofrecería al usuario un entorno con herramientas preinstaladas en el caso de querer hacer sus propias pruebas sobre un concepto en específico.
 
             Esta idea fue la que más se acercaba a los objetivos del proyecto, y por tanto fue la que se escogió para su desarrollo: solventaba las fricciones de las ideas anteriores, y además ofrecía un entorno de aprendizaje guiado y práctico, que era el objetivo principal del proyecto.
 
@@ -450,13 +461,15 @@
 
                 \end{enumerate}
 
-                En el paso 2 se crea una imagen específica del software a partir de un archivo Dockerfile que describe la configuración y los componentes que deben incluirse en los contenedores resultantes de dicha imagen.
+                En el paso 2, se crea una imagen específica del software a partir de un archivo Dockerfile que describe la configuración y los componentes que deben incluirse en los contenedores resultantes de dicha imagen.
 
                 En el paso 3, se crea una imagen específica de la aplicación que se construye sobre la imagen del software previamente creada; es decir, se crea una nueva imagen que constituye una capa de configuración adicional sobre la configuración de la propia imagen del software, que actua como base. Esta nueva imagen encapsula los archivos de la aplicación y se crea también a partir de un archivo Dockerfile.
 
                 El resultado final es un contenedor específico de la aplicación que reutiliza el sistema operativo y los componentes incluidos en la imagen del software, pero que añade los archivos específicos para el funcionamiento de la aplicación.
 
-                A continuación se muestran 2 pseudo-códigos que representan el resultado final descrito:
+                En las siguientes páginas se muestran dos ejemplos de pseudo-código de ficheros Dockerfile que describen la creación de imágenes específicas del software y de la aplicación, respectivamente.
+
+                \newpage
 
                 \paragraph{Imagen padre} Este Dockerfile establece una configuración básica del sistema operativo, y se instala el software necesario para el funcionamiento de la aplicación. Su propósito es servir como base para la creación de la imagen hija, que contendrá los archivos de la aplicación y se construirá sobre la imagen padre.
                 \\
@@ -478,7 +491,7 @@
                 \begin{figure}[!htbp]
                     \centering
 
-                    \includegraphics[scale=0.15]{images/Diagramas/Contenedor A.png}
+                    \includegraphics[scale=0.2]{images/Diagramas/Contenedor A.png}
 
                     \caption{Creación de contenedores principales (padres)}
                     \label{fig:contenedor-padre}
@@ -591,9 +604,9 @@
         
             \subsubsection{SQLite vs MySQL}
 
-                SQLite es un RDBMS \cite{sqlite} que se caracteriza por ser ligero, rápido y fácil de usar; se trata de una buena opción para proyectos pequeños, pero no es recomendable para proyectos de gran envergadura, ya que no es capaz de manejar grandes cantidades de datos.
+                SQLite es un RDBMS \cite{sqlite} que se caracteriza por ser ligero, rápido y fácil de usar. Se trata de una buena opción para proyectos pequeños, pero no es recomendable para proyectos de gran envergadura, ya que no es capaz de manejar grandes cantidades de datos.
                 
-                Por otro lado, MySQL también es otro RDBMS \cite{mysql} que se caracteriza por ser rápido, seguro y fácil de usar; al contrario que con SQLite, MySQL sí es recomendable para proyectos de gran envergadura, ya que es capaz de manejar grandes cantidades de datos.
+                Por otro lado, MySQL también es otro RDBMS \cite{mysql} que se caracteriza por ser rápido, seguro y fácil de usar. Al contrario que con SQLite, MySQL sí es recomendable para proyectos de gran envergadura, ya que es capaz de manejar grandes cantidades de datos.
 
                 \begin{table}[h]
                     \centering
@@ -716,7 +729,7 @@
 
                     Este servicio de infraestructura como servicio (IaaS) de Google permite crear máquinas virtuales en la nube, lo que resulta muy interesante para el desarrollo de este proyecto.
 
-                    Compute Engine permite a los usuarios tener un control total sobre la configuración y personalización de sus máquinas virtuales: cantidad de CPU, memoria RAM, almacenamiento y la opción de elegir entre diferentes tipos de instancias según el rendimiento y el costo requeridos; también es posible seleccionar el sistema operativo y personalizar la configuración de red y seguridad de las instancias.
+                    Compute Engine permite a los usuarios tener un control total sobre la configuración y personalización de sus máquinas virtuales: cantidad de CPU, memoria RAM, almacenamiento y la opción de elegir entre diferentes tipos de instancias según el rendimiento y el costo requeridos. También es posible seleccionar el sistema operativo y personalizar la configuración de red y seguridad de las instancias.
 
                     Este servicio se considera el más compatible con la arquitectura y funcionamiento del proyecto, ya que en términos simples, podría implementarse en un primer momento de forma local, y luego trasladarlo a una instancia de Compute Engine sin necesidad de realizar grandes cambios.
 
@@ -1134,7 +1147,7 @@
 
             \subsubsection{\textit{Back-end}: Tareas de Cron}
 
-                Las tareas de cron son tareas que se ejecutan de forma periódica en el servidor; se ha usado una para comprobar si algún laboratorio de pruebas superó su tiempo de vida (1 hora) y detenerlo de forma automática.
+                Las tareas de cron son tareas que se ejecutan de forma periódica en el servidor. Se ha usado una para comprobar si algún laboratorio de pruebas superó su tiempo de vida (1 hora) y detenerlo de forma automática.
                 
                 Esta tarea se ha implementado directamente en el servidor, ya que se consideró la opción más rápida y sencilla: se ejecuta cada minuto y destruye aquellos laboratorios que hayan excedido su tiempo de vida, liberando recursos en el sistema y permitiendo un uso de contenedores dinámico.
 
@@ -1257,7 +1270,7 @@
             \begin{enumerate}
                 \item El usuario solicita crear un laboratorio para probar el concepto tratado en la página informativa pulsando el botón de inicio, ejecutando algunas de las funcionalidades de la plataforma definidas en \texttt{functions.php}.
 
-                \item Se comprueba en la base de datos que el usuario activo no tiene ningún otro laboratorio activo; si lo tuviera, mostraría una advertencia y un enlace a la página del laboratorio activo en la sección \textit{Laboratorio} de la página.
+                \item Se comprueba en la base de datos que el usuario activo no tiene ningún otro laboratorio activo. Si lo tuviera, mostraría una advertencia y un enlace a la página del laboratorio activo en la sección \textit{Laboratorio} de la página.
 
                 \item Se obtiene un puerto disponible en el servidor y se hace una llamada al sistema para crear un contenedor Docker mapeando su puerto 22 (SSH por defecto) con el puerto obtenido. La ejecución del comando en el sistema devuelve la ID del contenedor creado, almacenándola en \texttt{functions.php}.
 
@@ -1319,7 +1332,7 @@
             \begin{enumerate}
                 \item La tarea de cron del sistema ejecuta un script de Bash para detener los contenedores Docker que se encuentren activos y cuyo tiempo de vida exceda a 1 hora. Esta tarea se ejecuta cada minuto.
 
-                \item Se hace una llamada al sistema para comprobar si hay contenedores activos y en caso afirmativo, obtener una lista de los IDs de esos contenedores; el script termina en caso de no haber ninguno.
+                \item Se hace una llamada al sistema para comprobar si hay contenedores activos y en caso afirmativo, obtener una lista de los IDs de esos contenedores. El script termina en caso de no haber ninguno.
 
                 \item Se usa la lista en un bucle para iterar sobre ella y se hace una llamada al sistema para obtener la hora de creación del contenedor actual. Esos datos se usan para calcular el tiempo de vida del contenedor actual.
                 
@@ -1398,7 +1411,7 @@
 
         Una red de ordenadores es un conjunto de dispositivos electrónicos conectados entre sí a través de un medio, que intercambian información y comparten recursos.
             
-        Los protocolos de red definen un conjunto de reglas y convenciones para llevar a cabo la comunicación entre dispositivos en una red; incluyendo mecanismos para la autenticación, la transferencia de datos, la detección de errores y la corrección de errores, y la señalización.
+        Los protocolos de red definen un conjunto de reglas y convenciones para llevar a cabo la comunicación entre dispositivos en una red, incluyendo mecanismos para la autenticación, la transferencia de datos, la detección de errores y la corrección de errores, y la señalización.
 
         Este concepto se presenta como una introducción a los conceptos básicos de redes, que abarca algunos de los protocolos más comunes, como TCP/IP, UDP y SSH, así como los tipos y topologías de redes, y ataques comunes a redes.
 
@@ -1406,7 +1419,7 @@
 
             El conocimiento de las redes ocupa un lugar destacado Entre las habilidades esenciales para llevar a cabo un pentesting efectivo, debido a su importancia fundamental en la seguridad de los sistemas.
 
-            Antes de realizar una prueba de penetración, es vital identificar los objetivos y las áreas de interés en la red; ya que sin esta información, sería difícil determinar qué atacar y dónde centrar los esfuerzos de prueba.
+            Antes de realizar una prueba de penetración, es vital identificar los objetivos y las áreas de interés en la red, ya que sin esta información, sería difícil determinar qué atacar y dónde centrar los esfuerzos de prueba.
 
             El conocimiento de las direcciones IP y los protocolos utilizados por los sistemas en la red permite a los profesionales de seguridad seleccionar las herramientas y técnicas adecuadas para las pruebas, porque diferentes sistemas y servicios pueden requerir enfoques de ataque específicos, y esta elección informada es esencial para simular con precisión los métodos utilizados por los atacantes reales.
 
@@ -1415,7 +1428,7 @@
 
     \section{Análisis de tráfico}
 
-        Esta es una técnica de ciberseguridad que implica la monitorización y el examen de los datos que fluyen a través de una red de comunicaciones; puede incluir la recopilación de información sobre el origen y el destino de los datos, el tipo de protocolo utilizado, la cantidad de datos transmitidos y otros metadatos relacionados con el tráfico, etc.
+        Esta es una técnica de ciberseguridad que implica la monitorización y el examen de los datos que fluyen a través de una red de comunicaciones. Puede incluir la recopilación de información sobre el origen y el destino de los datos, el tipo de protocolo utilizado, la cantidad de datos transmitidos y otros metadatos relacionados con el tráfico, etc.
 
         Este concepto se presenta como una descripción del proceso de análisis de tráfico, que abarca la captura de tráfico de red, el análisis de paquetes y el uso de herramientas de análisis de tráfico, como Wireshark.
 
@@ -1427,13 +1440,13 @@
 
         \subsection{Laboratorio}
 
-            Este entorno permite al usuario usar Wireshark en el propio navegador, alojando el servicio en otro puerto del servidor, accesible desde la propia plataforma; contiene 4 capturas de tráfico que involucran los protocolos ICMP, ARP, TCP y FTP.
+            Este entorno permite al usuario usar Wireshark en el propio navegador, alojando el servicio en otro puerto del servidor, accesible desde la propia plataforma. Contiene 4 capturas de tráfico que involucran los protocolos ICMP, ARP, TCP y FTP.
             
             La página de la plataforma hace un recorrido y explicación de 2 de ellas:
 
-            La captura \texttt{SSL.pcap} contiene el intercambio de datos de una conexión TCP, donde se produce el proceso de \textit{handshake} de SSL/TLS, que permite el cifrado de la conexión; el usuario puede usar Wireshark para explorar distintos detalles sobre las versiones de TLS utilizadas y cómo se han decidido utilizar. Se muestra cómo se han obtenido los algoritmos de cifrados y las características de la conexión.
+            La captura \texttt{SSL.pcap} contiene el intercambio de datos de una conexión TCP, donde se produce el proceso de \textit{handshake} de SSL/TLS, que permite el cifrado de la conexión. El usuario puede usar Wireshark para explorar distintos detalles sobre las versiones de TLS utilizadas y cómo se han decidido utilizar. Se muestra cómo se han obtenido los algoritmos de cifrados y las características de la conexión.
 
-            La captura \texttt{filezilla.pcap} contiene el intercambio de datos de una conexión FTP, donde se produce el proceso de autenticación del usuario, que permite el acceso al servidor FTP; el usuario puede usar Wireshark para explorar distintos detalles sobre el intercambio de datos, como el usuario y contraseña, así como el uso de comandos FTP para la gestión de archivos. También es posible observar el contenido de los ficheros enviados.
+            La captura \texttt{filezilla.pcap} contiene el intercambio de datos de una conexión FTP, donde se produce el proceso de autenticación del usuario, que permite el acceso al servidor FTP. El usuario puede usar Wireshark para explorar distintos detalles sobre el intercambio de datos, como el usuario y contraseña, así como el uso de comandos FTP para la gestión de archivos. También es posible observar el contenido de los ficheros enviados.
 
             Las otras 3 capturas, llamadas \texttt{Internet.pcap}, \texttt{ping.pcap} y \texttt{SSH.pcap} muestran información sobre otros protocolos útiles como ICMP, SSH y ARP.
 
@@ -1479,7 +1492,7 @@
 
     \section{Fuerza bruta}
 
-        La fuerza bruta es una técnica en la que se intenta adivinar una contraseña o credencial de acceso probando diferentes combinaciones hasta encontrar la correcta; generalmente, usando un diccionario de contraseñas como \textit{rockyou.txt}.
+        La fuerza bruta es una técnica en la que se intenta adivinar una contraseña o credencial de acceso probando diferentes combinaciones hasta encontrar la correcta. Generalmente, usando un diccionario de contraseñas como \textit{rockyou.txt}.
 
         Este concepto se presenta como una descripción de la técnica de fuerza bruta, abarcando el uso de herramientas para descifrar contraseñas.
 
@@ -1509,7 +1522,7 @@
 
             Las contraseñas y otros datos sensibles, rara vez se almacenan en texto plano debido a los riesgos de seguridad asociados; en su lugar, se transforman en valores hash utilizando algoritmos de hash criptográficos.
             
-            Conocer técnicas de hash-cracking permite a los pentesters evaluar la calidad de las contraseñas utilizadas por los usuarios en un sistema; si las contraseñas se descifran con relativa facilidad, esto indica que los usuarios están utilizando contraseñas débiles, lo que representa un riesgo de seguridad significativo.
+            Conocer técnicas de hash-cracking permite a los pentesters evaluar la calidad de las contraseñas utilizadas por los usuarios en un sistema. Si las contraseñas se descifran con relativa facilidad, esto indica que los usuarios están utilizando contraseñas débiles, lo que representa un riesgo de seguridad significativo.
             
             Por último, si los pentesters logran descifrar contraseñas y acceder a cuentas o sistemas protegidos, pueden demostrar el impacto real que tendría un ataque exitoso. Esto es especialmente valioso para concienciar a las partes interesadas sobre la importancia de mejorar la seguridad de las contraseñas y tomar medidas adecuadas.
 
@@ -1586,7 +1599,7 @@
 
         \subsection{Laboratorio}
 
-            Este entorno contiene una muestra de ransomware muy simple, pero igualmente peligrosa si no se trata con cuidado; el ransomware se llama \texttt{stockholm.py} y ha sido desarrollado en Python.
+            Este entorno contiene una muestra de ransomware muy simple, pero igualmente peligrosa si no se trata con cuidado. El ransomware se llama \texttt{stockholm.py} y ha sido desarrollado en Python.
             
             El script se encuentra en el directorio del usuario \texttt{root} y realizará las siguientes acciones:
             
@@ -1895,7 +1908,7 @@
     
     \section{Conclusiones}
 
-        La realización de este proyecto me ha permitido profundizar en el mundo de la ciberseguridad, así como en el desarrollo web y la virtualización con Docker; considero que me ha servido para ampliar mis conocimientos en estas áreas y para aprender nuevas técnicas y herramientas que no conocía.
+        La realización de este proyecto me ha permitido profundizar en el mundo de la ciberseguridad, así como en el desarrollo web y la virtualización con Docker. Considero que me ha servido para ampliar mis conocimientos en estas áreas y para aprender nuevas técnicas y herramientas que no conocía.
     
         Personalmente, tenía 2 objetivos principales al llevar a cabo este proyecto: ampliar mi conocimiento sobre ciberseguridad y pentesting; y aprender sobre Docker.
 
@@ -1929,13 +1942,13 @@
         
         \subsection{Optimización de la plataforma}
 
-            Actualmente, la plataforma está construida sobre WordPress, pero se podría plantear la posibilidad de desarrollarla desde cero, ya que WordPress es una herramienta muy potente, pero también muy pesada y compleja, por lo que podría ser interesante desarrollar una plataforma más ligera y personalizada.
+            La plataforma está construida sobre WordPress, pero se podría plantear la posibilidad de desarrollarla desde cero, ya que WordPress es una herramienta muy potente, pero también muy pesada, por lo que podría ser interesante desarrollar una plataforma más ligera y personalizada.
 
             Por otra parte, también existen herramientas alternativas que han sido diseñadas específicamente para crear plataformas de CTFs, como: Mellivora \cite{mellivora}, CTFd \cite{ctfd}, Root The Box \cite{root-the-box}, etc.
 
             \paragraph{Importante}
             
-                Cabe destacar que \textbf{este proyecto no es una plataforma de CTFs}, ni debe serlo, ya que los laboratorios planteados quedan a disposición completa del usuario para que los use como desee; sin embargo, sí podría ser interesante investigar estas herramientas y quizás, aplicar modificaciones para que las pruebas virtualizadas no requieran de una bandera, convirtiendo la plataforma en una herramienta de aprendizaje y no de competición.
+                Cabe destacar que \textbf{este proyecto no es una plataforma de CTFs}, ni debe serlo, ya que los laboratorios planteados quedan a disposición completa del usuario para que los use como desee. Sin embargo, sí podría ser interesante investigar estas herramientas y quizás, aplicar modificaciones para que las pruebas virtualizadas no requieran de una bandera, convirtiendo la plataforma en una herramienta de aprendizaje y no de competición.
             
         \subsection{Generalización del contenido}
             

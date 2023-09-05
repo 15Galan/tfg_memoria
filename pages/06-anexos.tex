@@ -58,7 +58,7 @@
 
             El uso de ficheros \texttt{docker-compose.yml} también era muy restrictivo, ya que no permitía la gestión dinámica de puertos; para ser más específicos, este fichero almacena una configuración a la que se puede llegar usando combinaciones de opciones y valores de comandos Docker, por lo que no añade ninguna funcionalidad adicional, sino que solo permite almacenar una configuración. Aquí se reptite exactamente el mismo problema de las colisiones descrito en el párrafo anterior.
 
-            Finalmente, se optó por generar puertos disponibles usando código en \texttt{functions.php}: se define un rango inicial \texttt{(5555 - 9999)} predefinido y para cada laboratorio que quiere iniciar un usuario, se busca en la base de datos qué puertos están siendo ocupados por otros laboratorios, se calcula la diferencia entre el rango inicial y los puertos ocupados, y se selecciona un puerto aleatorio dentro de ese rango.
+            Finalmente, se optó por generar puertos disponibles usando código en \texttt{functions.php}: se define un rango inicial de puertos y para cada laboratorio que quiere iniciar un usuario, se busca en la base de datos qué puertos están siendo ocupados por otros laboratorios, se calcula la diferencia entre el rango inicial y los puertos ocupados, y se selecciona un puerto aleatorio dentro de ese rango.
 
             Como el puerto obtenido se usa para el laboratorio, al almacenarse esa información en la base de datos, el puerto queda registrado; del mismo modo cuando el usuario o la tarea de cron destruyan un laboratorio, los datos serán liberados de la base de datos y el puerto volverá a estar disponible para su uso.
 
