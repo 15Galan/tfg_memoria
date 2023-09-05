@@ -572,9 +572,11 @@
 
                 \paragraph{Facilidad de uso}
                     
-                    Factor importante en la decisión de elegir esta herramienta ya que no se cuentan con conocimientos previos de programación web ni a nivel técnico, por lo que debía usarse una herramienta que no tuviera en cuenta esas necesidades.
+                    Factor importante en la decisión de elegir esta herramienta, ya que no se cuentan con conocimientos previos de programación web a nivel técnico, por lo que debía usarse una herramienta que no tuviera en cuenta esas necesidades.
                     
                     WordPress parece cubrir ese aspecto de forma notable debido a que su popularidad se basa, precisamente, en la cantidad de usuarios que son capaces de crear una página web sin necesidad de ser desarrolladores o contar con experiencia previa.
+
+                    En cambio, Astro \cite{astro} es un framework para desarrollo de aplicaciones web en lugar de un CMS, por lo que inicialmente requiere de cierta experiencia previa en programación web para poder usarlo.
                 
                 \paragraph{Personalización}
                 
@@ -586,7 +588,9 @@
                 
                     Si bien este proyecto constituye una prueba de concepto, uno de los objetivos (sección \ref{sec:objetivos}) a tener en cuenta se trataba de construir una plataforma web fácilmente extensible.
 
-                    La escalabilidad de WordPress es una de sus principales fortalezas y uno de los motivos por los que es una plataforma popular y confiable para la creación de sitios web de cualquier tamaño. Su arquitectura modular y su capacidad para trabajar con bases de datos y servidores de alta gama, la convierten en opción sólida para aquellos que buscan crear sitios web que puedan crecer y adaptarse a sus necesidades en el futuro.
+                    La escalabilidad de WordPress es una de sus principales fortalezas y uno de los motivos por los que es una plataforma popular y confiable para la creación de sitios web de cualquier tamaño. Su arquitectura modular y su capacidad para trabajar con bases de datos y servidores de alta gama, la convierten en una opción sólida para aquellos que buscan crear sitios web que puedan crecer y adaptarse a sus necesidades en el futuro.
+
+                    Astro no se queda atrás, ya que también es una herramienta escalable, pero en este caso, para el desarrollo de aplicaciones web. No obstante, aunque uno de los pilares de esta herramienta sea precisamente, la escalabilidad, no deja de ser un factor variable que depende de la implementación del desarrollador, por lo que no se considera una opción tan sólida como WordPress.
 
             \subsubsection{WordPress y Drupal}
 
@@ -594,19 +598,17 @@
 
                 \paragraph{Facilidad de uso, personalización y escalabilidad}
                 
-                    Observando la tabla anterior se puede apreciar varios motivos por los que se ha optado usar Wordpress en lugar de Drupal, pero todos ellos relacionados al mismo punto: \textbf{la complejidad de Drupal no se ajusta a las necesidades de este proyecto}.
+                    Observando la tabla anterior se puede apreciar varios motivos por los que se ha optado usar Wordpress en lugar de Drupal, pero todos ellos relacionados al mismo punto: la complejidad de Drupal no se ajusta a las necesidades de este proyecto.
     
-                    Si bien puede ser una idea interesante a largo plazo y en un hipotético caso de evolución de la plataforma web a un proyecto superior, para una prueba de concepto como la que se está llevando a cabo, se debe optar por una herramienta más sencilla y fácil de usar.
-    
-                    \newpage
+                    Si bien puede ser una idea interesante a largo plazo y en un hipotético caso de evolución de la plataforma web a un proyecto superior, para una prueba de concepto como la que se está llevando a cabo, se considera óptimo elegir una herramienta más sencilla y fácil de usar.
     
         \subsection{Base de Datos}
         
             \subsubsection{SQLite vs MySQL}
 
-                SQLite es un RDBMS \cite{sqlite} que se caracteriza por ser ligero, rápido y fácil de usar. Se trata de una buena opción para proyectos pequeños, pero no es recomendable para proyectos de gran envergadura, ya que no es capaz de manejar grandes cantidades de datos.
+                SQLite \cite{sqlite} es un RDBMS que se caracteriza por ser ligero, rápido y fácil de usar. Se trata de una buena opción para proyectos pequeños, pero no es recomendable para proyectos de gran envergadura, ya que no es capaz de manejar grandes cantidades de datos.
                 
-                Por otro lado, MySQL también es otro RDBMS \cite{mysql} que se caracteriza por ser rápido, seguro y fácil de usar. Al contrario que con SQLite, MySQL sí es recomendable para proyectos de gran envergadura, ya que es capaz de manejar grandes cantidades de datos.
+                Por otro lado, MySQL \cite{mysql} también es otro RDBMS que se caracteriza por ser rápido, seguro y fácil de usar. Al contrario que con SQLite, MySQL sí es recomendable para proyectos de gran envergadura, ya que es capaz de manejar grandes cantidades de datos.
 
                 \begin{table}[h]
                     \centering
