@@ -687,15 +687,6 @@
 
                 Además, Linode cuenta con una interfaz de usuario intuitiva y fácil de usar, así como con una amplia documentación y soporte técnico para ayudar a los usuarios a configurar y administrar sus servidores.
 
-                \begin{figure}[htbp]
-                    \centering
-
-                    \includegraphics[width=0.15\textwidth]{images/Logos/linode.png}
-                    \caption{Logo de Linode}
-
-                    \label{fig:linode-logo}
-                \end{figure}
-
                 Este proyecto requiere la gestión de contenedores Docker, por lo que se buscaba un servicio que integrara Kubernetes para facilitar la gestión de los mismos.
                 
                 Linode ofrece un servicio de Kubernetes que permite a los usuarios implementar y administrar clústeres de Kubernetes en la nube.
@@ -703,15 +694,6 @@
                 \paragraph{Linode Kubernetes Engine (LKE)}
 
                     Este servicio se encarga de la configuración, el aprovisionamiento y la administración de los nodos del clúster, lo que permite a los usuarios centrarse en el desarrollo de sus aplicaciones en lugar de en la gestión de la infraestructura subyacente.
-                    
-                    \begin{figure}[htbp]
-                        \centering
-    
-                        \includegraphics[width=0.15\textwidth]{images/Logos/lke.png}
-                        \caption{Logo de Linode Kubernetes Engine}
-    
-                        \label{fig:lke-logo}
-                    \end{figure}
                     
                     Además, Linode Kubernetes Engine (LKE) es compatible con herramientas y servicios de terceros, lo que permite a los usuarios integrar fácilmente sus aplicaciones con otros servicios en la nube.
 
@@ -722,46 +704,20 @@
                 
                 AWS permite a los usuarios crear aplicaciones escalables y de alta disponibilidad sin necesidad de invertir en hardware o infraestructura física.
 
-                \begin{figure}[htbp]
-                    \centering
-
-                    \includegraphics[width=0.15\textwidth]{images/Logos/aws.png}
-                    \caption{Logo de AWS}
-
-                    \label{fig:aws-logo}
-                \end{figure}
-
                 Como se mencionó anteriormente, este proyecto requiere la gestión de contenedores Docker, por lo que se buscaba un servicio que integrara Kubernetes para facilitar la gestión de los mismos.
 
                 AWS cuenta con el servicio Amazon Elastic Kubernetes Service (EKS), que permite a los usuarios implementar y administrar clústeres de Kubernetes en la nube.
 
                 \paragraph{Amazon Elastic Kubernetes Service (EKS)}
 
-                    Este servicio se encarga de la configuración, el aprovisionamiento y la administración de los nodos del clúster, lo que permite a los usuarios centrarse en el desarrollo de sus aplicaciones en lugar de en la gestión de la infraestructura subyacente. 
-                    
-                    \begin{figure}[htbp]
-                        \centering
-    
-                        \includegraphics[width=0.15\textwidth]{images/Logos/eks.png}
-                        \caption{Logo de Amazon Elastic Kubernes Services}
-    
-                        \label{fig:eks-logo}
-                    \end{figure}
+                    Este servicio se encarga de la configuración, el aprovisionamiento y la administración de los nodos del clúster, lo que permite a los usuarios centrarse en el desarrollo de sus aplicaciones en lugar de en la gestión de la infraestructura subyacente.
+
 
             \subsubsection{Google Cloud Platform (GCP)}
 
                 Esta plataforma de Google ofrece una gran cantidad de servicios en la nube con la que poder alojar distintos proyectos en función de sus necesidades: almacenamiento, bases de datos, redes, análisis, aprendizaje automático, etc.
                 
                 Permite a los usuarios crear aplicaciones escalables y de alta disponibilidad sin necesidad de invertir en hardware o infraestructura física.
-
-                \begin{figure}[htbp]
-                    \centering
-
-                    \includegraphics[width=0.15\textwidth]{images/Logos/gcp.png}
-                    \caption{Logo de Google Cloud Platform}
-
-                    \label{fig:gcp-logo}
-                \end{figure}
 
                 Se planteó el uso de esta herramienta para el alojamiento del proyecto porque ofrece un saldo gratuito equivalentes a 3 meses de uso sus servicios, resultando muy interesante para el desarrollo del mismo.
 
@@ -770,15 +726,6 @@
                 \paragraph{Google Kubernetes Engine (GKE)}
 
                     Este servicio permite ejecutar aplicaciones en contenedores de forma sencilla y rápida, sin necesidad de gestionar la infraestructura subyacente.
-
-                    \begin{figure}[htbp]
-                        \centering
-
-                        \includegraphics[width=0.15\textwidth]{images/Logos/gke.png}
-                        \caption{Logo de Google Kubernetes Engine}
-                        
-                        \label{fig:gke-logo}
-                    \end{figure}
 
                     Este servicio se planteó como una opción para la gestión de los contenedores Docker que son los laboratorios del proyecto.
 
@@ -790,15 +737,6 @@
                     
                     Cloud Run es compatible con contenedores basados en Docker, lo que significa que es posible empaquetar una aplicación en un contenedor y luego implementarla en Cloud Run.
 
-                    \begin{figure}[htbp]
-                        \centering
-
-                        \includegraphics[width=0.15\textwidth]{images/Logos/gcr.png}
-                        \caption{Logo de Cloud Run}
-                        
-                        \label{fig:gcr-logo}
-                    \end{figure}
-
                     Este servicio se planteó como una opción para el alojamiento completo del proyecto, pero se descartó tras analizarlo: este proyecto no requiere de un servicio de computación sin servidor, ya que se trata de una prueba de concepto y no se espera que la plataforma web vaya a ser utilizada por un gran número de usuarios.
 
                     Por otra parte, como se mencionó, esta herramienta está más diseñada para aplicaciones en contenedores, mientras que este proyecto se basa en la gestión de contenedores Docker.
@@ -808,15 +746,6 @@
                     Este servicio de infraestructura como servicio (IaaS) de Google permite crear máquinas virtuales en la nube, lo que resulta muy interesante para el desarrollo de este proyecto.
 
                     Compute Engine permite a los usuarios tener un control total sobre la configuración y personalización de sus máquinas virtuales: cantidad de CPU, memoria RAM, almacenamiento y la opción de elegir entre diferentes tipos de instancias según el rendimiento y el costo requeridos; también es posible seleccionar el sistema operativo y personalizar la configuración de red y seguridad de las instancias.
-
-                    \begin{figure}[htbp]
-                        \centering
-
-                        \includegraphics[width=0.15\textwidth]{images/Logos/gce.png}
-                        \caption{Logo de Compute Engine}
-                        
-                        \label{fig:gce-logo}
-                    \end{figure}
 
                     Este servicio se considera el más compatible con la arquitectura y funcionamiento del proyecto, ya que en términos simples, podría implementarse en un primer momento de forma local, y luego trasladarlo a una instancia de Compute Engine sin necesidad de realizar grandes cambios.
 
