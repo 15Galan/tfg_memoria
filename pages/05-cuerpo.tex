@@ -99,25 +99,25 @@
                 
             \subsubsection{Alojamiento}
             
-                Respecto al alojamiento, se han considerado varias opciones, tales como GitHub Pages, Vercel, OVHcloud o Heroku.
+                Respecto al alojamiento, se han considerado varias opciones, tales como GitHub Pages \cite{github-pages}, Vercel \cite{vercel}, OVHcloud \cite{ovhcloud} o Heroku \cite{heroku}.
                 
                 Sin embargo, al tratarse de una prueba de concepto, se ha decidido elaborar la infraestructura de forma local, lo que permitirá un mayor control y flexibilidad en el desarrollo, dando lugar a mejoras en futuras líneas de trabajo (sección \ref{sec:futuras-lineas-trabajo}).
 
-                En cuanto a la base de datos, se ha decidido utilizar MySQL por ser una opción muy utilizada, fácil de configurar y ser nativamente compatible con WordPress. La base de datos tendrá la menor cantidad de tablas posibles, almacenando únicamente la información necesaria sobre los usuarios registrados y sobre los laboratorios.
+                En cuanto a la base de datos, se ha decidido utilizar MySQL por ser una opción muy utilizada, fácil de configurar y ser nativamente compatible con WordPress. Se usará la tabla \texttt{wp\_usermeta} para almacenar la información de los laboratorios activos.
             
         \subsection{Investigación}
         
-            Se centrará en recopilar y seleccionar diferentes conceptos y técnicas relacionados con el pentesting. Este apartado se verá mejor reflejado en la sección \ref{cap:catalogo}.
+            Consistirá en recopilar y seleccionar diferentes conceptos y técnicas relacionados con el pentesting. Este apartado se verá mejor reflejado en la sección \ref{cap:catalogo}.
 
-            La investigación se llevará a cabo en paralelo con el desarrollo de la plataforma web, ya que los resultados de la investigación se utilizarán para crear los laboratorios.
+            Si bien la investigación se plantea para una fase inicial del proyecto, igualmente se espera que se lleve a cabo de forma continua en paralelo con el desarrollo de la plataforma, ya que los resultados de la investigación se llevarán a cabo para la creación de más laboratorios.
         
         \subsection{Virtualización}
 
             La virtualización es una parte integral del proyecto, ya que permite la creación de varios laboratorios de prueba donde los usuarios aplicarán los conocimientos adquiridos en la plataforma. Concretamente, se consideraron contenedores de Docker y máquinas virtuales para crear estos laboratorios.
             
-            Elegir Docker como plataforma de contenedores es una buena opción porque ofrece una gestión de recursos eficiente y una generación de imágenes sencilla; por otro lado, Vagrant Cloud es una buena opción para crear máquinas virtuales, ya que ofrece una amplia gama de imágenes preconfiguradas y un entorno de desarrollo fácil de usar.
+            Elegir Docker como plataforma de virtualización es una buena opción, porque ofrece una gestión de recursos eficiente y una generación de laboratorios sencilla a través de imágenes y contenedores; por otro lado, Vagrant Cloud \cite{vagrant-cloud} es una buena opción para crear máquinas virtuales, ya que ofrece una amplia gama de imágenes preconfiguradas.
             
-            Por otro lado, también se consideraron plataformas que brindan servicios de almacenamiento y distribución de imágenes, como DockerHub para imágenes de contenedores de Docker y Vagrant Cloud para máquinas virtuales preconfiguradas. Estas dos plataformas brindan enlaces de descargas con las que un usuario puede acceder a recursos previamente construidos por su autor.
+            Por otro lado, también se consideraron plataformas que brindan servicios de almacenamiento y distribución de imágenes, como Docker Hub \cite{docker-hub} para imágenes de contenedores de Docker y Vagrant Cloud para máquinas virtuales preconfiguradas. Estas dos plataformas brindan enlaces de descargas con las que un usuario puede acceder a recursos previamente construidos por su autor.
 
             \newpage
 
@@ -125,7 +125,7 @@
     \section{Tecnologías empleadas}
         \label{tecnologias}
 
-        Esta sección recoge de forma directa las tecnologías y herramientas que se usaron para llevar a cabo el proyecto. Algunas de ellas fueron una elección clara, mientras que otras pasaron por un proceso de análisis, recogido en la sección \ref{analisis-tecnologias}.
+        Esta sección recoge de forma directa las tecnologías y herramientas que se usaron para llevar a cabo el proyecto. Algunas de ellas fueron una elección clara, mientras que otras pasaron por un proceso de análisis, recogido en la sección \ref{sec:analisis-tecnologias}.
         
         \subsection{GitHub}
         
@@ -141,7 +141,7 @@
             
             WordPress \cite{wordpress} es una plataforma de código abierto para la creación y gestión de sitios web que fue publicada en 2003 y desde entonces, se ha convertido en una de las plataformas más populares y utilizadas en todo el mundo, siendo especialmente popular para la creación de blogs, aunque también es utilizada para sitios web corporativos, tiendas en línea, portafolios, entre otros. 
             
-            WordPress es utilizado por muchos grandes sitios web y empresas, como el blog de noticias TIME \cite{time-web} y el sitio web de la BBC America \cite{bbc-america-web}. También es utilizado por miles de bloggers y pequeñas empresas en todo el mundo debido a su facilidad de uso y capacidad de personalización.
+            WordPress es utilizado por muchos grandes sitios web y empresas, como el blog de noticias \textit{TIME} \cite{time-web} y el sitio web de la \textit{BBC America} \cite{bbc-america-web}. También es utilizado por miles de bloggers y pequeñas empresas en todo el mundo debido a su facilidad de uso y capacidad de personalización.
 
             Una de las principales ventajas de WordPress es que es muy fácil de usar y no se requiere experiencia técnica previa para comenzar a utilizarlo. Otra ventaja de WordPress es su personalización gracias a la gran cantidad de temas y complementos (plugins) disponibles. Estos complementos permiten añadir nuevas funcionalidades a un sitio web, como formularios de contacto, galerías de imágenes, integración con redes sociales, etc. evitando la necesidad de programar dichas funcionalidades de forma manual.
             
@@ -174,11 +174,11 @@
                 \label{fig:contenedores-vs-maquinasvirtuales}
             \end{figure}
             
-            Docker funciona con imágenes, que son plantillas o modelos que contienen todos los componentes necesarios para ejecutar una aplicación en un contenedor, incluidos el código fuente, las librerías, los archivos de configuración y las dependencias del sistema. Estas imágenes pueden ser descargadas desde un registro centralizado llamado Docker Hub \cite{docker-hub} o construirse localmente por los desarrolladores.
+            Docker funciona con imágenes, que son plantillas o modelos que contienen todos los componentes necesarios para ejecutar una aplicación en un contenedor, incluidos el código fuente, las librerías, los archivos de configuración y las dependencias del sistema. Estas imágenes pueden ser descargadas desde un registro centralizado llamado Docker Hub o construirse localmente por los desarrolladores.
             
             Una vez obtenida una imagen, se puede crear un contenedor a partir de ella, lo que implica crear una instancia de una aplicación y, por tanto, el entorno en el que se ejecuta. Los contenedores de Docker se pueden transferir fácilmente entre diferentes sistemas y entornos, lo que facilita la implementación y el escalado de aplicaciones.
             
-            Además, Docker proporciona herramientas de administración de contenedores, como la capacidad de iniciar, detener, reiniciar y eliminar contenedores, así como la capacidad de monitorear su uso y rendimiento.
+            Además, proporciona herramientas de administración de contenedores, como la capacidad de iniciar, detener, reiniciar y eliminar contenedores, así como la capacidad de monitorear su uso y rendimiento.
 
             Docker se ha empleado para crear los laboratorios de la plataforma; concretamente, cada laboratorio parte de un fichero Dockerfile cuya imagen es generada y almacenada en el sistema, y cuyos contenedores se crean y se destruyen bajo petición del usuario de la plataforma.
             
@@ -223,13 +223,13 @@
     \label{cap:investigacion-previa}  
 
     \section{Estado del arte}
-        \label{cap:estado-arte}
+        \label{sec:estado-arte}
 
         Actualmente existen diversas plataformas web de entrenamiento en ciberseguridad que ofrecen laboratorios y desafíos para mejorar las habilidades de seguridad ofensiva y defensiva de los usuarios.
         
-        Dichas plataformas han experimentado un crecimiento en popularidad en los últimos años debido a la creciente demanda de profesionales en el campo de la seguridad informática y a la necesidad de mejorar las habilidades tanto de los estudiantes como de los profesionales en el campo.
+        Dichas plataformas han experimentado un crecimiento en popularidad en los últimos años debido a la creciente demanda de profesionales en el campo de la seguridad informática, así como la necesidad de mejorar las habilidades tanto de los estudiantes como de los profesionales en el campo.
         
-        Estas plataformas varían en su enfoque y contenido, desde laboratorios que simulan entornos de la vida real hasta desafíos de explotación de vulnerabilidades, así como eventos de naturaleza más lúdica y competitiva como los retos de capturar la bandera, también conocidos como CTFs (\textit{Capture The Flag}).
+        Estas plataformas varían en su enfoque y contenido, ofreciendo desde laboratorios que simulan entornos de la vida real hasta desafíos de explotación de vulnerabilidades, y otros formatos de naturaleza más lúdica y competitiva como los retos de capturar la bandera, también conocidos como CTFs (\textit{Capture The Flag}).
         
         Algunas de estas plataformas han sido utilizadas en la educación, ya que permiten a los usuarios practicar y aplicar conceptos teóricos de seguridad informática en un entorno práctico, y también pueden ser útiles para empresas y organizaciones, ya sea para evaluar las habilidades de seguridad de los empleados o para mejorar la seguridad de sus sistemas.
         
@@ -242,22 +242,22 @@
         
         \subsection{Hack The Box}
         
-            Plataforma web de entrenamiento que ofrece más de 200 desafíos y laboratorios de amplia variedad, diseñados para mejorar las habilidades de seguridad ofensiva y defensiva de los usuarios. Hack The Box se ha vuelto \textbf{la plataforma más popular} en la comunidad de seguridad informática debido a su \textbf{enfoque en la calidad de los desafíos y laboratorios} y su \textbf{comunidad activa de usuarios}.
+            Plataforma web de entrenamiento que ofrece más de 200 desafíos y laboratorios de amplia variedad, diseñados para mejorar las habilidades de seguridad ofensiva y defensiva de los usuarios. Hack The Box se ha vuelto la plataforma más popular en la comunidad de seguridad informática debido a su enfoque en la calidad de los desafíos y laboratorios y su comunidad activa de usuarios.
             
-            Sus retos abarcan desde desafíos básicos de hacking hasta laboratorios avanzados, y también ofrece una función llamada \textit{Boxes} diseñada para simular entornos de la vida real, como redes empresariales, que contienen múltiples vulnerabilidades que los usuarios pueden explotar para ganar acceso a sistemas y obtener información confidencial.
+            Sus retos abarcan desde desafíos básicos de hacking hasta laboratorios avanzados, y también ofrece elementos llamados \textit{boxes} diseñados para simular entornos de la vida real, como redes empresariales, que contienen múltiples vulnerabilidades que los usuarios pueden explotar para ganar acceso a sistemas y obtener información confidencial.
             
             \begin{figure}[h]
                 \centering
 
                 \includegraphics[width=\textwidth]{images/Capturas/Web de HTB.png}
 
-                \caption{Web de Hack The Box}
+                \caption{Web de Hack The Box \cite{hackthebox}}
                 \label{fig:HTB-web}
             \end{figure}
             
             Una de las características más interesantes de esta plataforma es su enfoque en el hacking ético, ya que se fomenta una cultura de hacking responsable y legal y requiere que los usuarios acepten un código de conducta antes de unirse. Los usuarios también son alentados a informar sobre cualquier vulnerabilidad que encuentren en la plataforma.
             
-            Hack the Box ofrece diferentes \textbf{planes de suscripción} para los usuarios interesados en acceder a su contenido:
+            Hack the Box ofrece diferentes planes de suscripción para los usuarios interesados en acceder a su contenido:
             
             \begin{itemize}
                 \item \textbf{Plan gratuito}: acceso limitado a una selección de desafíos y laboratorios, pero no incluye acceso a los \textit{boxes}.
@@ -272,14 +272,14 @@
         
         \subsubsection{HTB Academy}
         
-            Esta es una iniciativa de Hack The Box que también ofrece formación, pero al contrario que Hack The Box, centrada en la práctica y el desafío en tiempo real, HTB Academy \textbf{se enfoca en la enseñanza práctica de habilidades a través de cursos y laboratorios}.
+            Esta es una iniciativa de Hack The Box que también ofrece formación, pero al contrario que Hack The Box, centrada en la práctica y el desafío en tiempo real, HTB Academy se enfoca en la enseñanza práctica de habilidades a través de cursos y laboratorios guiados.
             
             \begin{figure}[h]
                 \centering
 
                 \includegraphics[width=\textwidth]{images/Capturas/Web de HTB Academy.png}
                 
-                \caption{Web de HTB Academy}
+                \caption{Web de HTB Academy \cite{hackthebox-academy}}
                 \label{fig:HTB-Academy-web}
             \end{figure}
             
@@ -287,27 +287,27 @@
             
             Cubren una amplia gama de temas, desde los fundamentos de la seguridad informática hasta temas avanzados como el análisis de malware, el hacking web y la ingeniería inversa, ya que están diseñados para ser accesibles desde principiantes hasta expertos en el sector.
             
-            Esta plataforma cuenta con los mismos tipos de \textbf{planes de suscripción} que Hack The Box: gratuito, VIP y empresarial; aunque es importante destacar que tanto Hack The Box como HTB Academy son servicios diferentes, por lo que \textbf{los planes de ambas plataformas son completamente independientes entre sí}.
+            Esta plataforma cuenta con los mismos tipos de planes de suscripción que Hack The Box: gratuito, VIP y empresarial; aunque es importante destacar que tanto Hack The Box como HTB Academy son servicios diferentes, por lo que los planes de ambas plataformas son completamente independientes entre sí.
             
             \newpage
         
         
         \subsection{TryHackMe}
         
-            Plataforma de aprendizaje de ciberseguridad basada en la experimentación activa, que proporciona una variedad de entornos de laboratorio virtuales y desafíos prácticos para ayudar a los usuarios a aprender y mejorar sus habilidades en seguridad informática. Su contenido se encuentra organizado en \textbf{diferentes rutas de aprendizaje} que permiten a los usuarios desarrollar su conocimiento de forma estructurada.
+            Plataforma de aprendizaje de ciberseguridad basada en la experimentación activa, que proporciona una variedad de entornos de laboratorios virtuales guiados y desafíos prácticos para ayudar a los usuarios a aprender y mejorar sus habilidades en seguridad informática. Su contenido se encuentra organizado en diferentes rutas de aprendizaje que permiten a los usuarios desarrollar su conocimiento de forma estructurada.
             
             \begin{figure}[h]
                 \centering
 
                 \includegraphics[width=\textwidth]{images/Capturas/Web de THM.png}
 
-                \caption{Web de TryHackMe}
+                \caption{Web de TryHackMe \cite{tryhackme}}
                 \label{fig:THM-web}
             \end{figure}
             
             La plataforma también cuenta con una comunidad activa y una función de \textit{gamificación} que proporciona una experiencia de aprendizaje más interactiva y entretenida, permitiendo que los usuarios puedan competir entre ellos, ganando puntos y recompensas por completar desafíos y resolver problemas de seguridad.
             
-            TryHackMe ofrece diferentes \textbf{planes de suscripción} para los usuarios interesados:
+            TryHackMe ofrece diferentes planes de suscripción para los usuarios interesados:
             
             \begin{itemize}
                 \item \textbf{Plan gratuito}: acceso limitado a una selección de desafíos y laboratorios.
@@ -322,40 +322,40 @@
         
         \subsection{VulnHub}
         
-            Plataforma de laboratorios que proporciona una gran cantidad de \textbf{máquinas virtuales vulnerables que los usuarios pueden descargar} y configurar en sus propios entornos de laboratorio para luego explotar sus vulnerabilidades. Cada máquina virtual cuenta con descripción detallada de su objetivo y una guía paso a paso para ayudar a los usuarios en su proceso de aprendizaje.
+            Plataforma de laboratorios que proporciona una gran cantidad de máquinas virtuales vulnerables que los usuarios pueden descargar y configurar en sus propios entornos de laboratorio para luego explotar sus vulnerabilidades. Cada máquina virtual cuenta con descripción detallada de su objetivo y una guía paso a paso para ayudar a los usuarios en su proceso de aprendizaje.
             
             \begin{figure}[h]
                 \centering
 
                 \includegraphics[width=\textwidth]{images/Capturas/Web de VulnHub.png}
 
-                \caption{Web de VulnHub}
+                \caption{Web de VulnHub \cite{vulnhub}}
                 \label{fig:VulnHub-web}
             \end{figure}
             
-            Estos desafíos son diseñados por la comunidad, y la plataforma también ofrece la opción de que los usuarios puedan crear y compartir sus propios desafíos y máquinas virtuales.
+            Los desafíos de VulnHub son diseñados por la comunidad a través de la opción que tienen los usuarios de poder crear y compartir sus propios desafíos y máquinas virtuales.
             
-            Al contrario de lo que sucede con otras plataformas, entre ellas Hack The Box y TryHackMe mencionadas anteriormente, \textbf{esta plataforma es completamente gratuita} y todo su contenido está construido por y para los usuarios.
+            Precisamente por eso, al contrario de lo que sucede con otras plataformas mencionadas anteriormente, VulnHub es completamente gratuita y se basa en el principio de ofrecer contenido por y para los usuarios.
             
             \newpage
         
         
         \subsection{OverTheWire}
         
-            Plataforma de laboratorios \textbf{diseñada de manera progresiva}, donde los usuarios pueden avanzar en su aprendizaje de forma gradual, comenzando con los niveles más fáciles y avanzando hacia los más complejos. Cada nivel de desafío presenta un objetivo diferente, haciendo que los usuarios deban usar su ingenio y habilidades en seguridad informática para resolver los desafíos y avanzar al siguiente nivel.
+            Plataforma de laboratorios diseñada de manera progresiva, donde los usuarios pueden avanzar en su aprendizaje de forma gradual, comenzando con los niveles más fáciles y avanzando hacia los más complejos. Cada nivel de desafío presenta un objetivo diferente, haciendo que los usuarios deban usar su ingenio y habilidades en seguridad informática para resolver los desafíos y avanzar al siguiente nivel.
             
             \begin{figure}[h]
                 \centering
 
                 \includegraphics[width=\textwidth]{images/Capturas/Web de OverTheWire.png}
 
-                \caption{Web de OverTheWire}
+                \caption{Web de OverTheWire \cite{overthewire}}
                 \label{fig:OverTheWire-web}
             \end{figure}
             
             Uno de los aspectos únicos de OverTheWire es que los desafíos están diseñados para simular situaciones del mundo real, lo que permite a los usuarios adquirir habilidades prácticas y relevantes para el mundo laboral de la ciberseguridad, pudiendo aplicar lo aprendido a situaciones reales y utilizar sus habilidades para asegurar sistemas y aplicaciones.
             
-            Al contrario de lo que sucede con otras plataformas, entre ellas Hack The Box y TryHackMe mencionadas anteriormente, \textbf{esta plataforma es completamente gratuita} y todo su contenido está construido por y para los usuarios.
+            Al contrario de lo que sucede con otras plataformas, entre ellas Hack The Box y TryHackMe mencionadas anteriormente, esta plataforma es completamente gratuita y todo su contenido está construido por y para los usuarios.
             
             \newpage
 
@@ -365,11 +365,11 @@
 
         Antes de comenzar a desarrollar el proyecto, resulta importante saber de forma más específica \textit{qué} se quiere llevar a cabo, y una vez decidio el objetivo, analizar las posibles opciones para conseguirlo.
         
-        Ya se realizó una investigación previa sobre las diferentes plataformas de aprendizaje de ciberseguridad existentes -descritas en el Estado del Arte (capítulo \ref{cap:estado-arte})- con el objetivo de analizar sus características y funcionalidades.
+        Ya se realizó una investigación previa sobre las diferentes plataformas de aprendizaje de ciberseguridad existentes -descritas en la sección anterior (\ref{sec:estado-arte})- con el objetivo de analizar sus características y funcionalidades.
         
-        La mayoría -y más conocidas- de estas plataformas son CTFs (Capture The Flag), y aunque son muy útiles para poner en práctica los conocimientos adquiridos, no suelen ofrecer un entorno de aprendizaje guiado, sino que el usuario debe resolver los desafíos por su cuenta, sin ningún tipo de documentación que le ayude a resolverlos, más allá de las pistas que ofrezca la propia plataforma o las soluciones que hayan publicado otros usuarios en Internet.
+        La mayoría -y más conocidas- de estas plataformas son CTFs, y aunque son muy útiles para poner en práctica los conocimientos adquiridos, no suelen ofrecer un entorno de aprendizaje guiado, sino que el usuario debe resolver los desafíos por su cuenta, sin ningún tipo de documentación que le ayude a resolverlos, más allá de las pistas que ofrezca la propia plataforma o las soluciones que hayan publicado otros usuarios en Internet.
 
-        Sin embargo, esto no siempre es así, ya que como se vió en el apartado anterior, Try Hack Me \cite{tryhackme} ofrece tanto retos instructivos como retos puramente prácticos y competitivos; mientras que Hack The Box \cite{hackthebox}, la plataforma más reconocida, ha sido capaz de lanzar su propia plataforma educativa con retos guiados: HTB Academy \cite{hackthebox-academy}.
+        Sin embargo, esto no siempre es así, ya que como se vió en la sección anterior, TryHackMe ofrece tanto retos instructivos como retos puramente prácticos y competitivos; mientras que Hack The Box, la plataforma más reconocida, ha sido capaz de lanzar su propia plataforma educativa con retos guiados: HTB Academy.
 
         Teniendo eso en cuenta, se plantearon las siguientes ideas para afrontar el proyecto.
 
@@ -385,9 +385,9 @@
             
             Es decir, la plataforma contaría con un sitio web que ofrecería información documentada sobre distintos conceptos de ciberseguridad, pero la virtualización se llevaría a cabo por el propio usuario en su equipo, experimentando localmente.
 
-            Esta idea también fue descartada porque plantea un gran problema de fricción entre el usuario y el objetivo de la plataforma: no existiría la posibilidad de ofrecer un entorno de trabajo en el que el usuario pudiera interactuar con los laboratorios de forma remota y con herramientas aisladas, sino que este debería descargar y configurar un hypervisor, o instalar Docker para acceder a los entornos de prueba en su equipo. Debido a esto, se perdería esa esencia de minimalismo y sencillez que debería ofrecer la plataforma.
+            Esta idea también fue descartada porque plantea un gran problema de fricción entre el usuario y el objetivo de la plataforma: no existiría la posibilidad de ofrecer un entorno de trabajo en el que el usuario pudiera interactuar con los laboratorios de forma remota y con herramientas aisladas, sino que este debería descargar y configurar un hypervisor, o instalar Docker para acceder a los entornos de prueba en su equipo.
             
-            Además, plantea otros problemas relacionados con el espacio de almacenamiento (tanto en el servidor como en el equipo del usuario).
+            Debido a eso, se perdería esa esencia de minimalismo y sencillez que debería ofrecer la plataforma, y además, plantea otros problemas relacionados con el espacio de almacenamiento (tanto en el servidor como en el equipo del usuario).
             
             También puede ser útil incluir en la plataforma de una guía introductoria a la configuración de una máquina virtual para tests de intrusión (pentesing) con Kali Linux, ya que si bien no es objeto de este proyecto que los usuarios aprendan sobre virtualización, no se puede ignorar el hecho de que es necesario el uso de máquinas virtuales para el sector de la ciberseguridad.
 
@@ -426,17 +426,16 @@
             \end{quote}
 
             Y la figura que representa dicho planteamiento es la siguiente:
+            \\
 
             \begin{figure}[htbp]
                 \centering
 
-                \includegraphics[scale=0.75]{images/Diagramas/Articulo.png}
+                \includegraphics{images/Diagramas/Articulo.png}
 
                 \caption{Ejemplo de contenedor extraído del artículo \cite{securitylab-malware-analysis}}
                 \label{fig:articulo}
             \end{figure}
-
-            \newpage
                 
             \subsubsection{Solución del artículo}
 
@@ -445,39 +444,9 @@
                 Una posible réplica de ese mecanismo podría realizarse de la siguiente forma:
 
                 \begin{enumerate}
-
-                    \item \textbf{Instalar Docker en el sistema operativo}
-                    
-                    Realizable siguiendo las instrucciones de instalación en el sitio web oficial de Docker.
-                
-                    \item \textbf{Crear imágenes específicas del software}
-                    
-                    Realizable utilizando un archivo Dockerfile que describa la configuración y los componentes que deben incluirse en dicha imagen.
-
-                    \item \textbf{Crear un contenedor específico de la aplicación}
-
-                    Para crear este tipo de contenedor, se debe construir sobre un contenedor específico del software previamente creado; para ello, se deben encapsular los archivos de la aplicación dentro del contenedor específico del software.
-
-                    \item \textbf{Ejecutar contenedores}
-                    
-                    Una vez creados los contenedores específicos del software y de la aplicación, pueden ejecutarse con el comando \texttt{docker run} de Docker.
-
+                    \item Crear una imagen específica del software a partir de un archivo Dockerfile que describe la configuración y los componentes que deben incluirse en los contenedores resultantes de dicha imagen.
+                    \item Crear una imagen específica de la aplicación que se construye sobre la imagen del software previamente creada; es decir, se crea una nueva imagen que constituye una capa de configuración adicional sobre la configuración de la propia imagen del software, que actua como base. Esta nueva imagen encapsula los archivos de la aplicación y se crea también a partir de un archivo Dockerfile.
                 \end{enumerate}
-                
-                \begin{figure}[!htbp]
-                    \centering
-
-                    \includegraphics[scale=0.15]{images/Diagramas/Contenedor B.png}
-
-                    \caption{Creación de contenedores a partir de una imagen $A$ padre}
-                    \label{fig:contenedor-hijo}
-                \end{figure}
-                
-                \newpage
-
-                En el paso 2, se crea una imagen específica del software a partir de un archivo Dockerfile que describe la configuración y los componentes que deben incluirse en los contenedores resultantes de dicha imagen.
-
-                En el paso 3, se crea una imagen específica de la aplicación que se construye sobre la imagen del software previamente creada; es decir, se crea una nueva imagen que constituye una capa de configuración adicional sobre la configuración de la propia imagen del software, que actua como base. Esta nueva imagen encapsula los archivos de la aplicación y se crea también a partir de un archivo Dockerfile.
 
                 El resultado final es un contenedor específico de la aplicación que reutiliza el sistema operativo y los componentes incluidos en la imagen del software, pero que añade los archivos específicos para el funcionamiento de la aplicación.
 
@@ -499,8 +468,6 @@
     # Se especifica la ruta de ejecucion del servidor web
     CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
                 \end{lstlisting}
-
-                \newpage
                 
                 \paragraph{Imagen hija} Este Dockerfile hace referencia a la imagen padre mediante la línea \texttt{FROM software\_container}, estableciendo la dependencia. Además, se copian los archivos de la aplicación en la imagen y se establece como el directorio de trabajo. Finalmente, se ejecuta la aplicación con la línea $\verb|CMD ["python", "app.py"]|$, lo que mantendrá activos los contenedores resultantes de dicha imagen.
                 \\
@@ -518,6 +485,15 @@
     # Se ejecuta la aplicacion
     CMD ["python", "app.py"]
                 \end{lstlisting}
+                
+                \begin{figure}[!htbp]
+                    \centering
+
+                    \includegraphics[scale=0.125]{images/Diagramas/Contenedor B.png}
+
+                    \caption{Creación de contenedores a partir de una imagen $A$ padre}
+                    \label{fig:contenedor-hijo}
+                \end{figure}
 
             \subsubsection{Solución del proyecto}
 
@@ -535,7 +511,6 @@
                 Por otra parte, existen laboratorios que emplean imágenes específicas que ya implementan un servicio o funcionalidad concreta con el que poder experimentar. Estas imágenes se han obtenido a través de Docker Hub y ofrecen la misma dinámica que el resto de laboratorios.
 
                 \newpage
-
     
     \section{Análisis de tecnologías para la web}
         \label{sec:analisis-tecnologias}
@@ -594,7 +569,7 @@
                 
                     También fue considerada un factor clave ya que se contaba con la creación de una página web atractiva y funcional.
                     
-                    Teniendo en cuenta lo mencionado en el punto anterior acerca de la falta de conocimientos previos, se hubiera empleado una gran cantidad de tiempo no solo en aprender a elaborar un buen \textit{frontend} desde cero, sino que el objetivo principal de este trabajo de fin de grado no se centra tanto en la página web, sino en el sistema completo, pudiendo considerar la mejora del \textit{frontend} como una posible futura línea de trabajo (sección \ref{sec:futuras-lineas-trabajo}).
+                    Teniendo en cuenta lo mencionado en el punto anterior acerca de la falta de conocimientos previos, se hubiera empleado una gran cantidad de tiempo no solo en aprender a elaborar un buen \textit{front-end} desde cero, sino que el objetivo principal de este trabajo de fin de grado no se centra tanto en la página web, sino en el sistema completo, pudiendo considerar la mejora del \textit{front-end} como una posible futura línea de trabajo (sección \ref{sec:futuras-lineas-trabajo}).
                 
                 \paragraph{Escalabilidad}
                 
@@ -674,37 +649,28 @@
             \subsubsection{Local}
 
                 Inicialmente, se planteó el uso de un servidor local para el alojamiento de la plataforma web, lo que permite realizar pruebas de forma maś rápida y sencilla, sin necesidad de contratar un servidor externo.
-
-                Actualmente, esta es la opción que se está utilizando para el proyecto, pero se espera trasladarlo a una plataforma cloud para que este sea accesible públicamente, primeramente para beta-testers y posteriormente, usuarios finales.
                 
             \subsubsection{Linode}
 
                 Esta empresa ofrece servicios de alojamiento en la nube mediante servidores virtuales privados (VPS) con diferentes características y precios, lo que permite a los usuarios elegir el plan que mejor se adapte a sus necesidades.
 
-                Se presenta a sí misma como la alternativa a \textit{AWS} (sección \ref{sec:aws}).
-
                 Además, Linode cuenta con una interfaz de usuario intuitiva y fácil de usar, así como con una amplia documentación y soporte técnico para ayudar a los usuarios a configurar y administrar sus servidores.
 
-                Este proyecto requiere la gestión de contenedores Docker, por lo que se buscaba un servicio que integrara Kubernetes para facilitar la gestión de los mismos.
-                
-                Linode ofrece un servicio de Kubernetes que permite a los usuarios implementar y administrar clústeres de Kubernetes en la nube.
+                Este proyecto requiere la gestión de contenedores Docker, por lo que se buscaba un servicio que integrara una solución similar a Kubernetes para facilitar la gestión de los mismos, y Linode ofrece un servicio que permite a los usuarios implementar y administrar clústeres de Kubernetes en la nube: LKE.
 
                 \paragraph{Linode Kubernetes Engine (LKE)}
 
-                    Este servicio se encarga de la configuración, el aprovisionamiento y la administración de los nodos del clúster, lo que permite a los usuarios centrarse en el desarrollo de sus aplicaciones en lugar de en la gestión de la infraestructura subyacente.
+                    Este servicio se encarga de la configuración, el aprovisionamiento y la administración de los nodos de un clúster, lo que permite a los usuarios centrarse en el desarrollo de sus aplicaciones en lugar de en la gestión de la infraestructura subyacente.
                     
                     Además, Linode Kubernetes Engine (LKE) es compatible con herramientas y servicios de terceros, lo que permite a los usuarios integrar fácilmente sus aplicaciones con otros servicios en la nube.
 
             \subsubsection{Amazon Web Service (AWS)}
-                \label{sec:aws}
 
-                Esta plataforma de servicios en la nube ofrece una amplia gama de servicios, incluyendo almacenamiento, bases de datos, redes, análisis, aprendizaje automático, etc.
+                Esta plataforma de servicios en la nube ofrece una amplia gama de servicios, incluyendo almacenamiento, bases de datos, redes, etc.
                 
                 AWS permite a los usuarios crear aplicaciones escalables y de alta disponibilidad sin necesidad de invertir en hardware o infraestructura física.
 
-                Como se mencionó anteriormente, este proyecto requiere la gestión de contenedores Docker, por lo que se buscaba un servicio que integrara Kubernetes para facilitar la gestión de los mismos.
-
-                AWS cuenta con el servicio Amazon Elastic Kubernetes Service (EKS), que permite a los usuarios implementar y administrar clústeres de Kubernetes en la nube.
+                Como se mencionó anteriormente, este proyecto requiere la gestión de contenedores Docker, por lo que se buscaba un servicio que integrara Kubernetes para facilitar la gestión de los mismos. AWS cuenta con el servicio Amazon Elastic Kubernetes Service (EKS), que permite a los usuarios implementar y administrar clústeres de Kubernetes en la nube.
 
                 \paragraph{Amazon Elastic Kubernetes Service (EKS)}
 
@@ -713,31 +679,23 @@
 
             \subsubsection{Google Cloud Platform (GCP)}
 
-                Esta plataforma de Google ofrece una gran cantidad de servicios en la nube con la que poder alojar distintos proyectos en función de sus necesidades: almacenamiento, bases de datos, redes, análisis, aprendizaje automático, etc.
-                
-                Permite a los usuarios crear aplicaciones escalables y de alta disponibilidad sin necesidad de invertir en hardware o infraestructura física.
+                Esta plataforma de Google ofrece una gran cantidad de servicios en la nube con la que poder alojar distintos proyectos en función de sus necesidades: almacenamiento, bases de datos, redes, análisis de datos, aprendizaje automático, etc.
 
-                Se planteó el uso de esta herramienta para el alojamiento del proyecto porque ofrece un saldo gratuito equivalentes a 3 meses de uso sus servicios, resultando muy interesante para el desarrollo del mismo.
+                Se planteó el uso de esta herramienta para el alojamiento del proyecto porque ofrece un saldo gratuito equivalentes a 3 meses de uso de sus servicios, resultando muy interesante para el desarrollo del mismo.
 
                 Cuenta con varios servicios potencialmente compatibles con el proyecto, de los cuales se analizaron los siguientes:
 
                 \paragraph{Google Kubernetes Engine (GKE)}
 
-                    Este servicio permite ejecutar aplicaciones en contenedores de forma sencilla y rápida, sin necesidad de gestionar la infraestructura subyacente.
-
-                    Este servicio se planteó como una opción para la gestión de los contenedores Docker que son los laboratorios del proyecto.
+                    Este servicio permite ejecutar aplicaciones en contenedores de forma sencilla y rápida, sin necesidad de gestionar la infraestructura subyacente. Se planteó como una opción para la gestión de los contenedores Docker que hacen de laboratorios del proyecto.
 
                     Sin embargo, se descartó esta opción debido a que la complejidad de la herramienta no se ajustaba a las necesidades del proyecto, ya que se buscaba una herramienta que facilitara la gestión de los contenedores Docker, pero de forma más sencilla.
-
-                    \newpage
 
                 \paragraph{Google Cloud Run}
 
                     Este servicio de computación sin servidor (\textit{serverless}) de Google permite a los desarrolladores implementar fácilmente aplicaciones en contenedores en un entorno completamente administrado, sin la necesidad de administrar la infraestructura subyacente.
                     
-                    Cloud Run es compatible con contenedores basados en Docker, lo que significa que es posible empaquetar una aplicación en un contenedor y luego implementarla en Cloud Run.
-
-                    Este servicio se planteó como una opción para el alojamiento completo del proyecto, pero se descartó tras analizarlo, ya que este no requiere de un servicio de computación sin servidor.
+                    Cloud Run es compatible con contenedores basados en Docker, lo que significa que es posible empaquetar una aplicación en un contenedor y luego implementarla en Cloud Run. Se planteó como una opción para el alojamiento completo del proyecto, pero se descartó tras analizarlo, ya que este no requiere de un servicio de computación sin servidor.
 
                     Por otra parte, como se mencionó, esta herramienta está más orientada al uso de aplicaciones en contenedores, mientras que este proyecto se basa en la gestión de contenedores Docker en sí misma.
 
@@ -1143,13 +1101,11 @@
             \label{fig:arquitectura}
         \end{figure}
 
-        Los componentes de la plataforma podrían dividirse en 4 partes fundamentales: el front-end, el back-end, la base de datos y los contenedores Docker (laboratorios). Todos estos están desplegados en un servidor que utiliza LAMP.
-
-        % Como se muestra en la figura \ref{fig:arquitectura}, la idea principal es que el usuario interactúe con el sitio web a través del front-end, que se comunica con el back-end para realizar las acciones que el usuario solicite; mientras que el back-end se comunica con la base de datos para almacenar y recuperar datos, y con los contenedores Docker para gestionar los laboratorios de pruebas.
+        Los componentes de la plataforma podrían dividirse en 4 partes fundamentales: el \textit{front-end}, el \textit{back-end}, la base de datos y los contenedores Docker (laboratorios). Todos estos están desplegados en un servidor que utiliza LAMP.
 
         \subsection{\textit{Front-end}: WordPress}
 
-            El front-end es la parte de la plataforma que interactúa con el usuario; en este caso, se ha desarrollado una aplicación web que permite al usuario acceder a la plataforma y realizar las acciones que se describen en la sección \ref{sec:casos-uso}.
+            El \textit{front-end} es la parte de la plataforma que interactúa con el usuario; en este caso, se ha desarrollado una aplicación web que permite al usuario acceder a la plataforma y realizar las acciones que se describen en la sección \ref{sec:casos-uso}.
             
             Se ha usado un tema hijo generado a partir del tema Divi, definido como \textit{divi-child}; dicho tema actua como eje central tanto para el diseño como para la funcionalidad de la plataforma web, como se describe en el siguiente apartado.
 
@@ -1164,13 +1120,13 @@
 
         \subsection{\textit{Back-end}: \texttt{functions.php}}
         
-            El back-end se encarga de gestionar las peticiones del usuario y de comunicarse con la base de datos y los contenedores Docker. Se ha usado el fichero \texttt{functions.php} del tema \textit{divi-child} para implementar el back-end de la plataforma, ya que este fichero permite extender las funcionalidades de un sitio web de WordPress de forma sencilla.
+            El \textit{back-end} se encarga de gestionar las peticiones del usuario y de comunicarse con la base de datos y los contenedores Docker. Se ha usado el fichero \texttt{functions.php} del tema \textit{divi-child} para implementar el \textit{back-end} de la plataforma, ya que este fichero permite extender las funcionalidades de un sitio web de WordPress de forma sencilla.
             
             Este fichero es propio de cada tema, y se ejecuta en cada petición que se realiza a la plataforma, lo que permite interactuar con la página al mismo tiempo que lo hace un usuario.
 
-        \subsection{\textit{Back-end}: Tareas de Cron}
+        \subsection{\textit{Back-end}: tareas de Cron}
 
-            Las tareas de cron son tareas que se ejecutan de forma periódica en el servidor. Se ha usado una para comprobar si algún laboratorio de pruebas superó su tiempo de vida (1 hora) y detenerlo de forma automática.
+            Las tareas de cron son acciones que se ejecutan de forma periódica en un sistema, definidas como instrucciones en un fichero de configuración. Se ha usado una para comprobar si algún laboratorio de pruebas superó su tiempo de vida (1 hora) y detenerlo de forma automática.
             \\
 
             \begin{lstlisting}[style=bash_style, caption={contenido del fichero},captionpos=b, basicstyle=\ttfamily\scriptsize]
@@ -1185,7 +1141,7 @@
     * * * * * /bin/bash /var/www/html/scripts/stop-1h-container.sh > /var/www/html/scripts/stop-1h-container.log 2>&1
             \end{lstlisting}
             
-            Esta tarea se ha implementado directamente en el servidor, ya que se consideró la opción más rápida y sencilla: se ejecuta cada minuto y destruye aquellos laboratorios que hayan excedido su tiempo de vida, liberando recursos en el sistema y permitiendo un uso de contenedores dinámico.
+            Esta tarea se ha implementado directamente en el servidor, ya que se consideró la opción más rápida y sencilla: se ejecuta cada minuto y destruye aquellos contenedores -laboratorios- que hayan excedido su tiempo de vida, liberando recursos en el sistema y permitiendo un uso de contenedores dinámico.
 
         \subsection{Base de datos: MySQL}
 
@@ -1249,8 +1205,6 @@
 
         Los diagramas mostrados a continuación presentan las actividades que puede realizar un usuario en la plataforma y las transiciones entre dichas actividades.
         
-        Estos diagramas se han desarrollado utilizando la herramienta \textit{draw.io}.
-        
         \subsection{Tratamiento de usuarios}
         
             \begin{figure}[h]
@@ -1282,7 +1236,7 @@
             
             \newpage
             
-        \subsection{Consulta de la documentación}
+        \subsection{Consulta de documentación}
             \label{sec:consulta-documentacion}
             
             \begin{figure}[h]
@@ -1308,14 +1262,14 @@
                 \begin{subfigure}{0.45\textwidth}
                     \centering
                     \includegraphics[scale=0.115]{images/Diagramas/Actividades y transiciones 4.png}
-                    \caption{Creación de un laboratorio}
+                    \caption{Inicio de un laboratorio}
                     \label{fig:creacion-laboratorio}
                 \end{subfigure}
                 \hfill
                 \begin{subfigure}{0.45\textwidth}
                     \centering
                     \includegraphics[scale=0.115]{images/Diagramas/Actividades y transiciones 5.png}
-                    \caption{Destrucción de un laboratorio}
+                    \caption{Detención de un laboratorio}
                     \label{fig:destruccion-laboratorio}
                 \end{subfigure}
 
@@ -1325,9 +1279,9 @@
             
             Los diagramas presentados en esta sección definen la gestión de entornos virtualizados de la plataforma.
             
-            El proceso de creación de un laboratorio iniciará pulsando un botón, preferiblemente ubicado al final de un contenido instructivo descrito anteriormente en la sección \ref{sec:consulta-documentacion}, debiendo verificar que es posible crear dicho laboratorio.
+            El proceso de inicio de un laboratorio iniciará pulsando un botón, preferiblemente ubicado al final de un contenido instructivo descrito anteriormente en la sección \ref{sec:consulta-documentacion}, debiendo verificar que es posible crear dicho laboratorio.
             
-            El proceso de destrucción de un laboratorio seguirá el mismo proceso que el anterior, pero realizará la opción opuesta.
+            El proceso de detención de un laboratorio seguirá el mismo proceso que el anterior, pero realizará la opción opuesta.
 
             \newpage
 
@@ -1345,7 +1299,7 @@
             Se detallan a continuación los pasos que se llevan a cabo:
 
             \begin{enumerate}
-                \item El usuario solicita crear un laboratorio para probar el concepto tratado en la página informativa pulsando el botón de inicio, ejecutando algunas de las funcionalidades de la plataforma definidas en \texttt{functions.php}.
+                \item El usuario solicita iniciar un laboratorio para probar el concepto tratado en la página informativa pulsando el botón de inicio, ejecutando algunas de las funcionalidades de la plataforma definidas en \texttt{functions.php}.
 
                 \item Se comprueba en la base de datos que el usuario activo no tiene ningún otro laboratorio activo. Si lo tuviera, mostraría una advertencia y un enlace a la página del laboratorio activo en la sección \textit{Laboratorio} de la página.
 
@@ -1355,7 +1309,7 @@
                 
                 \item Se registran los datos recopilados en la base de datos en formato JSON para usar una única celda de la tabla y poder extraerlos cómodamente en \texttt{functions.php}.
 
-                \item Se cambia el estado de la sección \textit{Laboratorio} de la página: se añade la IP de la plataforma (en este caso, \textit{localhost}), el puerto del sistema asociado al contenedor y se cambia el botón de la sección para que ahora detenga el laboratorio.
+                \item Se cambia el estado de la sección \textit{Laboratorio} de la página: se añade la IP de la plataforma (en este caso, \texttt{localhost}) y el puerto del sistema asociado al contenedor, y se cambia el botón de la sección para que ahora detenga el laboratorio.
             \end{enumerate}
 
             Para facilitar la interpretación, no se han contemplado los errores que pueden ocurrir durante el proceso.
@@ -1367,7 +1321,7 @@
 
                 \includegraphics[scale=0.125]{images/Diagramas/detener.png}
 
-                \caption{Destrucción de un laboratorio desde el sitio web}
+                \caption{Detención de un laboratorio desde el sitio web}
                     \label{fig:detener-laboratorio}
             \end{figure}
 
@@ -1380,13 +1334,13 @@
 
                 \item Se comprueba en la base de datos que el usuario activo tiene un laboratorio activo y se obtienen los datos del mismo.
 
-                \item Se hace una llamada al sistema para detener el contenedor Docker usando la ID obtenida en el paso anterior. Como todos los contenedores se han creado con la opción \texttt{--rm}, al detenerse son eliminados.
+                \item Se hace una llamada al sistema para detener el contenedor Docker usando la ID obtenida en el paso anterior, y como todos los contenedores se han creado con la opción \texttt{--rm}, al detenerse son eliminados.
 
                 \item Se hace una llamada al sistema para comprobar que el contenedor se ha eliminado correctamente. Se ejecuta el comando \texttt{docker ps -aq} (lista de IDs de todos los contenedores existentes) y se comprueba que no aparece el contenedor en la lista.
                 
                 \item Se elimina la entrada de la base de datos asociada al laboratorio activo.
 
-                \item Se cambia el estado de la sección \textit{Laboratorio} de la página: se elimina la IP de la plataforma y el puerto del sistema asociado al contenedor y se cambia el botón de la sección para que ahora inicie de nuevo el laboratorio.
+                \item Se cambia el estado de la sección \textit{Laboratorio} de la página: se eliminan la IP y el puerto asociados y se cambia el botón de la sección para que ahora inicie de nuevo el laboratorio.
             \end{enumerate}
 
             Para facilitar la interpretación, no se han contemplado los errores que pueden ocurrir durante el proceso.
@@ -1407,7 +1361,7 @@
             Se detallan a continuación los pasos que se llevan a cabo:
 
             \begin{enumerate}
-                \item La tarea de cron del sistema ejecuta un script de Bash para detener los contenedores Docker que se encuentren activos y cuyo tiempo de vida exceda a 1 hora. Esta tarea se ejecuta cada minuto.
+                \item La tarea de cron del sistema ejecuta un script de Bash (apéndice \ref{sec:scripts}) para detener los contenedores Docker que se encuentren activos y cuyo tiempo de vida exceda a 1 hora. Esta tarea se ejecuta cada minuto.
 
                 \item Se hace una llamada al sistema para comprobar si hay contenedores activos y en caso afirmativo, obtener una lista de los IDs de esos contenedores. El script termina en caso de no haber ninguno.
 
@@ -1437,7 +1391,7 @@
 
     Cada concepto de este capítulo incluye una pequeña descripción, el motivo de su inclusión al sitio web y un resumen de la funcionalidad de su laboratorio asociado.
 
-    Por último, cabe destacar que el texto mostrado en este documento no se corresponde con la versión final -más elaborada y detallada- publicada en el sitio web del proyecto, ya que está orientado a la redacción de este trabajo de fin de grado y no al entorno en producción del usuario final.
+    Por último, cabe destacar que el texto mostrado en este documento no se corresponde con la versión final -más elaborada y detallada- publicada en el sitio web del proyecto, ya que está orientado a la redacción de este trabajo de fin de grado y no al entorno en producción visible por el usuario de la plataforma.
 
 
     \section{Introducción a Linux}
@@ -1475,13 +1429,13 @@
 
             Resulta común crear exploits o pruebas específicas para aprovechar vulnerabilidades y evaluar la resistencia de un sistema durante una prueba de penetración, por lo que es importante contar con conocimientos de Bash para adaptarse a las necesidades de la prueba y crear scripts personalizados que permitan realizar pruebas de manera eficiente.
 
-            Por último, el proceso de crear scripts en Bash puede fomentar un conocimiento más profundo sobre cómo funcionan los sistemas operativos y las redes, lo que puede mejorar la comprensión general de los conceptos de seguridad informática y permitir al pentester detectar vulnerabilidades que podrían pasar desapercibidas de otra forma.
+            Por último, el proceso de crear scripts en Bash puede fomentar un conocimiento más profundo sobre cómo funcionan los sistemas operativos, lo que puede mejorar la comprensión general de los conceptos de seguridad informática y permitir al pentester detectar vulnerabilidades que podrían pasar desapercibidas de otra forma.
 
         \subsection{Laboratorio}
 
             Se proporciona al usuario un entorno virtualizado Linux donde poner en práctica lo mencionado anteriormente, revisar y manipular su contenido, así como ejecutar comandos.
 
-            Este entorno, al igual que el de \textit{Introducción a Linux}, está pensado para aquellos usuarios que no dispongan de un sistema operativo basado en UNIX o que prefieran no modificar el suyo propio para realizar pruebas.
+            Este entorno, al igual que el laboratorio anterior, está pensado para aquellos usuarios que no dispongan de un sistema operativo basado en UNIX o que prefieran no modificar el suyo propio para realizar pruebas.
 
 
     \section{Introducción a las redes}
@@ -1533,11 +1487,11 @@
 
         La inteligencia de código abierto (\textit{Open Source INTelligence}) es una técnica de investigación que se basa en la obtención de información a partir de fuentes de acceso público.
 
-        Este concepto se presenta como una introducción a OSINT, abarcando la búsqueda de información en distintas herramientas, como los \textit{Google Dorks}, \textit{Shodan.io}, \textit{VirusTotal} y \textit{WHOIS}.
+        Este concepto se presenta como una introducción a OSINT, abarcando la búsqueda de información en distintas herramientas, como los Google Dorks, Shodan.io, VirusTotal y WHOIS.
 
         \subsection{Motivación}
 
-            Esta técnica se utiliza en el sector de la ciberseguridad para obtener información sobre un objetivo, como puede ser una persona, una empresa o una organización, con el objetivo de realizar un ataque posterior.
+            Esta técnica se utiliza en el sector de la ciberseguridad para obtener información sobre un objetivo, como puede ser una persona, una empresa o una organización, con el objetivo de realizar un ataque posterior; pero también, sobre posibles intentos de Phishing, ingeniería social, etc. detectando elementos sospechosos como IPs o direcciones de correo electrónico.
 
         \subsection{Laboratorio}
 
@@ -1554,7 +1508,7 @@
 
         La esteganografía es una técnica de ocultación de información dentro de un archivo, como puede ser una imagen, un vídeo o un archivo de audio, lo que facilita la transmisión de datos confidenciales sin ser detectados.
 
-        Este laboratorio presenta una definición de esteganografía y muestra de herramientas comunes, como \texttt{steghide} y \texttt{exiftools}.
+        Este laboratorio presenta una definición de esteganografía y muestra de herramientas comunes, como \texttt{steghide} y \texttt{exiftool}.
 
         \subsection{Motivación}
 
@@ -1569,7 +1523,7 @@
 
     \section{Fuerza bruta}
 
-        La fuerza bruta es una técnica en la que se intenta adivinar una contraseña o credencial de acceso probando diferentes combinaciones hasta encontrar la correcta. Generalmente, usando un diccionario de contraseñas como \textit{rockyou.txt}.
+        La fuerza bruta es una técnica en la que se intenta adivinar una contraseña o credencial de acceso probando diferentes combinaciones hasta encontrar la correcta. Generalmente, usando un diccionario de contraseñas como \texttt{rockyou.txt}.
 
         Este concepto se presenta como una descripción de la técnica de fuerza bruta, abarcando el uso de herramientas para descifrar contraseñas.
 
@@ -1579,27 +1533,25 @@
 
             La fuerza bruta es una técnica muy utilizada en el sector de la ciberseguridad para descifrar contraseñas, ya que es relativamente sencilla de implementar y puede ser muy efectiva si se usa correctamente.
 
-            Este término es la base de muchos otros conceptos y está presente en muchas otras técnicas de penetración, como listado de directorios, enumeración de usuarios, etc.
-
-            Por otra parte, es importante saber identificar y aplicar los diccionarios correctos.
+            Este término es la base de muchos otros conceptos y está presente en muchas otras técnicas de penetración, como listado de directorios, enumeración de usuarios, etc.; por otra parte, es importante saber identificar y aplicar los diccionarios correctos.
 
         \subsection{Laboratorio}
 
-            Este entorno presenta un sistema Linux vulnerable, ya que la contraseña del usuario \textit{root} es una contraseña común y pertenece al diccionario \textit{rockyou.txt}.
+            Este entorno presenta un sistema Linux vulnerable, ya que la contraseña del usuario \texttt{root} es una contraseña común y pertenece al diccionario \texttt{rockyou.txt}.
 
 
     \section{Hash-cracking}
         \label{sec:hash-cracking}
 
-        El hash-cracking es una técnica de ataque que se utiliza para obtener la contraseña original a partir de un hash.
+        El \textit{hash-cracking} es una técnica de ataque que se utiliza para obtener la contraseña original a partir de un hash.
 
-        Este concepto se presensta como descripción de la técnica de hash-cracking, abarcando el uso de herramientas para descifrar información.
+        Este concepto se presensta como descripción de la técnica de \textit{hash-cracking}, abarcando el uso de herramientas para descifrar información.
 
         \subsection{Motivación}
 
             Las contraseñas y otros datos sensibles, rara vez se almacenan en texto plano debido a los riesgos de seguridad asociados; en su lugar, se transforman en valores hash utilizando algoritmos de hash criptográficos.
             
-            Conocer técnicas de hash-cracking permite a los pentesters evaluar la calidad de las contraseñas utilizadas por los usuarios en un sistema. Si las contraseñas se descifran con relativa facilidad, esto indica que los usuarios están utilizando contraseñas débiles, lo que representa un riesgo de seguridad significativo.
+            Conocer técnicas de \textit{hash-cracking} permite a los pentesters evaluar la calidad de las contraseñas utilizadas por los usuarios en un sistema. Si las contraseñas se descifran con relativa facilidad, esto indica que los usuarios están utilizando contraseñas débiles, lo que representa un riesgo de seguridad significativo.
             
             Por último, si los pentesters logran descifrar contraseñas y acceder a cuentas o sistemas protegidos, pueden demostrar el impacto real que tendría un ataque exitoso. Esto es especialmente valioso para concienciar a las partes interesadas sobre la importancia de mejorar la seguridad de las contraseñas y tomar medidas adecuadas.
 
@@ -1639,7 +1591,7 @@
 
             Una vez se lee el fichero, se puede observar que existen 2 usuarios: \texttt{root} y \texttt{user}, siendo este último el que maneja la conexión SSH para el usuario de la plataforma.
 
-            Además, haciendo un estudio del formato de los hashes almacenados, es posible llegar a la conclusión de que las contraseñas están usando MD5 crypt, por lo que es posible descifrarlas usando una herramienta de hash-cracking.
+            Además, haciendo un estudio del formato de los hashes almacenados, es posible llegar a la conclusión de que las contraseñas están usando MD5 crypt, por lo que es posible descifrarlas usando una herramienta de \textit{hash-cracking}.
 
             Obteniendo así, la contraseña del usuario \texttt{root} y pudiendo acceder al sistema como administrador.
 
@@ -1648,7 +1600,7 @@
 
         Un bypass es una vulnerabilidad que permite a un atacante evadir un mecanismo de seguridad, como la autenticación, para obtener acceso no autorizado a un sistema o recurso.
 
-        Este concepto se presensta como una descripción del término de bypass, a través de la vulnerabilidad CVE-2017-8386, que permite a un atacante remoto omitir la autenticación en un servidor Git.
+        Este concepto se presensta como una descripción del término de bypass, a través de la vulnerabilidad CVE-2017-8386 \cite{cve-2017-8386}, que permite a un atacante remoto omitir la autenticación en un servidor Git.
 
         \subsection{Motivación}
 
@@ -1658,9 +1610,7 @@
 
         \subsection{Laboratorio}
 
-            Este laboratorio simula un servidor de Git con la vulnerabilidad CVE-2017-8386.
-
-            Se requiere una clave SSH privada proporcionada en la plataforma para que se realice la conexión correctamente.
+            Este laboratorio simula un servidor de Git con la vulnerabilidad CVE-2017-8386. Se requiere una clave SSH privada proporcionada en la plataforma para que se realice la conexión correctamente.
 
             Una vez se hayan completado esos preparativos, se podrá llevar a cabo la explotación mencionada anteriormente y el usuario podrá explorar las posibilidades que ofrece dicho bypass.
 
@@ -1701,7 +1651,7 @@
         
         Se muestran a continuación los requisitos funcionales definidos en el capítulo \ref{sec:ingenieria-requisitos} y su cumplimiento en la plataforma.
         
-        Para ello, se ha usado el lenguaje Gherkin \cite{gherkin}, que permite definir requisitos funcionales en un lenguaje natural, y que además, permite definir escenarios de prueba para comprobar el cumplimiento de dichos requisitos.
+        Para ello se ha usado Gherkin \cite{gherkin}, un DSL (\textit{Domain-Specific Language}) que permite definir requisitos funcionales en un lenguaje natural, y que además, permite definir escenarios de prueba para comprobar el cumplimiento de dichos requisitos.
 
         \begin{table}[!htbp]
             \centering
@@ -1856,6 +1806,10 @@
                 y & Pulso el botón de inicio del laboratorio. \\
                 entonces & Se crea un laboratorio de pruebas alojado en un puerto. \\
                 \hline
+                \multicolumn{2}{|p{15cm}|}{
+                    %% Vacío
+                } \\
+                \hline
                 \textbf{escenario} & \textbf{Inicio incorrecto de un laboratorio de pruebas} \\
                 cuando & Estoy en la página de un concepto. \\
                 y & Existe un laboratorio de pruebas asociado. \\
@@ -1971,6 +1925,10 @@
                 y & Pulso el botón de detención del laboratorio. \\
                 entonces & Se detiene el laboratorio de pruebas alojado en un puerto. \\
                 \hline
+                \multicolumn{2}{|p{15cm}|}{
+                    %% Vacío
+                } \\
+                \hline
                 \textbf{escenario} & \textbf{Detención incorrecta de un laboratorio de pruebas} \\
                 cuando & Estoy en la página de un concepto. \\
                 y & Existe un laboratorio de pruebas asociado. \\
@@ -1995,7 +1953,7 @@
 
         Respecto al segundo objetivo, he aprendido a usar Docker y he sido testigo no solo de la potencia de esta herramienta, sino de la infinidad de posibilidades que esta plantea, tanto en el ámbito de desarrollo, como en el de producción de sistemas y servicios.
 
-        Si bien no ha sido necesario un uso avanzado de Docker para este proyecto, sí he investigado y aprendido acerca de todas sus otras funcionalidades, como los volúmenes, las redes y los ficheros \textit{dockercompose.yml}.
+        Si bien no ha sido necesario un uso avanzado de Docker para este proyecto, sí he investigado y aprendido acerca de todas sus otras funcionalidades, como los volúmenes, las redes y los ficheros \texttt{dockercompose.yml}.
 
         Por último, con este proyecto también he adquirido experiencia en el desarrollo web a través de una de las herramientas más usadas: WordPress. Nunca trabajé con ella, por lo que considero que ha sido una buena oportunidad para aprender más sobre esta herramienta y cómo funcionan los sitios web construidos sobre ella.
 
@@ -2003,11 +1961,11 @@
     \section{Futuras líneas de trabajo}
         \label{sec:futuras-lineas-trabajo}
 
-        Este proyecto ha consistido en el desarrollo de una plataforma de introducción al pentesting, pero durante el mismo, se han planteado diversas ideas que podrían ser implementadas en un futuro para mejorar la plataforma.
+        El desarrollo de este proyecto ha dado lugar a muchas ideas y posibles mejoras que no se han podido aplicar por falta de tiempo o por falta de conocimientos. A continuación se muestra una lista con las ideas más relevantes e influyentes que podrían ser aplicadas en un futuro:
 
         \subsection{Traslado del proyecto a un servicio de alojamiento}
 
-            Todo el proyecto está alojado en un servidor local, por lo que un siguiente paso natural sería trasladar la plataforma a un servicio de alojamiento, como por ejemplo alguno de los mencionados en la sección \ref{sec:alojamiento}.
+            Todo el proyecto está alojado en un servidor local, por lo que el siguiente paso natural sería trasladar la plataforma a un servicio de alojamiento, como por ejemplo alguno de los mencionados en la sección \ref{sec:alojamiento}, especialmente Google Compute Engine al considerarse el más compatible con la naturaleza y estructura del proyecto.
 
             Esto permitiría que la plataforma estuviera disponible públicamente para cualquier usuario con acceso a Internet, facilitando aún más su consumo y su uso.
 
@@ -2035,9 +1993,9 @@
             
             Esto daría lugar a una plataforma más eficiente y parecida a otras ya existentes, pero manteniendo la diferencia que se fomentaba al inicio del proyecto en la sección \ref{sec:objetivos}: una plataforma ligera, \textit{open-source} y fácilmente extensible, que permita a los usuarios aprender y practicar conceptos de ciberseguridad mediante laboratorios.
 
-        \subsection{Organización de contenido}
+        \subsection{Organización del contenido}
         
-            Elaboración de \textit{módulos} o \textit{rutas} de aprendizaje que permitan al usuario seguir un orden lógico al adquirir conocimientos, en lugar de elegir un conceptos al azar o tratar de asumir un orden por su cuenta.
+            Elaboración de rutas o módulos de aprendizaje que permitan al usuario seguir un orden lógico al adquirir conocimientos, en lugar de elegir un conceptos al azar o tratar de asumir un orden por su cuenta.
 
             Por ejemplo: un módulo de introducción a redes, otro de ciber-defensa, etc; una ruta para aprender sobre herramientas de fuerza bruta y explorar sus posibilidades, otra para herramientas como IDS o IPS, etc.
 
