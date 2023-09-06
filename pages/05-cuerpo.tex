@@ -122,9 +122,10 @@
             \newpage
 
             
-    \section{Tecnologías}
-    
-        Las siguientes tecnologías y herramientas se emplearon en el desarrollo del proyecto:
+    \section{Tecnologías empleadas}
+        \label{tecnologias}
+
+        Esta sección recoge de forma directa las tecnologías y herramientas que se usaron para llevar a cabo el proyecto. Algunas de ellas fueron una elección clara, mientras que otras pasaron por un proceso de análisis, recogido en la sección \ref{analisis-tecnologias}.
         
         \subsection{GitHub}
         
@@ -133,6 +134,8 @@
             Esta plataforma es muy popular en la comunidad de desarrolladores, ya que les permite compartir su trabajo con otros usuarios, pudiendo ser clonado, modificado y actualizado por otros desarrolladores, permitiendo la colaboración y el intercambio de conocimientos, así como mantenerlo privado para uso personal o empresarial.
             
             Además del alojamiento de código fuente, GitHub también ofrece herramientas de seguimiento de problemas, donde los desarrolladores pueden reportar y resolver errores, solicitar nuevas características y discutir mejoras en el software. Esto facilita la comunicación y la colaboración entre los usuarios, además de mejorar la calidad del software desarrollado.
+
+            GitHub se ha empleado para llevar un control de versiones sobre la construcción del sitio web, el desarrollo de los laboratorios de la plataforma, y la elaboración de este mismo documento (a modo de copias de seguridad).
             
         \subsection{WordPress}
             
@@ -142,7 +145,7 @@
 
             Una de las principales ventajas de WordPress es que es muy fácil de usar y no se requiere experiencia técnica previa para comenzar a utilizarlo. Otra ventaja de WordPress es su personalización gracias a la gran cantidad de temas y complementos (plugins) disponibles. Estos complementos permiten añadir nuevas funcionalidades a un sitio web, como formularios de contacto, galerías de imágenes, integración con redes sociales, etc. evitando la necesidad de programar dichas funcionalidades de forma manual.
             
-            Por otra parte, WordPress es muy \textit{SEO-friendly}, incluyendo características que ayudan a mejorar el posicionamiento en los motores de búsqueda, como la capacidad de editar títulos, descripciones y etiquetas de metadatos, así como la posibilidad de utilizar herramientas de optimización de motores de búsqueda (SEO).
+            WordPress se ha usado para crear la página web de la plataforma; además, se ha empleado el tema Divi \cite{divi}, uno de los temas más populares de WordPress y que además, incluye su propio editor de páginas (Divi Builder).
             
             \newpage
 
@@ -171,11 +174,13 @@
                 \label{fig:contenedores-vs-maquinasvirtuales}
             \end{figure}
             
-            Docker funciona con imágenes, que son plantillas o modelos que contienen todos los componentes necesarios para ejecutar una aplicación en un contenedor, incluidos el código fuente, las librerías, los archivos de configuración y las dependencias del sistema. Estas imágenes pueden ser descargadas desde un registro centralizado llamado Docker Hub o construirse localmente por los desarrolladores.
+            Docker funciona con imágenes, que son plantillas o modelos que contienen todos los componentes necesarios para ejecutar una aplicación en un contenedor, incluidos el código fuente, las librerías, los archivos de configuración y las dependencias del sistema. Estas imágenes pueden ser descargadas desde un registro centralizado llamado Docker Hub \cite{docker-hub} o construirse localmente por los desarrolladores.
             
             Una vez obtenida una imagen, se puede crear un contenedor a partir de ella, lo que implica crear una instancia de una aplicación y, por tanto, el entorno en el que se ejecuta. Los contenedores de Docker se pueden transferir fácilmente entre diferentes sistemas y entornos, lo que facilita la implementación y el escalado de aplicaciones.
             
             Además, Docker proporciona herramientas de administración de contenedores, como la capacidad de iniciar, detener, reiniciar y eliminar contenedores, así como la capacidad de monitorear su uso y rendimiento.
+
+            Docker se ha empleado para crear los laboratorios de la plataforma; concretamente, cada laboratorio parte de un fichero Dockerfile cuya imagen es generada y almacenada en el sistema, y cuyos contenedores se crean y se destruyen bajo petición del usuario de la plataforma.
             
             \newpage
 
@@ -208,6 +213,8 @@
             Esta pila ha sido ampliamente adoptada en la comunidad de desarrollo web y ha sido utilizada para crear una amplia variedad de aplicaciones, desde sitios web simples hasta aplicaciones web complejas y de alto tráfico.
 
             Además de los componentes principales mencionados anteriormente, la pila LAMP se puede personalizar y ampliar utilizando una variedad de tecnologías y herramientas adicionales, como frameworks de desarrollo, sistemas de caché, servidores de aplicaciones y más, según las necesidades específicas de cada proyecto.
+
+            LAMP se ha empleado para crear la infraestructura de la plataforma web, y esta a su vez se ha desarrollado en un servidor local.
 
             \cleardoublepage
 
@@ -394,9 +401,9 @@
 
             Esta idea fue la que más se acercaba a los objetivos del proyecto, y por tanto fue la que se escogió para su desarrollo: solventaba las fricciones de las ideas anteriores, y además ofrecía un entorno de aprendizaje guiado y práctico, que era el objetivo principal del proyecto.
 
-        \subsection{Empleo de Docker}
+        \subsection{Docker para los laboratorios}
 
-            Docker, descrito en la sección \ref{sec:docker}, permitiría la creación de contenedores para los distintos laboratorios.
+            Docker, descrito en la sección \ref{sec:docker}, permitiría la creación de contenedores para los distintos laboratorios, siendo una solución mucho más ligera que el uso de máquinas virtuales.
                 
             Esta idea surgió a partir del artículo \textit{Cyber Security Testbeds and Malware Testing} \cite{securitylab-malware-analysis} de la Universidad de Trento, donde un grupo de investigación realizaban un estudio sobre los efectos de un \textit{exploit} de una aplicación sobre varias versiones de la misma y usada en distintos entornos de desarrollo.
 
