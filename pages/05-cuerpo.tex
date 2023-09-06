@@ -145,7 +145,7 @@
 
             Una de las principales ventajas de WordPress es que es muy fácil de usar y no se requiere experiencia técnica previa para comenzar a utilizarlo. Otra ventaja de WordPress es su personalización gracias a la gran cantidad de temas y complementos (plugins) disponibles. Estos complementos permiten añadir nuevas funcionalidades a un sitio web, como formularios de contacto, galerías de imágenes, integración con redes sociales, etc. evitando la necesidad de programar dichas funcionalidades de forma manual.
             
-            WordPress se ha usado para crear la página web de la plataforma; además, se ha empleado el tema Divi \cite{divi}, uno de los temas más populares de WordPress y que además, incluye su propio editor de páginas (Divi Builder).
+            WordPress se ha usado para crear la página web de la plataforma; además, se ha empleado un tema hijo a partir del tema Divi \cite{divi}, uno de los temas más populares de WordPress y que además, incluye su propio editor de páginas (Divi Builder).
             
             \newpage
 
@@ -1145,41 +1145,102 @@
 
         Los componentes de la plataforma podrían dividirse en 4 partes fundamentales: el front-end, el back-end, la base de datos y los contenedores Docker (laboratorios). Todos estos están desplegados en un servidor que utiliza LAMP.
 
+        % Como se muestra en la figura \ref{fig:arquitectura}, la idea principal es que el usuario interactúe con el sitio web a través del front-end, que se comunica con el back-end para realizar las acciones que el usuario solicite; mientras que el back-end se comunica con la base de datos para almacenar y recuperar datos, y con los contenedores Docker para gestionar los laboratorios de pruebas.
+
         \subsection{\textit{Front-end}: WordPress}
 
             El front-end es la parte de la plataforma que interactúa con el usuario; en este caso, se ha desarrollado una aplicación web que permite al usuario acceder a la plataforma y realizar las acciones que se describen en la sección \ref{sec:casos-uso}.
             
-            Esta plataforma web se ha desarrollado utilizando el gestor de contenidos WordPress, ya que permite crear sitios web de forma rápida y sencilla, sin necesidad de tener conocimientos avanzados de programación. Además, cuenta con una gran comunidad de desarrolladores que crean y mantienen plugins y temas para extender las funcionalidades de la plataforma.
+            Se ha usado un tema hijo generado a partir del tema Divi, definido como \textit{divi-child}; dicho tema actua como eje central tanto para el diseño como para la funcionalidad de la plataforma web, como se describe en el siguiente apartado.
 
-            Se ha usado un tema hijo del tema \textit{Divi}, que permite crear sitios web de forma visual, sin necesidad de escribir código. Este tema hijo se ha usado para personalizar el tema \textit{Divi} y adaptarlo a las necesidades de la plataforma. Se seleccionó este tema porque es muy conocido y está muy bien valorado en la comunidad.
+            \begin{figure}[!htbp]
+                \centering
+
+                \includegraphics[scale=0.20]{images/Capturas/divi-builder.png}
+
+                \caption{Estructura de la plataforma web}
+                \label{fig:divi-child}
+            \end{figure}
 
         \subsection{\textit{Back-end}: \texttt{functions.php}}
         
-            El back-end es la parte de la plataforma que se encarga de procesar las peticiones del usuario y de gestionar los recursos de la plataforma; en este proyecto, se encarga de gestionar las peticiones del usuario y de comunicarse con la base de datos y los contenedores Docker.
+            El back-end se encarga de gestionar las peticiones del usuario y de comunicarse con la base de datos y los contenedores Docker. Se ha usado el fichero \texttt{functions.php} del tema \textit{divi-child} para implementar el back-end de la plataforma, ya que este fichero permite extender las funcionalidades de un sitio web de WordPress de forma sencilla.
             
-            Se ha usado el fichero \texttt{functions.php} de WordPress para implementar el back-end de la plataforma, ya que permite extender las funcionalidades de un sitio web de WordPress de forma sencilla.
+            Este fichero es propio de cada tema, y se ejecuta en cada petición que se realiza a la plataforma, lo que permite interactuar con la página al mismo tiempo que lo hace un usuario.
+
+        \subsection{\textit{Back-end}: Tareas de Cron}
+
+            Las tareas de cron son tareas que se ejecutan de forma periódica en el servidor. Se ha usado una para comprobar si algún laboratorio de pruebas superó su tiempo de vida (1 hora) y detenerlo de forma automática.
+            \\
+
+            \begin{lstlisting}[style=bash_style, caption={contenido del fichero},captionpos=b, basicstyle=\ttfamily\scriptsize]
+    # To define the time you can provide concrete values for
+    # minute (m), hour (h), day of month (dom), month (mon),
+    # and day of week (dow) or use '*' in these fields (for 'any').
+    # 
+    # For more information see the manual pages of crontab(5) and cron(8)
+    # 
+    # m h  dom mon dow   command
+
+    * * * * * /bin/bash /var/www/html/scripts/stop-1h-container.sh > /var/www/html/scripts/stop-1h-container.log 2>&1
+            \end{lstlisting}
             
-            Este fichero se ejecuta en cada petición que se realiza a la plataforma, lo que permite interactuar con la página cada vez que un usuario interactúa con ella.
-
-            \subsubsection{\textit{Back-end}: Tareas de Cron}
-
-                Las tareas de cron son tareas que se ejecutan de forma periódica en el servidor. Se ha usado una para comprobar si algún laboratorio de pruebas superó su tiempo de vida (1 hora) y detenerlo de forma automática.
-                
-                Esta tarea se ha implementado directamente en el servidor, ya que se consideró la opción más rápida y sencilla: se ejecuta cada minuto y destruye aquellos laboratorios que hayan excedido su tiempo de vida, liberando recursos en el sistema y permitiendo un uso de contenedores dinámico.
+            Esta tarea se ha implementado directamente en el servidor, ya que se consideró la opción más rápida y sencilla: se ejecuta cada minuto y destruye aquellos laboratorios que hayan excedido su tiempo de vida, liberando recursos en el sistema y permitiendo un uso de contenedores dinámico.
 
         \subsection{Base de datos: MySQL}
 
-            La base de datos es la parte de la plataforma que se encarga de almacenar la información de los usuarios y de los laboratorios de pruebas; en este caso, se ha usado para almacenar la información de los usuarios registrados en la plataforma y de los laboratorios de pruebas que han sido creados por dichos usuarios.
-            
-            Se ha usado MySQL como gestor de base de datos, ya que es un sistema de gestión de bases de datos relacional, de código abierto y muy popular. Además, es compatible con WordPress, por lo que se puede acceder a la base de datos desde el fichero \textit{functions.php}.
+            WordPress gestiona todo su contenido a través de una base de datos: configuración, publicaciones, usuarios registrados... aprovechando ese funcionamiento, se ha usado la base de datos de WordPress para almacenar los datos de los laboratorios de pruebas, y concretamente, se ha usado la tabla \texttt{wp\_usermeta}.
+
+            \begin{figure}[!htbp]
+                \centering
+
+                \includegraphics[scale=0.4]{images/Capturas/wp_usermeta.png}
+
+                \caption{Estructura de la tabla \texttt{wp\_usermeta}}
+                \label{fig:wp_usermeta}
+            \end{figure}
+
+            \newpage
+
+            El fichero \texttt{functions.php} conecta con la base de datos cada vez que el usuario quiere interactuar con un laboratorio desde la plataforma, y usa la tabla \texttt{wp\_usermeta} para almacenar los datos de los laboratorios en uso (el usuario que lo está usando, el puerto de conexión, etc.).
+
+            \begin{figure}[!htbp]
+                \centering
+
+                \includegraphics[scale=0.35]{images/Capturas/wp_usermeta-data.png}
+
+                \caption{Datos de la tabla \texttt{wp\_usermeta}}
+                \label{fig:wp_usermeta-data}
+            \end{figure}
+
+            \begin{itemize}
+                \item \textbf{user\_id}: identificador del usuario que ha realizado la acción; en este caso, el usuario que está usando un laboratorio de pruebas.
+                \item \textbf{meta\_key}: identificador del tipo de valor que se está almacenando; en este caso, información de un laboratorio activo.
+                \item \textbf{meta\_value}: información que se almacena; en este caso, los datos de un laboratorio activo (ID del contenedor, puerto...) en formato JSON.
+            \end{itemize}
+
+            A continuación se muestra el contenido del laboratorio activo en la figura \ref{fig:wp_usermeta-data}:
+            \\
+
+            \begin{lstlisting}[style=bash_style, basicstyle=\ttfamily\scriptsize]
+    {
+        "ip": "127.0.0.1",
+        "port": 7540,
+        "date": {
+            "date": "2023-09-06 15:26:16.615559",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "post_id": 79,
+        "id": "b5f344fd6d2f3c8796d421fb6274c3b7d984fdeebbec2755e531dee11570879c"
+    }
+            \end{lstlisting}
         
         \subsection{Contenedores Docker: laboratorios de pruebas}
 
             Los contenedores Docker son la parte de la plataforma que se encarga de ejecutar los laboratorios de pruebas. En este caso, se ha usado para ejecutar los laboratorios de pruebas que han sido creados por los usuarios.
             
-            Se ha usado Docker para ejecutar los laboratorios de pruebas, ya que permite ejecutar aplicaciones en contenedores de software. Estos contenedores son ligeros y portables, por lo que se pueden ejecutar en cualquier máquina que tenga Docker instalado. Además, se pueden crear imágenes de los contenedores, lo que permite crear laboratorios de pruebas personalizados y compartirlos con otros usuarios.
-
-            Por otra parte, los laboratorios son construidos a partir de imágenes contruidas con ficheros \texttt{Dockerfile} locales, por lo que pueden crearse nuevos laboratorios de pruebas de forma rápida y sencilla para extender la plataforma.
+            Los laboratorios son construidos a partir de imágenes contruidas con ficheros \texttt{Dockerfile} locales, por lo que pueden crearse nuevos laboratorios de pruebas de forma rápida y sencilla para extender la plataforma. Esto se explica más detalladamente en los apéndices del documento.
             
             \newpage
     

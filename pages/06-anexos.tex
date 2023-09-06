@@ -165,7 +165,7 @@
     * (...)
         \end{lstlisting}
 
-        Y por último, pasa lo mismo con la tarea de cron que automatiza la destrucción de los laboratorios: debe ser el usuario \texttt{www-data} quien defina y active la tarea de cron.
+        Y por último, pasa lo mismo con la tarea de cron que automatiza la destrucción de los laboratorios: debe ser el usuario \texttt{www-data} quien defina y active la tarea de cron. La tarea de cron definida para este proyecto puede encontrarse en la sección \ref{sec:arquitectura}.
         \\
 
         \begin{lstlisting}[style=bash_style]
@@ -173,24 +173,11 @@
         \end{lstlisting}
 
         \begin{lstlisting}[style=comment_style]
-    El comando sudo permite ejecutar un comando como otro usuario, en este caso, www-data.
+    sudo: ejecutar un comando como otro usuario.
+        -u: especificar el usuario.
 
-    El comando crontab permite gestionar las tareas de cron, en este caso, se edita la tarea de cron del usuario www-data.
-        \end{lstlisting}
-
-        La tarea de cron defindia es la siguiente:
-        \\
-
-        \begin{lstlisting}[style=bash_style, caption={contenido del fichero},captionpos=b, basicstyle=\ttfamily\scriptsize]
-    # To define the time you can provide concrete values for
-    # minute (m), hour (h), day of month (dom), month (mon),
-    # and day of week (dow) or use '*' in these fields (for 'any').
-    # 
-    # For more information see the manual pages of crontab(5) and cron(8)
-    # 
-    # m h  dom mon dow   command
-
-    * * * * * /bin/bash /var/www/html/scripts/stop-1h-container.sh > /var/www/html/scripts/stop-1h-container.log 2>&1
+    crontab: gestionar las tareas de cron de un usuario.
+        -e: editar las tareas de cron del usuario.
         \end{lstlisting}
 
         \cleardoublepage
