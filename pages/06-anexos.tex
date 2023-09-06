@@ -209,21 +209,23 @@
 
             \subsubsection{Copia de seguridad con WPvivid}
 
-                WPvivid \cite{wpvivid} es un plugin de WordPress que permite realizar copias de seguridad de un sitio web, así como restaurarlas; WordPress funciona almacenando toda su configuración y contenido en una base de datos, por lo que el plugin se encarga, ensencialmente, de hacer una copia de la base de datos y de los ficheros de la plataforma en formato \texttt{.zip}.
+                WPvivid \cite{wpvivid} es un plugin de WordPress que permite realizar copias de seguridad de un sitio web, así como restaurarlas.
+                
+                WordPress funciona almacenando toda su configuración y contenido en una base de datos, por lo que el plugin se encarga, ensencialmente, de hacer una copia de la base de datos y de los ficheros de la plataforma en formato \texttt{.zip}.
 
-                Existe un fichero de copia de seguridad de la plataforma hecha con WPvivid. Esta se puede usar tanto para restaurar los datos de la plataforma, como para duplicarla en otro sitio web de WordPress; para esta segunda opción, se recomienda seguir los siguientes pasos:
+                Existe un fichero de copia de seguridad de la plataforma hecha con WPvivid, llamado \texttt{html-wpvivid.zip}, que se puede usar tanto para restaurar los datos de la plataforma, como para duplicarla en otro sitio web de WordPress; para esta segunda opción, se recomienda seguir los siguientes pasos:
                 
                 \begin{enumerate}
                     \item Crear un nuevo sitio web de WordPress.
                     \item Instalar el plugin WPvivid.
-                    \item Importar la copia de seguridad.
-                    \item Restaurar la copia de seguridad.
+                    \item Restaurar la copia de seguridad en el nuevo sitio web.
                 \end{enumerate}
 
                 \begin{figure}
                     \centering
 
                     \includegraphics[width=0.75\textwidth]{images/Capturas/localhost/wpvivid.png}
+
                     \caption{Gestión de copias de seguridad con WPvivid}
                     \label{fig:wpvivid}
                 \end{figure}
