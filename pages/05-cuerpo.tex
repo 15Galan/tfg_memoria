@@ -419,7 +419,7 @@
 
             \end{quotation}
 
-            Para ello, el grupo de investigación desarrolló un conjunto de pruebas a partir de contenedores, usando combinaciones de un \textbf{conenedor principal} junto a \textbf{contenedores secundarios}.
+            Para ello, el grupo de investigación desarrolló un conjunto de pruebas a partir de contenedores, usando combinaciones de un conenedor principal junto a contenedores secundarios.
 
             \begin{quote}
 
@@ -440,10 +440,8 @@
 
             \newpage
                 
-            \subsubsection{Dependencia de contenedores de Docker}
+            \subsubsection{Solución del artículo}
 
-                Por tanto, el planteamiento inicial de usar una red de contenedores era errónea.
-                
                 La estructura descrita en el artículo se forma a través del uso de la tecnología de contenedores de Linux, alojando cada aplicación y configuración de software en un contenedor.
 
                 Una posible réplica de ese mecanismo podría realizarse de la siguiente forma:
@@ -467,6 +465,17 @@
                     Una vez creados los contenedores específicos del software y de la aplicación, pueden ejecutarse con el comando \texttt{docker run} de Docker.
 
                 \end{enumerate}
+                
+                \begin{figure}[!htbp]
+                    \centering
+
+                    \includegraphics[scale=0.15]{images/Diagramas/Contenedor B.png}
+
+                    \caption{Creación de contenedores a partir de una imagen $A$ padre}
+                    \label{fig:contenedor-hijo}
+                \end{figure}
+                
+                \newpage
 
                 En el paso 2, se crea una imagen específica del software a partir de un archivo Dockerfile que describe la configuración y los componentes que deben incluirse en los contenedores resultantes de dicha imagen.
 
@@ -474,11 +483,9 @@
 
                 El resultado final es un contenedor específico de la aplicación que reutiliza el sistema operativo y los componentes incluidos en la imagen del software, pero que añade los archivos específicos para el funcionamiento de la aplicación.
 
-                En las siguientes páginas se muestran dos ejemplos de pseudo-código de ficheros Dockerfile que describen la creación de imágenes específicas del software y de la aplicación, respectivamente.
+                A continuación se muestran dos ejemplos de pseudo-código de ficheros Dockerfile que describen la creación de imágenes específicas del software y de la aplicación, respectivamente.
 
-                \newpage
-
-                \paragraph{Imagen padre} Este Dockerfile establece una configuración básica del sistema operativo, y se instala el software necesario para el funcionamiento de la aplicación. Su propósito es servir como base para la creación de la imagen hija, que contendrá los archivos de la aplicación y se construirá sobre la imagen padre.
+                \paragraph{Imagen padre} Este Dockerfile establece una configuración básica del sistema operativo, y se instala el software necesario para el funcionamiento de la aplicación. Su propósito es servir como base para la creación de la imagen hija, que contendrá los archivos de la aplicación y se construirá sobre la imagen padre:
                 \\
 
                 \begin{lstlisting}[style=dockerfile_style, caption={Dockerfile de una imagen principal (padre)}]
@@ -494,15 +501,6 @@
     # Se especifica la ruta de ejecucion del servidor web
     CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
                 \end{lstlisting}
-
-                \begin{figure}[!htbp]
-                    \centering
-
-                    \includegraphics[scale=0.2]{images/Diagramas/Contenedor A.png}
-
-                    \caption{Creación de contenedores principales (padres)}
-                    \label{fig:contenedor-padre}
-                \end{figure}
 
                 \newpage
                 
@@ -522,16 +520,22 @@
     # Se ejecuta la aplicacion
     CMD ["python", "app.py"]
                 \end{lstlisting}
-                
-                \begin{figure}[!htbp]
-                    \centering
 
-                    \includegraphics[scale=0.15]{images/Diagramas/Contenedor B.png}
+            \subsubsection{Solución del proyecto}
 
-                    \caption{Creación de contenedores secundarios (hijos)}
-                    \label{fig:contenedor-hijo}
-                \end{figure}
-                
+                Si bien el enfoque planteado por el artículo presenta una mayor eficiencia, se ha usado una solución más simple y minimalista para el proyecto, ya que los conceptos planteados en el catálogo (capítulo \ref{cap:catalogo}) no requieren de una gran cantidad de software para su funcionamiento, y por tanto, no es necesario crear un sistema de imagen padre e imágenes hijas.
+
+                La mayoría de laboratorios de este proyecto solo requieren de la instalación de herramientas, por lo que basta con usar una imagen de un sistema operativo y añadir las herramientas necesarias para cada laboratorio a través de sus ficheros Dokerfile. Se han usado dos imágenes de sistemas operativos basados en Linux para los laboratorios:
+
+                \begin{itemize}
+                    \item \textbf{Alpine Linux \cite{alpine}}: un sistema construido especialmente para su uso en contenedores, ya que es muy ligero, eficiente y seguro; se usó en aquellos laboratorios que no emplean herramientas de penetración convencionales.
+                    \item \textbf{Debian \cite{debian}}: uno de los sistemas más usados y reconocidos mundialmente; se usó en aquellos laboratorios que emplean herramientas de penetración habituales.
+                \end{itemize}
+
+                Las herramientas mencionadas se han obtenido a través de sus repositorios oficiales y mediante el gestor de paquetes de cada sistema operativo (\texttt{apk} para Alpine Linux y \texttt{apt} para Debian).
+
+                Por otra parte, existen laboratorios que emplean imágenes específicas que ya implementan un servicio o funcionalidad concreta con el que poder experimentar. Estas imágenes se han obtenido a través de Docker Hub y ofrecen la misma dinámica que el resto de laboratorios.
+
                 \newpage
 
     
