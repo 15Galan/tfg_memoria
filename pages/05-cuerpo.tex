@@ -717,23 +717,27 @@
 
                     Sin embargo, se descartó esta opción debido a que la complejidad de la herramienta no se ajustaba a las necesidades del proyecto, ya que se buscaba una herramienta que facilitara la gestión de los contenedores Docker, pero de forma más sencilla.
 
+                    \newpage
+
                 \paragraph{Google Cloud Run}
 
-                    Este servicio de computación sin servidor (\textit{serverless}) de Google a los desarrolladores implementar fácilmente aplicaciones en contenedores en un entorno completamente administrado, sin la necesidad de administrar la infraestructura subyacente.
+                    Este servicio de computación sin servidor (\textit{serverless}) de Google permite a los desarrolladores implementar fácilmente aplicaciones en contenedores en un entorno completamente administrado, sin la necesidad de administrar la infraestructura subyacente.
                     
                     Cloud Run es compatible con contenedores basados en Docker, lo que significa que es posible empaquetar una aplicación en un contenedor y luego implementarla en Cloud Run.
 
-                    Este servicio se planteó como una opción para el alojamiento completo del proyecto, pero se descartó tras analizarlo: este proyecto no requiere de un servicio de computación sin servidor.
+                    Este servicio se planteó como una opción para el alojamiento completo del proyecto, pero se descartó tras analizarlo, ya que este no requiere de un servicio de computación sin servidor.
 
-                    Por otra parte, como se mencionó, esta herramienta está más diseñada para aplicaciones en contenedores, mientras que este proyecto se basa en la gestión de contenedores Docker.
+                    Por otra parte, como se mencionó, esta herramienta está más orientada al uso de aplicaciones en contenedores, mientras que este proyecto se basa en la gestión de contenedores Docker en sí misma.
 
                 \paragraph{Google Compute Engine}
 
-                    Este servicio de infraestructura como servicio (IaaS) de Google permite crear máquinas virtuales en la nube, lo que resulta muy interesante para el desarrollo de este proyecto para alojarlo en una instancia de máquina virtual.
+                    Este servicio de infraestructura (IaaS) de Google permite crear máquinas virtuales en la nube, lo que resulta muy interesante para el desarrollo de este proyecto.
 
                     Compute Engine permite a los usuarios tener un control total sobre la configuración y personalización de sus máquinas virtuales: cantidad de CPU, memoria RAM, almacenamiento y la opción de elegir entre diferentes tipos de instancias según el rendimiento y el costo requeridos. También es posible seleccionar el sistema operativo y personalizar la configuración de red y seguridad de las instancias.
 
-                    Este servicio se considera el más compatible con la arquitectura y funcionamiento del proyecto, ya que en términos simples, podría implementarse en un primer momento de forma local, y luego trasladarlo a una instancia de Compute Engine sin necesidad de realizar grandes cambios.
+                    Este servicio se considera el más compatible con la arquitectura del proyecto, ya que en términos simples, podría implementarse en un primer momento de forma local, y luego trasladarlo a una instancia de Compute Engine sin necesidad de realizar grandes cambios.
+
+                    Esta acción intentó llevarse a cabo una vez finalizado el desarrollo de la plataforma web, pero no pudo aplicarse adecuadamente debido a los continuos problemas de visibilidad que presentaba la instancia generada en Compute Engine, impidiendo el acceso público a la plataforma web. Tuvo que descartarse la idea en base al tiempo restante del proyecto.
 
                     \cleardoublepage
 
