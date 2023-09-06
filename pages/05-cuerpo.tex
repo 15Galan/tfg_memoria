@@ -586,7 +586,7 @@
                 
                 \paragraph{Escalabilidad}
                 
-                    Si bien este proyecto constituye una prueba de concepto, uno de los objetivos (sección \ref{sec:objetivos}) a tener en cuenta se trataba de construir una plataforma web fácilmente extensible.
+                    Uno de los objetivos (sección \ref{sec:objetivos}) a tener en cuenta para la plataforma, era que esta fuera fácilmente escalable.
 
                     La escalabilidad de WordPress es una de sus principales fortalezas y uno de los motivos por los que es una plataforma popular y confiable para la creación de sitios web de cualquier tamaño. Su arquitectura modular y su capacidad para trabajar con bases de datos y servidores de alta gama, la convierten en una opción sólida para aquellos que buscan crear sitios web que puedan crecer y adaptarse a sus necesidades en el futuro.
 
@@ -600,7 +600,7 @@
                 
                     Observando la tabla anterior se puede apreciar varios motivos por los que se ha optado usar Wordpress en lugar de Drupal, pero todos ellos relacionados al mismo punto: la complejidad de Drupal no se ajusta a las necesidades de este proyecto.
     
-                    Si bien puede ser una idea interesante a largo plazo y en un hipotético caso de evolución de la plataforma web a un proyecto superior, para una prueba de concepto como la que se está llevando a cabo, se considera óptimo elegir una herramienta más sencilla y fácil de usar.
+                    Si bien puede ser una idea interesante a largo plazo y en un hipotético caso de evolución de la plataforma web a un proyecto superior, pero para el propósito actual, se considera óptimo elegir una herramienta más sencilla y fácil de usar.
     
         \subsection{Base de Datos}
         
@@ -723,19 +723,17 @@
                     
                     Cloud Run es compatible con contenedores basados en Docker, lo que significa que es posible empaquetar una aplicación en un contenedor y luego implementarla en Cloud Run.
 
-                    Este servicio se planteó como una opción para el alojamiento completo del proyecto, pero se descartó tras analizarlo: este proyecto no requiere de un servicio de computación sin servidor, ya que se trata de una prueba de concepto y no se espera que la plataforma web vaya a ser utilizada por un gran número de usuarios.
+                    Este servicio se planteó como una opción para el alojamiento completo del proyecto, pero se descartó tras analizarlo: este proyecto no requiere de un servicio de computación sin servidor.
 
                     Por otra parte, como se mencionó, esta herramienta está más diseñada para aplicaciones en contenedores, mientras que este proyecto se basa en la gestión de contenedores Docker.
 
                 \paragraph{Google Compute Engine}
 
-                    Este servicio de infraestructura como servicio (IaaS) de Google permite crear máquinas virtuales en la nube, lo que resulta muy interesante para el desarrollo de este proyecto.
+                    Este servicio de infraestructura como servicio (IaaS) de Google permite crear máquinas virtuales en la nube, lo que resulta muy interesante para el desarrollo de este proyecto para alojarlo en una instancia de máquina virtual.
 
                     Compute Engine permite a los usuarios tener un control total sobre la configuración y personalización de sus máquinas virtuales: cantidad de CPU, memoria RAM, almacenamiento y la opción de elegir entre diferentes tipos de instancias según el rendimiento y el costo requeridos. También es posible seleccionar el sistema operativo y personalizar la configuración de red y seguridad de las instancias.
 
                     Este servicio se considera el más compatible con la arquitectura y funcionamiento del proyecto, ya que en términos simples, podría implementarse en un primer momento de forma local, y luego trasladarlo a una instancia de Compute Engine sin necesidad de realizar grandes cambios.
-
-                    Además, al tratarse de una prueba de concepto, no se haría uso de múltiples instancias concectadas, sino que se utilizaría una única instancia para el alojamiento de la plataforma web, base de datos y la gestión de contenedores Docker, manteniendo la sencillez y unicidad del proyecto (y también se reducirían los costes en el caso de haberlos).
 
                     \cleardoublepage
 
