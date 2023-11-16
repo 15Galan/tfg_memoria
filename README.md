@@ -32,7 +32,7 @@ Una vez importado el proyecto, puedes modificar los siguientes ficheros para alt
 
 Se ha usado [esta plantilla](https://github.com/benhid/TFG-UMA) de proyecto $\LaTeX$ como base para el desarrollo de la memoria de este TFG.
 
-> **Note**  
+> [!NOTE]
 > Se han modificado los paquetes empleados para mi documento, así como la estructura del mismo, para adaptarse a las necesidades de mi proyecto.
 >
 > Por ejemplo: se ha eliminado el uso de `pages/01-etiqueta.tex` porque no es necesaria para una entrega digital del documento; no obstante.
