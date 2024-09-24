@@ -5,16 +5,19 @@
     <br/>
 </div>
 
+> [!NOTE]
+> Esta implementación ha sido desarrollada en el contexto de un TFE dentro de la Universidad de Málaga por ANTONIO JAVIER GALÁN HERRERA y JOSÉ ANTONIO ONIEVA GONZÁLEZ.
+
 # TFG - Memoria
 
 Este repositorio contiene el proyecto $\LaTeX$ empleado para la elaboración de la memoria, así como el documento final (*memoria.pdf*).
 
 ## Uso del repositorio
 
-La opción más cómoda y rápida es importar este proyecto en [Overleaf](https://www.overleaf.com) y modificar los ficheros desde ahí.
+La opción más cómoda y rápida es **importar este proyecto en [Overleaf][overleaf]** y modificar los ficheros desde ahí.
 
 1. Descarga este repositorio como un fichero `.zip`.
-2. Entra en [Overleaf](https://www.overleaf.com) y crea un nuevo proyecto.
+2. Entra en [Overleaf][overleaf] y crea un nuevo proyecto.
 3. Importa el fichero `.zip` descargado en el paso 1.
 
 Una vez importado el proyecto, puedes modificar los siguientes ficheros para alterar el contenido de la presentación:
@@ -35,4 +38,6 @@ Se ha usado [esta plantilla](https://github.com/benhid/TFG-UMA) de proyecto $\La
 > [!NOTE]
 > Se han modificado los paquetes empleados para mi documento, así como la estructura del mismo, para adaptarse a las necesidades de mi proyecto.
 >
-> Por ejemplo: se ha eliminado el uso de `pages/01-etiqueta.tex` porque no es necesaria para una entrega digital del documento; no obstante.
+> Por ejemplo: se ha eliminado el uso de `pages/01-etiqueta.tex` porque no es necesaria para una entrega digital del documento.
+
+[overleaf]: https://www.overleaf.com
